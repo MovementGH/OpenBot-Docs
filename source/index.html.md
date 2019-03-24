@@ -43,11 +43,11 @@ https://cdn.discordapp.com/avatars/473469567323078676/1a679b6f2c447e33133440f142
 
 Information about a user is stored in the UserData class.
 
-Member | Description
---------- | -----------
-UserID | The ID of the user
-UserName | The Username of the user
-AvatarURL | The URL of the user's discord avatar
-MessageCount | The number of message the user has sent
-Locale | The locale the user is using
-CommandData | Data stored by commands about this user
+Member | Type | Description
+--------- | --------- | -----------
+UserID | Number |The ID of the user
+UserName | String |The Username of the user
+AvatarURL | String |The URL of the user's discord avatar
+MessageCount | Number |The number of message the user has sent
+Locale | Locale | The locale the user is using
+CommandData | Array<CommandData> | Data stored by commands about this user
