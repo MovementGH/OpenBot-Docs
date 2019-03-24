@@ -49,5 +49,5 @@ UserID | Number |The ID of the user
 UserName | String |The Username of the user
 AvatarURL | String |The URL of the user's discord avatar
 MessageCount | Number |The number of message the user has sent
-Locale | Locale | The locale the user is using
-CommandData | Array<CommandData> | Data stored by commands about this user
+Locale | <a href="#Locale">Locale</a> | The locale the user is using
+CommandData | Array (<a href="#CommandData">CommandData</a>) | Data stored by commands about this user
