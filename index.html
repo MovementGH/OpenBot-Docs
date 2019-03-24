@@ -227,6 +227,9 @@
                   <li>
                     <a href="#userdata" class="toc-h2 toc-link" data-title="UserData">UserData</a>
                   </li>
+                  <li>
+                    <a href="#guilddata" class="toc-h2 toc-link" data-title="GuildData">GuildData</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -297,6 +300,63 @@ https://cdn.discordapp.com/avatars/473469567323078676/1a679b6f2c447e33133440f142
 <td>CommandData</td>
 <td>Array (<a href="#CommandData">CommandData</a>)</td>
 <td>Data stored by commands about this user</td>
+</tr>
+</tbody></table>
+<h2 id='guilddata'>GuildData</h2>
+<blockquote>
+<p>Example: Printing out a guild&#39;s Name, ID, and UserCount</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">CurrentGuildData</span><span class="p">.</span><span class="nx">GuildName</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">CurrentGuildData</span><span class="p">.</span><span class="nx">GuildID</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">CurrentGuildData</span><span class="p">.</span><span class="nx">UserCount</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<blockquote>
+<p>This will output something along the lines of this:</p>
+</blockquote>
+</blockquote>
+<pre class="highlight plaintext"><code>OpenBot Development Hub
+506869654493331456
+17
+</code></pre>
+<p>Information about a guild is stored in the GuildData class.</p>
+
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>GuildID</td>
+<td>Number</td>
+<td>The ID of the guild</td>
+</tr>
+<tr>
+<td>GuildName</td>
+<td>String</td>
+<td>The Name of the guild</td>
+</tr>
+<tr>
+<td>UserCount</td>
+<td>Number</td>
+<td>The number of users in the guild</td>
+</tr>
+<tr>
+<td>MessageCount</td>
+<td>Number</td>
+<td>The number of messages processed in the guild</td>
+</tr>
+<tr>
+<td>Prefix</td>
+<td>String</td>
+<td>The prefix OpenBot is using in the guild</td>
+</tr>
+<tr>
+<td>AddedCommands</td>
+<td>Array (Number)</td>
+<td>An array of the IDs of commands added to the guild</td>
 </tr>
 </tbody></table>
 
