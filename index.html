@@ -233,6 +233,9 @@
                   <li>
                     <a href="#commanddata" class="toc-h2 toc-link" data-title="CommandData">CommandData</a>
                   </li>
+                  <li>
+                    <a href="#command" class="toc-h2 toc-link" data-title="Command">Command</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -296,7 +299,7 @@ https://cdn.discordapp.com/avatars/473469567323078676/1a679b6f2c447e33133440f142
 </tr>
 <tr>
 <td>Locale</td>
-<td><a href="#Locale">Locale</a></td>
+<td>String</td>
 <td>The locale the user is using</td>
 </tr>
 <tr>
@@ -385,6 +388,116 @@ https://cdn.discordapp.com/avatars/473469567323078676/1a679b6f2c447e33133440f142
 </tbody></table>
 
 <aside class="warning">Do not attempt to access CommandData created by other command developers. Doing this will cause your command to get rejected.</aside>
+<h2 id='command'>Command</h2>
+<blockquote>
+<p>Example: Print the name and callname of the current command</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Names</span><span class="p">[</span><span class="nx">CurrentLocale</span><span class="p">]);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Uses</span><span class="p">[</span><span class="nx">CurrentLocale</span><span class="p">]);</span>
+</code></pre>
+<blockquote>
+<p>This will output something along the lines of this:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>Add Command
+Add
+</code></pre>
+<p>The most important object in OpenBot. The Command. Stores the information about every command in OpenBot!</p>
+
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>Number</td>
+<td>The ID of the command</td>
+</tr>
+<tr>
+<td>Author</td>
+<td>Number</td>
+<td>The ID of the author of the command</td>
+</tr>
+<tr>
+<td>Names</td>
+<td>Array (String)</td>
+<td>The names of the command</td>
+</tr>
+<tr>
+<td>Uses</td>
+<td>Array (String)</td>
+<td>The callnames of the command</td>
+</tr>
+<tr>
+<td>Descriptions</td>
+<td>Array (String)</td>
+<td>The descriptions of the command</td>
+</tr>
+<tr>
+<td>String</td>
+<td>Array (String)</td>
+<td>The translation strings of the command</td>
+</tr>
+<tr>
+<td>Syntax</td>
+<td>String</td>
+<td>The syntax of the command</td>
+</tr>
+<tr>
+<td>Icon</td>
+<td>String</td>
+<td>The Icon of the command</td>
+</tr>
+<tr>
+<td>SupportLink</td>
+<td>String</td>
+<td>The link to the command&#39;s support server</td>
+</tr>
+<tr>
+<td>Version</td>
+<td>String</td>
+<td>The version of the command</td>
+</tr>
+<tr>
+<td>BotPerms</td>
+<td>Permission</td>
+<td>The permissions required for the bot to execute the command</td>
+</tr>
+<tr>
+<td>ExecutePerms</td>
+<td>Permission</td>
+<td>The permissions required for a user to execute the command</td>
+</tr>
+<tr>
+<td>AllowView</td>
+<td>Bool</td>
+<td>Whether the author allows people to view the source</td>
+</tr>
+<tr>
+<td>AllowEdit</td>
+<td>Bool</td>
+<td>Whether the author allows people to make a pull request</td>
+</tr>
+<tr>
+<td>onCall</td>
+<td>Function</td>
+<td>The function that gets called when the command is executed</td>
+</tr>
+<tr>
+<td>Locked</td>
+<td>Bool</td>
+<td>Whether this function is part of OpenBot&#39;s core and cannot be removed</td>
+</tr>
+<tr>
+<td>OnlyDevs</td>
+<td>Bool</td>
+<td>Whether this function can only be called by developers</td>
+</tr>
+</tbody></table>
+
+<aside class='warning'>Do not attempt to edit any Commands. Doing so will cause your command to get rejected.</aside>
 
       </div>
       <div class="dark-box">
