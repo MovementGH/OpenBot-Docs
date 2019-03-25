@@ -10,6 +10,8 @@ toc_footers:
 
 includes:
   - classes
+  - methods
+  - variables
 
 search: true
 ---

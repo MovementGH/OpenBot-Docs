@@ -25,7 +25,7 @@ UserID | Number | The ID of the user
 UserName | String | The Username of the user
 AvatarURL | String | The URL of the user's discord avatar
 MessageCount | Number | The number of message the user has sent
-Locale | <a href="#Locale">Locale</a> | The locale the user is using
+Locale | String | The locale the user is using
 CommandData | Array (<a href="#CommandData">CommandData</a>) | Data stored by commands about this user
 
 ## GuildData
@@ -69,3 +69,43 @@ CommandAuthor | Number | The ID of the author storing the data
 Data | Object | The data being stored
 
 <aside class="warning">Do not attempt to access CommandData created by other command developers. Doing this will cause your command to get rejected.</aside>
+
+## Command
+
+> Example: Print the name and callname of the current command
+
+```javascript
+console.log(this.Names[CurrentLocale]);
+console.log(this.Uses[CurrentLocale]);
+```
+
+> This will output something along the lines of this:
+
+```output
+Add Command
+Add
+```
+
+The most important object in OpenBot. The Command. Stores the information about every command in OpenBot!
+
+Member | Type | Description
+--------- | --------- | -----------
+ID | Number | The ID of the command
+Author | Number | The ID of the author of the command
+Names | Array (String) | The names of the command
+Uses | Array (String) | The callnames of the command
+Descriptions | Array (String) | The descriptions of the command
+String | Array (String) | The translation strings of the command
+Syntax | String | The syntax of the command
+Icon | String | The Icon of the command
+SupportLink | String | The link to the command's support server
+Version | String | The version of the command
+BotPerms | Permission | The permissions required for the bot to execute the command
+ExecutePerms | Permission | The permissions required for a user to execute the command
+AllowView | Bool | Whether the author allows people to view the source
+AllowEdit | Bool | Whether the author allows people to make a pull request
+onCall | Function | The function that gets called when the command is executed
+Locked | Bool | Whether this function is part of OpenBot's core and cannot be removed
+OnlyDevs | Bool | Whether this function can only be called by developers
+
+<aside class='warning'>Do not attempt to edit any Commands. Doing so will cause your command to get rejected.</aside>
