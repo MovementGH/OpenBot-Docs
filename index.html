@@ -247,6 +247,9 @@
                   <li>
                     <a href="#getguilddata" class="toc-h2 toc-link" data-title="GetGuildData">GetGuildData</a>
                   </li>
+                  <li>
+                    <a href="#getuserdata" class="toc-h2 toc-link" data-title="GetUserData">GetUserData</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -542,7 +545,7 @@ https://cdn.discordapp.com/emojis/539643411179896835.png
 <p>Return Type: String
 Return Value: URL to image of emoji, or URL to discord icon if none is found</p>
 
-<aside class="warning">This will not work if the user typed a default emoji, as those get sent as unicode characters. To get a url for those you can directly interact with <a href="https://www.npmjs.com/package/twemoji">Twemoji's API</a> by using LibTwemoji.</aside>
+<aside class="note">This will not work if the user typed a default emoji, as those get sent as unicode characters. To get a url for those you can directly interact with <a href="https://www.npmjs.com/package/twemoji">Twemoji's API</a> by using LibTwemoji.</aside>
 <h2 id='getguilddata'>GetGuildData</h2>
 <blockquote>
 <p>Example: Get the guild data for your current guild (Yes i know its already available in CurrentGuildData)</p>
@@ -553,11 +556,11 @@ Return Value: URL to image of emoji, or URL to discord icon if none is found</p>
 <p>The Guild Data will now contain something along the lines of this</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="s2">"GuildID"</span><span class="p">:</span><span class="s2">"506869654493331456"</span><span class="w">
-</span><span class="s2">"GuildName"</span><span class="p">:</span><span class="s2">"OpenBot Development Hub"</span><span class="w">
-</span><span class="s2">"UserCount"</span><span class="p">:</span><span class="s2">"21"</span><span class="w">
-</span><span class="s2">"MessageCount"</span><span class="p">:</span><span class="s2">"6969"</span><span class="w">
-</span><span class="s2">"Prefix"</span><span class="p">:</span><span class="s2">"-Open "</span><span class="w">
+</span><span class="s2">"GuildID"</span><span class="p">:</span><span class="s2">"506869654493331456"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"GuildName"</span><span class="p">:</span><span class="s2">"OpenBot Development Hub"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"UserCount"</span><span class="p">:</span><span class="s2">"21"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"MessageCount"</span><span class="p">:</span><span class="s2">"6969"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"Prefix"</span><span class="p">:</span><span class="s2">"-Open "</span><span class="p">,</span><span class="w">
 </span><span class="s2">"AddedCommand"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">Object</span><span class="w"> </span><span class="err">object</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -578,6 +581,42 @@ Return Value: URL to image of emoji, or URL to discord icon if none is found</p>
 </tbody></table>
 
 <p>Return Type: Number or <a href="#guilddata">GuildData</a>
+Return Value: Data of the guild, or -1 if no guild was found</p>
+<h2 id='getuserdata'>GetUserData</h2>
+<blockquote>
+<p>Example: Get the user data for the sender of the message (Yes i know its already available in CurrentUserData)</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">UserData</span><span class="o">=</span><span class="nx">GetUserData</span><span class="p">(</span><span class="nx">Message</span><span class="p">.</span><span class="nx">author</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>The User Data will now contain something along the lines of this</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"UserID"</span><span class="p">:</span><span class="s2">"473469567323078676"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"UserName"</span><span class="p">:</span><span class="s2">"Movement"</span><span class="p">,</span><span class="w">
+</span><span class="s2">"AvatarURL"</span><span class="p">:</span><span class="s2">"https://cdn.discordapp.com/avatars/473469567323078676/1a679b6f2c447e33133440f1421eb1d0.png?size=2048"</span><span class="w">
+</span><span class="s2">"Locale"</span><span class="p">:</span><span class="s2">"en"</span><span class="w">
+</span><span class="s2">"MessageCount"</span><span class="p">:</span><span class="s2">"1336"</span><span class="w">
+</span><span class="s2">"CommandData"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">Object</span><span class="w"> </span><span class="err">object</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>The GetUserData method can be used to get the user data for any user by searching for that user&#39;s ID.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>UserID</td>
+<td>Number</td>
+<td>The ID of the user you are looking for</td>
+</tr>
+</tbody></table>
+
+<p>Return Type: Number or <a href="#userdata">UserData</a>
 Return Value: Data of the guild, or -1 if no guild was found</p>
 
       </div>
