@@ -250,6 +250,15 @@
                   <li>
                     <a href="#getuserdata" class="toc-h2 toc-link" data-title="GetUserData">GetUserData</a>
                   </li>
+                  <li>
+                    <a href="#findlocale" class="toc-h2 toc-link" data-title="FindLocale">FindLocale</a>
+                  </li>
+                  <li>
+                    <a href="#findcommand" class="toc-h2 toc-link" data-title="FindCommand">FindCommand</a>
+                  </li>
+                  <li>
+                    <a href="#findcommandindex" class="toc-h2 toc-link" data-title="FindCommandIndex">FindCommandIndex</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -526,7 +535,7 @@ Add
 or
 https://cdn.discordapp.com/emojis/539643411179896835.png
 </code></pre>
-<p>The GenerateImage method can be used to turn any discord emoji tag into a png that you can embed in something.</p>
+<p>The GenerateImage method can be used to turn any discord emoji tag into a URL to a png that you can embed in something.</p>
 
 <table><thead>
 <tr>
@@ -542,9 +551,7 @@ https://cdn.discordapp.com/emojis/539643411179896835.png
 </tr>
 </tbody></table>
 
-<p>Return Type: String</p>
-
-<p>Return Value: URL to image of emoji, or URL to discord icon if none is found</p>
+<p>Return Value: String</p>
 
 <aside class="note">This will not work if the user typed a default emoji, as those get sent as unicode characters. To get a url for those you can directly interact with <a href="https://www.npmjs.com/package/twemoji">Twemoji's API</a> by using LibTwemoji.</aside>
 <h2 id='getguilddata'>GetGuildData</h2>
@@ -567,6 +574,8 @@ https://cdn.discordapp.com/emojis/539643411179896835.png
 </span></code></pre>
 <p>The GetGuildData method can be used to get the guild data for any guild by searching for that guild&#39;s ID.</p>
 
+<p>The GuildData object returned by this method is editable, so you can edit a guild&#39;s data if you want to</p>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -575,15 +584,13 @@ https://cdn.discordapp.com/emojis/539643411179896835.png
 </tr>
 </thead><tbody>
 <tr>
-<td>GuildID</td>
-<td>Number</td>
-<td>The ID of the guild you are looking for</td>
+<td>Guild</td>
+<td>Guild</td>
+<td>The guild whose data you are looking for</td>
 </tr>
 </tbody></table>
 
-<p>Return Type: Number or <a href="#guilddata">GuildData</a></p>
-
-<p>Return Value: Data of the guild, or -1 if no guild was found</p>
+<p>Return Value: <a href="#guilddata">GuildData</a>, or -1 if none was found</p>
 <h2 id='getuserdata'>GetUserData</h2>
 <blockquote>
 <p>Example: Get the user data for the sender of the message (Yes i know its already available in CurrentUserData)</p>
@@ -604,6 +611,8 @@ https://cdn.discordapp.com/emojis/539643411179896835.png
 </span></code></pre>
 <p>The GetUserData method can be used to get the user data for any user by searching for that user&#39;s ID.</p>
 
+<p>The UserData object returned by this method is editable, so you can edit a user&#39;s data if you want to</p>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -612,15 +621,104 @@ https://cdn.discordapp.com/emojis/539643411179896835.png
 </tr>
 </thead><tbody>
 <tr>
-<td>UserID</td>
-<td>Number</td>
-<td>The ID of the user you are looking for</td>
+<td>User</td>
+<td>User</td>
+<td>The user whose data you are looking for</td>
 </tr>
 </tbody></table>
 
-<p>Return Type: Number or <a href="#userdata">UserData</a></p>
+<p>Return Value: <a href="#userdata">UserData</a>, or -1 if none was found</p>
+<h2 id='findlocale'>FindLocale</h2>
+<blockquote>
+<p>Example: Get the proper locale to use for printing out the command&#39;s name (Yes i know its already available in CurrentLocale)</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Names</span><span class="p">[</span><span class="nx">FindLocale</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">CurrentUserLocale</span><span class="p">)]);</span>
+</code></pre>
+<blockquote>
+<p>This could output any of these things depending on the locale of the user</p>
+</blockquote>
+<pre class="highlight plaintext"><code>Add Command
+or
+Agregar Comando
+</code></pre>
+<p>The FindLocale method can be used to get the ID of the locale you should be using to communicate with the user. If the command you pass to it does not support the locale of the user, it returns the commands first locale.</p>
 
-<p>Return Value: Data of the guild, or -1 if no guild was found</p>
+<p>The locale you should be using for your command is already available under the variable CurrentLocale, but you can use FindLocale if you want to print the name of a different command (For example if you are writing a help command)</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Command</td>
+<td><a href="#command">Command</a></td>
+<td>The command you wish to find a locale for</td>
+</tr>
+<tr>
+<td>Locale</td>
+<td>String</td>
+<td>The locale you wish to find</td>
+</tr>
+</tbody></table>
+
+<p>Return Value: Number</p>
+<h2 id='findcommand'>FindCommand</h2>
+<blockquote>
+<p>Example: Find a cool command with the ID 66</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">FindCommand</span><span class="p">(</span><span class="mi">66</span><span class="p">).</span><span class="nx">Names</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre>
+<blockquote>
+<p>This could output something like this</p>
+</blockquote>
+<pre class="highlight plaintext"><code>Illuminati Command
+</code></pre>
+<p>The FindCommand method can be used to find a command using its ID.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>Number</td>
+<td>The id of the command you are looking for</td>
+</tr>
+</tbody></table>
+
+<p>Return Value: <a href="#command">Command</a>, or -1 if none was found</p>
+<h2 id='findcommandindex'>FindCommandIndex</h2>
+<blockquote>
+<p>Example: Find out where your command is stored in the command mapping</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">FindCommandIndex</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">ID</span><span class="p">));</span>
+</code></pre>
+<blockquote>
+<p>This could output something like this</p>
+</blockquote>
+<pre class="highlight plaintext"><code>4
+</code></pre>
+<p>The FindCommandIndex method can be used to find the index of your command in the CacheCommands array</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>Number</td>
+<td>The id of the command you are looking for</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
