@@ -21,7 +21,6 @@ The GenerateImage method can be used to turn any discord emoji tag into a URL to
 Parameter | Type | Description
 --------- | --------- | -----------
 Emoji | String | A discord emoji
-
 ### Return Value: String
 
 <aside class="note">This will not work if the user typed a default emoji, as those get sent as unicode characters. To get a url for those you can directly interact with <a href="https://www.npmjs.com/package/twemoji">Twemoji's API</a> by using LibTwemoji.</aside>
@@ -53,7 +52,6 @@ The GuildData object returned by this method is editable, so you can edit a guil
 Parameter | Type | Description
 --------- | --------- | -----------
 Guild | Guild | The guild whose data you are looking for
-
 ### Return Value: <a href="#guilddata">GuildData</a>, or -1 if none was found
 
 ## GetUserData
@@ -84,7 +82,6 @@ The UserData object returned by this method is editable, so you can edit a user'
 Parameter | Type | Description
 --------- | --------- | -----------
 User | User | The user whose data you are looking for
-
 ### Return Value: <a href="#userdata">UserData</a>, or -1 if none was found
 
 ## FindLocale
@@ -110,7 +107,6 @@ Parameter | Type | Description
 --------- | --------- | -----------
 Command | <a href="#command">Command</a> | The command you wish to find a locale for
 Locale | String | The locale you wish to find
-
 ### Return Value: Number
 
 ## FindCommand
@@ -132,7 +128,6 @@ The FindCommand method can be used to find a command using its ID.
 Parameter | Type | Description
 --------- | --------- | -----------
 ID | Number | The id of the command you are looking for
-
 ### Return Value: <a href="#command">Command</a>, or -1 if none was found
 
 ## FindCommandIndex
@@ -154,4 +149,4 @@ The FindCommandIndex method can be used to find the index of your command in the
 Parameter | Type | Description
 --------- | --------- | -----------
 ID | Number | The id of the command you are looking for
-
+### Return Value: Number
