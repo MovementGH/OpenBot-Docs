@@ -238,6 +238,17 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#methods" class="toc-h1 toc-link" data-title="Methods">Methods</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#generateimage" class="toc-h2 toc-link" data-title="GenerateImage">GenerateImage</a>
+                  </li>
+                  <li>
+                    <a href="#getguilddata" class="toc-h2 toc-link" data-title="GetGuildData">GetGuildData</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='../'>Start Coding</a></li>
@@ -498,6 +509,76 @@ Add
 </tbody></table>
 
 <aside class='warning'>Do not attempt to edit any Commands. Doing so will cause your command to get rejected.</aside>
+<h1 id='methods'>Methods</h1><h2 id='generateimage'>GenerateImage</h2>
+<blockquote>
+<p>Example: Get the link to the icon of your command for use in the thumbnail</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Embed</span><span class="o">=</span><span class="k">new</span> <span class="nx">LibDiscord</span><span class="p">.</span><span class="nx">RichEmbed</span><span class="p">();</span>
+<span class="nx">Embed</span><span class="p">.</span><span class="nx">setThumbnail</span><span class="p">(</span><span class="nx">GenerateImage</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Icon</span><span class="p">));</span>
+</code></pre>
+<blockquote>
+<p>Your thumbnail will now be something along the lines of this:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>https://twemoji.maxcdn.com/2/72x72/1f528.png
+or
+https://cdn.discordapp.com/emojis/539643411179896835.png
+</code></pre>
+<p>The GenerateImage method can be used to turn any discord emoji tag into a png that you can embed in something.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Emoji</td>
+<td>String</td>
+<td>A discord emoji</td>
+</tr>
+</tbody></table>
+
+<p>Return Type: String
+Return Value: URL to image of emoji, or URL to discord icon if none is found</p>
+
+<aside class="warning">This will not work if the user typed a default emoji, as those get sent as unicode characters. To get a url for those you can directly interact with <a href="https://www.npmjs.com/package/twemoji">Twemoji's API</a> by using LibTwemoji.</aside>
+<h2 id='getguilddata'>GetGuildData</h2>
+<blockquote>
+<p>Example: Get the guild data for your current guild (Yes i know its already available in CurrentGuildData)</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">GuildData</span><span class="o">=</span><span class="nx">GetGuildData</span><span class="p">(</span><span class="nx">Message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>The Guild Data will now contain something along the lines of this</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"GuildID"</span><span class="p">:</span><span class="s2">"506869654493331456"</span><span class="w">
+</span><span class="s2">"GuildName"</span><span class="p">:</span><span class="s2">"OpenBot Development Hub"</span><span class="w">
+</span><span class="s2">"UserCount"</span><span class="p">:</span><span class="s2">"21"</span><span class="w">
+</span><span class="s2">"MessageCount"</span><span class="p">:</span><span class="s2">"6969"</span><span class="w">
+</span><span class="s2">"Prefix"</span><span class="p">:</span><span class="s2">"-Open "</span><span class="w">
+</span><span class="s2">"AddedCommand"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">Object</span><span class="w"> </span><span class="err">object</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>The GetGuildData method can be used to get the guild data for any guild by searching for that guild&#39;s ID.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>GuildID</td>
+<td>Number</td>
+<td>The ID of the guild you are looking for</td>
+</tr>
+</tbody></table>
+
+<p>Return Type: Number or <a href="#guilddata">GuildData</a>
+Return Value: Data of the guild, or -1 if no guild was found</p>
 
       </div>
       <div class="dark-box">
