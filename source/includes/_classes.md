@@ -26,7 +26,7 @@ UserName | String | The Username of the user
 AvatarURL | String | The URL of the user's discord avatar
 MessageCount | Number | The number of message the user has sent
 Locale | String | The locale the user is using
-CommandData | Array (<a href="#CommandData">CommandData</a>) | Data stored by commands about this user
+CommandData | Array (<a href="#commanddata">CommandData</a>) | Data stored by commands about this user
 
 ## GuildData
 
