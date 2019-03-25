@@ -63,9 +63,9 @@ If your command needs to store information, this is the object you use to store 
 
 You should use one CommandData per user, even if you have multiple commands. Command Data is meant to be found by looking for your User ID in the CommandData array of the User whos data you want to retreive.
 
-<aside class="warning">Do not attempt to access CommandData created by other command developers. Doing this will cause your command to get rejected.</aside>
-
 Member | Type | Description
 --------- | --------- | -----------
-CommandAuthor | Number | The ID of the author of the command storing the data
+CommandAuthor | Number | The ID of the author storing the data
 Data | Object | The data being stored
+
+<aside class="warning">Do not attempt to access CommandData created by other command developers. Doing this will cause your command to get rejected.</aside>
