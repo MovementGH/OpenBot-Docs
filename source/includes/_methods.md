@@ -16,15 +16,13 @@ or
 https://cdn.discordapp.com/emojis/539643411179896835.png
 ```
 
-The GenerateImage method can be used to turn any discord emoji tag into a png that you can embed in something.
+The GenerateImage method can be used to turn any discord emoji tag into a URL to a png that you can embed in something.
 
 Parameter | Type | Description
 --------- | --------- | -----------
 Emoji | String | A discord emoji
 
-Return Type: String
-
-Return Value: URL to image of emoji, or URL to discord icon if none is found
+Return Value: String
 
 <aside class="note">This will not work if the user typed a default emoji, as those get sent as unicode characters. To get a url for those you can directly interact with <a href="https://www.npmjs.com/package/twemoji">Twemoji's API</a> by using LibTwemoji.</aside>
 
@@ -50,13 +48,13 @@ var GuildData=GetGuildData(Message.guild.id);
 
 The GetGuildData method can be used to get the guild data for any guild by searching for that guild's ID.
 
+The GuildData object returned by this method is editable, so you can edit a guild's data if you want to
+
 Parameter | Type | Description
 --------- | --------- | -----------
-GuildID | Number | The ID of the guild you are looking for
+Guild | Guild | The guild whose data you are looking for
 
-Return Type: Number or <a href="#guilddata">GuildData</a>
-
-Return Value: Data of the guild, or -1 if no guild was found
+Return Value: <a href="#guilddata">GuildData</a>, or -1 if none was found
 
 ## GetUserData
 
@@ -81,10 +79,79 @@ var UserData=GetUserData(Message.author.id)
 
 The GetUserData method can be used to get the user data for any user by searching for that user's ID.
 
+The UserData object returned by this method is editable, so you can edit a user's data if you want to
+
 Parameter | Type | Description
 --------- | --------- | -----------
-UserID | Number | The ID of the user you are looking for
+User | User | The user whose data you are looking for
 
-Return Type: Number or <a href="#userdata">UserData</a>
+Return Value: <a href="#userdata">UserData</a>, or -1 if none was found
 
-Return Value: Data of the guild, or -1 if no guild was found
+## FindLocale
+
+> Example: Get the proper locale to use for printing out the command's name (Yes i know its already available in CurrentLocale)
+
+```javascript
+console.log(this.Names[FindLocale(this,CurrentUserLocale)]);
+```
+
+> This could output any of these things depending on the locale of the user
+
+```output
+Add Command
+or
+Agregar Comando
+```
+The FindLocale method can be used to get the ID of the locale you should be using to communicate with the user. If the command you pass to it does not support the locale of the user, it returns the commands first locale.
+
+The locale you should be using for your command is already available under the variable CurrentLocale, but you can use FindLocale if you want to print the name of a different command (For example if you are writing a help command)
+
+Parameter | Type | Description
+--------- | --------- | -----------
+Command | <a href="#command">Command</a> | The command you wish to find a locale for
+Locale | String | The locale you wish to find
+
+Return Value: Number
+
+## FindCommand
+
+> Example: Find a cool command with the ID 66
+
+```javascript
+console.log(FindCommand(66).Names[0])
+```
+
+> This could output something like this
+
+```output
+Illuminati Command
+```
+
+The FindCommand method can be used to find a command using its ID.
+
+Parameter | Type | Description
+--------- | --------- | -----------
+ID | Number | The id of the command you are looking for
+
+Return Value: <a href="#command">Command</a>, or -1 if none was found
+
+## FindCommandIndex
+
+> Example: Find out where your command is stored in the command mapping
+
+```javascript
+console.log(FindCommandIndex(this.ID));
+```
+
+>This could output something like this
+
+```output
+4
+```
+
+The FindCommandIndex method can be used to find the index of your command in the CacheCommands array
+
+Parameter | Type | Description
+--------- | --------- | -----------
+ID | Number | The id of the command you are looking for
+
