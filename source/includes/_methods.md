@@ -23,6 +23,7 @@ Parameter | Type | Description
 Emoji | String | A discord emoji
 
 Return Type: String
+
 Return Value: URL to image of emoji, or URL to discord icon if none is found
 
 <aside class="note">This will not work if the user typed a default emoji, as those get sent as unicode characters. To get a url for those you can directly interact with <a href="https://www.npmjs.com/package/twemoji">Twemoji's API</a> by using LibTwemoji.</aside>
@@ -54,6 +55,7 @@ Parameter | Type | Description
 GuildID | Number | The ID of the guild you are looking for
 
 Return Type: Number or <a href="#guilddata">GuildData</a>
+
 Return Value: Data of the guild, or -1 if no guild was found
 
 ## GetUserData
@@ -84,4 +86,5 @@ Parameter | Type | Description
 UserID | Number | The ID of the user you are looking for
 
 Return Type: Number or <a href="#userdata">UserData</a>
+
 Return Value: Data of the guild, or -1 if no guild was found
