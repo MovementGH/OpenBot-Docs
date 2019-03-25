@@ -230,6 +230,9 @@
                   <li>
                     <a href="#guilddata" class="toc-h2 toc-link" data-title="GuildData">GuildData</a>
                   </li>
+                  <li>
+                    <a href="#commanddata" class="toc-h2 toc-link" data-title="CommandData">CommandData</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -311,9 +314,7 @@ https://cdn.discordapp.com/avatars/473469567323078676/1a679b6f2c447e33133440f142
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">CurrentGuildData</span><span class="p">.</span><span class="nx">UserCount</span><span class="p">);</span>
 </code></pre>
 <blockquote>
-<blockquote>
 <p>This will output something along the lines of this:</p>
-</blockquote>
 </blockquote>
 <pre class="highlight plaintext"><code>OpenBot Development Hub
 506869654493331456
@@ -357,6 +358,31 @@ https://cdn.discordapp.com/avatars/473469567323078676/1a679b6f2c447e33133440f142
 <td>AddedCommands</td>
 <td>Array (Number)</td>
 <td>An array of the IDs of commands added to the guild</td>
+</tr>
+</tbody></table>
+<h2 id='commanddata'>CommandData</h2>
+<p>If your command needs to store information, this is the object you use to store it.</p>
+
+<p>You should use one CommandData per user, even if you have multiple commands. Command Data is meant to be found by looking for your User ID in the CommandData array of the User whos data you want to retreive.</p>
+
+<aside class="warning">Do not attempt to access CommandData created by other command developers. Doing this will cause your command to get rejected.</aside>
+
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CommandAuthor</td>
+<td>Number</td>
+<td>The ID of the author of the command storing the data</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>Object</td>
+<td>The data being stored</td>
 </tr>
 </tbody></table>
 
