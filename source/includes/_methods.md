@@ -159,6 +159,7 @@ ID | Number | The id of the command you are looking for
 console.log(FindUser(Message.author.id).UserName)
 ```
 > This could output something like this
+
 ```output
 Movement
 ```
