@@ -259,6 +259,9 @@
                   <li>
                     <a href="#findcommandindex" class="toc-h2 toc-link" data-title="FindCommandIndex">FindCommandIndex</a>
                   </li>
+                  <li>
+                    <a href="#finduser" class="toc-h2 toc-link" data-title="FindUser">FindUser</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -570,7 +573,7 @@ https://cdn.discordapp.com/emojis/539643411179896835.png
 </span><span class="s2">"AddedCommand"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">Object</span><span class="w"> </span><span class="err">object</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>The GetGuildData method can be used to get the guild data for any guild by searching for that guild&#39;s ID.</p>
+<p>The GetGuildData method can be used to get the guild data for any guild using a discord.js Guild Object</p>
 
 <p>The GuildData object returned by this method is editable, so you can edit a guild&#39;s data if you want to</p>
 
@@ -605,7 +608,7 @@ https://cdn.discordapp.com/emojis/539643411179896835.png
 </span><span class="s2">"CommandData"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">Object</span><span class="w"> </span><span class="err">object</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>The GetUserData method can be used to get the user data for any user by searching for that user&#39;s ID.</p>
+<p>The GetUserData method can be used to get the user data for any user using a discord.js User Object</p>
 
 <p>The UserData object returned by this method is editable, so you can edit a user&#39;s data if you want to</p>
 
@@ -709,7 +712,35 @@ Agregar Comando
 <td>The id of the command you are looking for</td>
 </tr>
 </tbody></table>
-<h3 id='return-value-number-2'>Return Value: Number</h3>
+<h3 id='return-value-number-2'>Return Value: Number</h3><h2 id='finduser'>FindUser</h2>
+<blockquote>
+<p>Example: Display the username of the caller of the command (Or you could just use CurrentUserData)</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">FindUser</span><span class="p">(</span><span class="nx">Message</span><span class="p">.</span><span class="nx">author</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">UserName</span><span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>This could output something like this
+<code>output
+Movement
+</code></p>
+</blockquote>
+
+<p>The FineUser method can be used to get a User&#39;s Data using their ID</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>Number</td>
+<td>The id of the user you are looking for</td>
+</tr>
+</tbody></table>
+<h3 id='return-value-userdata'>Return Value: <a href="#userdata">UserData</a></h3>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
