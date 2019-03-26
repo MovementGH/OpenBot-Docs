@@ -264,6 +264,20 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#read-only-variables" class="toc-h1 toc-link" data-title="Read-Only Variables">Read-Only Variables</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#message" class="toc-h2 toc-link" data-title="Message">Message</a>
+                  </li>
+                  <li>
+                    <a href="#currentlocale" class="toc-h2 toc-link" data-title="CurrentLocale">CurrentLocale</a>
+                  </li>
+                  <li>
+                    <a href="#filteredmessage" class="toc-h2 toc-link" data-title="FilteredMessage">FilteredMessage</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='../'>Start Coding</a></li>
@@ -738,7 +752,33 @@ Agregar Comando
 <td>The id of the user you are looking for</td>
 </tr>
 </tbody></table>
-<h3 id='return-value-userdata'>Return Value: <a href="#userdata">UserData</a></h3>
+<h3 id='return-value-userdata'>Return Value: <a href="#userdata">UserData</a></h3><h1 id='read-only-variables'>Read-Only Variables</h1>
+<p>Every OpenBot command is actually a function, which gets passed several variables. These variables belong to your function, so editing them does nothing.</p>
+<h2 id='message'>Message</h2>
+<blockquote>
+<p>Sending &quot;pong&quot; back through the channel the message came from</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">"pong!"</span><span class="p">);</span>
+</code></pre>
+<p>The Message variable will always contain the message that called your command. You can use it to respond, get the author, or anything else you want.</p>
+<h3 id='type-message'>Type: Message</h3><h2 id='currentlocale'>CurrentLocale</h2>
+<blockquote>
+<p>Saying &quot;hi&quot; to the user in their native language</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nb">String</span><span class="p">[</span><span class="nx">CurrentLocale</span><span class="p">][</span><span class="mi">0</span><span class="p">]);</span>
+</code></pre>
+<p>The CurrentLocale variable will always contain the index of your Names, Descriptions, Strings, etc. that contains the language which the author of the message is using. Basically, it is the result of <code>FindLocale(this,GetUserData(Message.author).Locale)</code>.</p>
+<h3 id='type-number'>Type: Number</h3><h2 id='filteredmessage'>FilteredMessage</h2>
+<blockquote>
+<p>Sending &quot;ding dong&quot; when the user includes &quot;pong&quot; in your ping command</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="k">if</span><span class="p">(</span><span class="nx">FilteredMessage</span><span class="o">==</span><span class="s2">"pong"</span><span class="p">)</span>
+    <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">"ding dong"</span><span class="p">);</span>
+<span class="k">else</span>
+    <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">"pong"</span><span class="p">)</span>
+</code></pre>
+<p>The FilteredMessage variable will always contain the content of the message with your commands callname filtered out. For example, if Message.content is &quot;-Open add new command&quot; then FilteredMessage is &quot;new command&quot;</p>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
