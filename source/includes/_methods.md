@@ -45,7 +45,7 @@ var GuildData=GetGuildData(Message.guild.id);
 }
 ```
 
-The GetGuildData method can be used to get the guild data for any guild by searching for that guild's ID.
+The GetGuildData method can be used to get the guild data for any guild using a discord.js Guild Object
 
 The GuildData object returned by this method is editable, so you can edit a guild's data if you want to
 
@@ -75,7 +75,7 @@ var UserData=GetUserData(Message.author.id)
 }
 ```
 
-The GetUserData method can be used to get the user data for any user by searching for that user's ID.
+The GetUserData method can be used to get the user data for any user using a discord.js User Object
 
 The UserData object returned by this method is editable, so you can edit a user's data if you want to
 
@@ -150,3 +150,22 @@ Parameter | Type | Description
 --------- | --------- | -----------
 ID | Number | The id of the command you are looking for
 ### Return Value: Number
+
+## FindUser
+
+> Example: Display the username of the caller of the command (Or you could just use CurrentUserData)
+
+```javascript
+console.log(FindUser(Message.author.id).UserName)
+```
+> This could output something like this
+```output
+Movement
+```
+
+The FineUser method can be used to get a User's Data using their ID
+
+Parameter | Type | Description
+--------- | --------- | -----------
+ID | Number | The id of the user you are looking for
+### Return Value: <a href="#userdata">UserData</a>
