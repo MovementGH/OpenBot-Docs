@@ -12,7 +12,7 @@ Discord.js is used to interact with discord. Pretty self explanitory
 
 ### Links:
 
-<a href="discord.js.org">Documentation</a>
+<a href="https://discord.js.org">Documentation</a>
 
 <a href="https://www.npmjs.com/package/discord.js">NPM</a>
 
