@@ -67,6 +67,8 @@ ding dong
 
 The FilteredMessage variable will always contain the content of the message with your commands callname filtered out. For example, if Message.content is "-Open add new command" then FilteredMessage is "new command"
 
+### Type: String
+
 # Editable Variables
 
 In addition to the read-only variables, there are some variables accessible to every command that can be edited.
@@ -142,5 +144,7 @@ OpenBot
 ```
 
 The GlobDiscordClient is the discord.js Client class used to login to OpenBot. You can use it to find out information like how many servers OpenBot is in.
+
+### Type: Client
 
 <aside class="warning">Do not attempt to do malicious stuff like grabbing OpenBot's token or anything. Your command will get rejected by the mods. Banne!</aside>

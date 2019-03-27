@@ -12,6 +12,7 @@ includes:
   - classes
   - methods
   - variables
+  - libraries
 
 search: true
 ---
