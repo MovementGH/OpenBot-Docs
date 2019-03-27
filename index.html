@@ -265,7 +265,7 @@
               </ul>
           </li>
           <li>
-            <a href="#read-only-variables" class="toc-h1 toc-link" data-title="Read-Only Variables">Read-Only Variables</a>
+            <a href="#function-variables" class="toc-h1 toc-link" data-title="Function Variables">Function Variables</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#message" class="toc-h2 toc-link" data-title="Message">Message</a>
@@ -275,6 +275,28 @@
                   </li>
                   <li>
                     <a href="#filteredmessage" class="toc-h2 toc-link" data-title="FilteredMessage">FilteredMessage</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#editable-variables" class="toc-h1 toc-link" data-title="Editable Variables">Editable Variables</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#currentuserdata" class="toc-h2 toc-link" data-title="CurrentUserData">CurrentUserData</a>
+                  </li>
+                  <li>
+                    <a href="#currentuserlocale" class="toc-h2 toc-link" data-title="CurrentUserLocale">CurrentUserLocale</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#const-variables" class="toc-h1 toc-link" data-title="Const Variables">Const Variables</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#globinvite" class="toc-h2 toc-link" data-title="GlobInvite">GlobInvite</a>
+                  </li>
+                  <li>
+                    <a href="#globdiscordclient" class="toc-h2 toc-link" data-title="GlobDiscordClient">GlobDiscordClient</a>
                   </li>
               </ul>
           </li>
@@ -752,7 +774,7 @@ Agregar Comando
 <td>The id of the user you are looking for</td>
 </tr>
 </tbody></table>
-<h3 id='return-value-userdata'>Return Value: <a href="#userdata">UserData</a></h3><h1 id='read-only-variables'>Read-Only Variables</h1>
+<h3 id='return-value-userdata'>Return Value: <a href="#userdata">UserData</a></h3><h1 id='function-variables'>Function Variables</h1>
 <p>Every OpenBot command is actually a function, which gets passed several variables. These variables belong to your function, so editing them does nothing.</p>
 <h2 id='message'>Message</h2>
 <blockquote>
@@ -760,12 +782,26 @@ Agregar Comando
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">"pong!"</span><span class="p">);</span>
 </code></pre>
+<blockquote>
+<p>Will output this</p>
+</blockquote>
+<pre class="highlight plaintext"><code>pong!
+</code></pre>
 <p>The Message variable will always contain the message that called your command. You can use it to respond, get the author, or anything else you want.</p>
 <h3 id='type-message'>Type: Message</h3><h2 id='currentlocale'>CurrentLocale</h2>
 <blockquote>
 <p>Saying &quot;hi&quot; to the user in their native language</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nb">String</span><span class="p">[</span><span class="nx">CurrentLocale</span><span class="p">][</span><span class="mi">0</span><span class="p">]);</span>
+</code></pre>
+<blockquote>
+<p>Will output something like this depending on what you set your String to</p>
+</blockquote>
+<pre class="highlight plaintext"><code>Hi!
+
+or
+
+Hola!
 </code></pre>
 <p>The CurrentLocale variable will always contain the index of your Names, Descriptions, Strings, etc. that contains the language which the author of the message is using. Basically, it is the result of <code>FindLocale(this,GetUserData(Message.author).Locale)</code>.</p>
 <h3 id='type-number'>Type: Number</h3><h2 id='filteredmessage'>FilteredMessage</h2>
@@ -777,7 +813,68 @@ Agregar Comando
 <span class="k">else</span>
     <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">"pong"</span><span class="p">)</span>
 </code></pre>
+<blockquote>
+<p>Will output one of these</p>
+</blockquote>
+<pre class="highlight plaintext"><code>pong
+
+or
+
+ding dong
+</code></pre>
 <p>The FilteredMessage variable will always contain the content of the message with your commands callname filtered out. For example, if Message.content is &quot;-Open add new command&quot; then FilteredMessage is &quot;new command&quot;</p>
+<h1 id='editable-variables'>Editable Variables</h1>
+<p>In addition to the read-only variables, there are some variables accessible to every command that can be edited.</p>
+<h2 id='currentuserdata'>CurrentUserData</h2>
+<blockquote>
+<p>Printing out the number of messages that the caller of the command has sent</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">MessageCount</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Will output something like this</p>
+</blockquote>
+<pre class="highlight plaintext"><code>1336
+</code></pre>
+<p>The CurrentUserData variable will always contain the UserData of the user who send the message. Basically it is the result of GetUserData(Message.author). It is also editable, so if you are writing a command like Change Locale, you can just edit the CurrentUserData variable and their locale will be changed</p>
+<h3 id='type-userdata'>Type: <a href="#userdata">UserData</a></h3><h2 id='currentuserlocale'>CurrentUserLocale</h2>
+<blockquote>
+<p>Printing out the current user&#39;s locale</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">CurrentUserLocale</span><span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>Will output something like this</p>
+</blockquote>
+<pre class="highlight plaintext"><code>en
+</code></pre>
+<p>The CurrentUserLocale is different than CurrentLocale. CurrentUserLocale is the actual locale the user is using, formatted as a string. It can be useful if you want to reference another command but dont know what languages it supports, as FindCommand takes its locale argument as a string.</p>
+<h3 id='type-string'>Type: String</h3><h1 id='const-variables'>Const Variables</h1><h2 id='globinvite'>GlobInvite</h2>
+<blockquote>
+<p>Outputting an invite link for OpenBot</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">GlobInvite</span><span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>Will output this (please click ;) ik u want to)</p>
+</blockquote>
+<pre class="highlight plaintext"><code>https://discordapp.com/oauth2/authorize?client_id=497087852568641536&amp;scope=bot&amp;permissions=2146958839
+</code></pre>
+<p>The GlobInvite variable contains the invite link to OpenBot (mainly so i dont forget it) but if you want, make a command to print it out and promote OpenBot</p>
+<h3 id='type-string-2'>Type: String</h3><h2 id='globdiscordclient'>GlobDiscordClient</h2>
+<blockquote>
+<p>Outputting OpenBot&#39;s Username</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">GlobDiscordClient</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">username</span><span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>Will output this</p>
+</blockquote>
+<pre class="highlight plaintext"><code>OpenBot
+</code></pre>
+<p>The GlobDiscordClient is the discord.js Client class used to login to OpenBot. You can use it to find out information like how many servers OpenBot is in.</p>
+
+<aside class="warning">Do not attempt to do malicious stuff like grabbing OpenBot's token or anything. Your command will get rejected by the mods. Banne!</aside>
 
       </div>
       <div class="dark-box">
