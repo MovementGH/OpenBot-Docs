@@ -300,6 +300,26 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#libraries" class="toc-h1 toc-link" data-title="Libraries">Libraries</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#discord-js" class="toc-h2 toc-link" data-title="Discord.js">Discord.js</a>
+                  </li>
+                  <li>
+                    <a href="#fs" class="toc-h2 toc-link" data-title="FS">FS</a>
+                  </li>
+                  <li>
+                    <a href="#twemoji" class="toc-h2 toc-link" data-title="Twemoji">Twemoji</a>
+                  </li>
+                  <li>
+                    <a href="#utf-string" class="toc-h2 toc-link" data-title="UTF String">UTF String</a>
+                  </li>
+                  <li>
+                    <a href="#request" class="toc-h2 toc-link" data-title="Request">Request</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='../'>Start Coding</a></li>
@@ -823,7 +843,7 @@ or
 ding dong
 </code></pre>
 <p>The FilteredMessage variable will always contain the content of the message with your commands callname filtered out. For example, if Message.content is &quot;-Open add new command&quot; then FilteredMessage is &quot;new command&quot;</p>
-<h1 id='editable-variables'>Editable Variables</h1>
+<h3 id='type-string'>Type: String</h3><h1 id='editable-variables'>Editable Variables</h1>
 <p>In addition to the read-only variables, there are some variables accessible to every command that can be edited.</p>
 <h2 id='currentuserdata'>CurrentUserData</h2>
 <blockquote>
@@ -849,7 +869,7 @@ ding dong
 <pre class="highlight plaintext"><code>en
 </code></pre>
 <p>The CurrentUserLocale is different than CurrentLocale. CurrentUserLocale is the actual locale the user is using, formatted as a string. It can be useful if you want to reference another command but dont know what languages it supports, as FindCommand takes its locale argument as a string.</p>
-<h3 id='type-string'>Type: String</h3><h1 id='const-variables'>Const Variables</h1><h2 id='globinvite'>GlobInvite</h2>
+<h3 id='type-string-2'>Type: String</h3><h1 id='const-variables'>Const Variables</h1><h2 id='globinvite'>GlobInvite</h2>
 <blockquote>
 <p>Outputting an invite link for OpenBot</p>
 </blockquote>
@@ -861,7 +881,7 @@ ding dong
 <pre class="highlight plaintext"><code>https://discordapp.com/oauth2/authorize?client_id=497087852568641536&amp;scope=bot&amp;permissions=2146958839
 </code></pre>
 <p>The GlobInvite variable contains the invite link to OpenBot (mainly so i dont forget it) but if you want, make a command to print it out and promote OpenBot</p>
-<h3 id='type-string-2'>Type: String</h3><h2 id='globdiscordclient'>GlobDiscordClient</h2>
+<h3 id='type-string-3'>Type: String</h3><h2 id='globdiscordclient'>GlobDiscordClient</h2>
 <blockquote>
 <p>Outputting OpenBot&#39;s Username</p>
 </blockquote>
@@ -873,8 +893,31 @@ ding dong
 <pre class="highlight plaintext"><code>OpenBot
 </code></pre>
 <p>The GlobDiscordClient is the discord.js Client class used to login to OpenBot. You can use it to find out information like how many servers OpenBot is in.</p>
-
+<h3 id='type-client'>Type: Client</h3>
 <aside class="warning">Do not attempt to do malicious stuff like grabbing OpenBot's token or anything. Your command will get rejected by the mods. Banne!</aside>
+<h1 id='libraries'>Libraries</h1>
+<p>Here is a list of NPM libraries that OpenBot includes, and the name of their accesser.</p>
+
+<p>If you want to make a command and require a library that isnt included in this list, please contact a Core Developer on the OpenBot discord server to get it added to this list</p>
+<h2 id='discord-js'>Discord.js</h2>
+<p>Discord.js is used to interact with discord. Pretty self explanitory</p>
+<h3 id='accesser-libdiscord'>Accesser: LibDiscord</h3><h3 id='links'>Links:</h3>
+<p><a href="discord.js.org">Documentation</a>
+<a href="https://www.npmjs.com/package/discord.js">NPM</a></p>
+<h2 id='fs'>FS</h2>
+<p>FS is used to read and write from files.</p>
+<h3 id='accesser-libfilesys'>Accesser: LibFileSys</h3><h2 id='twemoji'>Twemoji</h2>
+<p>Twemoji is used to get images for unicode characters (discord emojis)</p>
+<h3 id='accesser-libtwemoji'>Accesser: LibTwemoji</h3><h3 id='links-2'>Links:</h3>
+<p><a href="https://www.npmjs.com/package/twemoji">NPM</a></p>
+<h2 id='utf-string'>UTF String</h2>
+<p>UTF String is used for operations on UTF-8 strings</p>
+<h3 id='accesser-libutf'>Accesser: LibUTF</h3><h3 id='links-3'>Links:</h3>
+<p><a href="https://www.npmjs.com/package/twemoji">NPM</a></p>
+<h2 id='request'>Request</h2>
+<p>Request is used to make http and https requests</p>
+<h3 id='accesser-librequest'>Accesser: LibRequest</h3><h3 id='links-4'>Links:</h3>
+<p><a href="https://www.npmjs.com/package/request">NPM</a></p>
 
       </div>
       <div class="dark-box">
