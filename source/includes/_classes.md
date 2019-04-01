@@ -5,9 +5,9 @@
 > Example: Printing out a user's Username, ID, and Avatar
 
 ```javascript
-console.log(CurrentUserData.UserName);
-console.log(CurrentUserData.UserID);
-console.log(CurrentUserData.AvatarURL);
+Message.channel.send(CurrentUserData.UserName);
+Message.channel.send(CurrentUserData.UserID);
+Message.channel.send(CurrentUserData.AvatarURL);
 ```
 > This will output something along the lines of this:
 
@@ -33,9 +33,9 @@ CommandData | Array (<a href="#commanddata">CommandData</a>) | Data stored by co
 > Example: Printing out a guild's Name, ID, and UserCount
 
 ```javascript
-console.log(CurrentGuildData.GuildName);
-console.log(CurrentGuildData.GuildID);
-console.log(CurrentGuildData.UserCount);
+Message.channel.send(CurrentGuildData.GuildName);
+Message.channel.send(CurrentGuildData.GuildID);
+Message.channel.send(CurrentGuildData.UserCount);
 ```
 
 > This will output something along the lines of this:
@@ -75,8 +75,8 @@ Data | Object | The data being stored
 > Example: Print the name and callname of the current command
 
 ```javascript
-console.log(this.Names[CurrentLocale]);
-console.log(this.Uses[CurrentLocale]);
+Message.channel.send(this.Names[CurrentLocale]);
+Message.channel.send(this.Uses[CurrentLocale]);
 ```
 
 > This will output something along the lines of this:

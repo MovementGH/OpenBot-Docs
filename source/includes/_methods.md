@@ -84,12 +84,68 @@ Parameter | Type | Description
 User | User | The user whose data you are looking for
 ### Return Value: <a href="#userdata">UserData</a>, or -1 if none was found
 
+## GetUserStore
+
+> Example: Store a message in a user's data for future reference
+
+```javascript
+GetUserStore(this,CurrentUserData.UserID).secretMessage="Hello world!";
+```
+
+> Example: Read from a user's data
+
+```javascript
+Message.channel.send(GetUserStore(this,CurrentUserData.UserID).secretMessage);
+```
+
+The GetUserStore method gets a container that you can use to store data about a user for use in the future. The variable it returns is editable.
+
+If you dont have any data stored, this method will return a blank object that you can edit.
+
+The object returned by this method is owned by you, not your command, so it will be the same object regardless of which of your commands calls it. This makes it a convenient way to share data between your commands.
+
+Parameter | Type | Description
+--------- | --------- | -----------
+Command | <a href="#command">Command</a> | The command accessing the data
+UserID | Number | The ID of the user whos data you want to access.
+### Return Value: Object
+
+<aside class="warning">The command parameter must be 'this' or your command will be denied</aside>
+
+## GetGuildStore
+
+> Example: Store a message in a guild's data for future reference
+
+```javascript
+GetGuildStore(this,CurrentGuildData.GuildID).secretMessage="Hello world!";
+```
+
+> Example: Read from a guild's data
+
+```javascript
+Message.channel.send(GetGuildStore(this,CurrentGuildData.GuildID).secretMessage);
+```
+
+The GetGuildStore method gets a container that you can use to store data about a guild for use in the future. The variable it returns is editable.
+
+If you dont have any data stored, this method will return a blank object that you can edit.
+
+The object returned by this method is owned by you, not your command, so it will be the same object regardless of which of your commands calls it. This makes it a convenient way to share data between your commands.
+
+Parameter | Type | Description
+--------- | --------- | -----------
+Command | <a href="#command">Command</a> | The command accessing the data
+GuildID | Number | The ID of the guild whos data you want to access.
+### Return Value: Object
+
+<aside class="warning">The command parameter must be 'this' or your command will be denied</aside>
+
 ## FindLocale
 
 > Example: Get the proper locale to use for printing out the command's name (Yes i know its already available in CurrentLocale)
 
 ```javascript
-console.log(this.Names[FindLocale(this,CurrentUserLocale)]);
+Message.channel.send(this.Names[FindLocale(this,CurrentUserLocale)]);
 ```
 
 > This could output any of these things depending on the locale of the user
@@ -114,7 +170,7 @@ Locale | String | The locale you wish to find
 > Example: Find a cool command with the ID 66
 
 ```javascript
-console.log(FindCommand(66).Names[0])
+Message.channel.send(FindCommand(66).Names[0])
 ```
 
 > This could output something like this
@@ -135,7 +191,7 @@ ID | Number | The id of the command you are looking for
 > Example: Find out where your command is stored in the command mapping
 
 ```javascript
-console.log(FindCommandIndex(this.ID));
+Message.channel.send(FindCommandIndex(this.ID));
 ```
 
 >This could output something like this
@@ -156,7 +212,7 @@ ID | Number | The id of the command you are looking for
 > Example: Display the username of the caller of the command (Or you could just use CurrentUserData)
 
 ```javascript
-console.log(FindUser(Message.author.id).UserName)
+Message.channel.send(FindUser(Message.author.id).UserName)
 ```
 > This could output something like this
 
@@ -164,9 +220,29 @@ console.log(FindUser(Message.author.id).UserName)
 Movement
 ```
 
-The FineUser method can be used to get a User's Data using their ID
+The FindUser method can be used to get a User's Data using their ID
 
 Parameter | Type | Description
 --------- | --------- | -----------
 ID | Number | The id of the user you are looking for
 ### Return Value: <a href="#userdata">UserData</a>
+
+## FindGuild
+
+> Example: Display the name of the guild the message was sent in (Or you could jsut use CurrentGuildData)
+
+```javascript
+Message.channel.send(FindGuild(Message.guild.id).GuildName)
+```
+> This could output something like this
+
+```output
+OpenBot Development Hub
+```
+
+The FindGuild method can be used to get a Guild's Data using its ID
+
+Parameter | Type | Description
+--------- | --------- | -----------
+ID | Number | The id of the guild you are looking for
+### Return Value: <a href="#guilddata">GuildData</a>
