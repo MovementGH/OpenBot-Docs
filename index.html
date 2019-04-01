@@ -251,6 +251,12 @@
                     <a href="#getuserdata" class="toc-h2 toc-link" data-title="GetUserData">GetUserData</a>
                   </li>
                   <li>
+                    <a href="#getuserstore" class="toc-h2 toc-link" data-title="GetUserStore">GetUserStore</a>
+                  </li>
+                  <li>
+                    <a href="#getguildstore" class="toc-h2 toc-link" data-title="GetGuildStore">GetGuildStore</a>
+                  </li>
+                  <li>
                     <a href="#findlocale" class="toc-h2 toc-link" data-title="FindLocale">FindLocale</a>
                   </li>
                   <li>
@@ -261,6 +267,9 @@
                   </li>
                   <li>
                     <a href="#finduser" class="toc-h2 toc-link" data-title="FindUser">FindUser</a>
+                  </li>
+                  <li>
+                    <a href="#findguild" class="toc-h2 toc-link" data-title="FindGuild">FindGuild</a>
                   </li>
               </ul>
           </li>
@@ -339,9 +348,9 @@
 <blockquote>
 <p>Example: Printing out a user&#39;s Username, ID, and Avatar</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">UserName</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">UserID</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">AvatarURL</span><span class="p">);</span>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">UserName</span><span class="p">);</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">UserID</span><span class="p">);</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">AvatarURL</span><span class="p">);</span>
 </code></pre>
 <blockquote>
 <p>This will output something along the lines of this:</p>
@@ -394,9 +403,9 @@ https://cdn.discordapp.com/avatars/473469567323078676/1a679b6f2c447e33133440f142
 <blockquote>
 <p>Example: Printing out a guild&#39;s Name, ID, and UserCount</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">CurrentGuildData</span><span class="p">.</span><span class="nx">GuildName</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">CurrentGuildData</span><span class="p">.</span><span class="nx">GuildID</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">CurrentGuildData</span><span class="p">.</span><span class="nx">UserCount</span><span class="p">);</span>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">CurrentGuildData</span><span class="p">.</span><span class="nx">GuildName</span><span class="p">);</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">CurrentGuildData</span><span class="p">.</span><span class="nx">GuildID</span><span class="p">);</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">CurrentGuildData</span><span class="p">.</span><span class="nx">UserCount</span><span class="p">);</span>
 </code></pre>
 <blockquote>
 <p>This will output something along the lines of this:</p>
@@ -474,8 +483,8 @@ https://cdn.discordapp.com/avatars/473469567323078676/1a679b6f2c447e33133440f142
 <blockquote>
 <p>Example: Print the name and callname of the current command</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Names</span><span class="p">[</span><span class="nx">CurrentLocale</span><span class="p">]);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Uses</span><span class="p">[</span><span class="nx">CurrentLocale</span><span class="p">]);</span>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Names</span><span class="p">[</span><span class="nx">CurrentLocale</span><span class="p">]);</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Uses</span><span class="p">[</span><span class="nx">CurrentLocale</span><span class="p">]);</span>
 </code></pre>
 <blockquote>
 <p>This will output something along the lines of this:</p>
@@ -681,11 +690,85 @@ https://cdn.discordapp.com/emojis/539643411179896835.png
 <td>The user whose data you are looking for</td>
 </tr>
 </tbody></table>
-<h3 id='return-value-userdata-or-1-if-none-was-found'>Return Value: <a href="#userdata">UserData</a>, or -1 if none was found</h3><h2 id='findlocale'>FindLocale</h2>
+<h3 id='return-value-userdata-or-1-if-none-was-found'>Return Value: <a href="#userdata">UserData</a>, or -1 if none was found</h3><h2 id='getuserstore'>GetUserStore</h2>
+<blockquote>
+<p>Example: Store a message in a user&#39;s data for future reference</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">GetUserStore</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">UserID</span><span class="p">).</span><span class="nx">secretMessage</span><span class="o">=</span><span class="s2">"Hello world!"</span><span class="p">;</span>
+</code></pre>
+<blockquote>
+<p>Example: Read from a user&#39;s data</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">GetUserStore</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">UserID</span><span class="p">).</span><span class="nx">secretMessage</span><span class="p">);</span>
+</code></pre>
+<p>The GetUserStore method gets a container that you can use to store data about a user for use in the future. The variable it returns is editable.</p>
+
+<p>If you dont have any data stored, this method will return a blank object that you can edit.</p>
+
+<p>The object returned by this method is owned by you, not your command, so it will be the same object regardless of which of your commands calls it. This makes it a convenient way to share data between your commands.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Command</td>
+<td><a href="#command">Command</a></td>
+<td>The command accessing the data</td>
+</tr>
+<tr>
+<td>UserID</td>
+<td>Number</td>
+<td>The ID of the user whos data you want to access.</td>
+</tr>
+</tbody></table>
+<h3 id='return-value-object'>Return Value: Object</h3>
+<aside class="warning">The command parameter must be 'this' or your command will be denied</aside>
+<h2 id='getguildstore'>GetGuildStore</h2>
+<blockquote>
+<p>Example: Store a message in a guild&#39;s data for future reference</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">GetGuildStore</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">CurrentGuildData</span><span class="p">.</span><span class="nx">GuildID</span><span class="p">).</span><span class="nx">secretMessage</span><span class="o">=</span><span class="s2">"Hello world!"</span><span class="p">;</span>
+</code></pre>
+<blockquote>
+<p>Example: Read from a guild&#39;s data</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">GetGuildStore</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">CurrentGuildData</span><span class="p">.</span><span class="nx">GuildID</span><span class="p">).</span><span class="nx">secretMessage</span><span class="p">);</span>
+</code></pre>
+<p>The GetGuildStore method gets a container that you can use to store data about a guild for use in the future. The variable it returns is editable.</p>
+
+<p>If you dont have any data stored, this method will return a blank object that you can edit.</p>
+
+<p>The object returned by this method is owned by you, not your command, so it will be the same object regardless of which of your commands calls it. This makes it a convenient way to share data between your commands.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Command</td>
+<td><a href="#command">Command</a></td>
+<td>The command accessing the data</td>
+</tr>
+<tr>
+<td>GuildID</td>
+<td>Number</td>
+<td>The ID of the guild whos data you want to access.</td>
+</tr>
+</tbody></table>
+<h3 id='return-value-object-2'>Return Value: Object</h3>
+<aside class="warning">The command parameter must be 'this' or your command will be denied</aside>
+<h2 id='findlocale'>FindLocale</h2>
 <blockquote>
 <p>Example: Get the proper locale to use for printing out the command&#39;s name (Yes i know its already available in CurrentLocale)</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Names</span><span class="p">[</span><span class="nx">FindLocale</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">CurrentUserLocale</span><span class="p">)]);</span>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Names</span><span class="p">[</span><span class="nx">FindLocale</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">CurrentUserLocale</span><span class="p">)]);</span>
 </code></pre>
 <blockquote>
 <p>This could output any of these things depending on the locale of the user</p>
@@ -720,7 +803,7 @@ Agregar Comando
 <blockquote>
 <p>Example: Find a cool command with the ID 66</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">FindCommand</span><span class="p">(</span><span class="mi">66</span><span class="p">).</span><span class="nx">Names</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">FindCommand</span><span class="p">(</span><span class="mi">66</span><span class="p">).</span><span class="nx">Names</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </code></pre>
 <blockquote>
 <p>This could output something like this</p>
@@ -746,7 +829,7 @@ Agregar Comando
 <blockquote>
 <p>Example: Find out where your command is stored in the command mapping</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">FindCommandIndex</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">ID</span><span class="p">));</span>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">FindCommandIndex</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">ID</span><span class="p">));</span>
 </code></pre>
 <blockquote>
 <p>This could output something like this</p>
@@ -772,14 +855,14 @@ Agregar Comando
 <blockquote>
 <p>Example: Display the username of the caller of the command (Or you could just use CurrentUserData)</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">FindUser</span><span class="p">(</span><span class="nx">Message</span><span class="p">.</span><span class="nx">author</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">UserName</span><span class="p">)</span>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">FindUser</span><span class="p">(</span><span class="nx">Message</span><span class="p">.</span><span class="nx">author</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">UserName</span><span class="p">)</span>
 </code></pre>
 <blockquote>
 <p>This could output something like this</p>
 </blockquote>
 <pre class="highlight plaintext"><code>Movement
 </code></pre>
-<p>The FineUser method can be used to get a User&#39;s Data using their ID</p>
+<p>The FindUser method can be used to get a User&#39;s Data using their ID</p>
 
 <table><thead>
 <tr>
@@ -794,7 +877,33 @@ Agregar Comando
 <td>The id of the user you are looking for</td>
 </tr>
 </tbody></table>
-<h3 id='return-value-userdata'>Return Value: <a href="#userdata">UserData</a></h3><h1 id='function-variables'>Function Variables</h1>
+<h3 id='return-value-userdata'>Return Value: <a href="#userdata">UserData</a></h3><h2 id='findguild'>FindGuild</h2>
+<blockquote>
+<p>Example: Display the name of the guild the message was sent in (Or you could jsut use CurrentGuildData)</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">FindGuild</span><span class="p">(</span><span class="nx">Message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">GuildName</span><span class="p">)</span>
+</code></pre>
+<blockquote>
+<p>This could output something like this</p>
+</blockquote>
+<pre class="highlight plaintext"><code>OpenBot Development Hub
+</code></pre>
+<p>The FindGuild method can be used to get a Guild&#39;s Data using its ID</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>Number</td>
+<td>The id of the guild you are looking for</td>
+</tr>
+</tbody></table>
+<h3 id='return-value-guilddata'>Return Value: <a href="#guilddata">GuildData</a></h3><h1 id='function-variables'>Function Variables</h1>
 <p>Every OpenBot command is actually a function, which gets passed several variables. These variables belong to your function, so editing them does nothing.</p>
 <h2 id='message'>Message</h2>
 <blockquote>
