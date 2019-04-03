@@ -9,6 +9,7 @@ toc_footers:
   - <a href='https://github.com/lord/slate'>Powered by Slate</a>
 
 includes:
+  - ui
   - classes
   - methods
   - variables
