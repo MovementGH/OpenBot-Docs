@@ -222,6 +222,20 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
+            <a href="#editor-ui" class="toc-h1 toc-link" data-title="Editor UI">Editor UI</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#command-metadata" class="toc-h2 toc-link" data-title="Command MetaData">Command MetaData</a>
+                  </li>
+                  <li>
+                    <a href="#locales" class="toc-h2 toc-link" data-title="Locales">Locales</a>
+                  </li>
+                  <li>
+                    <a href="#events" class="toc-h2 toc-link" data-title="Events">Events</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#classes" class="toc-h1 toc-link" data-title="Classes">Classes</a>
               <ul class="toc-list-h2">
                   <li>
@@ -274,7 +288,7 @@
               </ul>
           </li>
           <li>
-            <a href="#function-variables" class="toc-h1 toc-link" data-title="Function Variables">Function Variables</a>
+            <a href="#event-variables" class="toc-h1 toc-link" data-title="Event Variables">Event Variables</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#oncall" class="toc-h2 toc-link" data-title="onCall">onCall</a>
@@ -341,6 +355,54 @@
 <p>We appreciate any contributions you make to OpenBot&#39;s commands, and as such we feel it is important to provide a quality API. If you have any questions about the API, feel these Docs are unclear, or anything else, please go to the official OpenBot Development Server and let us know.</p>
 
 <aside class="notice"> OpenBot only supports code written in node.js using the discord.js library to interact with Discord </aside>
+<h1 id='editor-ui'>Editor UI</h1>
+<p>The editor is a powerful tool, but its ui can be a bit confusing at first glance. Here are some explainations on what different things do</p>
+<h2 id='command-metadata'>Command MetaData</h2>
+<p>The Command MetaData box holds all of the MetaData for your command. This includes its version, syntax, support link, icon, etc. This is the information that shows up when someone calls <code>-Open Cominfo [Your Command]</code></p>
+<h3 id='syntax'>Syntax</h3>
+<p>The syntax field is displayed after the name of your command in help menus, searches, etc. It should tell users what kinds of arguments your command expects them to include. For example, the syntax for a kick command could be something like <code>[@Mention]</code>. The square brackets <code>[]</code> indicate a required parameter which is an @Mention of a user.</p>
+
+<p><strong>[Param]</strong> - Required</p>
+
+<p><strong>{Param}</strong> - Optional</p>
+
+<p><strong>Param</strong> - Literal text</p>
+
+<p><strong>(No Arguments)</strong> No paramaters</p>
+<h3 id='icon'>Icon</h3>
+<p>Your command&#39;s icon is displayed next to it in help menus, searches, and more. It should give some idea of what your command does. The icon can be any discord emoji. If it is a default emoji, it should be entered into the icon field like <code>:smile:</code>, wheras if it is a custom emoji, it should be entered in like <code>&lt;:AddCommand:539643411179896835&gt;</code>. To find the ID of your custom emoji, right click it in discord and click copy link. The long number in the link is the ID of your emoji.</p>
+<h3 id='support-link'>Support Link</h3>
+<p>The support link is displayed under your command in detailed information screens, and when your command crashes. You can set it to your server or OpenBot&#39;s server. Wherever you want people to go when your command breaks.</p>
+<h3 id='version'>Version</h3>
+<p>This field is mainly asthetic. Set it to any number you like.</p>
+<h3 id='executeperms'>ExecutePerms</h3>
+<p>The ExecutePerms are the permissions that a user calling your command needs in order to call it. You can calculate permissions at the <a href="https://discordapi.com/permissions.html">Official Discord Permissions Calculator</a></p>
+<h3 id='botperms'>BotPerms</h3>
+<p>The BotPerms are the permissions that OpenBot needs in order to run your command. You can calculate permissions at the <a href="https://discordapi.com/permissions.html">Official Discord Permissions Calculator</a></p>
+<h3 id='open-source'>Open Source</h3>
+<p>If your command is marked as open source, other users will be able to use the <code>-Open Viewsource</code> command to view its source and see how you work your magic.</p>
+<h3 id='pull-requests'>Pull Requests</h3>
+<p>If your command is marked as allowing pull requests, other users will be able to use the <code>-Open Editsource</code> command to edit its source. All edits will be DMed to you for approval before being submitted to the Core Developers</p>
+<h2 id='locales'>Locales</h2>
+<p>Locales allow your command to support multiple languages. If your command does not support the locale a user is using, the uppermost locale in your list will be used.</p>
+<h3 id='language'>Language</h3>
+<p>Each locale has a language tag. This language tag tells OpenBot what language the locale is. If you wish to support a language that is not listed here, please contact a Core Developer to get it added.</p>
+<h3 id='command-name'>Command Name</h3>
+<p>The full name of your command, translated to the language marked by the Language field.</p>
+<h3 id='command-callname'>Command Callname</h3>
+<p>The callname of your command. This is the string that people will use to actually activate your command. For example, a kick command could have a name of <code>Kick User</code> but a callname of <code>Kick</code>.</p>
+<h3 id='command-description'>Command Description</h3>
+<p>A detailed description of what your command does</p>
+<h3 id='translation-strings'>Translation Strings</h3>
+<p>Translation strings allow the text inside your command to be translated. You can have as many translation strings as you want, and you can access them from your code. For example, <code>this.String[CurrentLocale][0]</code> would return Translation String 0.</p>
+<h2 id='events'>Events</h2>
+<p>Your command can have multiple events, or just one. These are where you put your actual code.</p>
+<h3 id='oncall'>onCall</h3>
+<p>The onCall event is executed whenever a message matches Prefix + Callname. It gets <a href="#oncall">these</a> variables</p>
+<h3 id='onreactionadd'>onReactionAdd</h3>
+<p>The onReactionAdd event is executed whenever a reaction is added to a message. It is up to you to determine whether or not the reaction is relavent. It gets <a href="#onreactadd-onreactrem">these</a> variables.</p>
+<h3 id='onreactionrem'>onReactionRem</h3>
+<p>The onReactionRem event is executed whenever a reaction is removed from a message. It is up to you to determine whether or not the reaction is relavent. It gets <a href="#onreactadd-onreactrem">these</a> variables.</p>
 <h1 id='classes'>Classes</h1><h2 id='userdata'>UserData</h2>
 <blockquote>
 <p>Example: Printing out a user&#39;s Username, ID, and Avatar</p>
@@ -900,39 +962,48 @@ Agregar Comando
 <td>The id of the guild you are looking for</td>
 </tr>
 </tbody></table>
-<h3 id='return-value-guilddata'>Return Value: <a href="#guilddata">GuildData</a></h3><h1 id='function-variables'>Function Variables</h1>
+<h3 id='return-value-guilddata'>Return Value: <a href="#guilddata">GuildData</a></h3><h1 id='event-variables'>Event Variables</h1>
 <p>Every OpenBot event is actually a function which gets passed several variables. Those variables belong to the function, so editing them does nothing.</p>
 <h2 id='oncall'>onCall</h2><h3 id='message'>Message</h3>
-<p><strong>Type:</strong> Message
-<strong>Description:</strong> The message that was sent to activate the command.</p>
+<p><strong>Type:</strong> Message</p>
+
+<p><strong>Description:</strong> The message that was sent to activate the command.</p>
 <h3 id='filteredmessage'>FilteredMessage</h3>
-<p><strong>Type:</strong> String
-<strong>Description:</strong> The content of the message, excluding the bot prefix and the callname of your command. For example, if Message.content is <code>-Open Add SomeCommand</code>, FilteredMessage will be <code>SomeCommand</code></p>
+<p><strong>Type:</strong> String</p>
+
+<p><strong>Description:</strong> The content of the message, excluding the bot prefix and the callname of your command. For example, if Message.content is <code>-Open Add SomeCommand</code>, FilteredMessage will be <code>SomeCommand</code></p>
 <h3 id='currentlocale'>CurrentLocale</h3>
-<p><strong>Type:</strong> Number
-<strong>Description:</strong> The index of the locale the user is using, relative to your command. For example, to get the name of your command in the users native language you would put <code>this.Names[CurrentLocale]</code></p>
+<p><strong>Type:</strong> Number</p>
+
+<p><strong>Description:</strong> The index of the locale the user is using, relative to your command. For example, to get the name of your command in the users native language you would put <code>this.Names[CurrentLocale]</code></p>
 <h2 id='onreactadd-onreactrem'>onReactAdd / onReactRem</h2><h3 id='reaction'>Reaction</h3>
-<p><strong>Type:</strong> MessageReaction
-<strong>Description:</strong> The reaction that was added/removed.</p>
+<p><strong>Type:</strong> MessageReaction</p>
+
+<p><strong>Description:</strong> The reaction that was added/removed.</p>
 <h3 id='user'>User</h3>
-<p><strong>Type:</strong> User
-<strong>Description:</strong> The user that added/removed the reaction</p>
+<p><strong>Type:</strong> User</p>
+
+<p><strong>Description:</strong> The user that added/removed the reaction</p>
 <h1 id='editable-variables'>Editable Variables</h1>
 <p>In addition to function variables, there are some variables accessible to every event that can be edited.</p>
 <h3 id='currentuserdata'>CurrentUserData</h3>
-<p><strong>Type:</strong> <a href="#userdata">UserData</a>
-<strong>Description:</strong> The CurrentUserData variable will always contain the UserData of the user who send the message. Basically it is the result of GetUserData(Message.author). It is also editable, so if you are writing a command like Change Locale, you can just edit the CurrentUserData variable and their locale will be changed</p>
+<p><strong>Type:</strong> <a href="#userdata">UserData</a></p>
+
+<p><strong>Description:</strong> The CurrentUserData variable will always contain the UserData of the user who send the message. Basically it is the result of GetUserData(Message.author). It is also editable, so if you are writing a command like Change Locale, you can just edit the CurrentUserData variable and their locale will be changed</p>
 <h3 id='currentuserlocale'>CurrentUserLocale</h3>
-<p><strong>Type:</strong> String
-<strong>Description:</strong> The CurrentUserLocale is different than CurrentLocale. CurrentUserLocale is the actual locale the user is using, formatted as a string. It can be useful if you want to reference another command but dont know what languages it supports, as FindCommand takes its locale argument as a string.</p>
+<p><strong>Type:</strong> String</p>
+
+<p><strong>Description:</strong> The CurrentUserLocale is different than CurrentLocale. CurrentUserLocale is the actual locale the user is using, formatted as a string. It can be useful if you want to reference another command but dont know what languages it supports, as FindCommand takes its locale argument as a string.</p>
 <h1 id='const-variables'>Const Variables</h1>
 <p>Finally, there are some variables which provide information about OpenBot but cannot be edited.</p>
 <h3 id='globinvite'>GlobInvite</h3>
-<p><strong>Type:</strong> String
-<strong>Description:</strong> The GlobInvite variable contains the invite link to OpenBot (mainly so i dont forget it) but if you want, make a command to print it out and promote OpenBot</p>
+<p><strong>Type:</strong> String</p>
+
+<p><strong>Description:</strong> The GlobInvite variable contains the invite link to OpenBot (mainly so i dont forget it) but if you want, make a command to print it out and promote OpenBot</p>
 <h3 id='globdiscordclient'>GlobDiscordClient</h3>
-<p><strong>Type:</strong> Client
-<strong>Description:</strong> The GlobDiscordClient is the discord.js Client class used to login to OpenBot. You can use it to find out information like how many servers OpenBot is in.</p>
+<p><strong>Type:</strong> Client</p>
+
+<p><strong>Description:</strong> The GlobDiscordClient is the discord.js Client class used to login to OpenBot. You can use it to find out information like how many servers OpenBot is in.</p>
 
 <aside class="warning">Do not attempt to do malicious stuff like grabbing OpenBot's token or anything. Your command will get rejected by the mods. Banne!</aside>
 <h1 id='libraries'>Libraries</h1>
