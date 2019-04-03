@@ -10,6 +10,8 @@ The Command MetaData box holds all of the MetaData for your command. This includ
 
 The syntax field is displayed after the name of your command in help menus, searches, etc. It should tell users what kinds of arguments your command expects them to include. For example, the syntax for a kick command could be something like `[@Mention]`. The square brackets `[]` indicate a required parameter which is an @Mention of a user.
 
+Suggested formatting:
+
 **[Param]** - Required
 
 **{Param}** - Optional
@@ -25,6 +27,8 @@ Your command's icon is displayed next to it in help menus, searches, and more. I
 ### Support Link
 
 The support link is displayed under your command in detailed information screens, and when your command crashes. You can set it to your server or OpenBot's server. Wherever you want people to go when your command breaks.
+
+The support link must be formatted like `https://discordapp.com/invite/abcdef` with abcdef being the invite code.
 
 ### Version
 
