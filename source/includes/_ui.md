@@ -100,7 +100,7 @@ The onMemberLeave event is executed whenever a user leaves a guild. It gets <a h
 
 **onMemberUpdate**
 
-The onMemberUpdate event is executed whenever a guild member's properties change. This can be roles, nicknames, etc. It gets <a href="#onmemberupdate">these</a> variables.
+The onMemberUpdate event is executed whenever a guild member's properties change. This can be roles, nicknames, etc. It gets <a href="#onmemberupdate-onvoiceupdate-onpresenceupdate">these</a> variables.
 
 **onMemberBan**
 
@@ -133,3 +133,51 @@ The onChannelUpdate event is executed when a channel is updated. It gets <a href
 **onMessageDelete**
 
 The onMessageDelete event is executed whenever a message is deleted. It gets <a href="#onmessagedelete">these</a> variables.
+
+**onPinsUpdate**
+
+The onPinsUpdate event is executed whenever the pins of a channel are updated. It gets <a href="#onpinsupdate">these</a> variables.
+
+**onEmojiCreate**
+
+The onEmojiCreate event is executed whenever a custom emoji is created on a server. It gets <a href="#onemojicreate-onemojidelete">these</a> variables.
+
+**onEmojiDelete**
+
+The onEmojiDelete event is executed whenever a custom emoji is deleted on a server. It gets <a href="#onemojicreate-onemojidelete">these</a> variables.
+
+**onEmojiUpdate**
+
+The onEmojiUpdate event is executed whenever a custom emoji is updated on a server. It gets <a href="#onemojiupdate">these</a> variables.
+
+**onMessageUpdate**
+
+The onMessageUpdate event is executed whenever a message is edited. It gets <a href="#onmessageupdate">these</a> variables.
+
+**onRoleCreate**
+
+The onRoleCreate event is executed whenever a role is created on a server. It gets <a href="#onrolecreate-onroledelete">these</a> variables.
+
+**onRoleDelete**
+
+The onRoleDelete event is executed whenever a role is deleted on a server. It gets <a href="#onrolecreate-onroledelete">these</a> variables.
+
+**onRoleUpdate**
+
+The onRoleUpdate event is executed whenever a role is updated on a server. It gets <a href="#onroleupdate">these</a> variables.
+
+**onUserUpdate**
+
+The onUserUpdate event is executed whenever a user updates their details, for example if they change their username. It gets <a href="#onuserupdate">these</a> variables.
+
+**onVoiceUpdate**
+
+The onVoiceUpdate event is executed whenever a user joins a voice channel. It gets <a href="#onmemberupdate-onvoiceupdate-onpresenceupdate">these</a> variables.
+
+**onGuildUpdate**
+
+The onGuildUpdate event is executed whenever a guilds name, region, etc is updated. It gets <a href="#onguildupdate">these</a> variables.
+
+**onPresenceUpdate**
+
+The onPresenceUpdate event is executed when users come online, offline, enter a game, etc. It gets <a href="#onmemberupdate-onvoiceupdate-onpresenceupdate">these</a> variables.

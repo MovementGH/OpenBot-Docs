@@ -45,7 +45,7 @@ Every OpenBot event is actually a function which gets passed several variables. 
 
 **Description:** The guild member that joined or left.
 
-## onMemberUpdate
+## onMemberUpdate / onVoiceUpdate / onPresenceUpdate
 
 ### OldMember
 
@@ -110,6 +110,92 @@ Every OpenBot event is actually a function which gets passed several variables. 
 **Type:** Message
 
 **Description:** The message that was deleted
+
+## onPinsUpdate
+
+### Channel
+
+**Type:** Channel
+
+**Description:** The channel whose pins were updated
+
+### Time
+
+**Type:** Time
+
+**Description:** The time of the update
+
+## onEmojiCreate / onEmojiDelete
+
+### Emoji
+
+**Type:** Emoji
+
+**Description:** The emoji that was created/deleted
+
+## onEmojiUpdate
+
+### OldEmoji
+
+**Type:** Emoji
+
+**Description:** The old emoji
+
+### NewEmoji
+
+**Type:** Emoji
+
+**Description:** The new emoji
+
+## onMessageUpdate
+
+### OldMessage
+
+**Type:** Message
+
+**Description:** The old message
+
+### NewMessage
+
+**Type:** Message
+
+**Description:** The new message
+
+## onRoleCreate / onRoleDelete
+
+### Role
+
+**Type:** Role
+
+**Description:** The role that was created/deleted
+
+## onUserUpdate
+
+### OldUser
+
+**Type:** User
+
+**Description:** The old details of the user
+
+### NewUser
+
+**Type:** User
+
+**Description:** The new details of the user
+
+## onGuildUpdate
+
+### OldGuild
+
+**Type:** Guild
+
+**Description:** The old details of the guild
+
+### NewGuild
+
+**Type:** Guild
+
+**Description:** The new details of the guild
 
 
 # Editable Variables
