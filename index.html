@@ -296,6 +296,27 @@
                   <li>
                     <a href="#onreactadd-onreactrem" class="toc-h2 toc-link" data-title="onReactAdd / onReactRem">onReactAdd / onReactRem</a>
                   </li>
+                  <li>
+                    <a href="#onmemberjoin-onmemberleave" class="toc-h2 toc-link" data-title="onMemberJoin / onMemberLeave">onMemberJoin / onMemberLeave</a>
+                  </li>
+                  <li>
+                    <a href="#onmemberupdate" class="toc-h2 toc-link" data-title="onMemberUpdate">onMemberUpdate</a>
+                  </li>
+                  <li>
+                    <a href="#onmemberban-onmemberunban" class="toc-h2 toc-link" data-title="onMemberBan / onMemberUnban">onMemberBan / onMemberUnban</a>
+                  </li>
+                  <li>
+                    <a href="#onbotjoin-onbotleave" class="toc-h2 toc-link" data-title="onBotJoin / onBotLeave">onBotJoin / onBotLeave</a>
+                  </li>
+                  <li>
+                    <a href="#onchannelcreate-onchanneldelete" class="toc-h2 toc-link" data-title="onChannelCreate / onChannelDelete">onChannelCreate / onChannelDelete</a>
+                  </li>
+                  <li>
+                    <a href="#onchannelupdate" class="toc-h2 toc-link" data-title="onChannelUpdate">onChannelUpdate</a>
+                  </li>
+                  <li>
+                    <a href="#onmessagedelete" class="toc-h2 toc-link" data-title="onMessageDelete">onMessageDelete</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -400,13 +421,35 @@
 <h3 id='translation-strings'>Translation Strings</h3>
 <p>Translation strings allow the text inside your command to be translated. You can have as many translation strings as you want, and you can access them from your code. For example, <code>this.String[CurrentLocale][0]</code> would return Translation String 0.</p>
 <h2 id='events'>Events</h2>
-<p>Your command can have multiple events, or just one. These are where you put your actual code.</p>
+<p>Your command can have multiple events, or just one. These are where you put your actual code. The eye button on the right side of the box lets you hide and show events to prevent UI clutter. The &quot;Active&quot; checkbox toggles whether your command is registered as supporting that event. The events you register will be shown in your ComInfo listing and the events that you dont register will not be executed, making the bot run faster.</p>
 <h3 id='oncall'>onCall</h3>
 <p>The onCall event is executed whenever a message matches Prefix + Callname. It gets <a href="#oncall">these</a> variables</p>
 <h3 id='onreactionadd'>onReactionAdd</h3>
 <p>The onReactionAdd event is executed whenever a reaction is added to a message. It is up to you to determine whether or not the reaction is relavent. It gets <a href="#onreactadd-onreactrem">these</a> variables.</p>
 <h3 id='onreactionrem'>onReactionRem</h3>
 <p>The onReactionRem event is executed whenever a reaction is removed from a message. It is up to you to determine whether or not the reaction is relavent. It gets <a href="#onreactadd-onreactrem">these</a> variables.</p>
+<h3 id='onmemberjoin'>onMemberJoin</h3>
+<p>The onMemberJoin event is executed whenever a user joins a guild. It gets <a href="#onmemberjoin-onmemberleave">these</a> variables.</p>
+<h3 id='onmemberleave'>onMemberLeave</h3>
+<p>The onMemberLeave event is executed whenever a user leaves a guild. It gets <a href="#onmemberjoin-onmemberleave">these</a> variables.</p>
+<h3 id='onmemberupdate'>onMemberUpdate</h3>
+<p>The onMemberUpdate event is executed whenever a guild member&#39;s properties change. This can be roles, nicknames, etc. It gets <a href="#onmemberupdate">these</a> variables.</p>
+<h3 id='onmemberban'>onMemberBan</h3>
+<p>The onMemberBan event is executed whenever a member is banned from a guild. It gets <a href="#onmemberban-onmemberunban">these</a> variables.</p>
+<h3 id='onmemberunban'>onMemberUnban</h3>
+<p>The onMemberUnban event is executed whenever a member is unbanned from a guild. It gets <a href="#onmemberban-onmemberunban">these</a> variables.</p>
+<h3 id='onbotjoin'>onBotJoin</h3>
+<p>The onBotJoin event is executed when OpenBot joins a server, or when your command is added to a server. It gets <a href="#onbotjoin-onbotleave">these</a> variables.</p>
+<h3 id='onbotleave'>onBotLeave</h3>
+<p>The onBotLeave event is executed when OpenBot leaves a server, or when your command is removed from a server. It gets <a href="#onbotjoin-onbotleave">these</a> variables.</p>
+<h3 id='onchannelcreate'>onChannelCreate</h3>
+<p>The onChannelCreate event is executed when a channel is created. It gets <a href="#onchannelcreate-onchanneldelete">these</a> variables.</p>
+<h3 id='onchanneldelete'>onChannelDelete</h3>
+<p>The onChannelDelete event is executed when a channel is deleted. It gets <a href="#onchannelcreate-onchanneldelete">these</a> variables.</p>
+<h3 id='onchannelupdate'>onChannelUpdate</h3>
+<p>The onChannelUpdate event is executed when a channel is updated. It gets <a href="#onchannelupdate">these</a> variables.</p>
+<h3 id='onmessagedelete'>onMessageDelete</h3>
+<p>The onMessageDelete event is executed whenever a message is deleted. It gets <a href="#onmessagedelete">these</a> variables.</p>
 <h1 id='classes'>Classes</h1><h2 id='userdata'>UserData</h2>
 <blockquote>
 <p>Example: Printing out a user&#39;s Username, ID, and Avatar</p>
@@ -988,6 +1031,46 @@ Agregar Comando
 <p><strong>Type:</strong> User</p>
 
 <p><strong>Description:</strong> The user that added/removed the reaction</p>
+<h2 id='onmemberjoin-onmemberleave'>onMemberJoin / onMemberLeave</h2><h3 id='member'>Member</h3>
+<p><strong>Type:</strong> Member</p>
+
+<p><strong>Description:</strong> The guild member that joined or left.</p>
+<h2 id='onmemberupdate'>onMemberUpdate</h2><h3 id='oldmember'>OldMember</h3>
+<p><strong>Type:</strong> Member</p>
+
+<p><strong>Description:</strong> The old properties of the member</p>
+<h3 id='newmember'>NewMember</h3>
+<p><strong>Type:</strong> Member</p>
+
+<p><strong>Description:</strong> The new properties of the member</p>
+<h2 id='onmemberban-onmemberunban'>onMemberBan / onMemberUnban</h2><h3 id='guild'>Guild</h3>
+<p><strong>Type:</strong> Guild</p>
+
+<p><strong>Description:</strong> The guild the user was banned/unbanned from</p>
+<h3 id='user-2'>User</h3>
+<p><strong>Type:</strong> User</p>
+
+<p><strong>Description:</strong> The user that was banned/unbanned</p>
+<h2 id='onbotjoin-onbotleave'>onBotJoin / onBotLeave</h2><h3 id='guild-2'>Guild</h3>
+<p><strong>Type:</strong> Guild</p>
+
+<p><strong>Description:</strong> The guild the bot/command joined/left.</p>
+<h2 id='onchannelcreate-onchanneldelete'>onChannelCreate / onChannelDelete</h2><h3 id='channel'>Channel</h3>
+<p><strong>Type:</strong> Channel</p>
+
+<p><strong>Description:</strong> The channel that was created/deleted</p>
+<h2 id='onchannelupdate'>onChannelUpdate</h2><h3 id='oldchannel'>OldChannel</h3>
+<p><strong>Type:</strong> Channel</p>
+
+<p><strong>Description:</strong> The old properties of the channel</p>
+<h3 id='newchannel'>NewChannel</h3>
+<p><strong>Type:</strong> Channel</p>
+
+<p><strong>Description:</strong> The new properties of the channel</p>
+<h2 id='onmessagedelete'>onMessageDelete</h2><h3 id='message-2'>Message</h3>
+<p><strong>Type:</strong> Message</p>
+
+<p><strong>Description:</strong> The message that was deleted</p>
 <h1 id='editable-variables'>Editable Variables</h1>
 <p>In addition to function variables, there are some variables accessible to every event that can be edited.</p>
 <h3 id='currentuserdata'>CurrentUserData</h3>
