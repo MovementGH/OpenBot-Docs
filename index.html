@@ -300,7 +300,7 @@
                     <a href="#onmemberjoin-onmemberleave" class="toc-h2 toc-link" data-title="onMemberJoin / onMemberLeave">onMemberJoin / onMemberLeave</a>
                   </li>
                   <li>
-                    <a href="#onmemberupdate" class="toc-h2 toc-link" data-title="onMemberUpdate">onMemberUpdate</a>
+                    <a href="#onmemberupdate-onvoiceupdate-onpresenceupdate" class="toc-h2 toc-link" data-title="onMemberUpdate / onVoiceUpdate / onPresenceUpdate">onMemberUpdate / onVoiceUpdate / onPresenceUpdate</a>
                   </li>
                   <li>
                     <a href="#onmemberban-onmemberunban" class="toc-h2 toc-link" data-title="onMemberBan / onMemberUnban">onMemberBan / onMemberUnban</a>
@@ -316,6 +316,27 @@
                   </li>
                   <li>
                     <a href="#onmessagedelete" class="toc-h2 toc-link" data-title="onMessageDelete">onMessageDelete</a>
+                  </li>
+                  <li>
+                    <a href="#onpinsupdate" class="toc-h2 toc-link" data-title="onPinsUpdate">onPinsUpdate</a>
+                  </li>
+                  <li>
+                    <a href="#onemojicreate-onemojidelete" class="toc-h2 toc-link" data-title="onEmojiCreate / onEmojiDelete">onEmojiCreate / onEmojiDelete</a>
+                  </li>
+                  <li>
+                    <a href="#onemojiupdate" class="toc-h2 toc-link" data-title="onEmojiUpdate">onEmojiUpdate</a>
+                  </li>
+                  <li>
+                    <a href="#onmessageupdate" class="toc-h2 toc-link" data-title="onMessageUpdate">onMessageUpdate</a>
+                  </li>
+                  <li>
+                    <a href="#onrolecreate-onroledelete" class="toc-h2 toc-link" data-title="onRoleCreate / onRoleDelete">onRoleCreate / onRoleDelete</a>
+                  </li>
+                  <li>
+                    <a href="#onuserupdate" class="toc-h2 toc-link" data-title="onUserUpdate">onUserUpdate</a>
+                  </li>
+                  <li>
+                    <a href="#onguildupdate" class="toc-h2 toc-link" data-title="onGuildUpdate">onGuildUpdate</a>
                   </li>
               </ul>
           </li>
@@ -445,7 +466,7 @@
 
 <p><strong>onMemberUpdate</strong></p>
 
-<p>The onMemberUpdate event is executed whenever a guild member&#39;s properties change. This can be roles, nicknames, etc. It gets <a href="#onmemberupdate">these</a> variables.</p>
+<p>The onMemberUpdate event is executed whenever a guild member&#39;s properties change. This can be roles, nicknames, etc. It gets <a href="#onmemberupdate-onvoiceupdate-onpresenceupdate">these</a> variables.</p>
 
 <p><strong>onMemberBan</strong></p>
 
@@ -478,6 +499,54 @@
 <p><strong>onMessageDelete</strong></p>
 
 <p>The onMessageDelete event is executed whenever a message is deleted. It gets <a href="#onmessagedelete">these</a> variables.</p>
+
+<p><strong>onPinsUpdate</strong></p>
+
+<p>The onPinsUpdate event is executed whenever the pins of a channel are updated. It gets <a href="#onpinsupdate">these</a> variables.</p>
+
+<p><strong>onEmojiCreate</strong></p>
+
+<p>The onEmojiCreate event is executed whenever a custom emoji is created on a server. It gets <a href="#onemojicreate-onemojidelete">these</a> variables.</p>
+
+<p><strong>onEmojiDelete</strong></p>
+
+<p>The onEmojiDelete event is executed whenever a custom emoji is deleted on a server. It gets <a href="#onemojicreate-onemojidelete">these</a> variables.</p>
+
+<p><strong>onEmojiUpdate</strong></p>
+
+<p>The onEmojiUpdate event is executed whenever a custom emoji is updated on a server. It gets <a href="#onemojiupdate">these</a> variables.</p>
+
+<p><strong>onMessageUpdate</strong></p>
+
+<p>The onMessageUpdate event is executed whenever a message is edited. It gets <a href="#onmessageupdate">these</a> variables.</p>
+
+<p><strong>onRoleCreate</strong></p>
+
+<p>The onRoleCreate event is executed whenever a role is created on a server. It gets <a href="#onrolecreate-onroledelete">these</a> variables.</p>
+
+<p><strong>onRoleDelete</strong></p>
+
+<p>The onRoleDelete event is executed whenever a role is deleted on a server. It gets <a href="#onrolecreate-onroledelete">these</a> variables.</p>
+
+<p><strong>onRoleUpdate</strong></p>
+
+<p>The onRoleUpdate event is executed whenever a role is updated on a server. It gets <a href="#onroleupdate">these</a> variables.</p>
+
+<p><strong>onUserUpdate</strong></p>
+
+<p>The onUserUpdate event is executed whenever a user updates their details, for example if they change their username. It gets <a href="#onuserupdate">these</a> variables.</p>
+
+<p><strong>onVoiceUpdate</strong></p>
+
+<p>The onVoiceUpdate event is executed whenever a user joins a voice channel. It gets <a href="#onmemberupdate-onvoiceupdate-onpresenceupdate">these</a> variables.</p>
+
+<p><strong>onGuildUpdate</strong></p>
+
+<p>The onGuildUpdate event is executed whenever a guilds name, region, etc is updated. It gets <a href="#onguildupdate">these</a> variables.</p>
+
+<p><strong>onPresenceUpdate</strong></p>
+
+<p>The onPresenceUpdate event is executed when users come online, offline, enter a game, etc. It gets <a href="#onmemberupdate-onvoiceupdate-onpresenceupdate">these</a> variables.</p>
 <h1 id='classes'>Classes</h1><h2 id='userdata'>UserData</h2>
 <blockquote>
 <p>Example: Printing out a user&#39;s Username, ID, and Avatar</p>
@@ -1063,7 +1132,7 @@ Agregar Comando
 <p><strong>Type:</strong> Member</p>
 
 <p><strong>Description:</strong> The guild member that joined or left.</p>
-<h2 id='onmemberupdate'>onMemberUpdate</h2><h3 id='oldmember'>OldMember</h3>
+<h2 id='onmemberupdate-onvoiceupdate-onpresenceupdate'>onMemberUpdate / onVoiceUpdate / onPresenceUpdate</h2><h3 id='oldmember'>OldMember</h3>
 <p><strong>Type:</strong> Member</p>
 
 <p><strong>Description:</strong> The old properties of the member</p>
@@ -1099,6 +1168,54 @@ Agregar Comando
 <p><strong>Type:</strong> Message</p>
 
 <p><strong>Description:</strong> The message that was deleted</p>
+<h2 id='onpinsupdate'>onPinsUpdate</h2><h3 id='channel-2'>Channel</h3>
+<p><strong>Type:</strong> Channel</p>
+
+<p><strong>Description:</strong> The channel whose pins were updated</p>
+<h3 id='time'>Time</h3>
+<p><strong>Type:</strong> Time</p>
+
+<p><strong>Description:</strong> The time of the update</p>
+<h2 id='onemojicreate-onemojidelete'>onEmojiCreate / onEmojiDelete</h2><h3 id='emoji'>Emoji</h3>
+<p><strong>Type:</strong> Emoji</p>
+
+<p><strong>Description:</strong> The emoji that was created/deleted</p>
+<h2 id='onemojiupdate'>onEmojiUpdate</h2><h3 id='oldemoji'>OldEmoji</h3>
+<p><strong>Type:</strong> Emoji</p>
+
+<p><strong>Description:</strong> The old emoji</p>
+<h3 id='newemoji'>NewEmoji</h3>
+<p><strong>Type:</strong> Emoji</p>
+
+<p><strong>Description:</strong> The new emoji</p>
+<h2 id='onmessageupdate'>onMessageUpdate</h2><h3 id='oldmessage'>OldMessage</h3>
+<p><strong>Type:</strong> Message</p>
+
+<p><strong>Description:</strong> The old message</p>
+<h3 id='newmessage'>NewMessage</h3>
+<p><strong>Type:</strong> Message</p>
+
+<p><strong>Description:</strong> The new message</p>
+<h2 id='onrolecreate-onroledelete'>onRoleCreate / onRoleDelete</h2><h3 id='role'>Role</h3>
+<p><strong>Type:</strong> Role</p>
+
+<p><strong>Description:</strong> The role that was created/deleted</p>
+<h2 id='onuserupdate'>onUserUpdate</h2><h3 id='olduser'>OldUser</h3>
+<p><strong>Type:</strong> User</p>
+
+<p><strong>Description:</strong> The old details of the user</p>
+<h3 id='newuser'>NewUser</h3>
+<p><strong>Type:</strong> User</p>
+
+<p><strong>Description:</strong> The new details of the user</p>
+<h2 id='onguildupdate'>onGuildUpdate</h2><h3 id='oldguild'>OldGuild</h3>
+<p><strong>Type:</strong> Guild</p>
+
+<p><strong>Description:</strong> The old details of the guild</p>
+<h3 id='newguild'>NewGuild</h3>
+<p><strong>Type:</strong> Guild</p>
+
+<p><strong>Description:</strong> The new details of the guild</p>
 <h1 id='editable-variables'>Editable Variables</h1>
 <p>In addition to function variables, there are some variables accessible to every event that can be edited.</p>
 <h3 id='currentuserdata'>CurrentUserData</h3>
