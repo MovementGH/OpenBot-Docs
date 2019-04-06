@@ -76,7 +76,7 @@ Translation strings allow the text inside your command to be translated. You can
 
 ## Events
 
-Your command can have multiple events, or just one. These are where you put your actual code.
+Your command can have multiple events, or just one. These are where you put your actual code. The eye button on the right side of the box lets you hide and show events to prevent UI clutter. The "Active" checkbox toggles whether your command is registered as supporting that event. The events you register will be shown in your ComInfo listing and the events that you dont register will not be executed, making the bot run faster.
 
 ### onCall
 
@@ -89,3 +89,47 @@ The onReactionAdd event is executed whenever a reaction is added to a message. I
 ### onReactionRem
 
 The onReactionRem event is executed whenever a reaction is removed from a message. It is up to you to determine whether or not the reaction is relavent. It gets <a href="#onreactadd-onreactrem">these</a> variables.
+
+### onMemberJoin
+
+The onMemberJoin event is executed whenever a user joins a guild. It gets <a href="#onmemberjoin-onmemberleave">these</a> variables.
+
+### onMemberLeave
+
+The onMemberLeave event is executed whenever a user leaves a guild. It gets <a href="#onmemberjoin-onmemberleave">these</a> variables.
+
+### onMemberUpdate
+
+The onMemberUpdate event is executed whenever a guild member's properties change. This can be roles, nicknames, etc. It gets <a href="#onmemberupdate">these</a> variables.
+
+### onMemberBan
+
+The onMemberBan event is executed whenever a member is banned from a guild. It gets <a href="#onmemberban-onmemberunban">these</a> variables.
+
+### onMemberUnban
+
+The onMemberUnban event is executed whenever a member is unbanned from a guild. It gets <a href="#onmemberban-onmemberunban">these</a> variables.
+
+### onBotJoin
+
+The onBotJoin event is executed when OpenBot joins a server, or when your command is added to a server. It gets <a href="#onbotjoin-onbotleave">these</a> variables.
+
+### onBotLeave
+
+The onBotLeave event is executed when OpenBot leaves a server, or when your command is removed from a server. It gets <a href="#onbotjoin-onbotleave">these</a> variables.
+
+### onChannelCreate
+
+The onChannelCreate event is executed when a channel is created. It gets <a href="#onchannelcreate-onchanneldelete">these</a> variables.
+
+### onChannelDelete
+
+The onChannelDelete event is executed when a channel is deleted. It gets <a href="#onchannelcreate-onchanneldelete">these</a> variables.
+
+### onChannelUpdate
+
+The onChannelUpdate event is executed when a channel is updated. It gets <a href="#onchannelupdate">these</a> variables.
+
+### onMessageDelete
+
+The onMessageDelete event is executed whenever a message is deleted. It gets <a href="#onmessagedelete">these</a> variables.

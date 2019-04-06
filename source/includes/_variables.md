@@ -37,6 +37,81 @@ Every OpenBot event is actually a function which gets passed several variables. 
 
 **Description:** The user that added/removed the reaction
 
+## onMemberJoin / onMemberLeave
+
+### Member
+
+**Type:** Member
+
+**Description:** The guild member that joined or left.
+
+## onMemberUpdate
+
+### OldMember
+
+**Type:** Member
+
+**Description:** The old properties of the member
+
+### NewMember
+
+**Type:** Member
+
+**Description:** The new properties of the member
+
+## onMemberBan / onMemberUnban
+
+### Guild
+
+**Type:** Guild
+
+**Description:** The guild the user was banned/unbanned from
+
+### User
+
+**Type:** User
+
+**Description:** The user that was banned/unbanned
+
+## onBotJoin / onBotLeave
+
+### Guild
+
+**Type:** Guild
+
+**Description:** The guild the bot/command joined/left.
+
+## onChannelCreate / onChannelDelete
+
+### Channel
+
+**Type:** Channel
+
+**Description:** The channel that was created/deleted
+
+## onChannelUpdate
+
+### OldChannel
+
+**Type:** Channel
+
+**Description:** The old properties of the channel
+
+### NewChannel
+
+**Type:** Channel
+
+**Description:** The new properties of the channel
+
+## onMessageDelete
+
+### Message
+
+**Type:** Message
+
+**Description:** The message that was deleted
+
+
 # Editable Variables
 
 In addition to function variables, there are some variables accessible to every event that can be edited.
