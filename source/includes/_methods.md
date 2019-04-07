@@ -1,5 +1,28 @@
 # Methods
 
+## DebugMessage
+
+> Example: Log if an if statement returns something unexpected
+
+```javascript
+var channel=Message.guild.channels.find(channel=>channel.id===GetGuildStore(this,LogChannel));
+if(channel) {
+    //Log
+}
+else {
+    DebugLog(this,"Oi ur code is broken the logchannel is not valid");
+}
+```
+
+The DebugMessage method can be used to DM yourself information for debugging why a command isnt working.
+
+Parameter | Type | Description
+--------- | --------- | -----------
+Command | <a href="#Command">Command</a> | The command the log belongs to.
+Message | String | The message you wish to log
+
+<aside class="note">The Command parameter must always be "this", or the log will not be dmmed to you.</aside>
+
 ## GenerateImage
 
 > Example: Get the link to the icon of your command for use in the thumbnail
