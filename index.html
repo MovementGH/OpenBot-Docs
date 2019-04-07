@@ -256,6 +256,9 @@
             <a href="#methods" class="toc-h1 toc-link" data-title="Methods">Methods</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#debugmessage" class="toc-h2 toc-link" data-title="DebugMessage">DebugMessage</a>
+                  </li>
+                  <li>
                     <a href="#generateimage" class="toc-h2 toc-link" data-title="GenerateImage">GenerateImage</a>
                   </li>
                   <li>
@@ -792,7 +795,41 @@ Add
 </tbody></table>
 
 <aside class='warning'>Do not attempt to edit any Commands. Doing so will cause your command to get rejected.</aside>
-<h1 id='methods'>Methods</h1><h2 id='generateimage'>GenerateImage</h2>
+<h1 id='methods'>Methods</h1><h2 id='debugmessage'>DebugMessage</h2>
+<blockquote>
+<p>Example: Log if an if statement returns something unexpected</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">channel</span><span class="o">=</span><span class="nx">Message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">channels</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">channel</span><span class="o">=&gt;</span><span class="nx">channel</span><span class="p">.</span><span class="nx">id</span><span class="o">===</span><span class="nx">GetGuildStore</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">LogChannel</span><span class="p">));</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">channel</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//Log</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="p">{</span>
+    <span class="nx">DebugLog</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="s2">"Oi ur code is broken the logchannel is not valid"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+<p>The DebugMessage method can be used to DM yourself information for debugging why a command isnt working.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Command</td>
+<td><a href="#Command">Command</a></td>
+<td>The command the log belongs to.</td>
+</tr>
+<tr>
+<td>Message</td>
+<td>String</td>
+<td>The message you wish to log</td>
+</tr>
+</tbody></table>
+
+<aside class="note">The Command parameter must always be "this", or the log will not be dmmed to you.</aside>
+<h2 id='generateimage'>GenerateImage</h2>
 <blockquote>
 <p>Example: Get the link to the icon of your command for use in the thumbnail</p>
 </blockquote>
