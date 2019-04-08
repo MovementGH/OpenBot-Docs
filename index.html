@@ -318,7 +318,7 @@
                     <a href="#onchannelupdate" class="toc-h2 toc-link" data-title="onChannelUpdate">onChannelUpdate</a>
                   </li>
                   <li>
-                    <a href="#onmessagedelete" class="toc-h2 toc-link" data-title="onMessageDelete">onMessageDelete</a>
+                    <a href="#onmessagedelete-onmessage" class="toc-h2 toc-link" data-title="onMessageDelete / onMessage">onMessageDelete / onMessage</a>
                   </li>
                   <li>
                     <a href="#onpinsupdate" class="toc-h2 toc-link" data-title="onPinsUpdate">onPinsUpdate</a>
@@ -550,6 +550,10 @@
 <p><strong>onPresenceUpdate</strong></p>
 
 <p>The onPresenceUpdate event is executed when users come online, offline, enter a game, etc. It gets <a href="#onmemberupdate-onvoiceupdate-onpresenceupdate">these</a> variables.</p>
+
+<p><strong>onMessage</strong></p>
+
+<p>The onMessage event is executed when a message arives, whether is is a command call or not. It is usefull for spam filters and the like. It gets <a href="#onmessagedelete-onmessage">these&quot;</p>
 <h1 id='classes'>Classes</h1><h2 id='userdata'>UserData</h2>
 <blockquote>
 <p>Example: Printing out a user&#39;s Username, ID, and Avatar</p>
@@ -1201,10 +1205,10 @@ Agregar Comando
 <p><strong>Type:</strong> Channel</p>
 
 <p><strong>Description:</strong> The new properties of the channel</p>
-<h2 id='onmessagedelete'>onMessageDelete</h2><h3 id='message-2'>Message</h3>
+<h2 id='onmessagedelete-onmessage'>onMessageDelete / onMessage</h2><h3 id='message-2'>Message</h3>
 <p><strong>Type:</strong> Message</p>
 
-<p><strong>Description:</strong> The message that was deleted</p>
+<p><strong>Description:</strong> The message that was deleted or sent</p>
 <h2 id='onpinsupdate'>onPinsUpdate</h2><h3 id='channel-2'>Channel</h3>
 <p><strong>Type:</strong> Channel</p>
 
