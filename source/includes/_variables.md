@@ -103,13 +103,13 @@ Every OpenBot event is actually a function which gets passed several variables. 
 
 **Description:** The new properties of the channel
 
-## onMessageDelete
+## onMessageDelete / onMessage
 
 ### Message
 
 **Type:** Message
 
-**Description:** The message that was deleted
+**Description:** The message that was deleted or sent
 
 ## onPinsUpdate
 

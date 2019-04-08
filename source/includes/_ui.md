@@ -181,3 +181,7 @@ The onGuildUpdate event is executed whenever a guilds name, region, etc is updat
 **onPresenceUpdate**
 
 The onPresenceUpdate event is executed when users come online, offline, enter a game, etc. It gets <a href="#onmemberupdate-onvoiceupdate-onpresenceupdate">these</a> variables.
+
+**onMessage**
+
+The onMessage event is executed when a message arives, whether is is a command call or not. It is usefull for spam filters and the like. It gets <a href="#onmessagedelete-onmessage">these"
