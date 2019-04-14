@@ -184,4 +184,4 @@ The onPresenceUpdate event is executed when users come online, offline, enter a 
 
 **onMessage**
 
-The onMessage event is executed when a message arives, whether is is a command call or not. It is usefull for spam filters and the like. It gets <a href="#onmessagedelete-onmessage">these"
+The onMessage event is executed when a message arives, whether is is a command call or not. It is usefull for spam filters and the like. It gets <a href="#onmessagedelete-onmessage">these</a> variables.
