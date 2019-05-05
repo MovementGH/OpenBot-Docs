@@ -274,6 +274,18 @@
                     <a href="#getguildstore" class="toc-h2 toc-link" data-title="GetGuildStore">GetGuildStore</a>
                   </li>
                   <li>
+                    <a href="#getuservotes" class="toc-h2 toc-link" data-title="GetUserVotes">GetUserVotes</a>
+                  </li>
+                  <li>
+                    <a href="#getcommandvotes" class="toc-h2 toc-link" data-title="GetCommandVotes">GetCommandVotes</a>
+                  </li>
+                  <li>
+                    <a href="#getuserhasvoted" class="toc-h2 toc-link" data-title="GetUserHasVoted">GetUserHasVoted</a>
+                  </li>
+                  <li>
+                    <a href="#getcommandinstalls" class="toc-h2 toc-link" data-title="GetCommandInstalls">GetCommandInstalls</a>
+                  </li>
+                  <li>
                     <a href="#findlocale" class="toc-h2 toc-link" data-title="FindLocale">FindLocale</a>
                   </li>
                   <li>
@@ -1008,6 +1020,133 @@ https://cdn.discordapp.com/emojis/539643411179896835.png
 </tbody></table>
 <h3 id='return-value-object-2'>Return Value: Object</h3>
 <aside class="warning">The command parameter must be 'this' or your command will be denied</aside>
+<h2 id='getuservotes'>GetUserVotes</h2>
+<blockquote>
+<p>Example: Get the number of times a user has voted</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">GetUserVotes</span><span class="p">(</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">UserID</span><span class="p">,</span><span class="mi">0</span><span class="p">).</span><span class="nx">length</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<blockquote>
+<p>This could output something like this</p>
+</blockquote>
+</blockquote>
+<pre class="highlight plaintext"><code>69
+</code></pre>
+<p>The GetUserVotes method gets an array of every vote a user has made that meets the type requirements</p>
+
+<p>The Type parameter can be either -1, 0, or 1. -1 only returns downvotes, 0 returns all votes, 1 only returns upvotes.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>UserID</td>
+<td>Number</td>
+<td>The ID of the user whose votes you want to access</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>Number</td>
+<td>The filter you want to apply</td>
+</tr>
+</tbody></table>
+<h2 id='getcommandvotes'>GetCommandVotes</h2>
+<blockquote>
+<p>Example: Get the number of upvotes your command has</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">GetCommandVotes</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">ID</span><span class="p">,</span><span class="mi">1</span><span class="p">).</span><span class="nx">length</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<blockquote>
+<p>This could output something like this</p>
+</blockquote>
+</blockquote>
+<pre class="highlight plaintext"><code>66
+</code></pre>
+<p>The GetCommandVotes method gets an array of every vote that has been submitted to a command</p>
+
+<p>The Type parameter can be either -1, 0, or 1. -1 only returns downvotes, 0 returns all votes, 1 only returns upvotes.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CommandID</td>
+<td>Number</td>
+<td>The id of the command whose votes you want to access</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>Number</td>
+<td>The filter you want to apply</td>
+</tr>
+</tbody></table>
+<h2 id='getuserhasvoted'>GetUserHasVoted</h2>
+<blockquote>
+<p>Example: Find out if the person calling your command has voted on it</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">GetUserHasVoted</span><span class="p">(</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">UserID</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">ID</span><span class="p">))</span>
+</code></pre>
+<blockquote>
+<p>This could output something like this</p>
+</blockquote>
+<pre class="highlight plaintext"><code>false
+</code></pre>
+<p>The GetUserHasVoted method returns a bool containing whether or not the user specified has voted on the command specified</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>UserID</td>
+<td>Number</td>
+<td>The User whose vote you want to check</td>
+</tr>
+<tr>
+<td>CommandID</td>
+<td>Number</td>
+<td>The Command you want to check on</td>
+</tr>
+</tbody></table>
+<h2 id='getcommandinstalls'>GetCommandInstalls</h2>
+<blockquote>
+<p>Example: Get the number of servers your command is in</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">GetCommandInstalls</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">ID</span><span class="p">));</span>
+</code></pre>
+<blockquote>
+<p>This could output something like this</p>
+</blockquote>
+<pre class="highlight plaintext"><code>22
+</code></pre>
+<p>The GetCommandInstalls method returns the number of servers your command is installed in</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CommandID</td>
+<td>Number</td>
+<td>The ID of the command you wish to get the number of installs for</td>
+</tr>
+</tbody></table>
 <h2 id='findlocale'>FindLocale</h2>
 <blockquote>
 <p>Example: Get the proper locale to use for printing out the command&#39;s name (Yes i know its already available in CurrentLocale)</p>
