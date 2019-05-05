@@ -163,6 +163,93 @@ GuildID | Number | The ID of the guild whos data you want to access.
 
 <aside class="warning">The command parameter must be 'this' or your command will be denied</aside>
 
+## GetUserVotes
+
+> Example: Get the number of times a user has voted
+
+```javascript
+Message.channel.send(GetUserVotes(CurrentUserData.UserID,0).length);
+```
+
+>> This could output something like this
+
+```output
+69
+```
+
+The GetUserVotes method gets an array of every vote a user has made that meets the type requirements
+
+The Type parameter can be either -1, 0, or 1. -1 only returns downvotes, 0 returns all votes, 1 only returns upvotes.
+
+Parameter | Type | Description
+--------- | --------- | -----------
+UserID | Number | The ID of the user whose votes you want to access
+Type | Number | The filter you want to apply
+
+## GetCommandVotes
+
+> Example: Get the number of upvotes your command has
+
+```javascript
+Message.channel.send(GetCommandVotes(this.ID,1).length);
+```
+
+>> This could output something like this
+
+```output
+66
+```
+
+The GetCommandVotes method gets an array of every vote that has been submitted to a command
+
+The Type parameter can be either -1, 0, or 1. -1 only returns downvotes, 0 returns all votes, 1 only returns upvotes.
+
+Parameter | Type | Description
+--------- | --------- | -----------
+CommandID | Number | The id of the command whose votes you want to access
+Type | Number | The filter you want to apply
+
+## GetUserHasVoted
+
+> Example: Find out if the person calling your command has voted on it
+
+```javascript
+Message.channel.send(GetUserHasVoted(CurrentUserData.UserID,this.ID))
+```
+
+> This could output something like this
+
+```output
+false
+```
+
+The GetUserHasVoted method returns a bool containing whether or not the user specified has voted on the command specified
+
+Parameter | Type | Description
+--------- | --------- | -----------
+UserID | Number | The User whose vote you want to check
+CommandID | Number | The Command you want to check on
+
+## GetCommandInstalls
+
+> Example: Get the number of servers your command is in
+
+```javascript
+Message.channel.send(GetCommandInstalls(this.ID));
+```
+
+> This could output something like this
+
+```output
+22
+```
+
+The GetCommandInstalls method returns the number of servers your command is installed in
+
+Parameter | Type | Description
+--------- | --------- | -----------
+CommandID | Number | The ID of the command you wish to get the number of installs for
+
 ## FindLocale
 
 > Example: Get the proper locale to use for printing out the command's name (Yes i know its already available in CurrentLocale)
