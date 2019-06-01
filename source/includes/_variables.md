@@ -207,13 +207,13 @@ In addition to function variables, there are some variables accessible to every 
 
 **Type:** <a href="#userdata">UserData</a>
 
-**Description:** The CurrentUserData variable will always contain the UserData of the user who send the message. Basically it is the result of GetUserData(Message.author). It is also editable, so if you are writing a command like Change Locale, you can just edit the CurrentUserData variable and their locale will be changed
+**Description:** The CurrentUserData variable will always contain the UserData of the user who sent the message. Basically it is the result of GetUserData(Message.author). It is also editable, so if you are writing a command like Change Locale, you can just edit the CurrentUserData variable and their locale will be changed
 
-### CurrentUserLocale
+### CurrentGuildData
 
-**Type:** String
+**Type:** <a href="#guilddata">GuildData</a>
 
-**Description:** The CurrentUserLocale is different than CurrentLocale. CurrentUserLocale is the actual locale the user is using, formatted as a string. It can be useful if you want to reference another command but dont know what languages it supports, as FindCommand takes its locale argument as a string.
+**Description:** The CurrentGuildData variable will always contain the GuildData of the guild which the message is in. Basically it is the result of GetGuildData(Message.guild). It is also editable, so if you are writing a command that needs to change a setting in the guild data, you can just edit the CurrentGuildData variable and their locale will be changed.
 
 # Const Variables
 

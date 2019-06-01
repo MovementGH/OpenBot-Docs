@@ -46,7 +46,7 @@ Parameter | Type | Description
 Emoji | String | A discord emoji
 ### Return Value: String
 
-<aside class="note">This will not work if the user typed a default emoji, as those get sent as unicode characters. To get a url for those you can directly interact with <a href="https://www.npmjs.com/package/twemoji">Twemoji's API</a> by using LibTwemoji.</aside>
+<aside class="note">This will not work if the user typed a default emoji, as those get sent as unicode characters. To get a url for those you can directly interact with <a href="https://www.npmjs.com/package/twemoji">Twemoji's API</a> by using <a href="#twemoji">LibTwemoj</a>i.</aside>
 
 ## GetGuildData
 
@@ -171,7 +171,7 @@ GuildID | Number | The ID of the guild whos data you want to access.
 Message.channel.send(GetUserVotes(CurrentUserData.UserID,0).length);
 ```
 
->> This could output something like this
+> This could output something like this
 
 ```output
 69
@@ -194,7 +194,7 @@ Type | Number | The filter you want to apply
 Message.channel.send(GetCommandVotes(this.ID,1).length);
 ```
 
->> This could output something like this
+> This could output something like this
 
 ```output
 66

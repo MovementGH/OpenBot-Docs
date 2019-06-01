@@ -70,6 +70,8 @@ Data | Object | The data being stored
 
 <aside class="warning">Do not attempt to access CommandData created by other command developers. Doing this will cause your command to get rejected.</aside>
 
+<aside class="note"> The CommandData object stored in UserData and GuildData is not meant to be accessed directly. This class is only shown here for completeness. Please use the <a href="#getguildstore">GetGuildStore</a> and <a href="#getuserstore">GetUserStore</a> functions to access data</aside>
+
 ## Command
 
 > Example: Print the name and callname of the current command
