@@ -250,6 +250,9 @@
                   <li>
                     <a href="#command" class="toc-h2 toc-link" data-title="Command">Command</a>
                   </li>
+                  <li>
+                    <a href="#analytics" class="toc-h2 toc-link" data-title="Analytics">Analytics</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -374,6 +377,9 @@
                   </li>
                   <li>
                     <a href="#globdiscordclient" class="toc-h2 toc-link" data-title="GlobDiscordClient">GlobDiscordClient</a>
+                  </li>
+                  <li>
+                    <a href="#analytics" class="toc-h2 toc-link" data-title="Analytics">Analytics</a>
                   </li>
               </ul>
           </li>
@@ -813,6 +819,59 @@ Add
 </tbody></table>
 
 <aside class='warning'>Do not attempt to edit any Commands. Doing so will cause your command to get rejected.</aside>
+<h2 id='analytics'>Analytics</h2>
+<blockquote>
+<p>Example: Print the number of messages OpenBot has processed</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Analytics</span><span class="p">.</span><span class="nx">MessagesProcessed</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>This will output something along the lines of this:
+<code>output
+484468
+</code></p>
+</blockquote>
+
+<p>The analytics class holds miscelaneous data.</p>
+
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>MessagesProcessed</td>
+<td>Number</td>
+<td>The number of messages OpenBot has processed</td>
+</tr>
+<tr>
+<td>EventsProcessed</td>
+<td>Number</td>
+<td>The number of Discord.js Events OpenBot has processed</td>
+</tr>
+<tr>
+<td>Votes</td>
+<td>Array</td>
+<td>Array of command votes</td>
+</tr>
+<tr>
+<td>SupportedLocales</td>
+<td>Array</td>
+<td>All locales supported for commands</td>
+</tr>
+<tr>
+<td>SupportedWebLocales</td>
+<td>Array</td>
+<td>All locales supported on website</td>
+</tr>
+<tr>
+<td>EmojiMap</td>
+<td>Array</td>
+<td>Discord emojis mapped by tag and url</td>
+</tr>
+</tbody></table>
 <h1 id='methods'>Methods</h1><h2 id='debugmessage'>DebugMessage</h2>
 <blockquote>
 <p>Example: Log if an if statement returns something unexpected</p>
@@ -1416,6 +1475,12 @@ Agregar Comando
 <p><strong>Description:</strong> The GlobDiscordClient is the discord.js Client class used to login to OpenBot. You can use it to find out information like how many servers OpenBot is in.</p>
 
 <aside class="warning">Do not attempt to do malicious stuff like grabbing OpenBot's token or anything. Your command will get rejected by the mods. Banne!</aside>
+<h3 id='analytics'>Analytics</h3>
+<p><strong>Type:</strong> <a href="#analytics">Analytics</a></p>
+
+<p><strong>Description:</strong> The Analytics object contains information about the bot, its environment, the website, and other random stuff that didnt fit somewhere else.</p>
+
+<aside class="warning">Do not attempt to edit the Analytics object</aside>
 <h1 id='libraries'>Libraries</h1>
 <p>Here is a list of NPM libraries that OpenBot includes, and the name of their accesser.</p>
 
