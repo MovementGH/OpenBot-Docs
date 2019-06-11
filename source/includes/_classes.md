@@ -121,6 +121,7 @@ Message.channel.send(Analytics.MessagesProcessed);
 ```
 
 > This will output something along the lines of this:
+
 ```output
 484468
 ```
