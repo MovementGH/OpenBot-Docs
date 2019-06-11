@@ -111,3 +111,27 @@ Locked | Bool | Whether this function is part of OpenBot's core and cannot be re
 OnlyDevs | Bool | Whether this function can only be called by developers
 
 <aside class='warning'>Do not attempt to edit any Commands. Doing so will cause your command to get rejected.</aside>
+
+## Analytics
+
+> Example: Print the number of messages OpenBot has processed
+
+```javascript
+Message.channel.send(Analytics.MessagesProcessed);
+```
+
+> This will output something along the lines of this:
+```output
+484468
+```
+
+The analytics class holds miscelaneous data.
+
+Member | Type | Description
+--------- | --------- | -----------
+MessagesProcessed | Number | The number of messages OpenBot has processed
+EventsProcessed | Number | The number of Discord.js Events OpenBot has processed
+Votes | Array | Array of command votes
+SupportedLocales | Array | All locales supported for commands
+SupportedWebLocales | Array | All locales supported on website
+EmojiMap | Array | Discord emojis mapped by tag and url

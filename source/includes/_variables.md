@@ -232,3 +232,11 @@ Finally, there are some variables which provide information about OpenBot but ca
 **Description:** The GlobDiscordClient is the discord.js Client class used to login to OpenBot. You can use it to find out information like how many servers OpenBot is in.
 
 <aside class="warning">Do not attempt to do malicious stuff like grabbing OpenBot's token or anything. Your command will get rejected by the mods. Banne!</aside>
+
+### Analytics
+
+**Type:** <a href="#analytics">Analytics</a>
+
+**Description:** The Analytics object contains information about the bot, its environment, the website, and other random stuff that didnt fit somewhere else.
+
+<aside class="warning">Do not attempt to edit the Analytics object</aside>
