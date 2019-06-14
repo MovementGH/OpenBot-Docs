@@ -255,7 +255,7 @@ CommandID | Number | The ID of the command you wish to get the number of install
 > Example: Get the proper locale to use for printing out the command's name (Yes i know its already available in CurrentLocale)
 
 ```javascript
-Message.channel.send(this.Names[FindLocale(this,CurrentUserLocale)]);
+Message.channel.send(this.Names[FindLocale(this,CurrentUserData.Locale)]);
 ```
 
 > This could output any of these things depending on the locale of the user
