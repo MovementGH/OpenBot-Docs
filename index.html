@@ -1206,7 +1206,7 @@ https://cdn.discordapp.com/emojis/539643411179896835.png
 <blockquote>
 <p>Example: Get the proper locale to use for printing out the command&#39;s name (Yes i know its already available in CurrentLocale)</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Names</span><span class="p">[</span><span class="nx">FindLocale</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">CurrentUserLocale</span><span class="p">)]);</span>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Names</span><span class="p">[</span><span class="nx">FindLocale</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">Locale</span><span class="p">)]);</span>
 </code></pre>
 <blockquote>
 <p>This could output any of these things depending on the locale of the user</p>
