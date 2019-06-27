@@ -45,7 +45,7 @@ Every OpenBot event is actually a function which gets passed several variables. 
 
 **Description:** The guild member that joined or left.
 
-## onMemberUpdate / onVoiceUpdate / onPresenceUpdate
+## onMemberUpdate / onVoiceUpdate
 
 ### OldMember
 

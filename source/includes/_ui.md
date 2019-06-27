@@ -100,7 +100,7 @@ The onMemberLeave event is executed whenever a user leaves a guild. It gets <a h
 
 **onMemberUpdate**
 
-The onMemberUpdate event is executed whenever a guild member's properties change. This can be roles, nicknames, etc. It gets <a href="#onmemberupdate-onvoiceupdate-onpresenceupdate">these</a> variables.
+The onMemberUpdate event is executed whenever a guild member's properties change. This can be roles, nicknames, etc. It gets <a href="#onmemberupdate-onvoiceupdate">these</a> variables.
 
 **onMemberBan**
 
@@ -172,15 +172,11 @@ The onUserUpdate event is executed whenever a user updates their details, for ex
 
 **onVoiceUpdate**
 
-The onVoiceUpdate event is executed whenever a user joins a voice channel. It gets <a href="#onmemberupdate-onvoiceupdate-onpresenceupdate">these</a> variables.
+The onVoiceUpdate event is executed whenever a user joins a voice channel. It gets <a href="#onmemberupdate-onvoiceupdate">these</a> variables.
 
 **onGuildUpdate**
 
 The onGuildUpdate event is executed whenever a guilds name, region, etc is updated. It gets <a href="#onguildupdate">these</a> variables.
-
-**onPresenceUpdate**
-
-The onPresenceUpdate event is executed when users come online, offline, enter a game, etc. It gets <a href="#onmemberupdate-onvoiceupdate-onpresenceupdate">these</a> variables.
 
 **onMessage**
 
