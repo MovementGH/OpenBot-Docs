@@ -318,7 +318,7 @@
                     <a href="#onmemberjoin-onmemberleave" class="toc-h2 toc-link" data-title="onMemberJoin / onMemberLeave">onMemberJoin / onMemberLeave</a>
                   </li>
                   <li>
-                    <a href="#onmemberupdate-onvoiceupdate-onpresenceupdate" class="toc-h2 toc-link" data-title="onMemberUpdate / onVoiceUpdate / onPresenceUpdate">onMemberUpdate / onVoiceUpdate / onPresenceUpdate</a>
+                    <a href="#onmemberupdate-onvoiceupdate" class="toc-h2 toc-link" data-title="onMemberUpdate / onVoiceUpdate">onMemberUpdate / onVoiceUpdate</a>
                   </li>
                   <li>
                     <a href="#onmemberban-onmemberunban" class="toc-h2 toc-link" data-title="onMemberBan / onMemberUnban">onMemberBan / onMemberUnban</a>
@@ -487,7 +487,7 @@
 
 <p><strong>onMemberUpdate</strong></p>
 
-<p>The onMemberUpdate event is executed whenever a guild member&#39;s properties change. This can be roles, nicknames, etc. It gets <a href="#onmemberupdate-onvoiceupdate-onpresenceupdate">these</a> variables.</p>
+<p>The onMemberUpdate event is executed whenever a guild member&#39;s properties change. This can be roles, nicknames, etc. It gets <a href="#onmemberupdate-onvoiceupdate">these</a> variables.</p>
 
 <p><strong>onMemberBan</strong></p>
 
@@ -559,15 +559,11 @@
 
 <p><strong>onVoiceUpdate</strong></p>
 
-<p>The onVoiceUpdate event is executed whenever a user joins a voice channel. It gets <a href="#onmemberupdate-onvoiceupdate-onpresenceupdate">these</a> variables.</p>
+<p>The onVoiceUpdate event is executed whenever a user joins a voice channel. It gets <a href="#onmemberupdate-onvoiceupdate">these</a> variables.</p>
 
 <p><strong>onGuildUpdate</strong></p>
 
 <p>The onGuildUpdate event is executed whenever a guilds name, region, etc is updated. It gets <a href="#onguildupdate">these</a> variables.</p>
-
-<p><strong>onPresenceUpdate</strong></p>
-
-<p>The onPresenceUpdate event is executed when users come online, offline, enter a game, etc. It gets <a href="#onmemberupdate-onvoiceupdate-onpresenceupdate">these</a> variables.</p>
 
 <p><strong>onMessage</strong></p>
 
@@ -1367,7 +1363,7 @@ Agregar Comando
 <p><strong>Type:</strong> Member</p>
 
 <p><strong>Description:</strong> The guild member that joined or left.</p>
-<h2 id='onmemberupdate-onvoiceupdate-onpresenceupdate'>onMemberUpdate / onVoiceUpdate / onPresenceUpdate</h2><h3 id='oldmember'>OldMember</h3>
+<h2 id='onmemberupdate-onvoiceupdate'>onMemberUpdate / onVoiceUpdate</h2><h3 id='oldmember'>OldMember</h3>
 <p><strong>Type:</strong> Member</p>
 
 <p><strong>Description:</strong> The old properties of the member</p>
