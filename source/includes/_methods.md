@@ -10,7 +10,7 @@ if(channel) {
     //Log
 }
 else {
-    DebugLog(this,"Oi ur code is broken the logchannel is not valid");
+    DebugMessage(this,"Oi ur code is broken the logchannel is not valid");
 }
 ```
 
