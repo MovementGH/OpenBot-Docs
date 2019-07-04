@@ -112,11 +112,11 @@ The onMemberUnban event is executed whenever a member is unbanned from a guild. 
 
 **onBotJoin**
 
-The onBotJoin event is executed when OpenBot joins a server, or when your command is added to a server. It gets <a href="#onbotjoin-onbotleave">these</a> variables.
+The onBotJoin event is executed when OpenBot joins a server, or when your command is added to a server. It gets <a href="#onbotjoin-onbotleave-onready">these</a> variables.
 
 **onBotLeave**
 
-The onBotLeave event is executed when OpenBot leaves a server, or when your command is removed from a server. It gets <a href="#onbotjoin-onbotleave">these</a> variables.
+The onBotLeave event is executed when OpenBot leaves a server, or when your command is removed from a server. It gets <a href="#onbotjoin-onbotleave-onready">these</a> variables.
 
 **onChannelCreate**
 
@@ -181,3 +181,7 @@ The onGuildUpdate event is executed whenever a guilds name, region, etc is updat
 **onMessage**
 
 The onMessage event is executed when a message arives, whether is is a command call or not. It is usefull for spam filters and the like. It gets <a href="#onmessagedelete-onmessage">these</a> variables.
+
+**onReady**
+
+The onReady event is executed when OpenBot comes online after downtime or restarting for updates. It gets <a href="#onbotjoin-onbotleave-onready">these</a> variables.

@@ -73,7 +73,7 @@ Every OpenBot event is actually a function which gets passed several variables. 
 
 **Description:** The user that was banned/unbanned
 
-## onBotJoin / onBotLeave
+## onBotJoin / onBotLeave / onReady
 
 ### Guild
 
