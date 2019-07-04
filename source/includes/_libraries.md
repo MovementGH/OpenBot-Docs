@@ -56,6 +56,6 @@ Request is used to make http and https requests
 
 ### Accessor: LibYTDL
 
-## Youtube-v3-API
+## Simple-Youtube-API
 
 ### Accessor: LibYoutube
