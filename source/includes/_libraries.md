@@ -51,3 +51,11 @@ Request is used to make http and https requests
 ### Links:
 
 <a href="https://www.npmjs.com/package/request">NPM</a>
+
+## YTDL-Core
+
+### Accessor: LibYTDL
+
+## Youtube-v3-API
+
+### Accessor: LibYoutube
