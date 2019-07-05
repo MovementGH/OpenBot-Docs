@@ -55,7 +55,3 @@ Request is used to make http and https requests
 ## Simple-Youtube-API
 
 ### Accessor: LibYoutube
-
-## Async-Eval
-
-### Accessor: LibAsyncEval
