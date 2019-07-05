@@ -32,10 +32,6 @@ Twemoji is used to get images for unicode characters (discord emojis)
 
 <a href="https://www.npmjs.com/package/twemoji">NPM</a>
 
-## UTF String
-
-UTF String is used for operations on UTF-8 strings
-
 ### Accesser: LibUTF
 
 ### Links:
@@ -59,3 +55,7 @@ Request is used to make http and https requests
 ## Simple-Youtube-API
 
 ### Accessor: LibYoutube
+
+## Async-Eval
+
+### Accessor: LibAsyncEval
