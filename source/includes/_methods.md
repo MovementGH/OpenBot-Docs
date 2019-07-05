@@ -163,6 +163,66 @@ GuildID | Number | The ID of the guild whos data you want to access.
 
 <aside class="warning">The command parameter must be 'this' or your command will be denied</aside>
 
+## GetTempUserStore
+
+> Example: Store a message in a user's data for future reference
+
+```javascript
+GetUserStore(this,CurrentUserData.UserID).secretMessage="Hello world!";
+```
+
+> Example: Read from a user's data
+
+```javascript
+Message.channel.send(GetUserStore(this,CurrentUserData.UserID).secretMessage);
+```
+
+The GetUserStore method gets a container that you can use to store data about a user for use in the future. The variable it returns is editable.
+
+If you dont have any data stored, this method will return a blank object that you can edit.
+
+The object returned by this method is owned by you, not your command, so it will be the same object regardless of which of your commands calls it. This makes it a convenient way to share data between your commands.
+
+Note: the data stored in GetTempUserStore isnt saved when the bot restarts.
+
+Parameter | Type | Description
+--------- | --------- | -----------
+Command | <a href="#command">Command</a> | The command accessing the data
+UserID | Number | The ID of the user whos data you want to access.
+### Return Value: Object
+
+<aside class="warning">The command parameter must be 'this' or your command will be denied</aside>
+
+## GetTempGuildStore
+
+> Example: Store a message in a guild's data for future reference
+
+```javascript
+GetGuildStore(this,CurrentGuildData.GuildID).secretMessage="Hello world!";
+```
+
+> Example: Read from a guild's data
+
+```javascript
+Message.channel.send(GetGuildStore(this,CurrentGuildData.GuildID).secretMessage);
+```
+
+The GetGuildStore method gets a container that you can use to store data about a guild for use in the future. The variable it returns is editable.
+
+If you dont have any data stored, this method will return a blank object that you can edit.
+
+The object returned by this method is owned by you, not your command, so it will be the same object regardless of which of your commands calls it. This makes it a convenient way to share data between your commands.
+
+Note: the data stored in GetTempGuildStore isnt saved when the bot restarts.
+
+Parameter | Type | Description
+--------- | --------- | -----------
+Command | <a href="#command">Command</a> | The command accessing the data
+GuildID | Number | The ID of the guild whos data you want to access.
+### Return Value: Object
+
+<aside class="warning">The command parameter must be 'this' or your command will be denied</aside>
+
 ## GetUserVotes
 
 > Example: Get the number of times a user has voted
