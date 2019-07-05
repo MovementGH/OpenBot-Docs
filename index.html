@@ -277,6 +277,12 @@
                     <a href="#getguildstore" class="toc-h2 toc-link" data-title="GetGuildStore">GetGuildStore</a>
                   </li>
                   <li>
+                    <a href="#gettempuserstore" class="toc-h2 toc-link" data-title="GetTempUserStore">GetTempUserStore</a>
+                  </li>
+                  <li>
+                    <a href="#gettempguildstore" class="toc-h2 toc-link" data-title="GetTempGuildStore">GetTempGuildStore</a>
+                  </li>
+                  <li>
                     <a href="#getuservotes" class="toc-h2 toc-link" data-title="GetUserVotes">GetUserVotes</a>
                   </li>
                   <li>
@@ -1084,6 +1090,84 @@ https://cdn.discordapp.com/emojis/539643411179896835.png
 </tr>
 </tbody></table>
 <h3 id='return-value-object-2'>Return Value: Object</h3>
+<aside class="warning">The command parameter must be 'this' or your command will be denied</aside>
+<h2 id='gettempuserstore'>GetTempUserStore</h2>
+<blockquote>
+<p>Example: Store a message in a user&#39;s data for future reference</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">GetUserStore</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">UserID</span><span class="p">).</span><span class="nx">secretMessage</span><span class="o">=</span><span class="s2">"Hello world!"</span><span class="p">;</span>
+</code></pre>
+<blockquote>
+<p>Example: Read from a user&#39;s data</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">GetUserStore</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">UserID</span><span class="p">).</span><span class="nx">secretMessage</span><span class="p">);</span>
+</code></pre>
+<p>The GetUserStore method gets a container that you can use to store data about a user for use in the future. The variable it returns is editable.</p>
+
+<p>If you dont have any data stored, this method will return a blank object that you can edit.</p>
+
+<p>The object returned by this method is owned by you, not your command, so it will be the same object regardless of which of your commands calls it. This makes it a convenient way to share data between your commands.</p>
+
+<p>Note: the data stored in GetTempUserStore isnt saved when the bot restarts.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Command</td>
+<td><a href="#command">Command</a></td>
+<td>The command accessing the data</td>
+</tr>
+<tr>
+<td>UserID</td>
+<td>Number</td>
+<td>The ID of the user whos data you want to access.</td>
+</tr>
+</tbody></table>
+<h3 id='return-value-object-3'>Return Value: Object</h3>
+<aside class="warning">The command parameter must be 'this' or your command will be denied</aside>
+<h2 id='gettempguildstore'>GetTempGuildStore</h2>
+<blockquote>
+<p>Example: Store a message in a guild&#39;s data for future reference</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">GetGuildStore</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">CurrentGuildData</span><span class="p">.</span><span class="nx">GuildID</span><span class="p">).</span><span class="nx">secretMessage</span><span class="o">=</span><span class="s2">"Hello world!"</span><span class="p">;</span>
+</code></pre>
+<blockquote>
+<p>Example: Read from a guild&#39;s data</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">GetGuildStore</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">CurrentGuildData</span><span class="p">.</span><span class="nx">GuildID</span><span class="p">).</span><span class="nx">secretMessage</span><span class="p">);</span>
+</code></pre>
+<p>The GetGuildStore method gets a container that you can use to store data about a guild for use in the future. The variable it returns is editable.</p>
+
+<p>If you dont have any data stored, this method will return a blank object that you can edit.</p>
+
+<p>The object returned by this method is owned by you, not your command, so it will be the same object regardless of which of your commands calls it. This makes it a convenient way to share data between your commands.</p>
+
+<p>Note: the data stored in GetTempGuildStore isnt saved when the bot restarts.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Command</td>
+<td><a href="#command">Command</a></td>
+<td>The command accessing the data</td>
+</tr>
+<tr>
+<td>GuildID</td>
+<td>Number</td>
+<td>The ID of the guild whos data you want to access.</td>
+</tr>
+</tbody></table>
+<h3 id='return-value-object-4'>Return Value: Object</h3>
 <aside class="warning">The command parameter must be 'this' or your command will be denied</aside>
 <h2 id='getuservotes'>GetUserVotes</h2>
 <blockquote>
