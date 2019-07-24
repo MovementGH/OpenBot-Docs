@@ -223,6 +223,25 @@ GuildID | Number | The ID of the guild whos data you want to access.
 
 <aside class="warning">The command parameter must be 'this' or your command will be denied</aside>
 
+## GetPrivateStorage
+
+> Example: Get an API key that you stored in private storage
+
+```javascript
+SomeYoutubeLib.Authenticate(GetPrivateStorage(this,'YoutubeAPIKey'));
+```
+The GetPrivateStorage method gets the private storage value of whatever key you provide. You can setup private storage in your user settings on the website.
+
+Note: the data returned is readonly
+
+Parameter | Type | Description
+--------- | --------- | -----------
+Command | <a href="#command">Command</a> | The command accessing the storage
+Key | String | The key you registered the data under in user settings
+### Return Value: String
+
+<aside class="warning">The command parameter must be 'this' or your command will be denied</aside>
+
 ## GetUserVotes
 
 > Example: Get the number of times a user has voted
