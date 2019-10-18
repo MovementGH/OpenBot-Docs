@@ -53,7 +53,7 @@ Here are the steps to create a command on the OpenBot website that you can start
  
 # Command Editor
 
-## MetaData
+## MetaData Box
 
 In the top left of the command editor, there is a box which contains the metadata of your command,  including its Icon, Permissions, and Support link. These control how people can see and interact with your command.
 
@@ -83,7 +83,7 @@ If your command is marked as open source, other users will be able to view its c
 
 If your command is marked as allowing pull requests, other users will be able to edit its code on the website. You will be notified of all edits, with the option to accept or deny them.
 
-## Language Support
+## Language Support Box
 
 In the top right of the command editor, there is a box which contains the language data of your command, including its Names, Callnames, Descriptions, and more. These let you translate your command into multiple languages!
 
@@ -127,6 +127,344 @@ Strings[0];
 ```
 Translation strings allow the text inside your command to be translated. You can have as many as you want, and you can access them from your code.
 
+## Event Box
 
+Your command can have multiple events, or just one. These are where you put your code. You can find a description of what the different events do below.
+
+# Events
+
+> Example: Log to the console
+
+```javascript
+console.log('This event was called!');
+```
+
+Events are among the most important things in OpenBot. They define the actions that the bot takes. Every event is actually a function which gets passed several variables and has scope to an OpenBot shard. You don't need to write the function, you can treat the code block as if it is directly executed. Ie this code would log to the console every time it was executed.
+
+
+## Universal
+
+All events receive certain variables, regardless of their type. Here they are:
+
+### Context
+
+**Type:** Object
+**Description:** The context contains discord.js objects relevent to the event.
+**Children:**  guild, channel*, user*
  
+ *May be null
+ 
+ ### BotContext
+ 
+ **Type:** Object
+ **Description:** The BotContext contains OpenBot objects relevent to the event
+ **Children:** Guild, User*
+ 
+ *May be null
 
+## Call 
+
+The Call event is executed whenever a message matches Prefix+Callname. For example, when someone sends "-Open Help" on a server where the prefix is "-Open", the command with the callname "Help" runs its Call event.
+
+It receives these variables:
+
+### Message
+
+**Type:** Message
+**Description:** The message that was sent to activate the command.
+
+### Arguments
+
+**Type:** String
+**Description:** The content of the message, excluding the prefix and callname. For example, if message.content is `-Open Add SomeCommand`, Arguments will be "SomeCommand"
+
+## ChannelCreate
+
+The ChannelCreate event is executed when a channel is created.
+
+It receives no special variables.
+
+## ChannelDelete
+
+The ChannelDelete event is executed when a channel is deleted.
+
+It receives no special variables.
+
+## ChannelPinsUpdate
+
+The ChannelPinsUpdate event is executed when the pins of a channel are changed.
+
+It receives no special variables.
+
+## ChannelUpdate
+
+The ChannelUpdate event is executed when a channel is updated (eg. Name changed, Permissions changed, etc.)
+
+It receives these variables:
+
+### OldChannel
+
+**Type:** Channel
+**Description:** The channel before the update
+
+### NewChannel
+
+**Type:** Channel
+**Description:** The channel after the update
+
+## CommandAdded
+
+The CommandAdded event is executed when your command is added to a server.
+
+It recieves no special variables.
+
+## CommandRemoved
+
+The CommandRemoved event is executed when your command is removed from a server.
+
+It receives no special variables.
+
+## CommandUpdated
+
+The CommandUpdated event is executed when your edit request is approved, and your command is integrated into OpenBot. You can use it to update command data if you change formats, or anything else that needs updated.
+
+## EmojiCreate
+
+The EmojiCreate event is executed when an emoji is added to the guild.
+
+It receives these variables:
+
+### Emoji
+
+**Type:** Emoji
+**Description:** The emoji that was added.
+
+## EmojiDelete
+
+The EmojiDelete event is executed when an emoji is deleted from the guild.
+
+It receives these variables:
+
+### Emoji
+
+**Type:** Emoji
+**Description:** The emoji that was deleted
+
+## EmojiUpdate
+
+The EmojiUpdate event is executed when an emoji in the guild is updated (eg. Name changed, Icon changed, etc.)
+
+It receives these variables:
+
+### OldEmoji
+
+**Type:** Emoji
+**Description:** The emoji before the update
+
+### NewEmoji
+
+**Type:** Emoji
+**Description:** The emoji after the update
+
+## GuildBanAdd
+
+The GuildBanAdd event is executed when a user is banned from the guild.
+
+It receives no special variables.
+
+## GuildBanRemove
+
+The GuildBanRemove event is executed when a user is unbanned from the guild.
+
+It receives no special variables.
+
+## GuildIntegrationsUpdate
+
+The GuildIntegrationsUpdate event is executed when a guild's integrations are updated.
+
+It receives no special variables.
+
+## GuildMemberAdd
+
+The GuildMemberAdd event is executed when a user joins a guild.
+
+It receives these variables:
+
+### Member
+
+**Type:** Member
+**Description:** The member that joined
+
+## GuildMemberRemove
+
+The GuildMemberRemove event is executed when a user leaves or is kicked from a guild.
+
+It receives these variables:
+
+### Member
+
+**Type:** Member
+**Description:** The member that left
+
+## GuildMemberSpeaking
+
+The GuildMemberSpeaking event is executed when a user starts/stops speaking.
+
+It receives these variables:
+
+### Member
+
+**Type:** Member
+**Description:** The member that started/stopped speaking
+
+### Speaking
+
+**Type:** Boolean
+**Description:** Whether they are speaking.
+
+## GuildMemberUpdate
+
+The GuildMemberUpdate event is executed when a member is updated (eg. Nickname changed, Roles changed, etc.)
+
+It receives these variables:
+
+### OldMember
+
+**Type:** Member
+**Description:** The member before the update
+
+### NewMember
+
+**Type:** Member
+**Description:** The member after the update
+
+## GuildUpdate
+
+The GuildUpdate event is executed when a guild is updated (eg. Name changed, region changed, etc.)
+
+It receives these variables:
+
+### OldGuild 
+
+**Type:** Guild
+**Description:** The guild before the update
+
+### NewGuild
+
+**Type:** Guild
+**Description:** The guild after the update
+
+## MessageDelete
+
+The MessageDelete event is executed when a message is deleted.
+
+It receives these variables:
+
+### Message
+
+**Type:** Message
+**Description:** The message that was deleted
+
+## MessageReactionAdd
+
+The MessageReactionAdd event is executed when a reaction is added to a message.
+
+It receives these variables:
+
+### Reaction
+
+**Type:** MessageReaction
+**Description:** The reaction that was added
+
+## MessageReactionRemove
+
+The MessageReactionRemove event is executed when a reaction is removed from a message
+
+It receives these variables:
+
+### Reaction
+
+**Type:** MessageReaction
+**Description:** The reaction that was removed
+
+## MessageReactionRemoveAll
+
+The MessageReactionRemoveAll event is executed when all the reactions are removed from a message
+
+It receives these variables:
+
+### Reaction
+
+**Type:** Message
+**Description:** The message from which the reactions were removed
+
+## MessageUpdate
+
+The MessageUpdate event is executed when a message is edited
+
+It receives these variables:
+
+### OldMessage
+
+**Type:** Message
+**Description:** The message before the edit
+
+### NewMessage
+
+**Type:** Message
+**Description:** The message after the edit
+
+## RoleCreate
+
+The RoleCreate event is executed when a role is created
+
+It receives these variables:
+
+### Role
+
+**Type:** Role
+**Description:** The role that was created
+
+## RoleDelete
+
+The RoleDelete event is executed when a role is deleted
+
+It receives these variables:
+
+### Role
+
+**Type:** Role
+**Description:** The role that was deleted
+
+## RoleUpdate
+
+The RoleUpdate event is executed when a role is updated (eg. Change name, Change permissions, etc.)
+
+It receives these variables:
+
+### OldRole
+
+**Type:** Role
+**Description:** The role before the update
+
+### NewRole
+
+**Type:** Role
+**Description:** The role after the update
+
+## VoiceStateUpdate
+
+The VoiceStateUpdate event is executed when a user joins or leaves a voice channel, and when they move between voice channel.
+
+It receives these variables:
+
+### OldMember
+
+**Type:** Member
+**Description:** The member before the update
+
+### NewMember
+
+**Type:** Member
+
+**Description:** The member after the update
