@@ -152,9 +152,9 @@ All events receive certain variables, regardless of their type. Here they are:
 
 **Description:** The context contains discord.js objects relevent to the event.
 
-**Children:**  guild, channel*, user*
+**Children:**  guild, channel\*, user\*
  
- *May be null
+ \*May be null
  
  ### BotContext
  
@@ -162,9 +162,9 @@ All events receive certain variables, regardless of their type. Here they are:
  
  **Description:** The BotContext contains OpenBot objects relevent to the event
  
- **Children:** Guild, User*
+ **Children:** Guild, User\*
  
- *May be null
+\ *May be null
 
 ## Call 
 
