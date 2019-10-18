@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>API Documentation</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -198,10 +198,10 @@
     </style>
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all.js"></script>
+      <script src="javascripts/all_nosearch.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;javascript&quot;]">
+  <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -210,1390 +210,130 @@
     </a>
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
-        <div class="lang-selector">
-              <a href="#" data-language-name="javascript">javascript</a>
-        </div>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
-          </li>
-          <li>
-            <a href="#editor-ui" class="toc-h1 toc-link" data-title="Editor UI">Editor UI</a>
+            <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting Started">Getting Started</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#command-metadata" class="toc-h2 toc-link" data-title="Command MetaData">Command MetaData</a>
+                    <a href="#welcome" class="toc-h2 toc-link" data-title="Welcome">Welcome</a>
                   </li>
                   <li>
-                    <a href="#locales" class="toc-h2 toc-link" data-title="Locales">Locales</a>
+                    <a href="#prerequirements" class="toc-h2 toc-link" data-title="Prerequirements">Prerequirements</a>
                   </li>
                   <li>
-                    <a href="#events" class="toc-h2 toc-link" data-title="Events">Events</a>
+                    <a href="#creating-a-command" class="toc-h2 toc-link" data-title="Creating a command">Creating a command</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#classes" class="toc-h1 toc-link" data-title="Classes">Classes</a>
+            <a href="#command-editor" class="toc-h1 toc-link" data-title="Command Editor">Command Editor</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#userdata" class="toc-h2 toc-link" data-title="UserData">UserData</a>
+                    <a href="#metadata" class="toc-h2 toc-link" data-title="MetaData">MetaData</a>
                   </li>
                   <li>
-                    <a href="#guilddata" class="toc-h2 toc-link" data-title="GuildData">GuildData</a>
-                  </li>
-                  <li>
-                    <a href="#commanddata" class="toc-h2 toc-link" data-title="CommandData">CommandData</a>
-                  </li>
-                  <li>
-                    <a href="#command" class="toc-h2 toc-link" data-title="Command">Command</a>
-                  </li>
-                  <li>
-                    <a href="#analytics" class="toc-h2 toc-link" data-title="Analytics">Analytics</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#methods" class="toc-h1 toc-link" data-title="Methods">Methods</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#debugmessage" class="toc-h2 toc-link" data-title="DebugMessage">DebugMessage</a>
-                  </li>
-                  <li>
-                    <a href="#generateimage" class="toc-h2 toc-link" data-title="GenerateImage">GenerateImage</a>
-                  </li>
-                  <li>
-                    <a href="#getguilddata" class="toc-h2 toc-link" data-title="GetGuildData">GetGuildData</a>
-                  </li>
-                  <li>
-                    <a href="#getuserdata" class="toc-h2 toc-link" data-title="GetUserData">GetUserData</a>
-                  </li>
-                  <li>
-                    <a href="#getuserstore" class="toc-h2 toc-link" data-title="GetUserStore">GetUserStore</a>
-                  </li>
-                  <li>
-                    <a href="#getguildstore" class="toc-h2 toc-link" data-title="GetGuildStore">GetGuildStore</a>
-                  </li>
-                  <li>
-                    <a href="#gettempuserstore" class="toc-h2 toc-link" data-title="GetTempUserStore">GetTempUserStore</a>
-                  </li>
-                  <li>
-                    <a href="#gettempguildstore" class="toc-h2 toc-link" data-title="GetTempGuildStore">GetTempGuildStore</a>
-                  </li>
-                  <li>
-                    <a href="#getuservotes" class="toc-h2 toc-link" data-title="GetUserVotes">GetUserVotes</a>
-                  </li>
-                  <li>
-                    <a href="#getcommandvotes" class="toc-h2 toc-link" data-title="GetCommandVotes">GetCommandVotes</a>
-                  </li>
-                  <li>
-                    <a href="#getuserhasvoted" class="toc-h2 toc-link" data-title="GetUserHasVoted">GetUserHasVoted</a>
-                  </li>
-                  <li>
-                    <a href="#getcommandinstalls" class="toc-h2 toc-link" data-title="GetCommandInstalls">GetCommandInstalls</a>
-                  </li>
-                  <li>
-                    <a href="#findlocale" class="toc-h2 toc-link" data-title="FindLocale">FindLocale</a>
-                  </li>
-                  <li>
-                    <a href="#findcommand" class="toc-h2 toc-link" data-title="FindCommand">FindCommand</a>
-                  </li>
-                  <li>
-                    <a href="#findcommandindex" class="toc-h2 toc-link" data-title="FindCommandIndex">FindCommandIndex</a>
-                  </li>
-                  <li>
-                    <a href="#finduser" class="toc-h2 toc-link" data-title="FindUser">FindUser</a>
-                  </li>
-                  <li>
-                    <a href="#findguild" class="toc-h2 toc-link" data-title="FindGuild">FindGuild</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#event-variables" class="toc-h1 toc-link" data-title="Event Variables">Event Variables</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#oncall" class="toc-h2 toc-link" data-title="onCall">onCall</a>
-                  </li>
-                  <li>
-                    <a href="#onreactadd-onreactrem" class="toc-h2 toc-link" data-title="onReactAdd / onReactRem">onReactAdd / onReactRem</a>
-                  </li>
-                  <li>
-                    <a href="#onmemberjoin-onmemberleave" class="toc-h2 toc-link" data-title="onMemberJoin / onMemberLeave">onMemberJoin / onMemberLeave</a>
-                  </li>
-                  <li>
-                    <a href="#onmemberupdate-onvoiceupdate" class="toc-h2 toc-link" data-title="onMemberUpdate / onVoiceUpdate">onMemberUpdate / onVoiceUpdate</a>
-                  </li>
-                  <li>
-                    <a href="#onmemberban-onmemberunban" class="toc-h2 toc-link" data-title="onMemberBan / onMemberUnban">onMemberBan / onMemberUnban</a>
-                  </li>
-                  <li>
-                    <a href="#onbotjoin-onbotleave-onready" class="toc-h2 toc-link" data-title="onBotJoin / onBotLeave / onReady">onBotJoin / onBotLeave / onReady</a>
-                  </li>
-                  <li>
-                    <a href="#onchannelcreate-onchanneldelete" class="toc-h2 toc-link" data-title="onChannelCreate / onChannelDelete">onChannelCreate / onChannelDelete</a>
-                  </li>
-                  <li>
-                    <a href="#onchannelupdate" class="toc-h2 toc-link" data-title="onChannelUpdate">onChannelUpdate</a>
-                  </li>
-                  <li>
-                    <a href="#onmessagedelete-onmessage" class="toc-h2 toc-link" data-title="onMessageDelete / onMessage">onMessageDelete / onMessage</a>
-                  </li>
-                  <li>
-                    <a href="#onpinsupdate" class="toc-h2 toc-link" data-title="onPinsUpdate">onPinsUpdate</a>
-                  </li>
-                  <li>
-                    <a href="#onemojicreate-onemojidelete" class="toc-h2 toc-link" data-title="onEmojiCreate / onEmojiDelete">onEmojiCreate / onEmojiDelete</a>
-                  </li>
-                  <li>
-                    <a href="#onemojiupdate" class="toc-h2 toc-link" data-title="onEmojiUpdate">onEmojiUpdate</a>
-                  </li>
-                  <li>
-                    <a href="#onmessageupdate" class="toc-h2 toc-link" data-title="onMessageUpdate">onMessageUpdate</a>
-                  </li>
-                  <li>
-                    <a href="#onrolecreate-onroledelete" class="toc-h2 toc-link" data-title="onRoleCreate / onRoleDelete">onRoleCreate / onRoleDelete</a>
-                  </li>
-                  <li>
-                    <a href="#onuserupdate" class="toc-h2 toc-link" data-title="onUserUpdate">onUserUpdate</a>
-                  </li>
-                  <li>
-                    <a href="#onguildupdate" class="toc-h2 toc-link" data-title="onGuildUpdate">onGuildUpdate</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#editable-variables" class="toc-h1 toc-link" data-title="Editable Variables">Editable Variables</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#currentuserdata" class="toc-h2 toc-link" data-title="CurrentUserData">CurrentUserData</a>
-                  </li>
-                  <li>
-                    <a href="#currentguilddata" class="toc-h2 toc-link" data-title="CurrentGuildData">CurrentGuildData</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#const-variables" class="toc-h1 toc-link" data-title="Const Variables">Const Variables</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#globinvite" class="toc-h2 toc-link" data-title="GlobInvite">GlobInvite</a>
-                  </li>
-                  <li>
-                    <a href="#globdiscordclient" class="toc-h2 toc-link" data-title="GlobDiscordClient">GlobDiscordClient</a>
-                  </li>
-                  <li>
-                    <a href="#analytics" class="toc-h2 toc-link" data-title="Analytics">Analytics</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#libraries" class="toc-h1 toc-link" data-title="Libraries">Libraries</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#discord-js" class="toc-h2 toc-link" data-title="Discord.js">Discord.js</a>
-                  </li>
-                  <li>
-                    <a href="#fs" class="toc-h2 toc-link" data-title="FS">FS</a>
-                  </li>
-                  <li>
-                    <a href="#twemoji" class="toc-h2 toc-link" data-title="Twemoji">Twemoji</a>
-                  </li>
-                  <li>
-                    <a href="#request" class="toc-h2 toc-link" data-title="Request">Request</a>
-                  </li>
-                  <li>
-                    <a href="#ytdl-core" class="toc-h2 toc-link" data-title="YTDL-Core">YTDL-Core</a>
-                  </li>
-                  <li>
-                    <a href="#simple-youtube-api" class="toc-h2 toc-link" data-title="Simple-Youtube-API">Simple-Youtube-API</a>
+                    <a href="#language-support" class="toc-h2 toc-link" data-title="Language Support">Language Support</a>
                   </li>
               </ul>
           </li>
       </ul>
-        <ul class="toc-footer">
-            <li><a href='../'>Start Coding</a></li>
-            <li><a href='https://github.com/lord/slate'>Powered by Slate</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the OpenBot API!</p>
+        <p>title: OpenBot API</p>
 
-<p>We appreciate any contributions you make to OpenBot&#39;s commands, and as such we feel it is important to provide a quality API. If you have any questions about the API, feel these Docs are unclear, or anything else, please go to the official OpenBot Development Server and let us know.</p>
+<p>language_tabs:
+ - javascript</p>
 
-<aside class="notice"> OpenBot only supports code written in node.js using the discord.js library to interact with Discord </aside>
-<h1 id='editor-ui'>Editor UI</h1>
-<p>The editor is a powerful tool, but its ui can be a bit confusing at first glance. Here are some explainations on what different things do</p>
-<h2 id='command-metadata'>Command MetaData</h2>
-<p>The Command MetaData box holds all of the MetaData for your command. This includes its version, syntax, support link, icon, etc. This is the information that shows up when someone calls <code>-Open Cominfo [Your Command]</code></p>
-<h3 id='syntax'>Syntax</h3>
-<p>The syntax field is displayed after the name of your command in help menus, searches, etc. It should tell users what kinds of arguments your command expects them to include. For example, the syntax for a kick command could be something like <code>[@Mention]</code>. The square brackets <code>[]</code> indicate a required parameter which is an @Mention of a user.</p>
+<p>toc_footers:
+- <a href='../'>Start Using OpenBot</a>
+- <a href='https://github.com/lord/slate'>Powered by Slate</a></p>
+<h2 id='search-true'>search: true</h2><h1 id='getting-started'>Getting Started</h1><h2 id='welcome'>Welcome</h2>
+<p>Welcome to the OpenBot API Documentation. We hope everything on this page is clear, but if you dont understand something, want to suggest a change, addition, etc, you can go to the <a href="https://discord.gg/CdpzgFX/">OpenBot Support</a> discord server and talk us.</p>
+<h2 id='prerequirements'>Prerequirements</h2>
+<p>OpenBot and its API use quite a few technologies in order to work. You don&#39;t need to know all of them in order to make commands, but there are some which you do need to know.</p>
+<h3 id='required-knowledge'>Required Knowledge:</h3>
+<ul>
+<li>node.js</li>
+<li>discord.js</li>
+</ul>
+<h3 id='helpful-knowledge'>Helpful Knowledge:</h3>
+<ul>
+<li>rethinkdb</li>
+</ul>
+<h3 id='things-openbot-uses-that-you-don-39-t-need-to-know'>Things OpenBot uses that you don&#39;t need to know</h3>
+<ul>
+<li>express.js</li>
+<li>php</li>
+<li>html5/css3</li>
+<li>child_process</li>
+</ul>
 
-<p>Suggested formatting:</p>
+<p>We are happy to help you with problems you have while using OpenBot, but if your problems are from lack of required knowledge we will send you to other documentation/tutorials relating to that framework/language, we won&#39;t write your commands for you. It is up to you to learn what you need to learn.</p>
+<h2 id='creating-a-command'>Creating a command</h2>
+<p>Here are the steps to create a command on the OpenBot website that you can start writing code for.</p>
 
-<p><strong>[Param]</strong> - Required</p>
-
-<p><strong>{Param}</strong> - Optional</p>
-
-<p><strong>Param</strong> - Literal text</p>
-
-<p><strong>(No Arguments)</strong> No paramaters</p>
+<ul>
+<li>Login</li>
+<li>Click &quot;Profile&quot; in the upper right corner</li>
+<li>Click &quot;Settings&quot; under your avatar</li>
+<li>Enable the slider labeled &quot;Developer Mode&quot;</li>
+<li>Click &quot;Commands&quot; under your avatar</li>
+<li>Click &quot;Create Command&quot;</li>
+<li>Click &quot;Edit&quot; on the command that appears in the list.</li>
+</ul>
+<h1 id='command-editor'>Command Editor</h1><h2 id='metadata'>MetaData</h2>
+<p>In the top left of the command editor, there is a box which contains the metadata of your command,  including its Icon, Permissions, and Support link. These control how people can see and interact with your command.</p>
 <h3 id='icon'>Icon</h3>
-<p>Your command&#39;s icon is displayed next to it in help menus, searches, and more. It should give some idea of what your command does. The icon can be any discord emoji. If it is a default emoji, it should be entered into the icon field like <code>:smile:</code>, wheras if it is a custom emoji, it should be entered in like <code>&lt;:AddCommand:539643411179896835&gt;</code>. To find the ID of your custom emoji, right click it in discord and click copy link. The long number in the link is the ID of your emoji.</p>
+<p>Your command&#39;s icon is displayed next to it in help menus, searches and more. It should relate to your command so that people can tell what it does at a glance. The icon can be any discord emoji. If it is a default emoji, it must be entered into the editor like <code>:smile:</code>. If it is a custom emoji, it must be entered in like <code>&lt;:AddCommand:634475978000695316&gt;</code> To find the ID of a custom emoji, richt click it in discord and click copy link. The number in the link is the ID of your emoji.</p>
 <h3 id='support-link'>Support Link</h3>
-<p>The support link is displayed under your command in detailed information screens, and when your command crashes. You can set it to your server or OpenBot&#39;s server. Wherever you want people to go when your command breaks.</p>
+<p>The support link is displayed under your command in information menus. You can set it to a link to the discord server you want people to go to when your command breaks.</p>
 
-<p>The support link must be formatted like <code>https://discordapp.com/invite/abcdef</code> with abcdef being the invite code.</p>
-<h3 id='version'>Version</h3>
-<p>This field is mainly asthetic. Set it to any number you like.</p>
-<h3 id='executeperms'>ExecutePerms</h3>
-<p>The ExecutePerms are the permissions that a user calling your command needs in order to call it. You can calculate permissions at the <a href="https://discordapi.com/permissions.html">Official Discord Permissions Calculator</a></p>
-<h3 id='botperms'>BotPerms</h3>
-<p>The BotPerms are the permissions that OpenBot needs in order to run your command. You can calculate permissions at the <a href="https://discordapi.com/permissions.html">Official Discord Permissions Calculator</a></p>
+<p>The support link must be formatted <code>https://discordapp.com/invite/abcdef</code> where abcdef is the invite code.</p>
+<h3 id='bot-perms'>Bot Perms</h3>
+<p>The Bot Perms are the permissions that OpenBot needs in order to run your command. It will prevent your command from running when permissions aren&#39;t met, so that you dont need to handle it inside your command. You can calculate the permissions number at the <a href="https://discordapi.com/permissions.html">Discord Permissions Calculator</a></p>
+<h3 id='user-perms'>User Perms</h3>
+<p>The User Perms are the permissions that a user needs in order to run your command. It will prevent your command from being used by the wrong people. You can calculate the permissions number at the <a href="https://discordapi.com/permissions.html">Discord Permissions Calculator</a></p>
 <h3 id='open-source'>Open Source</h3>
-<p>If your command is marked as open source, other users will be able to use the <code>-Open Viewsource</code> command to view its source and see how you work your magic.</p>
+<p>If your command is marked as open source, other users will be able to view its code on the website and see how you work your magic.</p>
 <h3 id='pull-requests'>Pull Requests</h3>
-<p>If your command is marked as allowing pull requests, other users will be able to use the <code>-Open Editsource</code> command to edit its source. All edits will be DMed to you for approval before being submitted to the Core Developers</p>
-<h2 id='locales'>Locales</h2>
-<p>Locales allow your command to support multiple languages. If your command does not support the locale a user is using, the uppermost locale in your list will be used.</p>
-<h3 id='language'>Language</h3>
-<p>Each locale has a language tag. This language tag tells OpenBot what language the locale is. If you wish to support a language that is not listed here, please contact a Core Developer to get it added.</p>
-<h3 id='command-name'>Command Name</h3>
-<p>The full name of your command, translated to the language marked by the Language field.</p>
-<h3 id='command-callname'>Command Callname</h3>
-<p>The callname of your command. This is the string that people will use to actually activate your command. For example, a kick command could have a name of <code>Kick User</code> but a callname of <code>Kick</code>.</p>
+<p>If your command is marked as allowing pull requests, other users will be able to edit its code on the website. You will be notified of all edits, with the option to accept or deny them.</p>
+<h2 id='language-support'>Language Support</h2>
+<p>In the top right of the command editor, there is a box which contains the language data of your command, including its Names, Callnames, Descriptions, and more. These let you translate your command into multiple languages!</p>
+
+<aside type="note">If you are having difficulties scrolling sideways through the tabs, you can hold shift and scoll up/down and it will scroll sideways</aside>
+<h3 id='name'>Name</h3>
+<p>The name of your command is... well... its name. It defines how users search for your command, and how it appears in the help menu.</p>
+<h3 id='callname'>Callname</h3>
+<p>The callname of your command is what people use to execute it. For example, a command with a callname of &quot;Help&quot; is executed using <code>-Open Help</code>. Your callname should generally be pretty short, to make typing it easy.</p>
 <h3 id='command-description'>Command Description</h3>
-<p>A detailed description of what your command does</p>
+<p>The description is a place to let your inner author roam free, and tell the world the intracies of your command.</p>
+<h3 id='command-syntax'>Command Syntax</h3>
+<p>The syntax of your command is displayed after its name in help menus, searches, etc. It should tell users what arguments your command accepts. For example, the syntax for a kick command would be similar to <code>[@Mention]</code>. The square brackets indicate a required parameter which is a mention of a user.</p>
+
+<p>Formatting:</p>
+
+<p><strong>[Param]</strong> - Required parameter
+<strong>{Param}</strong> - Optional parameter
+<strong>Param</strong> - Literall text (write Param)
+<strong>(Note)</strong> - Note (ie you can use <code>(No Arguments)</code> to indicate that your command doesnt expect and parameters</p>
 <h3 id='translation-strings'>Translation Strings</h3>
-<p>Translation strings allow the text inside your command to be translated. You can have as many translation strings as you want, and you can access them from your code. For example, <code>this.String[CurrentLocale][0]</code> would return Translation String 0.</p>
-<h2 id='events'>Events</h2>
-<p>Your command can have multiple events, or just one. These are where you put your actual code. The eye button on the right side of the box lets you hide and show events to prevent UI clutter. The &quot;Active&quot; checkbox toggles whether your command is registered as supporting that event. The events you register will be shown in your ComInfo listing and the events that you dont register will not be executed, making the bot run faster.</p>
+<p>Translation strings allow the text inside your command to be translated. You can have as many as you want, and you can access them from your code.</p>
 
-<p><strong>onCall</strong></p>
-
-<p>The onCall event is executed whenever a message matches Prefix + Callname. It gets <a href="#oncall">these</a> variables</p>
-
-<p><strong>onReactionAdd</strong></p>
-
-<p>The onReactionAdd event is executed whenever a reaction is added to a message. It is up to you to determine whether or not the reaction is relavent. It gets <a href="#onreactadd-onreactrem">these</a> variables.</p>
-
-<p><strong>onReactionRem</strong></p>
-
-<p>The onReactionRem event is executed whenever a reaction is removed from a message. It is up to you to determine whether or not the reaction is relavent. It gets <a href="#onreactadd-onreactrem">these</a> variables.</p>
-
-<p><strong>onMemberJoin</strong></p>
-
-<p>The onMemberJoin event is executed whenever a user joins a guild. It gets <a href="#onmemberjoin-onmemberleave">these</a> variables.</p>
-
-<p><strong>onMemberLeave</strong></p>
-
-<p>The onMemberLeave event is executed whenever a user leaves a guild. It gets <a href="#onmemberjoin-onmemberleave">these</a> variables.</p>
-
-<p><strong>onMemberUpdate</strong></p>
-
-<p>The onMemberUpdate event is executed whenever a guild member&#39;s properties change. This can be roles, nicknames, etc. It gets <a href="#onmemberupdate-onvoiceupdate">these</a> variables.</p>
-
-<p><strong>onMemberBan</strong></p>
-
-<p>The onMemberBan event is executed whenever a member is banned from a guild. It gets <a href="#onmemberban-onmemberunban">these</a> variables.</p>
-
-<p><strong>onMemberUnban</strong></p>
-
-<p>The onMemberUnban event is executed whenever a member is unbanned from a guild. It gets <a href="#onmemberban-onmemberunban">these</a> variables.</p>
-
-<p><strong>onBotJoin</strong></p>
-
-<p>The onBotJoin event is executed when OpenBot joins a server, or when your command is added to a server. It gets <a href="#onbotjoin-onbotleave-onready">these</a> variables.</p>
-
-<p><strong>onBotLeave</strong></p>
-
-<p>The onBotLeave event is executed when OpenBot leaves a server, or when your command is removed from a server. It gets <a href="#onbotjoin-onbotleave-onready">these</a> variables.</p>
-
-<p><strong>onChannelCreate</strong></p>
-
-<p>The onChannelCreate event is executed when a channel is created. It gets <a href="#onchannelcreate-onchanneldelete">these</a> variables.</p>
-
-<p><strong>onChannelDelete</strong></p>
-
-<p>The onChannelDelete event is executed when a channel is deleted. It gets <a href="#onchannelcreate-onchanneldelete">these</a> variables.</p>
-
-<p><strong>onChannelUpdate</strong></p>
-
-<p>The onChannelUpdate event is executed when a channel is updated. It gets <a href="#onchannelupdate">these</a> variables.</p>
-
-<p><strong>onMessageDelete</strong></p>
-
-<p>The onMessageDelete event is executed whenever a message is deleted. It gets <a href="#onmessagedelete">these</a> variables.</p>
-
-<p><strong>onPinsUpdate</strong></p>
-
-<p>The onPinsUpdate event is executed whenever the pins of a channel are updated. It gets <a href="#onpinsupdate">these</a> variables.</p>
-
-<p><strong>onEmojiCreate</strong></p>
-
-<p>The onEmojiCreate event is executed whenever a custom emoji is created on a server. It gets <a href="#onemojicreate-onemojidelete">these</a> variables.</p>
-
-<p><strong>onEmojiDelete</strong></p>
-
-<p>The onEmojiDelete event is executed whenever a custom emoji is deleted on a server. It gets <a href="#onemojicreate-onemojidelete">these</a> variables.</p>
-
-<p><strong>onEmojiUpdate</strong></p>
-
-<p>The onEmojiUpdate event is executed whenever a custom emoji is updated on a server. It gets <a href="#onemojiupdate">these</a> variables.</p>
-
-<p><strong>onMessageUpdate</strong></p>
-
-<p>The onMessageUpdate event is executed whenever a message is edited. It gets <a href="#onmessageupdate">these</a> variables.</p>
-
-<p><strong>onRoleCreate</strong></p>
-
-<p>The onRoleCreate event is executed whenever a role is created on a server. It gets <a href="#onrolecreate-onroledelete">these</a> variables.</p>
-
-<p><strong>onRoleDelete</strong></p>
-
-<p>The onRoleDelete event is executed whenever a role is deleted on a server. It gets <a href="#onrolecreate-onroledelete">these</a> variables.</p>
-
-<p><strong>onRoleUpdate</strong></p>
-
-<p>The onRoleUpdate event is executed whenever a role is updated on a server. It gets <a href="#onroleupdate">these</a> variables.</p>
-
-<p><strong>onUserUpdate</strong></p>
-
-<p>The onUserUpdate event is executed whenever a user updates their details, for example if they change their username. It gets <a href="#onuserupdate">these</a> variables.</p>
-
-<p><strong>onVoiceUpdate</strong></p>
-
-<p>The onVoiceUpdate event is executed whenever a user joins a voice channel. It gets <a href="#onmemberupdate-onvoiceupdate">these</a> variables.</p>
-
-<p><strong>onGuildUpdate</strong></p>
-
-<p>The onGuildUpdate event is executed whenever a guilds name, region, etc is updated. It gets <a href="#onguildupdate">these</a> variables.</p>
-
-<p><strong>onMessage</strong></p>
-
-<p>The onMessage event is executed when a message arives, whether is is a command call or not. It is usefull for spam filters and the like. It gets <a href="#onmessagedelete-onmessage">these</a> variables.</p>
-
-<p><strong>onReady</strong></p>
-
-<p>The onReady event is executed when OpenBot comes online after downtime or restarting for updates. It gets <a href="#onbotjoin-onbotleave-onready">these</a> variables.</p>
-<h1 id='classes'>Classes</h1><h2 id='userdata'>UserData</h2>
 <blockquote>
-<p>Example: Printing out a user&#39;s Username, ID, and Avatar</p>
+<p>Example: How to use translation strings</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">UserName</span><span class="p">);</span>
-<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">UserID</span><span class="p">);</span>
-<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">AvatarURL</span><span class="p">);</span>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Access String 0</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">Languages</span><span class="p">[</span><span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">LanguageIndex</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">Settings</span><span class="p">.</span><span class="nx">Language</span><span class="p">].</span><span class="nx">Strings</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+
+<span class="c1">//Make a reference to the strings for cleaner code</span>
+<span class="kd">var</span> <span class="nx">Strings</span><span class="o">=</span><span class="k">this</span><span class="p">.</span><span class="nx">Languages</span><span class="p">[</span><span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">LanguageIndex</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">Settings</span><span class="p">.</span><span class="nx">Language</span><span class="p">].</span><span class="nx">Strings</span><span class="p">;</span>
+<span class="c1">//Later...</span>
+<span class="nx">Strings</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
 </code></pre>
-<blockquote>
-<p>This will output something along the lines of this:</p>
-</blockquote>
-<pre class="highlight plaintext"><code>Movement
-473469567323078676
-https://cdn.discordapp.com/avatars/473469567323078676/1a679b6f2c447e33133440f1421eb1d0.png?size=2048
-</code></pre>
-<p>Information about a user is stored in the UserData class.</p>
-
-<table><thead>
-<tr>
-<th>Member</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>UserID</td>
-<td>Number</td>
-<td>The ID of the user</td>
-</tr>
-<tr>
-<td>UserName</td>
-<td>String</td>
-<td>The Username of the user</td>
-</tr>
-<tr>
-<td>AvatarURL</td>
-<td>String</td>
-<td>The URL of the user&#39;s discord avatar</td>
-</tr>
-<tr>
-<td>MessageCount</td>
-<td>Number</td>
-<td>The number of message the user has sent</td>
-</tr>
-<tr>
-<td>Locale</td>
-<td>String</td>
-<td>The locale the user is using</td>
-</tr>
-<tr>
-<td>CommandData</td>
-<td>Array (<a href="#commanddata">CommandData</a>)</td>
-<td>Data stored by commands about this user</td>
-</tr>
-</tbody></table>
-<h2 id='guilddata'>GuildData</h2>
-<blockquote>
-<p>Example: Printing out a guild&#39;s Name, ID, and UserCount</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">CurrentGuildData</span><span class="p">.</span><span class="nx">GuildName</span><span class="p">);</span>
-<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">CurrentGuildData</span><span class="p">.</span><span class="nx">GuildID</span><span class="p">);</span>
-<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">CurrentGuildData</span><span class="p">.</span><span class="nx">UserCount</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>This will output something along the lines of this:</p>
-</blockquote>
-<pre class="highlight plaintext"><code>OpenBot Development Hub
-506869654493331456
-17
-</code></pre>
-<p>Information about a guild is stored in the GuildData class.</p>
-
-<table><thead>
-<tr>
-<th>Member</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>GuildID</td>
-<td>Number</td>
-<td>The ID of the guild</td>
-</tr>
-<tr>
-<td>GuildName</td>
-<td>String</td>
-<td>The Name of the guild</td>
-</tr>
-<tr>
-<td>UserCount</td>
-<td>Number</td>
-<td>The number of users in the guild</td>
-</tr>
-<tr>
-<td>MessageCount</td>
-<td>Number</td>
-<td>The number of messages processed in the guild</td>
-</tr>
-<tr>
-<td>Prefix</td>
-<td>String</td>
-<td>The prefix OpenBot is using in the guild</td>
-</tr>
-<tr>
-<td>AddedCommands</td>
-<td>Array (Number)</td>
-<td>An array of the IDs of commands added to the guild</td>
-</tr>
-</tbody></table>
-<h2 id='commanddata'>CommandData</h2>
-<p>If your command needs to store information, this is the object you use to store it.</p>
-
-<p>You should use one CommandData per user, even if you have multiple commands. Command Data is meant to be found by looking for your User ID in the CommandData array of the User whos data you want to retreive.</p>
-
-<table><thead>
-<tr>
-<th>Member</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>CommandAuthor</td>
-<td>Number</td>
-<td>The ID of the author storing the data</td>
-</tr>
-<tr>
-<td>Data</td>
-<td>Object</td>
-<td>The data being stored</td>
-</tr>
-</tbody></table>
-
-<aside class="warning">Do not attempt to access CommandData created by other command developers. Doing this will cause your command to get rejected.</aside>
-
-<aside class="note"> The CommandData object stored in UserData and GuildData is not meant to be accessed directly. This class is only shown here for completeness. Please use the <a href="#getguildstore">GetGuildStore</a> and <a href="#getuserstore">GetUserStore</a> functions to access data</aside>
-<h2 id='command'>Command</h2>
-<blockquote>
-<p>Example: Print the name and callname of the current command</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Names</span><span class="p">[</span><span class="nx">CurrentLocale</span><span class="p">]);</span>
-<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Uses</span><span class="p">[</span><span class="nx">CurrentLocale</span><span class="p">]);</span>
-</code></pre>
-<blockquote>
-<p>This will output something along the lines of this:</p>
-</blockquote>
-<pre class="highlight plaintext"><code>Add Command
-Add
-</code></pre>
-<p>The most important object in OpenBot. The Command. Stores the information about every command in OpenBot!</p>
-
-<table><thead>
-<tr>
-<th>Member</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>Number</td>
-<td>The ID of the command</td>
-</tr>
-<tr>
-<td>Author</td>
-<td>Number</td>
-<td>The ID of the author of the command</td>
-</tr>
-<tr>
-<td>Names</td>
-<td>Array (String)</td>
-<td>The names of the command</td>
-</tr>
-<tr>
-<td>Uses</td>
-<td>Array (String)</td>
-<td>The callnames of the command</td>
-</tr>
-<tr>
-<td>Descriptions</td>
-<td>Array (String)</td>
-<td>The descriptions of the command</td>
-</tr>
-<tr>
-<td>String</td>
-<td>Array (String)</td>
-<td>The translation strings of the command</td>
-</tr>
-<tr>
-<td>Syntax</td>
-<td>String</td>
-<td>The syntax of the command</td>
-</tr>
-<tr>
-<td>Icon</td>
-<td>String</td>
-<td>The Icon of the command</td>
-</tr>
-<tr>
-<td>SupportLink</td>
-<td>String</td>
-<td>The link to the command&#39;s support server</td>
-</tr>
-<tr>
-<td>Version</td>
-<td>String</td>
-<td>The version of the command</td>
-</tr>
-<tr>
-<td>BotPerms</td>
-<td>Permission</td>
-<td>The permissions required for the bot to execute the command</td>
-</tr>
-<tr>
-<td>ExecutePerms</td>
-<td>Permission</td>
-<td>The permissions required for a user to execute the command</td>
-</tr>
-<tr>
-<td>AllowView</td>
-<td>Bool</td>
-<td>Whether the author allows people to view the source</td>
-</tr>
-<tr>
-<td>AllowEdit</td>
-<td>Bool</td>
-<td>Whether the author allows people to make a pull request</td>
-</tr>
-<tr>
-<td>onCall</td>
-<td>Function</td>
-<td>The function that gets called when the command is executed</td>
-</tr>
-<tr>
-<td>Locked</td>
-<td>Bool</td>
-<td>Whether this function is part of OpenBot&#39;s core and cannot be removed</td>
-</tr>
-<tr>
-<td>OnlyDevs</td>
-<td>Bool</td>
-<td>Whether this function can only be called by developers</td>
-</tr>
-</tbody></table>
-
-<aside class='warning'>Do not attempt to edit any Commands. Doing so will cause your command to get rejected.</aside>
-<h2 id='analytics'>Analytics</h2>
-<blockquote>
-<p>Example: Print the number of messages OpenBot has processed</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Analytics</span><span class="p">.</span><span class="nx">MessagesProcessed</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>This will output something along the lines of this:</p>
-</blockquote>
-<pre class="highlight plaintext"><code>484468
-</code></pre>
-<p>The analytics class holds miscelaneous data.</p>
-
-<table><thead>
-<tr>
-<th>Member</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>MessagesProcessed</td>
-<td>Number</td>
-<td>The number of messages OpenBot has processed</td>
-</tr>
-<tr>
-<td>EventsProcessed</td>
-<td>Number</td>
-<td>The number of Discord.js Events OpenBot has processed</td>
-</tr>
-<tr>
-<td>Votes</td>
-<td>Array</td>
-<td>Array of command votes</td>
-</tr>
-<tr>
-<td>SupportedLocales</td>
-<td>Array</td>
-<td>All locales supported for commands</td>
-</tr>
-<tr>
-<td>SupportedWebLocales</td>
-<td>Array</td>
-<td>All locales supported on website</td>
-</tr>
-<tr>
-<td>EmojiMap</td>
-<td>Array</td>
-<td>Discord emojis mapped by tag and url</td>
-</tr>
-</tbody></table>
-<h1 id='methods'>Methods</h1><h2 id='debugmessage'>DebugMessage</h2>
-<blockquote>
-<p>Example: Log if an if statement returns something unexpected</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">channel</span><span class="o">=</span><span class="nx">Message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">channels</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">channel</span><span class="o">=&gt;</span><span class="nx">channel</span><span class="p">.</span><span class="nx">id</span><span class="o">===</span><span class="nx">GetGuildStore</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">LogChannel</span><span class="p">));</span>
-<span class="k">if</span><span class="p">(</span><span class="nx">channel</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">//Log</span>
-<span class="p">}</span>
-<span class="k">else</span> <span class="p">{</span>
-    <span class="nx">DebugMessage</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="s2">"Oi ur code is broken the logchannel is not valid"</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre>
-<p>The DebugMessage method can be used to DM yourself information for debugging why a command isnt working.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Command</td>
-<td><a href="#Command">Command</a></td>
-<td>The command the log belongs to.</td>
-</tr>
-<tr>
-<td>Message</td>
-<td>String</td>
-<td>The message you wish to log</td>
-</tr>
-</tbody></table>
-
-<aside class="note">The Command parameter must always be "this", or the log will not be dmmed to you.</aside>
-<h2 id='generateimage'>GenerateImage</h2>
-<blockquote>
-<p>Example: Get the link to the icon of your command for use in the thumbnail</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Embed</span><span class="o">=</span><span class="k">new</span> <span class="nx">LibDiscord</span><span class="p">.</span><span class="nx">RichEmbed</span><span class="p">();</span>
-<span class="nx">Embed</span><span class="p">.</span><span class="nx">setThumbnail</span><span class="p">(</span><span class="nx">GenerateImage</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Icon</span><span class="p">));</span>
-</code></pre>
-<blockquote>
-<p>Your thumbnail will now be something along the lines of this:</p>
-</blockquote>
-<pre class="highlight plaintext"><code>https://twemoji.maxcdn.com/2/72x72/1f528.png
-or
-https://cdn.discordapp.com/emojis/539643411179896835.png
-</code></pre>
-<p>The GenerateImage method can be used to turn any discord emoji tag into a URL to a png that you can embed in something.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Emoji</td>
-<td>String</td>
-<td>A discord emoji</td>
-</tr>
-</tbody></table>
-<h3 id='return-value-string'>Return Value: String</h3>
-<aside class="note">This will not work if the user typed a default emoji, as those get sent as unicode characters. To get a url for those you can directly interact with <a href="https://www.npmjs.com/package/twemoji">Twemoji's API</a> by using <a href="#twemoji">LibTwemoj</a>i.</aside>
-<h2 id='getguilddata'>GetGuildData</h2>
-<blockquote>
-<p>Example: Get the guild data for your current guild (Yes i know its already available in CurrentGuildData)</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">GuildData</span><span class="o">=</span><span class="nx">GetGuildData</span><span class="p">(</span><span class="nx">Message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>The Guild Data will now contain something along the lines of this</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="s2">"GuildID"</span><span class="p">:</span><span class="s2">"506869654493331456"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"GuildName"</span><span class="p">:</span><span class="s2">"OpenBot Development Hub"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"UserCount"</span><span class="p">:</span><span class="s2">"21"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"MessageCount"</span><span class="p">:</span><span class="s2">"6969"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"Prefix"</span><span class="p">:</span><span class="s2">"-Open "</span><span class="p">,</span><span class="w">
-</span><span class="s2">"AddedCommand"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">Object</span><span class="w"> </span><span class="err">object</span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>The GetGuildData method can be used to get the guild data for any guild using a discord.js Guild Object</p>
-
-<p>The GuildData object returned by this method is editable, so you can edit a guild&#39;s data if you want to</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Guild</td>
-<td>Guild</td>
-<td>The guild whose data you are looking for</td>
-</tr>
-</tbody></table>
-<h3 id='return-value-guilddata-or-1-if-none-was-found'>Return Value: <a href="#guilddata">GuildData</a>, or -1 if none was found</h3><h2 id='getuserdata'>GetUserData</h2>
-<blockquote>
-<p>Example: Get the user data for the sender of the message (Yes i know its already available in CurrentUserData)</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">UserData</span><span class="o">=</span><span class="nx">GetUserData</span><span class="p">(</span><span class="nx">Message</span><span class="p">.</span><span class="nx">author</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
-</code></pre>
-<blockquote>
-<p>The User Data will now contain something along the lines of this</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="s2">"UserID"</span><span class="p">:</span><span class="s2">"473469567323078676"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"UserName"</span><span class="p">:</span><span class="s2">"Movement"</span><span class="p">,</span><span class="w">
-</span><span class="s2">"AvatarURL"</span><span class="p">:</span><span class="s2">"https://cdn.discordapp.com/avatars/473469567323078676/1a679b6f2c447e33133440f1421eb1d0.png?size=2048"</span><span class="w">
-</span><span class="s2">"Locale"</span><span class="p">:</span><span class="s2">"en"</span><span class="w">
-</span><span class="s2">"MessageCount"</span><span class="p">:</span><span class="s2">"1336"</span><span class="w">
-</span><span class="s2">"CommandData"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">Object</span><span class="w"> </span><span class="err">object</span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>The GetUserData method can be used to get the user data for any user using a discord.js User Object</p>
-
-<p>The UserData object returned by this method is editable, so you can edit a user&#39;s data if you want to</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>User</td>
-<td>User</td>
-<td>The user whose data you are looking for</td>
-</tr>
-</tbody></table>
-<h3 id='return-value-userdata-or-1-if-none-was-found'>Return Value: <a href="#userdata">UserData</a>, or -1 if none was found</h3><h2 id='getuserstore'>GetUserStore</h2>
-<blockquote>
-<p>Example: Store a message in a user&#39;s data for future reference</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">GetUserStore</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">UserID</span><span class="p">).</span><span class="nx">secretMessage</span><span class="o">=</span><span class="s2">"Hello world!"</span><span class="p">;</span>
-</code></pre>
-<blockquote>
-<p>Example: Read from a user&#39;s data</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">GetUserStore</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">UserID</span><span class="p">).</span><span class="nx">secretMessage</span><span class="p">);</span>
-</code></pre>
-<p>The GetUserStore method gets a container that you can use to store data about a user for use in the future. The variable it returns is editable.</p>
-
-<p>If you dont have any data stored, this method will return a blank object that you can edit.</p>
-
-<p>The object returned by this method is owned by you, not your command, so it will be the same object regardless of which of your commands calls it. This makes it a convenient way to share data between your commands.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Command</td>
-<td><a href="#command">Command</a></td>
-<td>The command accessing the data</td>
-</tr>
-<tr>
-<td>UserID</td>
-<td>Number</td>
-<td>The ID of the user whos data you want to access.</td>
-</tr>
-</tbody></table>
-<h3 id='return-value-object'>Return Value: Object</h3>
-<aside class="warning">The command parameter must be 'this' or your command will be denied</aside>
-<h2 id='getguildstore'>GetGuildStore</h2>
-<blockquote>
-<p>Example: Store a message in a guild&#39;s data for future reference</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">GetGuildStore</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">CurrentGuildData</span><span class="p">.</span><span class="nx">GuildID</span><span class="p">).</span><span class="nx">secretMessage</span><span class="o">=</span><span class="s2">"Hello world!"</span><span class="p">;</span>
-</code></pre>
-<blockquote>
-<p>Example: Read from a guild&#39;s data</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">GetGuildStore</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">CurrentGuildData</span><span class="p">.</span><span class="nx">GuildID</span><span class="p">).</span><span class="nx">secretMessage</span><span class="p">);</span>
-</code></pre>
-<p>The GetGuildStore method gets a container that you can use to store data about a guild for use in the future. The variable it returns is editable.</p>
-
-<p>If you dont have any data stored, this method will return a blank object that you can edit.</p>
-
-<p>The object returned by this method is owned by you, not your command, so it will be the same object regardless of which of your commands calls it. This makes it a convenient way to share data between your commands.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Command</td>
-<td><a href="#command">Command</a></td>
-<td>The command accessing the data</td>
-</tr>
-<tr>
-<td>GuildID</td>
-<td>Number</td>
-<td>The ID of the guild whos data you want to access.</td>
-</tr>
-</tbody></table>
-<h3 id='return-value-object-2'>Return Value: Object</h3>
-<aside class="warning">The command parameter must be 'this' or your command will be denied</aside>
-<h2 id='gettempuserstore'>GetTempUserStore</h2>
-<blockquote>
-<p>Example: Store a message in a user&#39;s data for future reference</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">GetUserStore</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">UserID</span><span class="p">).</span><span class="nx">secretMessage</span><span class="o">=</span><span class="s2">"Hello world!"</span><span class="p">;</span>
-</code></pre>
-<blockquote>
-<p>Example: Read from a user&#39;s data</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">GetUserStore</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">UserID</span><span class="p">).</span><span class="nx">secretMessage</span><span class="p">);</span>
-</code></pre>
-<p>The GetUserStore method gets a container that you can use to store data about a user for use in the future. The variable it returns is editable.</p>
-
-<p>If you dont have any data stored, this method will return a blank object that you can edit.</p>
-
-<p>The object returned by this method is owned by you, not your command, so it will be the same object regardless of which of your commands calls it. This makes it a convenient way to share data between your commands.</p>
-
-<p>Note: the data stored in GetTempUserStore isnt saved when the bot restarts.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Command</td>
-<td><a href="#command">Command</a></td>
-<td>The command accessing the data</td>
-</tr>
-<tr>
-<td>UserID</td>
-<td>Number</td>
-<td>The ID of the user whos data you want to access.</td>
-</tr>
-</tbody></table>
-<h3 id='return-value-object-3'>Return Value: Object</h3>
-<aside class="warning">The command parameter must be 'this' or your command will be denied</aside>
-<h2 id='gettempguildstore'>GetTempGuildStore</h2>
-<blockquote>
-<p>Example: Store a message in a guild&#39;s data for future reference</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">GetGuildStore</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">CurrentGuildData</span><span class="p">.</span><span class="nx">GuildID</span><span class="p">).</span><span class="nx">secretMessage</span><span class="o">=</span><span class="s2">"Hello world!"</span><span class="p">;</span>
-</code></pre>
-<blockquote>
-<p>Example: Read from a guild&#39;s data</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">GetGuildStore</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">CurrentGuildData</span><span class="p">.</span><span class="nx">GuildID</span><span class="p">).</span><span class="nx">secretMessage</span><span class="p">);</span>
-</code></pre>
-<p>The GetGuildStore method gets a container that you can use to store data about a guild for use in the future. The variable it returns is editable.</p>
-
-<p>If you dont have any data stored, this method will return a blank object that you can edit.</p>
-
-<p>The object returned by this method is owned by you, not your command, so it will be the same object regardless of which of your commands calls it. This makes it a convenient way to share data between your commands.</p>
-
-<p>Note: the data stored in GetTempGuildStore isnt saved when the bot restarts.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Command</td>
-<td><a href="#command">Command</a></td>
-<td>The command accessing the data</td>
-</tr>
-<tr>
-<td>GuildID</td>
-<td>Number</td>
-<td>The ID of the guild whos data you want to access.</td>
-</tr>
-</tbody></table>
-<h3 id='return-value-object-4'>Return Value: Object</h3>
-<aside class="warning">The command parameter must be 'this' or your command will be denied</aside>
-<h2 id='getuservotes'>GetUserVotes</h2>
-<blockquote>
-<p>Example: Get the number of times a user has voted</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">GetUserVotes</span><span class="p">(</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">UserID</span><span class="p">,</span><span class="mi">0</span><span class="p">).</span><span class="nx">length</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>This could output something like this</p>
-</blockquote>
-<pre class="highlight plaintext"><code>69
-</code></pre>
-<p>The GetUserVotes method gets an array of every vote a user has made that meets the type requirements</p>
-
-<p>The Type parameter can be either -1, 0, or 1. -1 only returns downvotes, 0 returns all votes, 1 only returns upvotes.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>UserID</td>
-<td>Number</td>
-<td>The ID of the user whose votes you want to access</td>
-</tr>
-<tr>
-<td>Type</td>
-<td>Number</td>
-<td>The filter you want to apply</td>
-</tr>
-</tbody></table>
-<h2 id='getcommandvotes'>GetCommandVotes</h2>
-<blockquote>
-<p>Example: Get the number of upvotes your command has</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">GetCommandVotes</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">ID</span><span class="p">,</span><span class="mi">1</span><span class="p">).</span><span class="nx">length</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>This could output something like this</p>
-</blockquote>
-<pre class="highlight plaintext"><code>66
-</code></pre>
-<p>The GetCommandVotes method gets an array of every vote that has been submitted to a command</p>
-
-<p>The Type parameter can be either -1, 0, or 1. -1 only returns downvotes, 0 returns all votes, 1 only returns upvotes.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>CommandID</td>
-<td>Number</td>
-<td>The id of the command whose votes you want to access</td>
-</tr>
-<tr>
-<td>Type</td>
-<td>Number</td>
-<td>The filter you want to apply</td>
-</tr>
-</tbody></table>
-<h2 id='getuserhasvoted'>GetUserHasVoted</h2>
-<blockquote>
-<p>Example: Find out if the person calling your command has voted on it</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">GetUserHasVoted</span><span class="p">(</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">UserID</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">ID</span><span class="p">))</span>
-</code></pre>
-<blockquote>
-<p>This could output something like this</p>
-</blockquote>
-<pre class="highlight plaintext"><code>false
-</code></pre>
-<p>The GetUserHasVoted method returns a bool containing whether or not the user specified has voted on the command specified</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>UserID</td>
-<td>Number</td>
-<td>The User whose vote you want to check</td>
-</tr>
-<tr>
-<td>CommandID</td>
-<td>Number</td>
-<td>The Command you want to check on</td>
-</tr>
-</tbody></table>
-<h2 id='getcommandinstalls'>GetCommandInstalls</h2>
-<blockquote>
-<p>Example: Get the number of servers your command is in</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">GetCommandInstalls</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">ID</span><span class="p">));</span>
-</code></pre>
-<blockquote>
-<p>This could output something like this</p>
-</blockquote>
-<pre class="highlight plaintext"><code>22
-</code></pre>
-<p>The GetCommandInstalls method returns the number of servers your command is installed in</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>CommandID</td>
-<td>Number</td>
-<td>The ID of the command you wish to get the number of installs for</td>
-</tr>
-</tbody></table>
-<h2 id='findlocale'>FindLocale</h2>
-<blockquote>
-<p>Example: Get the proper locale to use for printing out the command&#39;s name (Yes i know its already available in CurrentLocale)</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Names</span><span class="p">[</span><span class="nx">FindLocale</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">CurrentUserData</span><span class="p">.</span><span class="nx">Locale</span><span class="p">)]);</span>
-</code></pre>
-<blockquote>
-<p>This could output any of these things depending on the locale of the user</p>
-</blockquote>
-<pre class="highlight plaintext"><code>Add Command
-or
-Agregar Comando
-</code></pre>
-<p>The FindLocale method can be used to get the ID of the locale you should be using to communicate with the user. If the command you pass to it does not support the locale of the user, it returns the commands first locale.</p>
-
-<p>The locale you should be using for your command is already available under the variable CurrentLocale, but you can use FindLocale if you want to print the name of a different command (For example if you are writing a help command)</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Command</td>
-<td><a href="#command">Command</a></td>
-<td>The command you wish to find a locale for</td>
-</tr>
-<tr>
-<td>Locale</td>
-<td>String</td>
-<td>The locale you wish to find</td>
-</tr>
-</tbody></table>
-<h3 id='return-value-number'>Return Value: Number</h3><h2 id='findcommand'>FindCommand</h2>
-<blockquote>
-<p>Example: Find a cool command with the ID 66</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">FindCommand</span><span class="p">(</span><span class="mi">66</span><span class="p">).</span><span class="nx">Names</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</code></pre>
-<blockquote>
-<p>This could output something like this</p>
-</blockquote>
-<pre class="highlight plaintext"><code>Illuminati Command
-</code></pre>
-<p>The FindCommand method can be used to find a command using its ID.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>Number</td>
-<td>The id of the command you are looking for</td>
-</tr>
-</tbody></table>
-<h3 id='return-value-command-or-1-if-none-was-found'>Return Value: <a href="#command">Command</a>, or -1 if none was found</h3><h2 id='findcommandindex'>FindCommandIndex</h2>
-<blockquote>
-<p>Example: Find out where your command is stored in the command mapping</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">FindCommandIndex</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">ID</span><span class="p">));</span>
-</code></pre>
-<blockquote>
-<p>This could output something like this</p>
-</blockquote>
-<pre class="highlight plaintext"><code>4
-</code></pre>
-<p>The FindCommandIndex method can be used to find the index of your command in the CacheCommands array</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>Number</td>
-<td>The id of the command you are looking for</td>
-</tr>
-</tbody></table>
-<h3 id='return-value-number-2'>Return Value: Number</h3><h2 id='finduser'>FindUser</h2>
-<blockquote>
-<p>Example: Display the username of the caller of the command (Or you could just use CurrentUserData)</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">FindUser</span><span class="p">(</span><span class="nx">Message</span><span class="p">.</span><span class="nx">author</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">UserName</span><span class="p">)</span>
-</code></pre>
-<blockquote>
-<p>This could output something like this</p>
-</blockquote>
-<pre class="highlight plaintext"><code>Movement
-</code></pre>
-<p>The FindUser method can be used to get a User&#39;s Data using their ID</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>Number</td>
-<td>The id of the user you are looking for</td>
-</tr>
-</tbody></table>
-<h3 id='return-value-userdata'>Return Value: <a href="#userdata">UserData</a></h3><h2 id='findguild'>FindGuild</h2>
-<blockquote>
-<p>Example: Display the name of the guild the message was sent in (Or you could jsut use CurrentGuildData)</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">FindGuild</span><span class="p">(</span><span class="nx">Message</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">GuildName</span><span class="p">)</span>
-</code></pre>
-<blockquote>
-<p>This could output something like this</p>
-</blockquote>
-<pre class="highlight plaintext"><code>OpenBot Development Hub
-</code></pre>
-<p>The FindGuild method can be used to get a Guild&#39;s Data using its ID</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>Number</td>
-<td>The id of the guild you are looking for</td>
-</tr>
-</tbody></table>
-<h3 id='return-value-guilddata'>Return Value: <a href="#guilddata">GuildData</a></h3><h1 id='event-variables'>Event Variables</h1>
-<p>Every OpenBot event is actually a function which gets passed several variables. Those variables belong to the function, so editing them does nothing.</p>
-<h2 id='oncall'>onCall</h2><h3 id='message'>Message</h3>
-<p><strong>Type:</strong> Message</p>
-
-<p><strong>Description:</strong> The message that was sent to activate the command.</p>
-<h3 id='filteredmessage'>FilteredMessage</h3>
-<p><strong>Type:</strong> String</p>
-
-<p><strong>Description:</strong> The content of the message, excluding the bot prefix and the callname of your command. For example, if Message.content is <code>-Open Add SomeCommand</code>, FilteredMessage will be <code>SomeCommand</code></p>
-<h3 id='currentlocale'>CurrentLocale</h3>
-<p><strong>Type:</strong> Number</p>
-
-<p><strong>Description:</strong> The index of the locale the user is using, relative to your command. For example, to get the name of your command in the users native language you would put <code>this.Names[CurrentLocale]</code></p>
-<h2 id='onreactadd-onreactrem'>onReactAdd / onReactRem</h2><h3 id='reaction'>Reaction</h3>
-<p><strong>Type:</strong> MessageReaction</p>
-
-<p><strong>Description:</strong> The reaction that was added/removed.</p>
-<h3 id='user'>User</h3>
-<p><strong>Type:</strong> User</p>
-
-<p><strong>Description:</strong> The user that added/removed the reaction</p>
-<h2 id='onmemberjoin-onmemberleave'>onMemberJoin / onMemberLeave</h2><h3 id='member'>Member</h3>
-<p><strong>Type:</strong> Member</p>
-
-<p><strong>Description:</strong> The guild member that joined or left.</p>
-<h2 id='onmemberupdate-onvoiceupdate'>onMemberUpdate / onVoiceUpdate</h2><h3 id='oldmember'>OldMember</h3>
-<p><strong>Type:</strong> Member</p>
-
-<p><strong>Description:</strong> The old properties of the member</p>
-<h3 id='newmember'>NewMember</h3>
-<p><strong>Type:</strong> Member</p>
-
-<p><strong>Description:</strong> The new properties of the member</p>
-<h2 id='onmemberban-onmemberunban'>onMemberBan / onMemberUnban</h2><h3 id='guild'>Guild</h3>
-<p><strong>Type:</strong> Guild</p>
-
-<p><strong>Description:</strong> The guild the user was banned/unbanned from</p>
-<h3 id='user-2'>User</h3>
-<p><strong>Type:</strong> User</p>
-
-<p><strong>Description:</strong> The user that was banned/unbanned</p>
-<h2 id='onbotjoin-onbotleave-onready'>onBotJoin / onBotLeave / onReady</h2><h3 id='guild-2'>Guild</h3>
-<p><strong>Type:</strong> Guild</p>
-
-<p><strong>Description:</strong> The guild the bot/command joined/left.</p>
-<h2 id='onchannelcreate-onchanneldelete'>onChannelCreate / onChannelDelete</h2><h3 id='channel'>Channel</h3>
-<p><strong>Type:</strong> Channel</p>
-
-<p><strong>Description:</strong> The channel that was created/deleted</p>
-<h2 id='onchannelupdate'>onChannelUpdate</h2><h3 id='oldchannel'>OldChannel</h3>
-<p><strong>Type:</strong> Channel</p>
-
-<p><strong>Description:</strong> The old properties of the channel</p>
-<h3 id='newchannel'>NewChannel</h3>
-<p><strong>Type:</strong> Channel</p>
-
-<p><strong>Description:</strong> The new properties of the channel</p>
-<h2 id='onmessagedelete-onmessage'>onMessageDelete / onMessage</h2><h3 id='message-2'>Message</h3>
-<p><strong>Type:</strong> Message</p>
-
-<p><strong>Description:</strong> The message that was deleted or sent</p>
-<h2 id='onpinsupdate'>onPinsUpdate</h2><h3 id='channel-2'>Channel</h3>
-<p><strong>Type:</strong> Channel</p>
-
-<p><strong>Description:</strong> The channel whose pins were updated</p>
-<h3 id='time'>Time</h3>
-<p><strong>Type:</strong> Time</p>
-
-<p><strong>Description:</strong> The time of the update</p>
-<h2 id='onemojicreate-onemojidelete'>onEmojiCreate / onEmojiDelete</h2><h3 id='emoji'>Emoji</h3>
-<p><strong>Type:</strong> Emoji</p>
-
-<p><strong>Description:</strong> The emoji that was created/deleted</p>
-<h2 id='onemojiupdate'>onEmojiUpdate</h2><h3 id='oldemoji'>OldEmoji</h3>
-<p><strong>Type:</strong> Emoji</p>
-
-<p><strong>Description:</strong> The old emoji</p>
-<h3 id='newemoji'>NewEmoji</h3>
-<p><strong>Type:</strong> Emoji</p>
-
-<p><strong>Description:</strong> The new emoji</p>
-<h2 id='onmessageupdate'>onMessageUpdate</h2><h3 id='oldmessage'>OldMessage</h3>
-<p><strong>Type:</strong> Message</p>
-
-<p><strong>Description:</strong> The old message</p>
-<h3 id='newmessage'>NewMessage</h3>
-<p><strong>Type:</strong> Message</p>
-
-<p><strong>Description:</strong> The new message</p>
-<h2 id='onrolecreate-onroledelete'>onRoleCreate / onRoleDelete</h2><h3 id='role'>Role</h3>
-<p><strong>Type:</strong> Role</p>
-
-<p><strong>Description:</strong> The role that was created/deleted</p>
-<h2 id='onuserupdate'>onUserUpdate</h2><h3 id='olduser'>OldUser</h3>
-<p><strong>Type:</strong> User</p>
-
-<p><strong>Description:</strong> The old details of the user</p>
-<h3 id='newuser'>NewUser</h3>
-<p><strong>Type:</strong> User</p>
-
-<p><strong>Description:</strong> The new details of the user</p>
-<h2 id='onguildupdate'>onGuildUpdate</h2><h3 id='oldguild'>OldGuild</h3>
-<p><strong>Type:</strong> Guild</p>
-
-<p><strong>Description:</strong> The old details of the guild</p>
-<h3 id='newguild'>NewGuild</h3>
-<p><strong>Type:</strong> Guild</p>
-
-<p><strong>Description:</strong> The new details of the guild</p>
-<h1 id='editable-variables'>Editable Variables</h1>
-<p>In addition to function variables, there are some variables accessible to every event that can be edited.</p>
-<h3 id='currentuserdata'>CurrentUserData</h3>
-<p><strong>Type:</strong> <a href="#userdata">UserData</a></p>
-
-<p><strong>Description:</strong> The CurrentUserData variable will always contain the UserData of the user who sent the message. Basically it is the result of GetUserData(Message.author). It is also editable, so if you are writing a command like Change Locale, you can just edit the CurrentUserData variable and their locale will be changed</p>
-<h3 id='currentguilddata'>CurrentGuildData</h3>
-<p><strong>Type:</strong> <a href="#guilddata">GuildData</a></p>
-
-<p><strong>Description:</strong> The CurrentGuildData variable will always contain the GuildData of the guild which the message is in. Basically it is the result of GetGuildData(Message.guild). It is also editable, so if you are writing a command that needs to change a setting in the guild data, you can just edit the CurrentGuildData variable and their locale will be changed.</p>
-<h1 id='const-variables'>Const Variables</h1>
-<p>Finally, there are some variables which provide information about OpenBot but cannot be edited.</p>
-<h3 id='globinvite'>GlobInvite</h3>
-<p><strong>Type:</strong> String</p>
-
-<p><strong>Description:</strong> The GlobInvite variable contains the invite link to OpenBot (mainly so i dont forget it) but if you want, make a command to print it out and promote OpenBot</p>
-<h3 id='globdiscordclient'>GlobDiscordClient</h3>
-<p><strong>Type:</strong> Client</p>
-
-<p><strong>Description:</strong> The GlobDiscordClient is the discord.js Client class used to login to OpenBot. You can use it to find out information like how many servers OpenBot is in.</p>
-
-<aside class="warning">Do not attempt to do malicious stuff like grabbing OpenBot's token or anything. Your command will get rejected by the mods. Banne!</aside>
-<h3 id='analytics'>Analytics</h3>
-<p><strong>Type:</strong> <a href="#analytics">Analytics</a></p>
-
-<p><strong>Description:</strong> The Analytics object contains information about the bot, its environment, the website, and other random stuff that didnt fit somewhere else.</p>
-
-<aside class="warning">Do not attempt to edit the Analytics object</aside>
-<h1 id='libraries'>Libraries</h1>
-<p>Here is a list of NPM libraries that OpenBot includes, and the name of their accesser.</p>
-
-<p>If you want to make a command and require a library that isnt included in this list, please contact a Core Developer on the OpenBot discord server to get it added to this list</p>
-<h2 id='discord-js'>Discord.js</h2>
-<p>Discord.js is used to interact with discord. Pretty self explanitory</p>
-<h3 id='accesser-libdiscord'>Accesser: LibDiscord</h3><h3 id='links'>Links:</h3>
-<p><a href="https://discord.js.org">Documentation</a></p>
-
-<p><a href="https://www.npmjs.com/package/discord.js">NPM</a></p>
-<h2 id='fs'>FS</h2>
-<p>FS is used to read and write from files.</p>
-<h3 id='accesser-libfilesys'>Accesser: LibFileSys</h3><h2 id='twemoji'>Twemoji</h2>
-<p>Twemoji is used to get images for unicode characters (discord emojis)</p>
-<h3 id='accesser-libtwemoji'>Accesser: LibTwemoji</h3><h3 id='links-2'>Links:</h3>
-<p><a href="https://www.npmjs.com/package/twemoji">NPM</a></p>
-<h3 id='accesser-libutf'>Accesser: LibUTF</h3><h3 id='links-3'>Links:</h3>
-<p><a href="https://www.npmjs.com/package/twemoji">NPM</a></p>
-<h2 id='request'>Request</h2>
-<p>Request is used to make http and https requests</p>
-<h3 id='accesser-librequest'>Accesser: LibRequest</h3><h3 id='links-4'>Links:</h3>
-<p><a href="https://www.npmjs.com/package/request">NPM</a></p>
-<h2 id='ytdl-core'>YTDL-Core</h2><h3 id='accessor-libytdl'>Accessor: LibYTDL</h3><h2 id='simple-youtube-api'>Simple-Youtube-API</h2><h3 id='accessor-libyoutube'>Accessor: LibYoutube</h3>
       </div>
       <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="javascript">javascript</a>
-          </div>
       </div>
     </div>
   </body>
