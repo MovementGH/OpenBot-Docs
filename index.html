@@ -441,17 +441,21 @@
 <h2 id='universal'>Universal</h2>
 <p>All events receive certain variables, regardless of their type. Here they are:</p>
 <h3 id='context'>Context</h3>
-<p><strong>Type:</strong> Object
-<strong>Description:</strong> The context contains discord.js objects relevent to the event.
-<strong>Children:</strong>  guild, channel*, user*</p>
+<p><strong>Type:</strong> Object</p>
+
+<p><strong>Description:</strong> The context contains discord.js objects relevent to the event.</p>
+
+<p><strong>Children:</strong>  guild, channel*, user*</p>
 
 <p>*May be null</p>
 
 <p>### BotContext</p>
 
-<p><strong>Type:</strong> Object
- <strong>Description:</strong> The BotContext contains OpenBot objects relevent to the event
- <strong>Children:</strong> Guild, User*</p>
+<p><strong>Type:</strong> Object</p>
+
+<p><strong>Description:</strong> The BotContext contains OpenBot objects relevent to the event</p>
+
+<p><strong>Children:</strong> Guild, User*</p>
 
 <p>*May be null</p>
 <h2 id='call'>Call</h2>
@@ -459,11 +463,13 @@
 
 <p>It receives these variables:</p>
 <h3 id='message'>Message</h3>
-<p><strong>Type:</strong> Message
-<strong>Description:</strong> The message that was sent to activate the command.</p>
+<p><strong>Type:</strong> Message</p>
+
+<p><strong>Description:</strong> The message that was sent to activate the command.</p>
 <h3 id='arguments'>Arguments</h3>
-<p><strong>Type:</strong> String
-<strong>Description:</strong> The content of the message, excluding the prefix and callname. For example, if message.content is <code>-Open Add SomeCommand</code>, Arguments will be &quot;SomeCommand&quot;</p>
+<p><strong>Type:</strong> String</p>
+
+<p><strong>Description:</strong> The content of the message, excluding the prefix and callname. For example, if message.content is &quot;-Open Add SomeCommand&quot;, Arguments will be &quot;SomeCommand&quot;</p>
 <h2 id='channelcreate'>ChannelCreate</h2>
 <p>The ChannelCreate event is executed when a channel is created.</p>
 
@@ -481,11 +487,13 @@
 
 <p>It receives these variables:</p>
 <h3 id='oldchannel'>OldChannel</h3>
-<p><strong>Type:</strong> Channel
-<strong>Description:</strong> The channel before the update</p>
+<p><strong>Type:</strong> Channel</p>
+
+<p><strong>Description:</strong> The channel before the update</p>
 <h3 id='newchannel'>NewChannel</h3>
-<p><strong>Type:</strong> Channel
-<strong>Description:</strong> The channel after the update</p>
+<p><strong>Type:</strong> Channel</p>
+
+<p><strong>Description:</strong> The channel after the update</p>
 <h2 id='commandadded'>CommandAdded</h2>
 <p>The CommandAdded event is executed when your command is added to a server.</p>
 
@@ -501,25 +509,29 @@
 
 <p>It receives these variables:</p>
 <h3 id='emoji'>Emoji</h3>
-<p><strong>Type:</strong> Emoji
-<strong>Description:</strong> The emoji that was added.</p>
+<p><strong>Type:</strong> Emoji</p>
+
+<p><strong>Description:</strong> The emoji that was added.</p>
 <h2 id='emojidelete'>EmojiDelete</h2>
 <p>The EmojiDelete event is executed when an emoji is deleted from the guild.</p>
 
 <p>It receives these variables:</p>
 <h3 id='emoji-2'>Emoji</h3>
-<p><strong>Type:</strong> Emoji
-<strong>Description:</strong> The emoji that was deleted</p>
+<p><strong>Type:</strong> Emoji</p>
+
+<p><strong>Description:</strong> The emoji that was deleted</p>
 <h2 id='emojiupdate'>EmojiUpdate</h2>
 <p>The EmojiUpdate event is executed when an emoji in the guild is updated (eg. Name changed, Icon changed, etc.)</p>
 
 <p>It receives these variables:</p>
 <h3 id='oldemoji'>OldEmoji</h3>
-<p><strong>Type:</strong> Emoji
-<strong>Description:</strong> The emoji before the update</p>
+<p><strong>Type:</strong> Emoji</p>
+
+<p><strong>Description:</strong> The emoji before the update</p>
 <h3 id='newemoji'>NewEmoji</h3>
-<p><strong>Type:</strong> Emoji
-<strong>Description:</strong> The emoji after the update</p>
+<p><strong>Type:</strong> Emoji</p>
+
+<p><strong>Description:</strong> The emoji after the update</p>
 <h2 id='guildbanadd'>GuildBanAdd</h2>
 <p>The GuildBanAdd event is executed when a user is banned from the guild.</p>
 
@@ -537,114 +549,133 @@
 
 <p>It receives these variables:</p>
 <h3 id='member'>Member</h3>
-<p><strong>Type:</strong> Member
-<strong>Description:</strong> The member that joined</p>
+<p><strong>Type:</strong> Member</p>
+
+<p><strong>Description:</strong> The member that joined</p>
 <h2 id='guildmemberremove'>GuildMemberRemove</h2>
 <p>The GuildMemberRemove event is executed when a user leaves or is kicked from a guild.</p>
 
 <p>It receives these variables:</p>
 <h3 id='member-2'>Member</h3>
-<p><strong>Type:</strong> Member
-<strong>Description:</strong> The member that left</p>
+<p><strong>Type:</strong> Member</p>
+
+<p><strong>Description:</strong> The member that left</p>
 <h2 id='guildmemberspeaking'>GuildMemberSpeaking</h2>
 <p>The GuildMemberSpeaking event is executed when a user starts/stops speaking.</p>
 
 <p>It receives these variables:</p>
 <h3 id='member-3'>Member</h3>
-<p><strong>Type:</strong> Member
-<strong>Description:</strong> The member that started/stopped speaking</p>
+<p><strong>Type:</strong> Member</p>
+
+<p><strong>Description:</strong> The member that started/stopped speaking</p>
 <h3 id='speaking'>Speaking</h3>
-<p><strong>Type:</strong> Boolean
-<strong>Description:</strong> Whether they are speaking.</p>
+<p><strong>Type:</strong> Boolean</p>
+
+<p><strong>Description:</strong> Whether they are speaking.</p>
 <h2 id='guildmemberupdate'>GuildMemberUpdate</h2>
 <p>The GuildMemberUpdate event is executed when a member is updated (eg. Nickname changed, Roles changed, etc.)</p>
 
 <p>It receives these variables:</p>
 <h3 id='oldmember'>OldMember</h3>
-<p><strong>Type:</strong> Member
-<strong>Description:</strong> The member before the update</p>
+<p><strong>Type:</strong> Member</p>
+
+<p><strong>Description:</strong> The member before the update</p>
 <h3 id='newmember'>NewMember</h3>
-<p><strong>Type:</strong> Member
-<strong>Description:</strong> The member after the update</p>
+<p><strong>Type:</strong> Member</p>
+
+<p><strong>Description:</strong> The member after the update</p>
 <h2 id='guildupdate'>GuildUpdate</h2>
 <p>The GuildUpdate event is executed when a guild is updated (eg. Name changed, region changed, etc.)</p>
 
 <p>It receives these variables:</p>
 <h3 id='oldguild'>OldGuild</h3>
-<p><strong>Type:</strong> Guild
-<strong>Description:</strong> The guild before the update</p>
+<p><strong>Type:</strong> Guild</p>
+
+<p><strong>Description:</strong> The guild before the update</p>
 <h3 id='newguild'>NewGuild</h3>
-<p><strong>Type:</strong> Guild
-<strong>Description:</strong> The guild after the update</p>
+<p><strong>Type:</strong> Guild</p>
+
+<p><strong>Description:</strong> The guild after the update</p>
 <h2 id='messagedelete'>MessageDelete</h2>
 <p>The MessageDelete event is executed when a message is deleted.</p>
 
 <p>It receives these variables:</p>
 <h3 id='message-2'>Message</h3>
-<p><strong>Type:</strong> Message
-<strong>Description:</strong> The message that was deleted</p>
+<p><strong>Type:</strong> Message</p>
+
+<p><strong>Description:</strong> The message that was deleted</p>
 <h2 id='messagereactionadd'>MessageReactionAdd</h2>
 <p>The MessageReactionAdd event is executed when a reaction is added to a message.</p>
 
 <p>It receives these variables:</p>
 <h3 id='reaction'>Reaction</h3>
-<p><strong>Type:</strong> MessageReaction
-<strong>Description:</strong> The reaction that was added</p>
+<p><strong>Type:</strong> MessageReaction</p>
+
+<p><strong>Description:</strong> The reaction that was added</p>
 <h2 id='messagereactionremove'>MessageReactionRemove</h2>
 <p>The MessageReactionRemove event is executed when a reaction is removed from a message</p>
 
 <p>It receives these variables:</p>
 <h3 id='reaction-2'>Reaction</h3>
-<p><strong>Type:</strong> MessageReaction
-<strong>Description:</strong> The reaction that was removed</p>
+<p><strong>Type:</strong> MessageReaction</p>
+
+<p><strong>Description:</strong> The reaction that was removed</p>
 <h2 id='messagereactionremoveall'>MessageReactionRemoveAll</h2>
 <p>The MessageReactionRemoveAll event is executed when all the reactions are removed from a message</p>
 
 <p>It receives these variables:</p>
 <h3 id='reaction-3'>Reaction</h3>
-<p><strong>Type:</strong> Message
-<strong>Description:</strong> The message from which the reactions were removed</p>
+<p><strong>Type:</strong> Message</p>
+
+<p><strong>Description:</strong> The message from which the reactions were removed</p>
 <h2 id='messageupdate'>MessageUpdate</h2>
 <p>The MessageUpdate event is executed when a message is edited</p>
 
 <p>It receives these variables:</p>
 <h3 id='oldmessage'>OldMessage</h3>
-<p><strong>Type:</strong> Message
-<strong>Description:</strong> The message before the edit</p>
+<p><strong>Type:</strong> Message</p>
+
+<p><strong>Description:</strong> The message before the edit</p>
 <h3 id='newmessage'>NewMessage</h3>
-<p><strong>Type:</strong> Message
-<strong>Description:</strong> The message after the edit</p>
+<p><strong>Type:</strong> Message</p>
+
+<p><strong>Description:</strong> The message after the edit</p>
 <h2 id='rolecreate'>RoleCreate</h2>
 <p>The RoleCreate event is executed when a role is created</p>
 
 <p>It receives these variables:</p>
 <h3 id='role'>Role</h3>
-<p><strong>Type:</strong> Role
-<strong>Description:</strong> The role that was created</p>
+<p><strong>Type:</strong> Role</p>
+
+<p><strong>Description:</strong> The role that was created</p>
 <h2 id='roledelete'>RoleDelete</h2>
 <p>The RoleDelete event is executed when a role is deleted</p>
 
 <p>It receives these variables:</p>
 <h3 id='role-2'>Role</h3>
-<p><strong>Type:</strong> Role
-<strong>Description:</strong> The role that was deleted</p>
+<p><strong>Type:</strong> Role</p>
+
+<p><strong>Description:</strong> The role that was deleted</p>
 <h2 id='roleupdate'>RoleUpdate</h2>
 <p>The RoleUpdate event is executed when a role is updated (eg. Change name, Change permissions, etc.)</p>
 
 <p>It receives these variables:</p>
 <h3 id='oldrole'>OldRole</h3>
-<p><strong>Type:</strong> Role
-<strong>Description:</strong> The role before the update</p>
+<p><strong>Type:</strong> Role</p>
+
+<p><strong>Description:</strong> The role before the update</p>
 <h3 id='newrole'>NewRole</h3>
-<p><strong>Type:</strong> Role
-<strong>Description:</strong> The role after the update</p>
+<p><strong>Type:</strong> Role</p>
+
+<p><strong>Description:</strong> The role after the update</p>
 <h2 id='voicestateupdate'>VoiceStateUpdate</h2>
 <p>The VoiceStateUpdate event is executed when a user joins or leaves a voice channel, and when they move between voice channel.</p>
 
 <p>It receives these variables:</p>
 <h3 id='oldmember-2'>OldMember</h3>
-<p><strong>Type:</strong> Member
-<strong>Description:</strong> The member before the update</p>
+<p><strong>Type:</strong> Member</p>
+
+<p><strong>Description:</strong> The member before the update</p>
 <h3 id='newmember-2'>NewMember</h3>
 <p><strong>Type:</strong> Member</p>
 
