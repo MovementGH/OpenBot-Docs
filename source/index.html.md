@@ -9,9 +9,13 @@ title: OpenBot API
 language_tabs:
  - javascript
 
+includes:
+ - ui
+
 toc_footers:
 - <a href='../'>Start Using OpenBot</a>
 - <a href='https://github.com/lord/slate'>Powered by Slate</a>
+
 search: true
 ---
 
