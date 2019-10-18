@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Documentation</title>
+    <title>OpenBot API</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -198,10 +198,10 @@
     </style>
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all_nosearch.js"></script>
+      <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[]">
+  <body class="index" data-languages="[&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -210,6 +210,13 @@
     </a>
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="javascript">javascript</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting Started">Getting Started</a>
@@ -237,22 +244,15 @@
               </ul>
           </li>
       </ul>
+        <ul class="toc-footer">
+            <li><a href='../'>Start Using OpenBot</a></li>
+            <li><a href='https://github.com/lord/slate'>Powered by Slate</a></li>
+        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <p>title: OpenBot API</p>
-
-<p>language_tabs:
- - javascript</p>
-
-<p>includes:
- - ui</p>
-
-<p>toc_footers:
-- <a href='../'>Start Using OpenBot</a>
-- <a href='https://github.com/lord/slate'>Powered by Slate</a></p>
-<h2 id='search-true'>search: true</h2><h1 id='getting-started'>Getting Started</h1><h2 id='welcome'>Welcome</h2>
+        <h1 id='getting-started'>Getting Started</h1><h2 id='welcome'>Welcome</h2>
 <p>Welcome to the OpenBot API Documentation. We hope everything on this page is clear, but if you dont understand something, want to suggest a change, addition, etc, you can go to the <a href="https://discord.gg/CdpzgFX/">OpenBot Support</a> discord server and talk us.</p>
 <h2 id='prerequirements'>Prerequirements</h2>
 <p>OpenBot and its API use quite a few technologies in order to work. You don&#39;t need to know all of them in order to make commands, but there are some which you do need to know.</p>
@@ -337,6 +337,9 @@
 
       </div>
       <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="javascript">javascript</a>
+          </div>
       </div>
     </div>
   </body>
