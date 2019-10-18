@@ -156,7 +156,7 @@ All events receive certain variables, regardless of their type. Here they are:
  
  \*May be null
  
- ### BotContext
+### BotContext
  
  **Type:** Object
  
@@ -164,7 +164,7 @@ All events receive certain variables, regardless of their type. Here they are:
  
  **Children:** Guild, User\*
  
-\ *May be null
+\*May be null
 
 ## Call 
 
