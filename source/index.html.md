@@ -149,7 +149,9 @@ All events receive certain variables, regardless of their type. Here they are:
 ### Context
 
 **Type:** Object
+
 **Description:** The context contains discord.js objects relevent to the event.
+
 **Children:**  guild, channel*, user*
  
  *May be null
@@ -157,7 +159,9 @@ All events receive certain variables, regardless of their type. Here they are:
  ### BotContext
  
  **Type:** Object
+ 
  **Description:** The BotContext contains OpenBot objects relevent to the event
+ 
  **Children:** Guild, User*
  
  *May be null
@@ -171,12 +175,14 @@ It receives these variables:
 ### Message
 
 **Type:** Message
+
 **Description:** The message that was sent to activate the command.
 
 ### Arguments
 
 **Type:** String
-**Description:** The content of the message, excluding the prefix and callname. For example, if message.content is `-Open Add SomeCommand`, Arguments will be "SomeCommand"
+
+**Description:** The content of the message, excluding the prefix and callname. For example, if message.content is "-Open Add SomeCommand", Arguments will be "SomeCommand"
 
 ## ChannelCreate
 
@@ -205,11 +211,13 @@ It receives these variables:
 ### OldChannel
 
 **Type:** Channel
+
 **Description:** The channel before the update
 
 ### NewChannel
 
 **Type:** Channel
+
 **Description:** The channel after the update
 
 ## CommandAdded
@@ -237,6 +245,7 @@ It receives these variables:
 ### Emoji
 
 **Type:** Emoji
+
 **Description:** The emoji that was added.
 
 ## EmojiDelete
@@ -248,6 +257,7 @@ It receives these variables:
 ### Emoji
 
 **Type:** Emoji
+
 **Description:** The emoji that was deleted
 
 ## EmojiUpdate
@@ -259,11 +269,13 @@ It receives these variables:
 ### OldEmoji
 
 **Type:** Emoji
+
 **Description:** The emoji before the update
 
 ### NewEmoji
 
 **Type:** Emoji
+
 **Description:** The emoji after the update
 
 ## GuildBanAdd
@@ -293,6 +305,7 @@ It receives these variables:
 ### Member
 
 **Type:** Member
+
 **Description:** The member that joined
 
 ## GuildMemberRemove
@@ -304,6 +317,7 @@ It receives these variables:
 ### Member
 
 **Type:** Member
+
 **Description:** The member that left
 
 ## GuildMemberSpeaking
@@ -315,11 +329,13 @@ It receives these variables:
 ### Member
 
 **Type:** Member
+
 **Description:** The member that started/stopped speaking
 
 ### Speaking
 
 **Type:** Boolean
+
 **Description:** Whether they are speaking.
 
 ## GuildMemberUpdate
@@ -331,11 +347,13 @@ It receives these variables:
 ### OldMember
 
 **Type:** Member
+
 **Description:** The member before the update
 
 ### NewMember
 
 **Type:** Member
+
 **Description:** The member after the update
 
 ## GuildUpdate
@@ -347,11 +365,13 @@ It receives these variables:
 ### OldGuild 
 
 **Type:** Guild
+
 **Description:** The guild before the update
 
 ### NewGuild
 
 **Type:** Guild
+
 **Description:** The guild after the update
 
 ## MessageDelete
@@ -363,6 +383,7 @@ It receives these variables:
 ### Message
 
 **Type:** Message
+
 **Description:** The message that was deleted
 
 ## MessageReactionAdd
@@ -374,6 +395,7 @@ It receives these variables:
 ### Reaction
 
 **Type:** MessageReaction
+
 **Description:** The reaction that was added
 
 ## MessageReactionRemove
@@ -385,6 +407,7 @@ It receives these variables:
 ### Reaction
 
 **Type:** MessageReaction
+
 **Description:** The reaction that was removed
 
 ## MessageReactionRemoveAll
@@ -396,6 +419,7 @@ It receives these variables:
 ### Reaction
 
 **Type:** Message
+
 **Description:** The message from which the reactions were removed
 
 ## MessageUpdate
@@ -407,11 +431,13 @@ It receives these variables:
 ### OldMessage
 
 **Type:** Message
+
 **Description:** The message before the edit
 
 ### NewMessage
 
 **Type:** Message
+
 **Description:** The message after the edit
 
 ## RoleCreate
@@ -423,6 +449,7 @@ It receives these variables:
 ### Role
 
 **Type:** Role
+
 **Description:** The role that was created
 
 ## RoleDelete
@@ -434,6 +461,7 @@ It receives these variables:
 ### Role
 
 **Type:** Role
+
 **Description:** The role that was deleted
 
 ## RoleUpdate
@@ -445,11 +473,13 @@ It receives these variables:
 ### OldRole
 
 **Type:** Role
+
 **Description:** The role before the update
 
 ### NewRole
 
 **Type:** Role
+
 **Description:** The role after the update
 
 ## VoiceStateUpdate
@@ -461,6 +491,7 @@ It receives these variables:
 ### OldMember
 
 **Type:** Member
+
 **Description:** The member before the update
 
 ### NewMember
