@@ -12,7 +12,6 @@ language_tabs:
 toc_footers:
 - <a href='../'>Start Using OpenBot</a>
 - <a href='https://github.com/lord/slate'>Powered by Slate</a>
-
 search: true
 ---
 
@@ -117,8 +116,6 @@ Formatting:
 
 ### Translation Strings
 
-Translation strings allow the text inside your command to be translated. You can have as many as you want, and you can access them from your code.
-
 > Example: How to use translation strings
 
 ```javascript
@@ -130,8 +127,8 @@ var Strings=this.Languages[LibOpenBot.LanguageIndex(this,BotContext.User.Setting
 //Later...
 Strings[0];
 ```
+Translation strings allow the text inside your command to be translated. You can have as many as you want, and you can access them from your code.
 
 
- 
  
 
