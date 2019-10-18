@@ -1,20 +1,14 @@
 ---
-
-
-# BEING REWRITTEN
-
----
 title: OpenBot API
 
 language_tabs:
- - javascript
-
-includes:
- - ui
+  - javascript
 
 toc_footers:
-- <a href='../'>Start Using OpenBot</a>
-- <a href='https://github.com/lord/slate'>Powered by Slate</a>
+  - <a href='../'>Start Using OpenBot</a>
+  - <a href='https://github.com/lord/slate'>Powered by Slate</a>
+
+includes:
 
 search: true
 ---
