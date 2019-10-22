@@ -513,6 +513,7 @@ Message.channel.send(this.Icon);
 The Command Class stores information about a command, so that it can be executed by a user.
 
 Member | Type | Description
+-- | -- | --
 Author | Number | The ID of the author of the command
 Events | Object | The Events of the command
 Icon | String | The Icon of the command
@@ -532,6 +533,7 @@ The Events member of the Command Class contains the code for whichever events ar
 The Languages member of the Command Class contains the strings used by any languages that the command supports. It is an array of Objects that follow this template:
 
 Member | Type | Description
+-- | -- | --
 Callname | String | The Callname of the command
 Description | String | The Description of the command
 Language | String | The language that this object defines
@@ -544,6 +546,7 @@ Syntax | String | The Syntax of the command
 The Permissions member of the Command Class has these members:
 
 Member | Type | Description
+-- | -- | --
 Bot | Number | The permissions the bot must have to run the command
 CoreCommand | Bool | Whether the command is a core command
 DevsOnly | Bool | Whether the command is locked to developers
