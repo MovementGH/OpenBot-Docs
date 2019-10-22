@@ -166,6 +166,12 @@ All events receive certain variables, regardless of their type. Here they are:
  
 \*May be null
 
+### this
+
+**Type:** Command
+
+**Description:** When in an event, `this` refers to the command whose event is being executed
+
 ## Call 
 
 The Call event is executed whenever a message matches Prefix+Callname. For example, when someone sends "-Open Help" on a server where the prefix is "-Open", the command with the callname "Help" runs its Call event.
@@ -553,4 +559,48 @@ DevsOnly | Bool | Whether the command is locked to developers
 Editable | Bool | Whether the command can be edited by others
 User | Bool | The permissions a user needs to run the command
 Viewable | Bool | Whether the command can be viewed by others
+
+## Guild
+
+The Guild Class contains data relating to a guild that OpenBot is in.
+
+Member | Type | Description
+-- | -- | --
+Icon | String | The URL to the icon of the guild
+Name | String | The Name of the guild
+Settings | Object | The Settings of the guild
+Stats | Object | The Stats of the guild
+id | Number | The id of the guild
+
+### Guild.Settings
+
+The Settings member of the Guild class contains its settings, along with the settings of the commands in it.
+
+Member | Type | Description
+-- | -- | --
+Admins | Array(Number) | The IDs of the people in the guild who can manage OpenBot
+Channels | Array(ChannelSetting) | The Settings for the channels in the guild
+Commands | Array(Object) | The Commands that are in the guild
+Prefix | String | OpenBot's Prefix in this guild
+Searchable | Bool | Whether this guild can be searched on the website
+
+### Guild.Settings.Commands
+
+The Commands member of the Settings object contains the Commands in the guild, as well as their settings.
+
+Member | Type | Description
+-- | -- | --
+Channels | Array(ChannelSetting) | Command specific settings for the channels in the guild
+Data | Object | Data that this command stores about the guild
+Settings | Object | The settings for this command.
+id | Number | The id of the command
+
+### Guild.Stats
+
+The Stats member of the guild object contains some stats about the guild.
+
+Member | Type | Description
+-- | -- | --
+Messages | Number | The number of messages OpenBot has processed in this guild
+Users | Number | The number of users in this guild
 
