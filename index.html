@@ -694,14 +694,49 @@
 </code></pre>
 <p>The Command Class stores information about a command, so that it can be executed by a user.</p>
 
-<p>Member | Type | Description
-Author | Number | The ID of the author of the command
-Events | Object | The Events of the command
-Icon | String | The Icon of the command
-Languages | Array(Object) | The Languages of the command
-Permissions | Object | The Permissions of the command
-Support | String | The Support link of the command
-id | Number | The ID of the command</p>
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Author</td>
+<td>Number</td>
+<td>The ID of the author of the command</td>
+</tr>
+<tr>
+<td>Events</td>
+<td>Object</td>
+<td>The Events of the command</td>
+</tr>
+<tr>
+<td>Icon</td>
+<td>String</td>
+<td>The Icon of the command</td>
+</tr>
+<tr>
+<td>Languages</td>
+<td>Array(Object)</td>
+<td>The Languages of the command</td>
+</tr>
+<tr>
+<td>Permissions</td>
+<td>Object</td>
+<td>The Permissions of the command</td>
+</tr>
+<tr>
+<td>Support</td>
+<td>String</td>
+<td>The Support link of the command</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>The ID of the command</td>
+</tr>
+</tbody></table>
 <h3 id='command-events'>Command.Events</h3>
 <p>The Events member of the Command Class contains the code for whichever events are used by the command. For example, in a command which uees the Call and Message events, the Events member will have two members: Call, and Message.</p>
 
@@ -709,23 +744,85 @@ id | Number | The ID of the command</p>
 <h3 id='command-languages'>Command.Languages</h3>
 <p>The Languages member of the Command Class contains the strings used by any languages that the command supports. It is an array of Objects that follow this template:</p>
 
-<p>Member | Type | Description
-Callname | String | The Callname of the command
-Description | String | The Description of the command
-Language | String | The language that this object defines
-Name | String | The Name of the command
-Strings | String | The Translation Strings of the command
-Syntax | String | The Syntax of the command</p>
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Callname</td>
+<td>String</td>
+<td>The Callname of the command</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>String</td>
+<td>The Description of the command</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>String</td>
+<td>The language that this object defines</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>String</td>
+<td>The Name of the command</td>
+</tr>
+<tr>
+<td>Strings</td>
+<td>String</td>
+<td>The Translation Strings of the command</td>
+</tr>
+<tr>
+<td>Syntax</td>
+<td>String</td>
+<td>The Syntax of the command</td>
+</tr>
+</tbody></table>
 <h3 id='command-permissions'>Command.Permissions</h3>
 <p>The Permissions member of the Command Class has these members:</p>
 
-<p>Member | Type | Description
-Bot | Number | The permissions the bot must have to run the command
-CoreCommand | Bool | Whether the command is a core command
-DevsOnly | Bool | Whether the command is locked to developers
-Editable | Bool | Whether the command can be edited by others
-User | Bool | The permissions a user needs to run the command
-Viewable | Bool | Whether the command can be viewed by others</p>
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Bot</td>
+<td>Number</td>
+<td>The permissions the bot must have to run the command</td>
+</tr>
+<tr>
+<td>CoreCommand</td>
+<td>Bool</td>
+<td>Whether the command is a core command</td>
+</tr>
+<tr>
+<td>DevsOnly</td>
+<td>Bool</td>
+<td>Whether the command is locked to developers</td>
+</tr>
+<tr>
+<td>Editable</td>
+<td>Bool</td>
+<td>Whether the command can be edited by others</td>
+</tr>
+<tr>
+<td>User</td>
+<td>Bool</td>
+<td>The permissions a user needs to run the command</td>
+</tr>
+<tr>
+<td>Viewable</td>
+<td>Bool</td>
+<td>Whether the command can be viewed by others</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
