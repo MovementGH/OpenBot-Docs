@@ -499,3 +499,55 @@ It receives these variables:
 **Type:** Member
 
 **Description:** The member after the update
+
+# Classes
+
+## Command
+
+> Example: Print the Icon of the current command
+
+```javascript
+Message.channel.send(this.Icon);
+```
+
+The Command Class stores information about a command, so that it can be executed by a user.
+
+Member | Type | Description
+Author | Number | The ID of the author of the command
+Events | Object | The Events of the command
+Icon | String | The Icon of the command
+Languages | Array(Object) | The Languages of the command
+Permissions | Object | The Permissions of the command
+Support | String | The Support link of the command
+id | Number | The ID of the command
+
+### Command.Events
+
+The Events member of the Command Class contains the code for whichever events are used by the command. For example, in a command which uees the Call and Message events, the Events member will have two members: Call, and Message.
+
+<aside class='note'>You do not need to directly access the event code to run an event. Instead you can use the RunEvent function</aside>
+
+### Command.Languages
+
+The Languages member of the Command Class contains the strings used by any languages that the command supports. It is an array of Objects that follow this template:
+
+Member | Type | Description
+Callname | String | The Callname of the command
+Description | String | The Description of the command
+Language | String | The language that this object defines
+Name | String | The Name of the command
+Strings | String | The Translation Strings of the command
+Syntax | String | The Syntax of the command
+
+### Command.Permissions
+
+The Permissions member of the Command Class has these members:
+
+Member | Type | Description
+Bot | Number | The permissions the bot must have to run the command
+CoreCommand | Bool | Whether the command is a core command
+DevsOnly | Bool | Whether the command is locked to developers
+Editable | Bool | Whether the command can be edited by others
+User | Bool | The permissions a user needs to run the command
+Viewable | Bool | Whether the command can be viewed by others
+
