@@ -344,6 +344,9 @@
                   <li>
                     <a href="#command" class="toc-h2 toc-link" data-title="Command">Command</a>
                   </li>
+                  <li>
+                    <a href="#guild" class="toc-h2 toc-link" data-title="Guild">Guild</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -464,6 +467,10 @@
 <p><strong>Children:</strong> Guild, User*</p>
 
 <p>*May be null</p>
+<h3 id='this'>this</h3>
+<p><strong>Type:</strong> Command</p>
+
+<p><strong>Description:</strong> When in an event, <code>this</code> refers to the command whose event is being executed</p>
 <h2 id='call'>Call</h2>
 <p>The Call event is executed whenever a message matches Prefix+Callname. For example, when someone sends &quot;-Open Help&quot; on a server where the prefix is &quot;-Open&quot;, the command with the callname &quot;Help&quot; runs its Call event.</p>
 
@@ -821,6 +828,130 @@
 <td>Viewable</td>
 <td>Bool</td>
 <td>Whether the command can be viewed by others</td>
+</tr>
+</tbody></table>
+<h2 id='guild'>Guild</h2>
+<p>The Guild Class contains data relating to a guild that OpenBot is in.</p>
+
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Icon</td>
+<td>String</td>
+<td>The URL to the icon of the guild</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>String</td>
+<td>The Name of the guild</td>
+</tr>
+<tr>
+<td>Settings</td>
+<td>Object</td>
+<td>The Settings of the guild</td>
+</tr>
+<tr>
+<td>Stats</td>
+<td>Object</td>
+<td>The Stats of the guild</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>The id of the guild</td>
+</tr>
+</tbody></table>
+<h3 id='guild-settings'>Guild.Settings</h3>
+<p>The Settings member of the Guild class contains its settings, along with the settings of the commands in it.</p>
+
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Admins</td>
+<td>Array(Number)</td>
+<td>The IDs of the people in the guild who can manage OpenBot</td>
+</tr>
+<tr>
+<td>Channels</td>
+<td>Array(ChannelSetting)</td>
+<td>The Settings for the channels in the guild</td>
+</tr>
+<tr>
+<td>Commands</td>
+<td>Array(Object)</td>
+<td>The Commands that are in the guild</td>
+</tr>
+<tr>
+<td>Prefix</td>
+<td>String</td>
+<td>OpenBot&#39;s Prefix in this guild</td>
+</tr>
+<tr>
+<td>Searchable</td>
+<td>Bool</td>
+<td>Whether this guild can be searched on the website</td>
+</tr>
+</tbody></table>
+<h3 id='guild-settings-commands'>Guild.Settings.Commands</h3>
+<p>The Commands member of the Settings object contains the Commands in the guild, as well as their settings.</p>
+
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Channels</td>
+<td>Array(ChannelSetting)</td>
+<td>Command specific settings for the channels in the guild</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>Object</td>
+<td>Data that this command stores about the guild</td>
+</tr>
+<tr>
+<td>Settings</td>
+<td>Object</td>
+<td>The settings for this command.</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>The id of the command</td>
+</tr>
+</tbody></table>
+<h3 id='guild-stats'>Guild.Stats</h3>
+<p>The Stats member of the guild object contains some stats about the guild.</p>
+
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Messages</td>
+<td>Number</td>
+<td>The number of messages OpenBot has processed in this guild</td>
+</tr>
+<tr>
+<td>Users</td>
+<td>Number</td>
+<td>The number of users in this guild</td>
 </tr>
 </tbody></table>
 
