@@ -659,6 +659,31 @@ Member | Type | Description
 CommandsUsed | Number | The number of commands the user has used
 Messages | Number | The number of messages the user has sent
 
+## UserData
+
+The UserData Class contains data stored by commands, or about commands, relating to a user. It is kept seperate from the User class so that when a User is requested for a profile or something similar, their data is not exposed.
+
+Member | Type | Description
+-- | -- | --
+Commands | Array(Object) | Data stored by commands
+Private | Object | Private storage of the user
+id | Number | The id of the user
+
+### UserData.Commands
+
+The Commands member of the UserData Class contains an array of all the data stored by various commands relating to that user, sorted by author.
+
+Member | Type | Description
+Author | Number | The author of the command storing the data
+Data | Object | The data being stored
+
+### UserData.Private
+
+The Private member of the UserData Class contains all of the Key/Value pairs that a User set on their website. These are used for putting private information in a public command (Like an API key for a music command). It has no defined members, its members are whatever the user defines them to be.
+
+<aside class='note'>You will not need to directly access this object. You can use the LibOpenBot.GetPrivateStorage function to get the members of this object.</aside>
+
+
 ## VerifyRequest
 
 The VerifyRequest Class contains command edits which are waiting for verification by core developers
