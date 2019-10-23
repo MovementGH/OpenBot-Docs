@@ -351,7 +351,13 @@
                     <a href="#guild" class="toc-h2 toc-link" data-title="Guild">Guild</a>
                   </li>
                   <li>
+                    <a href="#pullrequest" class="toc-h2 toc-link" data-title="PullRequest">PullRequest</a>
+                  </li>
+                  <li>
                     <a href="#user" class="toc-h2 toc-link" data-title="User">User</a>
+                  </li>
+                  <li>
+                    <a href="#verifyrequest" class="toc-h2 toc-link" data-title="VerifyRequest">VerifyRequest</a>
                   </li>
               </ul>
           </li>
@@ -983,6 +989,42 @@
 <td>The number of users in this guild</td>
 </tr>
 </tbody></table>
+<h2 id='pullrequest'>PullRequest</h2>
+<p>The PullRequest class represents a pull request to someone&#39;s command.</p>
+
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Command</td>
+<td>Command</td>
+<td>The edited command</td>
+</tr>
+<tr>
+<td>Editor</td>
+<td>Number</td>
+<td>The id of the person who edited it</td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>String</td>
+<td>The notes left by the editor</td>
+</tr>
+<tr>
+<td>Owner</td>
+<td>Number</td>
+<td>The owner of the command</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>The id of the pull request</td>
+</tr>
+</tbody></table>
 <h2 id='user'>User</h2>
 <p>The User Class contains data relating to a user of OpenBot.</p>
 
@@ -1066,6 +1108,16 @@
 <td>The number of messages the user has sent</td>
 </tr>
 </tbody></table>
+<h2 id='verifyrequest'>VerifyRequest</h2>
+<p>The VerifyRequest Class contains command edits which are waiting for verification by core developers</p>
+
+<p>-- | -- | --
+Command | Command | The edited command
+Editor | Number | The id of the person who edited it
+Message | Number | The id of the verification message
+Notes | String | The notes left by the editor
+Owner | Number | The id of the owner of the command
+id | Number | The id of the verify request</p>
 
       </div>
       <div class="dark-box">
