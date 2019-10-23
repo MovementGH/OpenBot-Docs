@@ -508,6 +508,17 @@ It receives these variables:
 
 # Classes
 
+## ChannelSetting
+
+The ChannelSetting Class stores information about the settings in a channel. It can either be related to a guild (Guild.Settings.Channels) or a command (Guild.Settings.Commands[x].Channels). It controls whether commands can be used in that Channel.
+
+<aside class='note'>A ChannelSetting stored in a command takes precedence over a ChannelSetting stored in a guild</aside>
+
+Member | Type | Description
+-- | -- | --
+enabled | Bool | Whether commands can be used in this channel
+id | Number | The id of the channel
+
 ## Command
 
 > Example: Print the Icon of the current command
