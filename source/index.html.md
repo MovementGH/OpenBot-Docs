@@ -663,6 +663,7 @@ Messages | Number | The number of messages the user has sent
 
 The VerifyRequest Class contains command edits which are waiting for verification by core developers
 
+Member | Type | Description
 -- | -- | --
 Command | Command | The edited command
 Editor | Number | The id of the person who edited it
