@@ -571,6 +571,31 @@ Editable | Bool | Whether the command can be edited by others
 User | Bool | The permissions a user needs to run the command
 Viewable | Bool | Whether the command can be viewed by others
 
+## Emoji
+
+The Emoji class contains information about an emoji, usefull for displaying it on a website as well as in discord.
+
+Member | Type | Description
+-- | -- | --
+id | Number | The id of the emoji
+tag | String | The tag of the emoji in discord
+url | String | The url of the emoji on twemoji
+utf | String | The utf/unicode character of the emoji
+
+### tag
+
+To use the tag member in discord, you will have to add ":" to each side. For example, the tag might be "arrow_right_hook", so to display it you would do ":"+Emoji.tag+":", which would send ":arrow_right_hook" and be recognized by discord as an emoji.
+
+### url
+
+To use the url member on a page or link, you will have to add the base twemoji url around it. For example, the url member might be "21aa", so you would have to do "https://twemoji.maxcdn.com/2/72.72/"+Emoji.url+".png" to use a 72x72 png. There are also other sizes, as well as svg. You can find them at twemoji's docs.
+
+### utf
+
+To use the utf member in discord or on a page, just print it as a string.
+
+
+
 ## Guild
 
 The Guild Class contains data relating to a guild that OpenBot is in.
