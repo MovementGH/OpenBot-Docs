@@ -342,6 +342,9 @@
             <a href="#classes" class="toc-h1 toc-link" data-title="Classes">Classes</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#channelsetting" class="toc-h2 toc-link" data-title="ChannelSetting">ChannelSetting</a>
+                  </li>
+                  <li>
                     <a href="#command" class="toc-h2 toc-link" data-title="Command">Command</a>
                   </li>
                   <li>
@@ -693,7 +696,30 @@
 <p><strong>Type:</strong> Member</p>
 
 <p><strong>Description:</strong> The member after the update</p>
-<h1 id='classes'>Classes</h1><h2 id='command'>Command</h2>
+<h1 id='classes'>Classes</h1><h2 id='channelsetting'>ChannelSetting</h2>
+<p>The ChannelSetting Class stores information about the settings in a channel. It can either be related to a guild (Guild.Settings.Channels) or a command (Guild.Settings.Commands[x].Channels). It controls whether commands can be used in that Channel.</p>
+
+<aside class='note'>A ChannelSetting stored in a command takes precedence over a ChannelSetting stored in a guild</aside>
+
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>enabled</td>
+<td>Bool</td>
+<td>Whether commands can be used in this channel</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>The id of the channel</td>
+</tr>
+</tbody></table>
+<h2 id='command'>Command</h2>
 <blockquote>
 <p>Example: Print the Icon of the current command</p>
 </blockquote>
