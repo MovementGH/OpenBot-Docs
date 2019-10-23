@@ -348,6 +348,9 @@
                     <a href="#command" class="toc-h2 toc-link" data-title="Command">Command</a>
                   </li>
                   <li>
+                    <a href="#emoji-3" class="toc-h2 toc-link" data-title="Emoji">Emoji</a>
+                  </li>
+                  <li>
                     <a href="#guild" class="toc-h2 toc-link" data-title="Guild">Guild</a>
                   </li>
                   <li>
@@ -355,6 +358,9 @@
                   </li>
                   <li>
                     <a href="#user" class="toc-h2 toc-link" data-title="User">User</a>
+                  </li>
+                  <li>
+                    <a href="#userdata" class="toc-h2 toc-link" data-title="UserData">UserData</a>
                   </li>
                   <li>
                     <a href="#verifyrequest" class="toc-h2 toc-link" data-title="VerifyRequest">VerifyRequest</a>
@@ -865,6 +871,43 @@
 <td>Whether the command can be viewed by others</td>
 </tr>
 </tbody></table>
+<h2 id='emoji-3'>Emoji</h2>
+<p>The Emoji class contains information about an emoji, usefull for displaying it on a website as well as in discord.</p>
+
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>The id of the emoji</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>String</td>
+<td>The tag of the emoji in discord</td>
+</tr>
+<tr>
+<td>url</td>
+<td>String</td>
+<td>The url of the emoji on twemoji</td>
+</tr>
+<tr>
+<td>utf</td>
+<td>String</td>
+<td>The utf/unicode character of the emoji</td>
+</tr>
+</tbody></table>
+<h3 id='tag'>tag</h3>
+<p>To use the tag member in discord, you will have to add &quot;:&quot; to each side. For example, the tag might be &quot;arrow_right_hook&quot;, so to display it you would do &quot;:&quot;+Emoji.tag+&quot;:&quot;, which would send &quot;:arrow_right_hook&quot; and be recognized by discord as an emoji.</p>
+<h3 id='url'>url</h3>
+<p>To use the url member on a page or link, you will have to add the base twemoji url around it. For example, the url member might be &quot;21aa&quot;, so you would have to do &quot;https://twemoji.maxcdn.com/2/72.72/&quot;+Emoji.url+&quot;.png&quot; to use a 72x72 png. There are also other sizes, as well as svg. You can find them at twemoji&#39;s docs.</p>
+<h3 id='utf'>utf</h3>
+<p>To use the utf member in discord or on a page, just print it as a string.</p>
 <h2 id='guild'>Guild</h2>
 <p>The Guild Class contains data relating to a guild that OpenBot is in.</p>
 
@@ -1108,6 +1151,42 @@
 <td>The number of messages the user has sent</td>
 </tr>
 </tbody></table>
+<h2 id='userdata'>UserData</h2>
+<p>The UserData Class contains data stored by commands, or about commands, relating to a user. It is kept seperate from the User class so that when a User is requested for a profile or something similar, their data is not exposed.</p>
+
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Commands</td>
+<td>Array(Object)</td>
+<td>Data stored by commands</td>
+</tr>
+<tr>
+<td>Private</td>
+<td>Object</td>
+<td>Private storage of the user</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>The id of the user</td>
+</tr>
+</tbody></table>
+<h3 id='userdata-commands'>UserData.Commands</h3>
+<p>The Commands member of the UserData Class contains an array of all the data stored by various commands relating to that user, sorted by author.</p>
+
+<p>Member | Type | Description
+Author | Number | The author of the command storing the data
+Data | Object | The data being stored</p>
+<h3 id='userdata-private'>UserData.Private</h3>
+<p>The Private member of the UserData Class contains all of the Key/Value pairs that a User set on their website. These are used for putting private information in a public command (Like an API key for a music command). It has no defined members, its members are whatever the user defines them to be.</p>
+
+<aside class='note'>You will not need to directly access this object. You can use the LibOpenBot.GetPrivateStorage function to get the members of this object.</aside>
 <h2 id='verifyrequest'>VerifyRequest</h2>
 <p>The VerifyRequest Class contains command edits which are waiting for verification by core developers</p>
 
