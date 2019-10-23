@@ -350,6 +350,9 @@
                   <li>
                     <a href="#guild" class="toc-h2 toc-link" data-title="Guild">Guild</a>
                   </li>
+                  <li>
+                    <a href="#user" class="toc-h2 toc-link" data-title="User">User</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -978,6 +981,89 @@
 <td>Users</td>
 <td>Number</td>
 <td>The number of users in this guild</td>
+</tr>
+</tbody></table>
+<h2 id='user'>User</h2>
+<p>The User Class contains data relating to a user of OpenBot.</p>
+
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Avatar</td>
+<td>String</td>
+<td>The link to the user&#39;s avatar</td>
+</tr>
+<tr>
+<td>Settings</td>
+<td>Object</td>
+<td>The user&#39;s settings</td>
+</tr>
+<tr>
+<td>Stats</td>
+<td>Object</td>
+<td>Some stats about the user</td>
+</tr>
+<tr>
+<td>Username</td>
+<td>String</td>
+<td>The user&#39;s username</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Number</td>
+<td>The user&#39;s id</td>
+</tr>
+</tbody></table>
+<h3 id='user-settings'>User.Settings</h3>
+<p>The Settings member of the User Class contains settings relating to a user.</p>
+
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>DeveloperMode</td>
+<td>Bool</td>
+<td>Whether the user has Developer Mode enabled on the website</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>String</td>
+<td>The language the user uses</td>
+</tr>
+<tr>
+<td>ShowGuilds</td>
+<td>Bool</td>
+<td>Whether the user shows their guilds on their profile</td>
+</tr>
+</tbody></table>
+<h3 id='user-stats'>User.Stats</h3>
+<p>The Stats member of the User Class contains some stats relating to a user</p>
+
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CommandsUsed</td>
+<td>Number</td>
+<td>The number of commands the user has used</td>
+</tr>
+<tr>
+<td>Messages</td>
+<td>Number</td>
+<td>The number of messages the user has sent</td>
 </tr>
 </tbody></table>
 
