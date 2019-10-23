@@ -615,3 +615,33 @@ Member | Type | Description
 Messages | Number | The number of messages OpenBot has processed in this guild
 Users | Number | The number of users in this guild
 
+## User
+
+The User Class contains data relating to a user of OpenBot.
+
+Member | Type | Description
+-- | -- | --
+Avatar | String | The link to the user's avatar
+Settings | Object | The user's settings
+Stats | Object | Some stats about the user
+Username | String | The user's username
+id | Number | The user's id
+
+### User.Settings
+
+The Settings member of the User Class contains settings relating to a user.
+
+Member | Type | Description
+-- | -- | --
+DeveloperMode | Bool | Whether the user has Developer Mode enabled on the website
+Language | String | The language the user uses
+ShowGuilds | Bool | Whether the user shows their guilds on their profile
+
+### User.Stats
+
+The Stats member of the User Class contains some stats relating to a user
+
+Member | Type | Description
+-- | -- | --
+CommandsUsed | Number | The number of commands the user has used
+Messages | Number | The number of messages the user has sent
