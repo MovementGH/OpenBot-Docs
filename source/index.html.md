@@ -615,6 +615,19 @@ Member | Type | Description
 Messages | Number | The number of messages OpenBot has processed in this guild
 Users | Number | The number of users in this guild
 
+
+## PullRequest
+
+The PullRequest class represents a pull request to someone's command.
+
+Member | Type | Description
+-- | -- | --
+Command | Command | The edited command
+Editor | Number | The id of the person who edited it
+Notes | String | The notes left by the editor
+Owner | Number | The owner of the command
+id | Number | The id of the pull request
+
 ## User
 
 The User Class contains data relating to a user of OpenBot.
@@ -645,3 +658,15 @@ Member | Type | Description
 -- | -- | --
 CommandsUsed | Number | The number of commands the user has used
 Messages | Number | The number of messages the user has sent
+
+## VerifyRequest
+
+The VerifyRequest Class contains command edits which are waiting for verification by core developers
+
+-- | -- | --
+Command | Command | The edited command
+Editor | Number | The id of the person who edited it
+Message | Number | The id of the verification message
+Notes | String | The notes left by the editor
+Owner | Number | The id of the owner of the command
+id | Number | The id of the verify request
