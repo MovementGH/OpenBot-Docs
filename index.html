@@ -1138,12 +1138,39 @@
 <h3 id='relay-type'>Relay.type</h3>
 <p>There are several types of relays available:</p>
 
-<p>Name | Data | Description
-async | Javascript | Evaluates javascript and returns callback
-dbUpdate | Object | Clears old data from cache
-eval | Javascript | Evaluates javascript syncronously
-restart | Null | Restarts process
-stat | Null | Fetches performance information</p>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Data</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>async</td>
+<td>Javascript</td>
+<td>Evaluates javascript and returns callback</td>
+</tr>
+<tr>
+<td>dbUpdate</td>
+<td>Object</td>
+<td>Clears old data from cache</td>
+</tr>
+<tr>
+<td>eval</td>
+<td>Javascript</td>
+<td>Evaluates javascript syncronously</td>
+</tr>
+<tr>
+<td>restart</td>
+<td>Null</td>
+<td>Restarts process</td>
+</tr>
+<tr>
+<td>stat</td>
+<td>Null</td>
+<td>Fetches performance information</td>
+</tr>
+</tbody></table>
 
 <aside class="note">For the async relay, instead of sending "1+1" and getting 2, you send "Callback(1+1)" and get 2. Then you can use asyncrounous functions with .then</aside>
 <h2 id='user'>User</h2>
