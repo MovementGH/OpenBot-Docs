@@ -640,6 +640,16 @@ Member | Type | Description
 Messages | Number | The number of messages OpenBot has processed in this guild
 Users | Number | The number of users in this guild
 
+## Locale
+
+The Locale Class represents a Language that OpenBot supports.
+
+Member | Type | Description
+-- | -- | --
+code | String | The Locale Code
+icon | String | The Locale Icon
+name | String | The Language name
+
 
 ## PullRequest
 
