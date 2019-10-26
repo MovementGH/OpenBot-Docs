@@ -377,6 +377,24 @@
             <a href="#functions" class="toc-h1 toc-link" data-title="Functions">Functions</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#libopenbot-command" class="toc-h2 toc-link" data-title="LibOpenBot.Command">LibOpenBot.Command</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-guild" class="toc-h2 toc-link" data-title="LibOpenBot.Guild">LibOpenBot.Guild</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-pullrequest" class="toc-h2 toc-link" data-title="LibOpenBot.PullRequest">LibOpenBot.PullRequest</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-user" class="toc-h2 toc-link" data-title="LibOpenBot.User">LibOpenBot.User</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-userdata" class="toc-h2 toc-link" data-title="LibOpenBot.UserData">LibOpenBot.UserData</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-verifyrequest" class="toc-h2 toc-link" data-title="LibOpenBot.VerifyRequest">LibOpenBot.VerifyRequest</a>
+                  </li>
+                  <li>
                     <a href="#libopenbot-sendrelay" class="toc-h2 toc-link" data-title="LibOpenBot.sendRelay">LibOpenBot.sendRelay</a>
                   </li>
                   <li>
@@ -1333,9 +1351,100 @@ Data | Object | The data being stored</p>
 <td>The id of the verify request</td>
 </tr>
 </tbody></table>
-<h1 id='functions'>Functions</h1><h2 id='libopenbot-sendrelay'>LibOpenBot.sendRelay</h2>
-<p>The LibOpenBot.sendRelay function sends a message to another process, and retrieves the result.</p>
+<h1 id='functions'>Functions</h1><h2 id='libopenbot-command'>LibOpenBot.Command</h2>
+<p>The LibOpenBot.Command function creates a new command in the database</p>
 <h3 id='arguments-2'>Arguments</h3>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Author</td>
+<td>Number</td>
+<td>The ID of the author of the command</td>
+</tr>
+</tbody></table>
+<h3 id='return-type'>Return Type</h3>
+<p>Command</p>
+<h2 id='libopenbot-guild'>LibOpenBot.Guild</h2>
+<p>The LibOpenBot.Guild function creates a new guild in the database</p>
+<h3 id='arguments-3'>Arguments</h3>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>DiscordGuild</td>
+<td>guild</td>
+<td>A discord.js guild</td>
+</tr>
+</tbody></table>
+<h3 id='return-type-2'>Return Type</h3>
+<p>Guild</p>
+<h2 id='libopenbot-pullrequest'>LibOpenBot.PullRequest</h2>
+<p>The LibOpenBot.PullRequest function creates a new pull request to a command</p>
+<h3 id='arguments-4'>Arguments</h3>
+<p>Argument | Type | Description
+Command | Command | The Edited Command
+Editor | Number | The id of the editor of the command
+Notes | String | The notes about the edit</p>
+<h3 id='return-type-3'>Return Type</h3>
+<p>PullRequest</p>
+<h2 id='libopenbot-user'>LibOpenBot.User</h2>
+<p>The LibOpenBot.User function creates a new user in the database.</p>
+<h3 id='arguments-5'>Arguments</h3>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>DiscordUser</td>
+<td>user</td>
+<td>A discord.js user</td>
+</tr>
+</tbody></table>
+<h3 id='return-type-4'>Return Type</h3>
+<p>User</p>
+<h2 id='libopenbot-userdata'>LibOpenBot.UserData</h2>
+<p>The LibOpenBot.UserData function creates a new UserData entry in the database</p>
+<h3 id='arguments-6'>Arguments</h3>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>User</td>
+<td>Number</td>
+<td>The id of the user whose data this is</td>
+</tr>
+</tbody></table>
+<h3 id='return-type-5'>Return Type</h3>
+<p>UserData</p>
+<h2 id='libopenbot-verifyrequest'>LibOpenBot.VerifyRequest</h2>
+<p>The LibOpenBot.VerifyRequest function creates a new verification request to a command</p>
+<h3 id='arguments-7'>Arguments</h3>
+<p>Argument | Type | Description
+Command | Command | The Edited Command
+Editor | Number | The id of the editor of the command
+Notes | String | The notes about the edit
+Message | Number | The id of the verification message</p>
+<h3 id='return-type-6'>Return Type</h3>
+<p>VerifyRequest</p>
+<h2 id='libopenbot-sendrelay'>LibOpenBot.sendRelay</h2>
+<p>The LibOpenBot.sendRelay function sends a message to another process, and retrieves the result.</p>
+<h3 id='arguments-8'>Arguments</h3>
 <table><thead>
 <tr>
 <th>Argument</th>
@@ -1354,11 +1463,11 @@ Data | Object | The data being stored</p>
 <td>The Relay to send</td>
 </tr>
 </tbody></table>
-<h3 id='return-value'>Return Value</h3>
+<h3 id='return-type-7'>Return Type</h3>
 <p>Promise(Object)</p>
 <h2 id='libopenbot-sendrelayshards'>LibOpenBot.sendRelayShards</h2>
 <p>The LibOpenBot.sendRelayShards function sends a message to all of the shards and retrieves the result.</p>
-<h3 id='arguments-3'>Arguments</h3>
+<h3 id='arguments-9'>Arguments</h3>
 <table><thead>
 <tr>
 <th>Argument</th>
@@ -1372,11 +1481,11 @@ Data | Object | The data being stored</p>
 <td>The Relay to send</td>
 </tr>
 </tbody></table>
-<h3 id='return-value-2'>Return Value</h3>
+<h3 id='return-type-8'>Return Type</h3>
 <p>Promise(Array(Object))</p>
 <h2 id='libopenbot-sendrelayall'>LibOpenBot.sendRelayAll</h2>
 <p>The LibOpenBot.sendRelayAll function sends a message to all of the processes and retrieves the result</p>
-<h3 id='arguments-4'>Arguments</h3>
+<h3 id='arguments-10'>Arguments</h3>
 <table><thead>
 <tr>
 <th>Argument</th>
@@ -1395,6 +1504,8 @@ Data | Object | The data being stored</p>
 <td>Whether to send it to the master process</td>
 </tr>
 </tbody></table>
+<h3 id='return-type-9'>Return Type</h3>
+<p>Promise(Array(Object))</p>
 
       </div>
       <div class="dark-box">
