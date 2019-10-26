@@ -677,6 +677,7 @@ data | Object | The data in the relay
 There are several types of relays available:
 
 Name | Data | Description
+-- | -- | --
 async | Javascript | Evaluates javascript and returns callback
 dbUpdate | Object | Clears old data from cache
 eval | Javascript | Evaluates javascript syncronously
