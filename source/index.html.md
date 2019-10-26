@@ -758,6 +758,93 @@ id | Number | The id of the verify request
 
 # Functions
 
+## LibOpenBot.Command
+
+The LibOpenBot.Command function creates a new command in the database
+
+### Arguments
+
+Argument | Type | Description
+-- | -- | --
+Author | Number | The ID of the author of the command
+
+### Return Type
+
+Command
+
+## LibOpenBot.Guild
+
+The LibOpenBot.Guild function creates a new guild in the database
+
+### Arguments
+
+Argument | Type | Description
+-- | -- | --
+DiscordGuild | guild | A discord.js guild
+
+### Return Type
+
+Guild
+
+## LibOpenBot.PullRequest
+
+The LibOpenBot.PullRequest function creates a new pull request to a command
+
+### Arguments
+
+Argument | Type | Description
+Command | Command | The Edited Command
+Editor | Number | The id of the editor of the command
+Notes | String | The notes about the edit
+
+### Return Type
+
+PullRequest
+
+## LibOpenBot.User
+
+The LibOpenBot.User function creates a new user in the database.
+
+### Arguments
+
+Argument | Type | Description
+-- | -- | --
+DiscordUser | user | A discord.js user
+
+### Return Type
+
+User
+
+## LibOpenBot.UserData
+
+The LibOpenBot.UserData function creates a new UserData entry in the database
+
+### Arguments
+
+Argument | Type | Description
+-- | -- | --
+User | Number | The id of the user whose data this is
+
+### Return Type
+
+UserData
+
+## LibOpenBot.VerifyRequest
+
+The LibOpenBot.VerifyRequest function creates a new verification request to a command
+
+### Arguments
+
+Argument | Type | Description
+Command | Command | The Edited Command
+Editor | Number | The id of the editor of the command
+Notes | String | The notes about the edit
+Message | Number | The id of the verification message
+
+### Return Type
+
+VerifyRequest
+
 ## LibOpenBot.sendRelay
 
 The LibOpenBot.sendRelay function sends a message to another process, and retrieves the result.
@@ -769,7 +856,7 @@ Argument | Type | Description
 Proc | String | The Name of the process to send a relay to
 Data | Relay | The Relay to send
 
-### Return Value
+### Return Type
 
 Promise(Object)
 
@@ -783,7 +870,7 @@ Argument | Type | Description
 -- | -- | --
 Data | Relay | The Relay to send
 
-### Return Value
+### Return Type
 
 Promise(Array(Object))
 
@@ -792,7 +879,14 @@ Promise(Array(Object))
 The LibOpenBot.sendRelayAll function sends a message to all of the processes and retrieves the result
 
 ### Arguments
+
 Argument | Type | Description
 -- | -- | --
 Data | Relay | The Relay to send
 Master | Bool | Whether to send it to the master process
+
+### Return Type
+
+Promise(Array(Object))
+
+
