@@ -386,6 +386,33 @@
                     <a href="#libopenbot-getcommands" class="toc-h2 toc-link" data-title="LibOpenBot.GetCommands">LibOpenBot.GetCommands</a>
                   </li>
                   <li>
+                    <a href="#libopenbot-getdevs" class="toc-h2 toc-link" data-title="LibOpenBot.GetDevs">LibOpenBot.GetDevs</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-getemojis" class="toc-h2 toc-link" data-title="LibOpenBot.GetEmojis">LibOpenBot.GetEmojis</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-getlocales" class="toc-h2 toc-link" data-title="LibOpenBot.GetLocales">LibOpenBot.GetLocales</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-getpullrequest" class="toc-h2 toc-link" data-title="LibOpenBot.GetPullRequest">LibOpenBot.GetPullRequest</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-getpullrequests" class="toc-h2 toc-link" data-title="LibOpenBot.GetPullRequests">LibOpenBot.GetPullRequests</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-getuser" class="toc-h2 toc-link" data-title="LibOpenBot.GetUser">LibOpenBot.GetUser</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-getusercommands" class="toc-h2 toc-link" data-title="LibOpenBot.GetUserCommands">LibOpenBot.GetUserCommands</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-getverifiers" class="toc-h2 toc-link" data-title="LibOpenBot.GetVerifiers">LibOpenBot.GetVerifiers</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-getweblocales" class="toc-h2 toc-link" data-title="LibOpenBot.GetWebLocales">LibOpenBot.GetWebLocales</a>
+                  </li>
+                  <li>
                     <a href="#libopenbot-guild" class="toc-h2 toc-link" data-title="LibOpenBot.Guild">LibOpenBot.Guild</a>
                   </li>
                   <li>
@@ -1358,7 +1385,7 @@ Data | Object | The data being stored</p>
 </tr>
 </tbody></table>
 <h1 id='functions'>Functions</h1><h2 id='libopenbot-command'>LibOpenBot.Command</h2>
-<p>The LibOpenBot.Command function creates a new command in the database</p>
+<p>The LibOpenBot.Command function creates a new Command in the database</p>
 
 <table><thead>
 <tr>
@@ -1376,7 +1403,7 @@ Data | Object | The data being stored</p>
 
 <p><strong>Return Type:</strong> Command</p>
 <h2 id='libopenbot-getcommand'>LibOpenBot.GetCommand</h2>
-<p>The LibOpenBot.GetCommand function returns a command from its ID</p>
+<p>The LibOpenBot.GetCommand function returns a Command from its ID</p>
 
 <table><thead>
 <tr>
@@ -1392,9 +1419,9 @@ Data | Object | The data being stored</p>
 </tr>
 </tbody></table>
 
-<p><strong>Return Type:</strong> Command</p>
+<p><strong>Return Type:</strong> Promise(Command)</p>
 <h2 id='libopenbot-getcommands'>LibOpenBot.GetCommands</h2>
-<p>The LibOpenBot.GetCommands function returns an array of commands from an array of IDs.</p>
+<p>The LibOpenBot.GetCommands function returns an array of Commands from an array of IDs.</p>
 
 <table><thead>
 <tr>
@@ -1410,7 +1437,99 @@ Data | Object | The data being stored</p>
 </tr>
 </tbody></table>
 
-<p><strong>Return Type:</strong> Array(Command)</p>
+<p><strong>Return Type:</strong> Promise(Array(Command))</p>
+<h2 id='libopenbot-getdevs'>LibOpenBot.GetDevs</h2>
+<p>The LibOpenBot.GetDevs function returns the IDs of all of the Users with Developer Permissions</p>
+
+<p><strong>Return Type:</strong> Promise(Array(Number))</p>
+<h2 id='libopenbot-getemojis'>LibOpenBot.GetEmojis</h2>
+<p>The LibOpenBot.GetEmojis function returns all of the Emojis indexed by OpenBot</p>
+
+<p><strong>Return Type:</strong> Promise(Array(Emoji))</p>
+<h2 id='libopenbot-getlocales'>LibOpenBot.GetLocales</h2>
+<p>The LibOpenBot.GetLocales function returns all of the Locales supported by OpenBot</p>
+
+<p><strong>Return Type:</strong> Promise(Array(Locale))</p>
+<h2 id='libopenbot-getpullrequest'>LibOpenBot.GetPullRequest</h2>
+<p>The LibOpenBot.GetPullRequest function returns a Pull Request from its ID</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Tyoe</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>Number</td>
+<td>The ID of the Pull Request to get</td>
+</tr>
+</tbody></table>
+
+<p><strong>Return Type:</strong> Promise(PullRequest)</p>
+<h2 id='libopenbot-getpullrequests'>LibOpenBot.GetPullRequests</h2>
+<p>The LibOpenBot.GetPullRequests function gets all of the Pull Requests to a certain User&#39;s Commands.</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>User</td>
+<td>Number</td>
+<td>The ID of the User whose Pull Requests you want</td>
+</tr>
+</tbody></table>
+
+<p><strong>Return Type:</strong> Promise(Array(PullRequest))</p>
+<h2 id='libopenbot-getuser'>LibOpenBot.GetUser</h2>
+<p>The LibOpenBot.GetUser function returns a User from an ID</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>Number</td>
+<td>The ID of the User to get</td>
+</tr>
+</tbody></table>
+
+<p><strong>Return Type:</strong> Promise(User)</p>
+<h2 id='libopenbot-getusercommands'>LibOpenBot.GetUserCommands</h2>
+<p>The LibOpenBot.GetUserCommands function returns all of the Commands that a User has made</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>UserID</td>
+<td>Number</td>
+<td>The ID of the User whose Commands you want to get</td>
+</tr>
+</tbody></table>
+
+<p><strong>Return Type:</strong> Promise(Array(Command))</p>
+<h2 id='libopenbot-getverifiers'>LibOpenBot.GetVerifiers</h2>
+<p>The LibOpenBot.GetVerifiers function returns the IDs of all of the Users who have Verifier Permissions</p>
+
+<p><strong>Return Type:</strong> Promise(Array(Number))</p>
+<h2 id='libopenbot-getweblocales'>LibOpenBot.GetWebLocales</h2>
+<p>The LibOpenBot.GetWebLocales function returns all of the locale codes supported on OpenBot&#39;s Website</p>
+
+<p><strong>Return Type:</strong> Promise(Array(String))</p>
 <h2 id='libopenbot-guild'>LibOpenBot.Guild</h2>
 <p>The LibOpenBot.Guild function creates a new guild in the database</p>
 
