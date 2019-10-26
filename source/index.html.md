@@ -184,8 +184,6 @@ It receives these variables:
 
 **Description:** The message that was sent to activate the command.
 
-### Arguments
-
 **Type:** String
 
 **Description:** The content of the message, excluding the prefix and callname. For example, if message.content is "-Open Add SomeCommand", Arguments will be "SomeCommand"
@@ -762,15 +760,11 @@ id | Number | The id of the verify request
 
 The LibOpenBot.Command function creates a new command in the database
 
-### Arguments
-
 Argument | Type | Description
 -- | -- | --
 Author | Number | The ID of the author of the command
 
-### Return Type
-
-Command
+**Return Type:** Command
 
 ## LibOpenBot.GetCommand
 
@@ -786,78 +780,56 @@ ID | Number | The ID of the command to get
 
 The LibOpenBot.GetCommands function returns an array of commands from an array of IDs.
 
-### Arguments
-
 Argument | Type | Description
 -- | -- | --
 IDs | Array(Number) | The IDs of the commands to get
 
-### Return Type
-
-Array(Command)
+**Return Type:** Array(Command)
 
 ## LibOpenBot.Guild
 
 The LibOpenBot.Guild function creates a new guild in the database
 
-### Arguments
-
 Argument | Type | Description
 -- | -- | --
 DiscordGuild | guild | A discord.js guild
 
-### Return Type
-
-Guild
+**Return Type:** Guild
 
 ## LibOpenBot.PullRequest
 
 The LibOpenBot.PullRequest function creates a new pull request to a command
-
-### Arguments
 
 Argument | Type | Description
 Command | Command | The Edited Command
 Editor | Number | The id of the editor of the command
 Notes | String | The notes about the edit
 
-### Return Type
-
-PullRequest
+**Return Type:** PullRequest
 
 ## LibOpenBot.User
 
 The LibOpenBot.User function creates a new user in the database.
 
-### Arguments
-
 Argument | Type | Description
 -- | -- | --
 DiscordUser | user | A discord.js user
 
-### Return Type
-
-User
+**Return Type:** User
 
 ## LibOpenBot.UserData
 
 The LibOpenBot.UserData function creates a new UserData entry in the database
 
-### Arguments
-
 Argument | Type | Description
 -- | -- | --
 User | Number | The id of the user whose data this is
 
-### Return Type
-
-UserData
+**Return Type:** UserData
 
 ## LibOpenBot.VerifyRequest
 
 The LibOpenBot.VerifyRequest function creates a new verification request to a command
-
-### Arguments
 
 Argument | Type | Description
 Command | Command | The Edited Command
@@ -865,52 +837,38 @@ Editor | Number | The id of the editor of the command
 Notes | String | The notes about the edit
 Message | Number | The id of the verification message
 
-### Return Type
-
-VerifyRequest
+**Return Type:** VerifyRequest
 
 ## LibOpenBot.sendRelay
 
 The LibOpenBot.sendRelay function sends a message to another process, and retrieves the result.
-
-### Arguments
 
 Argument | Type | Description
 -- | -- | --
 Proc | String | The Name of the process to send a relay to
 Data | Relay | The Relay to send
 
-### Return Type
-
-Promise(Object)
+**Return Type:** Promise(Object)
 
 ## LibOpenBot.sendRelayShards
 
 The LibOpenBot.sendRelayShards function sends a message to all of the shards and retrieves the result.
 
-### Arguments
-
 Argument | Type | Description
 -- | -- | --
 Data | Relay | The Relay to send
 
-### Return Type
-
-Promise(Array(Object))
+**Return Type:** Promise(Array(Object))
 
 ## LibOpenBot.sendRelayAll
 
 The LibOpenBot.sendRelayAll function sends a message to all of the processes and retrieves the result
-
-### Arguments
 
 Argument | Type | Description
 -- | -- | --
 Data | Relay | The Relay to send
 Master | Bool | Whether to send it to the master process
 
-### Return Type
-
-Promise(Array(Object))
+**Return Type:** Promise(Array(Object))
 
 
