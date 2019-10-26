@@ -360,6 +360,9 @@
                     <a href="#pullrequest" class="toc-h2 toc-link" data-title="PullRequest">PullRequest</a>
                   </li>
                   <li>
+                    <a href="#relay" class="toc-h2 toc-link" data-title="Relay">Relay</a>
+                  </li>
+                  <li>
                     <a href="#user" class="toc-h2 toc-link" data-title="User">User</a>
                   </li>
                   <li>
@@ -367,6 +370,20 @@
                   </li>
                   <li>
                     <a href="#verifyrequest" class="toc-h2 toc-link" data-title="VerifyRequest">VerifyRequest</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#functions" class="toc-h1 toc-link" data-title="Functions">Functions</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#libopenbot-sendrelay" class="toc-h2 toc-link" data-title="LibOpenBot.sendRelay">LibOpenBot.sendRelay</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-sendrelayshards" class="toc-h2 toc-link" data-title="LibOpenBot.sendRelayShards">LibOpenBot.sendRelayShards</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-sendrelayall" class="toc-h2 toc-link" data-title="LibOpenBot.sendRelayAll">LibOpenBot.sendRelayAll</a>
                   </li>
               </ul>
           </li>
@@ -1097,6 +1114,38 @@
 <td>The id of the pull request</td>
 </tr>
 </tbody></table>
+<h2 id='relay'>Relay</h2>
+<p>The Relay class represents a relay to another process</p>
+
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>String</td>
+<td>The type of relay</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td>The data in the relay</td>
+</tr>
+</tbody></table>
+<h3 id='relay-type'>Relay.type</h3>
+<p>There are several types of relays available:</p>
+
+<p>Name | Data | Description
+async | Javascript | Evaluates javascript and returns callback
+dbUpdate | Object | Clears old data from cache
+eval | Javascript | Evaluates javascript syncronously
+restart | Null | Restarts process
+stat | Null | Fetches performance information</p>
+
+<aside class="note">For the async relay, instead of sending "1+1" and getting 2, you send "Callback(1+1)" and get 2. Then you can use asyncrounous functions with .then</aside>
 <h2 id='user'>User</h2>
 <p>The User Class contains data relating to a user of OpenBot.</p>
 
@@ -1255,6 +1304,68 @@ Data | Object | The data being stored</p>
 <td>id</td>
 <td>Number</td>
 <td>The id of the verify request</td>
+</tr>
+</tbody></table>
+<h1 id='functions'>Functions</h1><h2 id='libopenbot-sendrelay'>LibOpenBot.sendRelay</h2>
+<p>The LibOpenBot.sendRelay function sends a message to another process, and retrieves the result.</p>
+<h3 id='arguments-2'>Arguments</h3>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Proc</td>
+<td>String</td>
+<td>The Name of the process to send a relay to</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>Relay</td>
+<td>The Relay to send</td>
+</tr>
+</tbody></table>
+<h3 id='return-value'>Return Value</h3>
+<p>Promise(Object)</p>
+<h2 id='libopenbot-sendrelayshards'>LibOpenBot.sendRelayShards</h2>
+<p>The LibOpenBot.sendRelayShards function sends a message to all of the shards and retrieves the result.</p>
+<h3 id='arguments-3'>Arguments</h3>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Data</td>
+<td>Relay</td>
+<td>The Relay to send</td>
+</tr>
+</tbody></table>
+<h3 id='return-value-2'>Return Value</h3>
+<p>Promise(Array(Object))</p>
+<h2 id='libopenbot-sendrelayall'>LibOpenBot.sendRelayAll</h2>
+<p>The LibOpenBot.sendRelayAll function sends a message to all of the processes and retrieves the result</p>
+<h3 id='arguments-4'>Arguments</h3>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Data</td>
+<td>Relay</td>
+<td>The Relay to send</td>
+</tr>
+<tr>
+<td>Master</td>
+<td>Bool</td>
+<td>Whether to send it to the master process</td>
 </tr>
 </tbody></table>
 
