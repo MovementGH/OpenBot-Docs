@@ -758,7 +758,7 @@ id | Number | The id of the verify request
 
 ## LibOpenBot.Command
 
-The LibOpenBot.Command function creates a new command in the database
+The LibOpenBot.Command function creates a new Command in the database
 
 Argument | Type | Description
 -- | -- | --
@@ -768,23 +768,93 @@ Author | Number | The ID of the author of the command
 
 ## LibOpenBot.GetCommand
 
-The LibOpenBot.GetCommand function returns a command from its ID
+The LibOpenBot.GetCommand function returns a Command from its ID
 
 Argument | Type | Description
 -- | -- | --
 ID | Number | The ID of the command to get
 
-**Return Type:** Command
+**Return Type:** Promise(Command)
 
 ## LibOpenBot.GetCommands
 
-The LibOpenBot.GetCommands function returns an array of commands from an array of IDs.
+The LibOpenBot.GetCommands function returns an array of Commands from an array of IDs.
 
 Argument | Type | Description
 -- | -- | --
 IDs | Array(Number) | The IDs of the commands to get
 
-**Return Type:** Array(Command)
+**Return Type:** Promise(Array(Command))
+
+## LibOpenBot.GetDevs
+
+The LibOpenBot.GetDevs function returns the IDs of all of the Users with Developer Permissions
+
+**Return Type:** Promise(Array(Number))
+
+## LibOpenBot.GetEmojis
+
+The LibOpenBot.GetEmojis function returns all of the Emojis indexed by OpenBot
+
+**Return Type:** Promise(Array(Emoji))
+
+## LibOpenBot.GetLocales
+
+The LibOpenBot.GetLocales function returns all of the Locales supported by OpenBot
+
+**Return Type:** Promise(Array(Locale))
+
+## LibOpenBot.GetPullRequest
+
+The LibOpenBot.GetPullRequest function returns a Pull Request from its ID
+
+Argument | Tyoe | Description
+-- | -- | --
+ID | Number | The ID of the Pull Request to get
+
+**Return Type:** Promise(PullRequest)
+
+## LibOpenBot.GetPullRequests
+
+The LibOpenBot.GetPullRequests function gets all of the Pull Requests to a certain User's Commands.
+
+Argument | Type | Description
+-- | -- | --
+User | Number | The ID of the User whose Pull Requests you want
+
+**Return Type:** Promise(Array(PullRequest))
+
+## LibOpenBot.GetUser
+
+The LibOpenBot.GetUser function returns a User from an ID
+
+Argument | Type | Description
+-- | -- | --
+ID | Number | The ID of the User to get
+
+**Return Type:** Promise(User)
+
+## LibOpenBot.GetUserCommands
+
+The LibOpenBot.GetUserCommands function returns all of the Commands that a User has made
+
+Argument | Type | Description
+-- | -- | --
+UserID | Number | The ID of the User whose Commands you want to get
+
+**Return Type:** Promise(Array(Command))
+
+## LibOpenBot.GetVerifiers
+
+The LibOpenBot.GetVerifiers function returns the IDs of all of the Users who have Verifier Permissions
+
+**Return Type:** Promise(Array(Number))
+
+## LibOpenBot.GetWebLocales
+
+The LibOpenBot.GetWebLocales function returns all of the locale codes supported on OpenBot's Website
+
+**Return Type:** Promise(Array(String))
 
 ## LibOpenBot.Guild
 
