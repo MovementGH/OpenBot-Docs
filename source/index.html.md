@@ -772,6 +772,30 @@ Author | Number | The ID of the author of the command
 
 Command
 
+## LibOpenBot.GetCommand
+
+The LibOpenBot.GetCommand function returns a command from its ID
+
+Argument | Type | Description
+-- | -- | --
+ID | Number | The ID of the command to get
+
+**Return Type:** Command
+
+## LibOpenBot.GetCommands
+
+The LibOpenBot.GetCommands function returns an array of commands from an array of IDs.
+
+### Arguments
+
+Argument | Type | Description
+-- | -- | --
+IDs | Array(Number) | The IDs of the commands to get
+
+### Return Type
+
+Array(Command)
+
 ## LibOpenBot.Guild
 
 The LibOpenBot.Guild function creates a new guild in the database
