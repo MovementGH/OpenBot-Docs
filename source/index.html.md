@@ -663,6 +663,29 @@ Notes | String | The notes left by the editor
 Owner | Number | The owner of the command
 id | Number | The id of the pull request
 
+## Relay
+
+The Relay class represents a relay to another process
+
+Member | Type | Description
+-- | -- | --
+type | String | The type of relay
+data | Object | The data in the relay
+
+### Relay.type
+
+There are several types of relays available:
+
+Name | Data | Description
+async | Javascript | Evaluates javascript and returns callback
+dbUpdate | Object | Clears old data from cache
+eval | Javascript | Evaluates javascript syncronously
+restart | Null | Restarts process
+stat | Null | Fetches performance information
+
+<aside class="note">For the async relay, instead of sending "1+1" and getting 2, you send "Callback(1+1)" and get 2. Then you can use asyncrounous functions with .then</aside>
+
+
 ## User
 
 The User Class contains data relating to a user of OpenBot.
@@ -731,3 +754,44 @@ Message | Number | The id of the verification message
 Notes | String | The notes left by the editor
 Owner | Number | The id of the owner of the command
 id | Number | The id of the verify request
+
+# Functions
+
+## LibOpenBot.sendRelay
+
+The LibOpenBot.sendRelay function sends a message to another process, and retrieves the result.
+
+### Arguments
+
+Argument | Type | Description
+-- | -- | --
+Proc | String | The Name of the process to send a relay to
+Data | Relay | The Relay to send
+
+### Return Value
+
+Promise(Object)
+
+## LibOpenBot.sendRelayShards
+
+The LibOpenBot.sendRelayShards function sends a message to all of the shards and retrieves the result.
+
+### Arguments
+
+Argument | Type | Description
+-- | -- | --
+Data | Relay | The Relay to send
+
+### Return Value
+
+Promise(Array(Object))
+
+## LibOpenBot.sendRelayAll
+
+The LibOpenBot.sendRelayAll function sends a message to all of the processes and retrieves the result
+
+### Arguments
+Argument | Type | Description
+-- | -- | --
+Data | Relay | The Relay to send
+Master | Bool | Whether to send it to the master process
