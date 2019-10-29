@@ -776,6 +776,17 @@ ID | Number | The ID of the command to get
 
 **Return Type:** Promise(Command)
 
+## LibOpenBot.GetCommandData
+
+The LibOpenBot.GetCommandData function returns the data a command has stored about a User. (You can get Guild data directly from the BotContext.Guild Object)
+
+Argument | Type | Description
+-- | -- | --
+Command | Command | The Command whose data you want to get
+User | Number | The ID of the user whose data you want to get
+
+**Return Type:** Promise(Object)
+
 ## LibOpenBot.GetCommands
 
 The LibOpenBot.GetCommands function returns an array of Commands from an array of IDs.
@@ -803,6 +814,23 @@ The LibOpenBot.GetEmojis function returns all of the Emojis indexed by OpenBot
 The LibOpenBot.GetLocales function returns all of the Locales supported by OpenBot
 
 **Return Type:** Promise(Array(Locale))
+
+## LibOpenBot.GetPrivateStorage
+
+The LibOpenBot.GetPrivateStorage function returns all or some of your private storage.
+
+Argument | Type | Description
+-- | -- | --
+ID | Number | The ID of the User whose private storage you want to get.
+Key | String | The Key of the private storage you want to get
+
+### Key
+
+If Key is null, then it will return all of the private storage. If key is a string, it will return the private storage entry that has that Key as its Name.
+
+**Return Type:** Promise(Object/String)
+
+<aside class="warning">If you attempt to get the private storage of another user other than yourself, your command will be denied.</aside>
 
 ## LibOpenBot.GetPullRequest
 
@@ -844,11 +872,29 @@ UserID | Number | The ID of the User whose Commands you want to get
 
 **Return Type:** Promise(Array(Command))
 
+## LibOpenBot.GetUserData
+
+The LibOpenBot.GetUserData function returns the User Data of a user (Including Private Storage and Command Data).
+
+Argument | Type | Description
+-- | -- | --
+ID | Number | The ID of the User whose data you want to get
+
+**Return Type:** Promise(Array(Command))
+
+<aside class="note">You do not need to directly interact with this function, instead you can use LibOpenBot.GetPrivateStorage or LibOpenBot.GetCommandData to get the individual parts of a User's data</aside>
+
 ## LibOpenBot.GetVerifiers
 
 The LibOpenBot.GetVerifiers function returns the IDs of all of the Users who have Verifier Permissions
 
 **Return Type:** Promise(Array(Number))
+
+## LibOpenBot.GetVerifyRequests
+
+The LibOpenBot.GetVerifyRequests function returns all of the Verification requests in the queue.
+
+**Return Type:** Promise(Array(VerifyRequest))
 
 ## LibOpenBot.GetWebLocales
 
@@ -871,11 +917,60 @@ DiscordGuild | guild | A discord.js guild
 The LibOpenBot.PullRequest function creates a new pull request to a command
 
 Argument | Type | Description
+-- | -- | --
 Command | Command | The Edited Command
 Editor | Number | The id of the editor of the command
 Notes | String | The notes about the edit
 
 **Return Type:** PullRequest
+
+## LibOpenBot.SearchCommands
+
+The LibOpenBot.SearchCommands function searches in the database for commands that match the search.
+
+Argument | Type | Description
+-- | -- | --
+Search | Object or Function | The Search Criteria.
+
+### Search
+
+OpenBot supports using an Object `{Icon:":DopeIcon:"}` or an Anonymous Function `(Command)=>Command('Icon').eq(':DopeIcon:')`. You can learn how these parameters work <a href="https://rethinkdb.com/api/javascript/filter">here.</a>
+
+**Return Type:** Promise(Array(Command))
+
+<aside class="note">The Anonymous Function looks like javascript, but it is actually written in ReQL. If you try to use Javascript comparitors it will not work.</aside>
+
+## LibOpenBot.SearchGuilds
+
+The LibOpenBot.SearchGuilds function searches in the database for guilds that match the search.
+
+Argument | Type | Description
+-- | -- | --
+Search | Object or Function | The Search Criteria
+
+### Search
+
+OpenBot supports using an Object `{Icon:":DopeIcon:"}` or an Anonymous Function `(Command)=>Command('Icon').eq(':DopeIcon:')`. You can learn how these parameters work <a href="https://rethinkdb.com/api/javascript/filter">here.</a>
+
+**Return Type:** Promise(Array(Guild))
+
+<aside class="note">The Anonymous Function looks like javascript, but it is actually written in ReQL. If you try to use Javascript comparitors it will not work.</aside>
+
+## LibOpenBot.SearchUsers
+
+The LibOpenBot.SearchUsers function searches in the dtabase for users that match the search.
+
+Argument | Type | Description
+-- | -- | --
+Search | Object or Function | The Search Criteria
+
+### Search
+
+OpenBot supports using an Object `{Icon:":DopeIcon:"}` or an Anonymous Function `(Command)=>Command('Icon').eq(':DopeIcon:')`. You can learn how these parameters work <a href="https://rethinkdb.com/api/javascript/filter">here.</a>
+
+**Return Type:** Promise(Array(User))
+
+<aside class="note">The Anonymous Function looks like javascript, but it is actually written in ReQL. If you try to use Javascript comparitors it will not work.</aside>
 
 ## LibOpenBot.User
 
