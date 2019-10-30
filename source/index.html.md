@@ -767,6 +767,30 @@ Author | Number | The ID of the author of the command
 
 **Return Type:** Command
 
+## LibOpenBot.DeleteCommand
+
+The LibOpenBot.DeleteCommand function deletes a Command from the database
+
+Argument | Type | Description
+-- | -- | --
+ID | Number | The ID of the command to delete
+
+## LibOpenBot.DeletePullRequest
+
+The LibOpenBot.DeletePullRequest function deletes a pull request from the database
+
+Argument | Type | Description
+-- | -- | --
+ID | Number | The ID of the pull request to delete
+
+## LibOpenBot.DeleteVerifyRequest
+
+The LibOpenBot.DeleteVerifyRequest function deletes a verify request from the database
+
+Argument | Type | Description
+-- | -- | --
+ID | Number | The ID of the verify request to delete
+
 ## LibOpenBot.GetCommand
 
 The LibOpenBot.GetCommand function returns a Command from its ID
