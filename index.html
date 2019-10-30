@@ -449,6 +449,30 @@
                     <a href="#libopenbot-verifyrequest" class="toc-h2 toc-link" data-title="LibOpenBot.VerifyRequest">LibOpenBot.VerifyRequest</a>
                   </li>
                   <li>
+                    <a href="#libopenbot-writecommand" class="toc-h2 toc-link" data-title="LibOpenBot.WriteCommand">LibOpenBot.WriteCommand</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-writecommanddata" class="toc-h2 toc-link" data-title="LibOpenBot.WriteCommandData">LibOpenBot.WriteCommandData</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-writeguild" class="toc-h2 toc-link" data-title="LibOpenBot.WriteGuild">LibOpenBot.WriteGuild</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-writeprivatestorage" class="toc-h2 toc-link" data-title="LibOpenBot.WritePrivateStorage">LibOpenBot.WritePrivateStorage</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-writepullrequest" class="toc-h2 toc-link" data-title="LibOpenBot.WritePullRequest">LibOpenBot.WritePullRequest</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-writeuser" class="toc-h2 toc-link" data-title="LibOpenBot.WriteUser">LibOpenBot.WriteUser</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-writeuserdata" class="toc-h2 toc-link" data-title="LibOpenBot.WriteUserData">LibOpenBot.WriteUserData</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-writeverifyrequest" class="toc-h2 toc-link" data-title="LibOpenBot.WriteVerifyRequest">LibOpenBot.WriteVerifyRequest</a>
+                  </li>
+                  <li>
                     <a href="#libopenbot-sendrelay" class="toc-h2 toc-link" data-title="LibOpenBot.sendRelay">LibOpenBot.sendRelay</a>
                   </li>
                   <li>
@@ -1357,9 +1381,24 @@
 <h3 id='userdata-commands'>UserData.Commands</h3>
 <p>The Commands member of the UserData Class contains an array of all the data stored by various commands relating to that user, sorted by author.</p>
 
-<p>Member | Type | Description
-Author | Number | The author of the command storing the data
-Data | Object | The data being stored</p>
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Author</td>
+<td>Number</td>
+<td>The author of the command storing the data</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>Object</td>
+<td>The data being stored</td>
+</tr>
+</tbody></table>
 <h3 id='userdata-private'>UserData.Private</h3>
 <p>The Private member of the UserData Class contains all of the Key/Value pairs that a User set on their website. These are used for putting private information in a public command (Like an API key for a music command). It has no defined members, its members are whatever the user defines them to be.</p>
 
@@ -1776,13 +1815,187 @@ Data | Object | The data being stored</p>
 <h2 id='libopenbot-verifyrequest'>LibOpenBot.VerifyRequest</h2>
 <p>The LibOpenBot.VerifyRequest function creates a new verification request to a command</p>
 
-<p>Argument | Type | Description
-Command | Command | The Edited Command
-Editor | Number | The id of the editor of the command
-Notes | String | The notes about the edit
-Message | Number | The id of the verification message</p>
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Command</td>
+<td>Command</td>
+<td>The Edited Command</td>
+</tr>
+<tr>
+<td>Editor</td>
+<td>Number</td>
+<td>The id of the editor of the command</td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>String</td>
+<td>The notes about the edit</td>
+</tr>
+<tr>
+<td>Message</td>
+<td>Number</td>
+<td>The id of the verification message</td>
+</tr>
+</tbody></table>
 
 <p><strong>Return Type:</strong> VerifyRequest</p>
+<h2 id='libopenbot-writecommand'>LibOpenBot.WriteCommand</h2>
+<p>The LibOpenBot.WriteCommand function writes a command to the database, saving any changes that may have been made.</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Descrpition</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Command</td>
+<td>Command</td>
+<td>The Command to save</td>
+</tr>
+</tbody></table>
+
+<p><strong>Return type:</strong> null</p>
+<h2 id='libopenbot-writecommanddata'>LibOpenBot.WriteCommandData</h2>
+<p>The LibOpenBot.WriteCommandData function writes a CommandData object to the database</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Command</td>
+<td>Command</td>
+<td>The Command that the data belongs to</td>
+</tr>
+<tr>
+<td>User</td>
+<td>Number</td>
+<td>The ID of the user that the data is about</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>Object</td>
+<td>The Data to write</td>
+</tr>
+</tbody></table>
+
+<aside class="note">This will overwrite the previous value, not just modify it. Also, CommandData is stored by Author, not Command, so all of your commands share the same entry.</aside>
+<h2 id='libopenbot-writeguild'>LibOpenBot.WriteGuild</h2>
+<p>The LibOpenBot.WriteGuild function writes a guild to the database, saving any changes that may have been made.</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Guild</td>
+<td>Guild</td>
+<td>The Guild to save</td>
+</tr>
+</tbody></table>
+<h2 id='libopenbot-writeprivatestorage'>LibOpenBot.WritePrivateStorage</h2>
+<p>The LibOpenBot.WritePrivateStorage function writes a PrivateStorage object to the database, saving any changes that may have been made.</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>Number</td>
+<td>The User ID that the storage belongs to</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>Object</td>
+<td>The value of the private storage</td>
+</tr>
+</tbody></table>
+
+<aside class="note">This will overwrite the entire private storage, not just update one key.</aside>
+<h2 id='libopenbot-writepullrequest'>LibOpenBot.WritePullRequest</h2>
+<p>The LibOpenBot.WritePullRequest function writes a pull request to the database, saving any changes that may have been made.</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>PullRequest</td>
+<td>Pull Request</td>
+<td>The Pull Request to save</td>
+</tr>
+</tbody></table>
+<h2 id='libopenbot-writeuser'>LibOpenBot.WriteUser</h2>
+<p>The LibOpenBot.WriteUser function writes a user to the database, saving any changes that may have been made.</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>User</td>
+<td>User</td>
+<td>The User to save</td>
+</tr>
+</tbody></table>
+<h2 id='libopenbot-writeuserdata'>LibOpenBot.WriteUserData</h2>
+<p>The LibOpenBot.WriteUserData function writes a UserData object to the database, saving any changes that may have been made</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>UserData</td>
+<td>UserData</td>
+<td>The UserData to save</td>
+</tr>
+</tbody></table>
+
+<aside class="note">You most likely will not need to use this function directly, instead you can use LibOpenBot.WritePrivateStorage or LibOpenBot.WriteCommandData to write the individual parts of a UserData Object</aside>
+<h2 id='libopenbot-writeverifyrequest'>LibOpenBot.WriteVerifyRequest</h2>
+<p>The LibOpenBot.WriteVerifyRequest function writes a verify request to the database, saving any changes that may have been made.</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>VerifyRequest</td>
+<td>Verify Request</td>
+<td>The Verify Request to save</td>
+</tr>
+</tbody></table>
 <h2 id='libopenbot-sendrelay'>LibOpenBot.sendRelay</h2>
 <p>The LibOpenBot.sendRelay function sends a message to another process, and retrieves the result.</p>
 
