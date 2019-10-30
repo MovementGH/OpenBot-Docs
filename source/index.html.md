@@ -731,6 +731,7 @@ id | Number | The id of the user
 The Commands member of the UserData Class contains an array of all the data stored by various commands relating to that user, sorted by author.
 
 Member | Type | Description
+-- | -- | --
 Author | Number | The author of the command storing the data
 Data | Object | The data being stored
 
@@ -997,12 +998,88 @@ User | Number | The id of the user whose data this is
 The LibOpenBot.VerifyRequest function creates a new verification request to a command
 
 Argument | Type | Description
+-- | -- | --
 Command | Command | The Edited Command
 Editor | Number | The id of the editor of the command
 Notes | String | The notes about the edit
 Message | Number | The id of the verification message
 
 **Return Type:** VerifyRequest
+
+## LibOpenBot.WriteCommand
+
+The LibOpenBot.WriteCommand function writes a command to the database, saving any changes that may have been made.
+
+Argument | Type | Descrpition
+-- | -- | --
+Command | Command | The Command to save
+
+**Return type:** null
+
+## LibOpenBot.WriteCommandData
+
+The LibOpenBot.WriteCommandData function writes a CommandData object to the database
+
+Argument | Type | Description
+-- | -- | --
+Command | Command | The Command that the data belongs to
+User | Number | The ID of the user that the data is about
+Data | Object | The Data to write
+
+<aside class="note">This will overwrite the previous value, not just modify it. Also, CommandData is stored by Author, not Command, so all of your commands share the same entry.</aside>
+
+## LibOpenBot.WriteGuild
+
+The LibOpenBot.WriteGuild function writes a guild to the database, saving any changes that may have been made.
+
+Argument | Type | Description
+-- | -- | --
+Guild | Guild | The Guild to save
+
+## LibOpenBot.WritePrivateStorage
+
+The LibOpenBot.WritePrivateStorage function writes a PrivateStorage object to the database, saving any changes that may have been made.
+
+Argument | Type | Description
+-- | -- | --
+ID | Number | The User ID that the storage belongs to
+Value | Object | The value of the private storage
+
+<aside class="note">This will overwrite the entire private storage, not just update one key.</aside>
+
+## LibOpenBot.WritePullRequest
+
+The LibOpenBot.WritePullRequest function writes a pull request to the database, saving any changes that may have been made.
+
+Argument | Type | Description
+-- | -- | --
+PullRequest | Pull Request | The Pull Request to save
+
+## LibOpenBot.WriteUser
+
+The LibOpenBot.WriteUser function writes a user to the database, saving any changes that may have been made.
+
+Argument | Type | Description
+-- | -- | --
+User | User | The User to save
+
+## LibOpenBot.WriteUserData
+
+The LibOpenBot.WriteUserData function writes a UserData object to the database, saving any changes that may have been made
+
+Argument | Type | Description
+-- | -- | --
+UserData | UserData | The UserData to save
+
+<aside class="note">You most likely will not need to use this function directly, instead you can use LibOpenBot.WritePrivateStorage or LibOpenBot.WriteCommandData to write the individual parts of a UserData Object</aside>
+
+## LibOpenBot.WriteVerifyRequest
+
+The LibOpenBot.WriteVerifyRequest function writes a verify request to the database, saving any changes that may have been made.
+
+Argument | Type | Description
+-- | -- | --
+VerifyRequest | Verify Request | The Verify Request to save
 
 ## LibOpenBot.sendRelay
 
