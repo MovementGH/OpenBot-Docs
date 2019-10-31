@@ -1204,3 +1204,5 @@ Context | Object | The Context object to pass the event
 BotContext | Object | The BotContext object to pass the event
 Arg1 | Anything | The First argument to pass to the event
 Arg2 | Anything | The Second argument to pass to the event
+
+<aside class="note">The RunEvent function is only available inside of a shard. All Commands are run inside of a shard, so that will not be a problem unless you are using relays.</aside>
