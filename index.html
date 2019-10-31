@@ -389,6 +389,12 @@
                     <a href="#libopenbot-deleteverifyrequest" class="toc-h2 toc-link" data-title="LibOpenBot.DeleteVerifyRequest">LibOpenBot.DeleteVerifyRequest</a>
                   </li>
                   <li>
+                    <a href="#libopenbot-emojitourl" class="toc-h2 toc-link" data-title="LibOpenBot.EmojiToURL">LibOpenBot.EmojiToURL</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-execuser" class="toc-h2 toc-link" data-title="LibOpenBot.ExecUser">LibOpenBot.ExecUser</a>
+                  </li>
+                  <li>
                     <a href="#libopenbot-getcommand" class="toc-h2 toc-link" data-title="LibOpenBot.GetCommand">LibOpenBot.GetCommand</a>
                   </li>
                   <li>
@@ -437,7 +443,16 @@
                     <a href="#libopenbot-guild" class="toc-h2 toc-link" data-title="LibOpenBot.Guild">LibOpenBot.Guild</a>
                   </li>
                   <li>
+                    <a href="#libopenbot-haspermissions" class="toc-h2 toc-link" data-title="LibOpenBot.HasPermissions">LibOpenBot.HasPermissions</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-languageindex" class="toc-h2 toc-link" data-title="LibOpenBot.LanguageIndex">LibOpenBot.LanguageIndex</a>
+                  </li>
+                  <li>
                     <a href="#libopenbot-pullrequest" class="toc-h2 toc-link" data-title="LibOpenBot.PullRequest">LibOpenBot.PullRequest</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-regsearch" class="toc-h2 toc-link" data-title="LibOpenBot.RegSearch">LibOpenBot.RegSearch</a>
                   </li>
                   <li>
                     <a href="#libopenbot-searchcommands" class="toc-h2 toc-link" data-title="LibOpenBot.SearchCommands">LibOpenBot.SearchCommands</a>
@@ -489,6 +504,9 @@
                   </li>
                   <li>
                     <a href="#libopenbot-sendrelayall" class="toc-h2 toc-link" data-title="LibOpenBot.sendRelayAll">LibOpenBot.sendRelayAll</a>
+                  </li>
+                  <li>
+                    <a href="#runevent" class="toc-h2 toc-link" data-title="RunEvent">RunEvent</a>
                   </li>
               </ul>
           </li>
@@ -1519,6 +1537,47 @@
 <td>The ID of the verify request to delete</td>
 </tr>
 </tbody></table>
+<h2 id='libopenbot-emojitourl'>LibOpenBot.EmojiToURL</h2>
+<p>The LibOpenBot.EmojiToURL function returns a url to an image of the discord emoji you pass to it (For example, you would pass &quot;:smile:&quot; or &quot;&lt;:CoolEmoji:12345&gt;&quot;)</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Tag</td>
+<td>String</td>
+<td>The Tag of the emoji</td>
+</tr>
+</tbody></table>
+<h2 id='libopenbot-execuser'>LibOpenBot.ExecUser</h2>
+<p>The LibOpenBot.ExecUser allows you to interact with a user who may not be in the same shard as your code is running in.</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>User</td>
+<td>Number</td>
+<td>The ID of the user you want</td>
+</tr>
+<tr>
+<td>Exec</td>
+<td>String</td>
+<td>The Code to execute</td>
+</tr>
+</tbody></table>
+<h3 id='exec'>Exec</h3>
+<p>The Exec parameter is evaluated as javascript, with the global variable User as the user you requestsed. If the user is not found, the code will not be executed.</p>
+
+<p><strong>Return Type:</strong> null</p>
 <h2 id='libopenbot-getcommand'>LibOpenBot.GetCommand</h2>
 <p>The LibOpenBot.GetCommand function returns a Command from its ID</p>
 
@@ -1739,6 +1798,52 @@
 </tbody></table>
 
 <p><strong>Return Type:</strong> Guild</p>
+<h2 id='libopenbot-haspermissions'>LibOpenBot.HasPermissions</h2>
+<p>The LibOpenBot.HasPermissions function compares two permissions bitfields to see whether they include eachother. It returns true if the user/entity has the permissions that it needs.</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Has</td>
+<td>Number</td>
+<td>The Permissions that the user/entity has</td>
+</tr>
+<tr>
+<td>Needs</td>
+<td>Number</td>
+<td>The Permissions that the user/entity needs</td>
+</tr>
+</tbody></table>
+
+<p><strong>Return Type:</strong> Bool</p>
+<h2 id='libopenbot-languageindex'>LibOpenBot.LanguageIndex</h2>
+<p>The LibOpenBot.LanguageIndex function returns the index in which a language is found in a command.</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Command</td>
+<td>Command</td>
+<td>The command to search</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>String</td>
+<td>The language to find</td>
+</tr>
+</tbody></table>
+
+<p><strong>Return type:</strong> Number</p>
 <h2 id='libopenbot-pullrequest'>LibOpenBot.PullRequest</h2>
 <p>The LibOpenBot.PullRequest function creates a new pull request to a command</p>
 
@@ -1767,6 +1872,24 @@
 </tbody></table>
 
 <p><strong>Return Type:</strong> PullRequest</p>
+<h2 id='libopenbot-regsearch'>LibOpenBot.RegSearch</h2>
+<p>The LibOpenBot.RegSearch function turns a search query into a valid reqular expression. This would be used when using String.match in the ReQL language (Used in LibOpenBot.Search functions), to search for part of a string instead of a whole string (.eq) or regular expression (.match without using LibOpenBot.RegSearch).</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Query</td>
+<td>String</td>
+<td>The Query to search for</td>
+</tr>
+</tbody></table>
+
+<p><strong>Return Type:</strong> String</p>
 <h2 id='libopenbot-searchcommands'>LibOpenBot.SearchCommands</h2>
 <p>The LibOpenBot.SearchCommands function searches in the database for commands that match the search.</p>
 
@@ -2117,6 +2240,47 @@
 </tbody></table>
 
 <p><strong>Return Type:</strong> Promise(Array(Object))</p>
+<h2 id='runevent'>RunEvent</h2>
+<p>The RunEvent function runs an event of a command.</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Command</td>
+<td>Command</td>
+<td>The Command to run</td>
+</tr>
+<tr>
+<td>Event</td>
+<td>String</td>
+<td>The Event to run</td>
+</tr>
+<tr>
+<td>Context</td>
+<td>Object</td>
+<td>The Context object to pass the event</td>
+</tr>
+<tr>
+<td>BotContext</td>
+<td>Object</td>
+<td>The BotContext object to pass the event</td>
+</tr>
+<tr>
+<td>Arg1</td>
+<td>Anything</td>
+<td>The First argument to pass to the event</td>
+</tr>
+<tr>
+<td>Arg2</td>
+<td>Anything</td>
+<td>The Second argument to pass to the event</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
