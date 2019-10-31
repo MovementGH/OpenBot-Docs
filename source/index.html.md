@@ -791,6 +791,29 @@ Argument | Type | Description
 -- | -- | --
 ID | Number | The ID of the verify request to delete
 
+## LibOpenBot.EmojiToURL
+
+The LibOpenBot.EmojiToURL function returns a url to an image of the discord emoji you pass to it (For example, you would pass ":smile:" or "<:CoolEmoji:12345>")
+
+Argument | Type | Description
+-- | -- | --
+Tag | String | The Tag of the emoji
+
+## LibOpenBot.ExecUser
+
+The LibOpenBot.ExecUser allows you to interact with a user who may not be in the same shard as your code is running in.
+
+Argument | Type | Description
+-- | -- | --
+User | Number | The ID of the user you want
+Exec | String | The Code to execute
+
+### Exec
+
+The Exec parameter is evaluated as javascript, with the global variable User as the user you requestsed. If the user is not found, the code will not be executed.
+
+**Return Type:** null
+
 ## LibOpenBot.GetCommand
 
 The LibOpenBot.GetCommand function returns a Command from its ID
@@ -937,6 +960,28 @@ DiscordGuild | guild | A discord.js guild
 
 **Return Type:** Guild
 
+## LibOpenBot.HasPermissions
+
+The LibOpenBot.HasPermissions function compares two permissions bitfields to see whether they include eachother. It returns true if the user/entity has the permissions that it needs.
+
+Argument | Type | Description
+-- | -- | --
+Has | Number | The Permissions that the user/entity has
+Needs | Number | The Permissions that the user/entity needs
+
+**Return Type:** Bool
+
+## LibOpenBot.LanguageIndex
+
+The LibOpenBot.LanguageIndex function returns the index in which a language is found in a command.
+
+Argument | Type | Description
+-- | -- | --
+Command | Command | The command to search
+Language | String | The language to find
+
+**Return type:** Number
+
 ## LibOpenBot.PullRequest
 
 The LibOpenBot.PullRequest function creates a new pull request to a command
@@ -948,6 +993,16 @@ Editor | Number | The id of the editor of the command
 Notes | String | The notes about the edit
 
 **Return Type:** PullRequest
+
+## LibOpenBot.RegSearch
+
+The LibOpenBot.RegSearch function turns a search query into a valid reqular expression. This would be used when using String.match in the ReQL language (Used in LibOpenBot.Search functions), to search for part of a string instead of a whole string (.eq) or regular expression (.match without using LibOpenBot.RegSearch).
+
+Argument | Type | Description
+-- | -- | --
+Query | String | The Query to search for
+
+**Return Type:** String
 
 ## LibOpenBot.SearchCommands
 
@@ -1137,4 +1192,15 @@ Master | Bool | Whether to send it to the master process
 
 **Return Type:** Promise(Array(Object))
 
+## RunEvent
 
+The RunEvent function runs an event of a command.
+
+Argument | Type | Description
+-- | -- | --
+Command | Command | The Command to run
+Event | String | The Event to run
+Context | Object | The Context object to pass the event
+BotContext | Object | The BotContext object to pass the event
+Arg1 | Anything | The First argument to pass to the event
+Arg2 | Anything | The Second argument to pass to the event
