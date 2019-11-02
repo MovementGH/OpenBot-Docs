@@ -510,6 +510,25 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#globals" class="toc-h1 toc-link" data-title="Globals">Globals</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#objdiscordclient" class="toc-h2 toc-link" data-title="ObjDiscordClient">ObjDiscordClient</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#libraries" class="toc-h1 toc-link" data-title="Libraries">Libraries</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#libdiscord" class="toc-h2 toc-link" data-title="LibDiscord">LibDiscord</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot" class="toc-h2 toc-link" data-title="LibOpenBot">LibOpenBot</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='../'>Start Using OpenBot</a></li>
@@ -2281,6 +2300,22 @@
 <td>The Second argument to pass to the event</td>
 </tr>
 </tbody></table>
+
+<aside class="note">The RunEvent function is only available inside of a shard. All Commands are run inside of a shard, so that will not be a problem unless you are using relays.</aside>
+<h1 id='globals'>Globals</h1>
+<p>There are some global variables that commands can access in order to do things.</p>
+<h2 id='objdiscordclient'>ObjDiscordClient</h2>
+<p>ObjDiscordClient is the discord.js client.</p>
+
+<p><strong>Type:</strong> LibDiscord.Client</p>
+<h1 id='libraries'>Libraries</h1>
+<p>OpenBot provides access to multiple libraries that you can use in your command. If you need a library that is not on this list, you can contact the developers at the OpenBot Support discord server and they will consider adding it.</p>
+
+<p>You do not need to use the require function in order to include libraries. All libraries are included when OpenBot loads, and are available through the constants below.</p>
+<h2 id='libdiscord'>LibDiscord</h2>
+<p>LibDiscord references a fork of the <code>discord.js</code> npm package. (The changes in the fork are not relavant to commands, they are for sharding purposes)</p>
+<h2 id='libopenbot'>LibOpenBot</h2>
+<p>LibOpenBot references the OpenBot API. Its documentation is found right here.</p>
 
       </div>
       <div class="dark-box">
