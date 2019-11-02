@@ -1206,3 +1206,27 @@ Arg1 | Anything | The First argument to pass to the event
 Arg2 | Anything | The Second argument to pass to the event
 
 <aside class="note">The RunEvent function is only available inside of a shard. All Commands are run inside of a shard, so that will not be a problem unless you are using relays.</aside>
+
+# Globals
+
+There are some global variables that commands can access in order to do things.
+
+## ObjDiscordClient
+
+ObjDiscordClient is the discord.js client.
+
+**Type:** LibDiscord.Client
+
+# Libraries
+
+OpenBot provides access to multiple libraries that you can use in your command. If you need a library that is not on this list, you can contact the developers at the OpenBot Support discord server and they will consider adding it.
+
+You do not need to use the require function in order to include libraries. All libraries are included when OpenBot loads, and are available through the constants below.
+
+## LibDiscord
+
+LibDiscord references a fork of the `discord.js` npm package. (The changes in the fork are not relavant to commands, they are for sharding purposes)
+
+## LibOpenBot
+
+LibOpenBot references the OpenBot API. Its documentation is found right here.
