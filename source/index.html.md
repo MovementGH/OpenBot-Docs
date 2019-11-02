@@ -57,6 +57,8 @@ Here are the steps to create a command on the OpenBot website that you can start
 
 In the top left of the command editor, there is a box which contains the metadata of your command,  including its Icon, Permissions, and Support link. These control how people can see and interact with your command.
 
+<aside class="note">All fields are required. You WILL get an error if you try to submit a command with an empty field</aside>
+
 ### Icon
 
 Your command's icon is displayed next to it in help menus, searches and more. It should relate to your command so that people can tell what it does at a glance. The icon can be any discord emoji. If it is a default emoji, it must be entered into the editor like `:smile:`. If it is a custom emoji, it must be entered in like `<:AddCommand:634475978000695316>` To find the ID of a custom emoji, richt click it in discord and click copy link. The number in the link is the ID of your emoji.
@@ -88,6 +90,8 @@ If your command is marked as allowing pull requests, other users will be able to
 In the top right of the command editor, there is a box which contains the language data of your command, including its Names, Callnames, Descriptions, and more. These let you translate your command into multiple languages!
 
 <aside type="note">If you are having difficulties scrolling sideways through the tabs, you can hold shift and scoll up/down and it will scroll sideways</aside>
+
+<aside class="note">All fields are required. You WILL get an error if you try to submit a command with an empty field</aside>
 
 ### Name
 
@@ -130,6 +134,8 @@ Translation strings allow the text inside your command to be translated. You can
 ## Event Box
 
 Your command can have multiple events, or just one. These are where you put your code. You can find a description of what the different events do below.
+
+<aside type="note">If you are having difficulties scrolling sideways through the tabs, you can hold shift and scoll up/down and it will scroll sideways</aside>
 
 # Events
 
