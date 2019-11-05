@@ -841,6 +841,8 @@ User | Number | The ID of the user whose data you want to get
 
 **Return Type:** Promise(Object)
 
+<aside type="warning">You must pass "this" as the Command argument. If you attempt to view/edit data owned by other commands, your command will be denied</aside>
+
 ## LibOpenBot.GetCommands
 
 The LibOpenBot.GetCommands function returns an array of Commands from an array of IDs.
