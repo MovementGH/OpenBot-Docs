@@ -42,6 +42,7 @@ We are happy to help you with problems you have while using OpenBot, but if your
 
 Here are the steps to create a command on the OpenBot website that you can start writing code for.
 
+ - Go to <a href="https://openbot.ga/">the website</a>
  - Login
  - Click "Profile" in the upper right corner
  - Click "Settings" under your avatar
@@ -158,7 +159,7 @@ All events receive certain variables, regardless of their type. Here they are:
 
 **Description:** The context contains discord.js objects relevent to the event.
 
-**Children:**  guild, channel\*, user\*
+**Children:**  <a href="https://discord.js.org/#/docs/main/stable/class/Guild">guild</a>, <a href="https://discord.js.org/#/docs/main/stable/class/Channel">channel</a>\*, <a href="https://discord.js.org/#/docs/main/stable/class/User">user</a>\*
  
  \*May be null
  
@@ -168,13 +169,13 @@ All events receive certain variables, regardless of their type. Here they are:
  
  **Description:** The BotContext contains OpenBot objects relevent to the event
  
- **Children:** Guild, User\*
+ **Children:** <a href="#guild">Guild</a>, <a href="#user">User</a>\*
  
 \*May be null
 
 ### this
 
-**Type:** Command
+**Type:** <a href="#command">Command</a>
 
 **Description:** When in an event, `this` refers to the command whose event is being executed
 
@@ -186,11 +187,11 @@ It receives these variables:
 
 ### Message
 
-**Type:** Message
+**Type:** <a href="https://discord.js.org/#/docs/main/stable/class/Message">Message</a>
 
 **Description:** The message that was sent to activate the command.
 
-**Type:** String
+**Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
 
 **Description:** The content of the message, excluding the prefix and callname. For example, if message.content is "-Open Add SomeCommand", Arguments will be "SomeCommand"
 
@@ -220,13 +221,13 @@ It receives these variables:
 
 ### OldChannel
 
-**Type:** Channel
+**Type:** <a href="https://discord.js.org/#/docs/main/stable/class/Channel">Channel</a>
 
 **Description:** The channel before the update
 
 ### NewChannel
 
-**Type:** Channel
+**Type:** <a href="https://discord.js.org/#/docs/main/stable/class/Channel">Channel</a>
 
 **Description:** The channel after the update
 
@@ -254,7 +255,7 @@ It receives these variables:
 
 ### Emoji
 
-**Type:** Emoji
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/Emoji">Emoji</a>
 
 **Description:** The emoji that was added.
 
@@ -266,7 +267,7 @@ It receives these variables:
 
 ### Emoji
 
-**Type:** Emoji
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/Emoji">Emoji</a>
 
 **Description:** The emoji that was deleted
 
@@ -278,13 +279,13 @@ It receives these variables:
 
 ### OldEmoji
 
-**Type:** Emoji
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/Emoji">Emoji</a>
 
 **Description:** The emoji before the update
 
 ### NewEmoji
 
-**Type:** Emoji
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/Emoji">Emoji</a>
 
 **Description:** The emoji after the update
 
@@ -314,7 +315,7 @@ It receives these variables:
 
 ### Member
 
-**Type:** Member
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/GuildMember">Member</a>
 
 **Description:** The member that joined
 
@@ -326,7 +327,7 @@ It receives these variables:
 
 ### Member
 
-**Type:** Member
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/GuildMember">Member</a>
 
 **Description:** The member that left
 
@@ -338,7 +339,7 @@ It receives these variables:
 
 ### Member
 
-**Type:** Member
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/GuildMember">Member</a>
 
 **Description:** The member that started/stopped speaking
 
@@ -356,13 +357,13 @@ It receives these variables:
 
 ### OldMember
 
-**Type:** Member
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/GuildMember">Member</a>
 
 **Description:** The member before the update
 
 ### NewMember
 
-**Type:** Member
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/GuildMember">Member</a>
 
 **Description:** The member after the update
 
@@ -374,13 +375,13 @@ It receives these variables:
 
 ### OldGuild 
 
-**Type:** Guild
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/Guild">Guild</a>
 
 **Description:** The guild before the update
 
 ### NewGuild
 
-**Type:** Guild
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/Guild">Guild</a>
 
 **Description:** The guild after the update
 
@@ -392,7 +393,7 @@ It receives these variables:
 
 ### Message
 
-**Type:** Message
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/Message">Message</a>
 
 **Description:** The message that was deleted
 
@@ -404,7 +405,7 @@ It receives these variables:
 
 ### Reaction
 
-**Type:** MessageReaction
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/MessageReaction">MessageReaction</a>
 
 **Description:** The reaction that was added
 
@@ -416,7 +417,7 @@ It receives these variables:
 
 ### Reaction
 
-**Type:** MessageReaction
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/MessageReaction">MessageReaction</a>
 
 **Description:** The reaction that was removed
 
@@ -428,7 +429,7 @@ It receives these variables:
 
 ### Reaction
 
-**Type:** Message
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/Message">Message</a>
 
 **Description:** The message from which the reactions were removed
 
@@ -440,13 +441,13 @@ It receives these variables:
 
 ### OldMessage
 
-**Type:** Message
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/Message">Message</a>
 
 **Description:** The message before the edit
 
 ### NewMessage
 
-**Type:** Message
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/Message">Message</a>
 
 **Description:** The message after the edit
 
@@ -458,7 +459,7 @@ It receives these variables:
 
 ### Role
 
-**Type:** Role
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/Role">Role</a>
 
 **Description:** The role that was created
 
@@ -470,7 +471,7 @@ It receives these variables:
 
 ### Role
 
-**Type:** Role
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/Role">Role</a>
 
 **Description:** The role that was deleted
 
@@ -482,13 +483,13 @@ It receives these variables:
 
 ### OldRole
 
-**Type:** Role
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/Role">Role</a>
 
 **Description:** The role before the update
 
 ### NewRole
 
-**Type:** Role
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/Role">Role</a>
 
 **Description:** The role after the update
 
@@ -500,13 +501,13 @@ It receives these variables:
 
 ### OldMember
 
-**Type:** Member
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/Member">Member</a>
 
 **Description:** The member before the update
 
 ### NewMember
 
-**Type:** Member
+**Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/Member">Member</a>
 
 **Description:** The member after the update
 
