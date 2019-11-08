@@ -521,8 +521,8 @@ The ChannelSetting Class stores information about the settings in a channel. It 
 
 Member | Type | Description
 -- | -- | --
-enabled | Bool | Whether commands can be used in this channel
-id | Number | The id of the channel
+enabled | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Bool</a> | Whether commands can be used in this channel
+id | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the channel
 
 ## Command
 
@@ -536,13 +536,13 @@ The Command Class stores information about a command, so that it can be executed
 
 Member | Type | Description
 -- | -- | --
-Author | Number | The ID of the author of the command
-Events | Object | The Events of the command
-Icon | String | The Icon of the command
-Languages | Array(Object) | The Languages of the command
-Permissions | Object | The Permissions of the command
-Support | String | The Support link of the command
-id | Number | The ID of the command
+Author | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the author of the command
+Events | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | The Events of the command
+Icon | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Icon of the command
+Languages | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>) | The Languages of the command
+Permissions | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | The Permissions of the command
+Support | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Support link of the command
+id | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the command
 
 ### Command.Events
 
@@ -556,12 +556,12 @@ The Languages member of the Command Class contains the strings used by any langu
 
 Member | Type | Description
 -- | -- | --
-Callname | String | The Callname of the command
-Description | String | The Description of the command
-Language | String | The language that this object defines
-Name | String | The Name of the command
-Strings | String | The Translation Strings of the command
-Syntax | String | The Syntax of the command
+Callname | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Callname of the command
+Description | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Description of the command
+Language | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The language that this object defines
+Name | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Name of the command
+Strings | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Translation Strings of the command
+Syntax | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Syntax of the command
 
 ### Command.Permissions
 
@@ -569,12 +569,12 @@ The Permissions member of the Command Class has these members:
 
 Member | Type | Description
 -- | -- | --
-Bot | Number | The permissions the bot must have to run the command
-CoreCommand | Bool | Whether the command is a core command
-DevsOnly | Bool | Whether the command is locked to developers
-Editable | Bool | Whether the command can be edited by others
-User | Bool | The permissions a user needs to run the command
-Viewable | Bool | Whether the command can be viewed by others
+Bot | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The permissions the bot must have to run the command
+CoreCommand | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Bool</a> | Whether the command is a core command
+DevsOnly | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Bool</a> | Whether the command is locked to developers
+Editable | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Bool</a> | Whether the command can be edited by others
+User | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Bool</a> | The permissions a user needs to run the command
+Viewable | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Bool</a> | Whether the command can be viewed by others
 
 ## Emoji
 
@@ -582,10 +582,10 @@ The Emoji class contains information about an emoji, usefull for displaying it o
 
 Member | Type | Description
 -- | -- | --
-id | Number | The id of the emoji
-tag | String | The tag of the emoji in discord
-url | String | The url of the emoji on twemoji
-utf | String | The utf/unicode character of the emoji
+id | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the emoji
+tag | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The tag of the emoji in discord
+url | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The url of the emoji on twemoji
+utf | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The utf/unicode character of the emoji
 
 ### tag
 
@@ -607,11 +607,11 @@ The Guild Class contains data relating to a guild that OpenBot is in.
 
 Member | Type | Description
 -- | -- | --
-Icon | String | The URL to the icon of the guild
-Name | String | The Name of the guild
-Settings | Object | The Settings of the guild
-Stats | Object | The Stats of the guild
-id | Number | The id of the guild
+Icon | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The URL to the icon of the guild
+Name | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Name of the guild
+Settings | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | The Settings of the guild
+Stats | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | The Stats of the guild
+id | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the guild
 
 ### Guild.Settings
 
@@ -619,11 +619,11 @@ The Settings member of the Guild class contains its settings, along with the set
 
 Member | Type | Description
 -- | -- | --
-Admins | Array(Number) | The IDs of the people in the guild who can manage OpenBot
-Channels | Array(ChannelSetting) | The Settings for the channels in the guild
-Commands | Array(Object) | The Commands that are in the guild
-Prefix | String | OpenBot's Prefix in this guild
-Searchable | Bool | Whether this guild can be searched on the website
+Admins | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>) | The IDs of the people in the guild who can manage OpenBot
+Channels | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#channelsetting">ChannelSetting</a>) | The Settings for the channels in the guild
+Commands | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>) | The Commands that are in the guild
+Prefix | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | OpenBot's Prefix in this guild
+Searchable | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Bool</a> | Whether this guild can be searched on the website
 
 ### Guild.Settings.Commands
 
@@ -631,10 +631,10 @@ The Commands member of the Settings object contains the Commands in the guild, a
 
 Member | Type | Description
 -- | -- | --
-Channels | Array(ChannelSetting) | Command specific settings for the channels in the guild
-Data | Object | Data that this command stores about the guild
-Settings | Object | The settings for this command.
-id | Number | The id of the command
+Channels | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#channelsetting">ChannelSetting</a>) | Command specific settings for the channels in the guild
+Data | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | Data that this command stores about the guild
+Settings | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | The settings for this command.
+id | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the command
 
 ### Guild.Stats
 
@@ -642,8 +642,8 @@ The Stats member of the guild object contains some stats about the guild.
 
 Member | Type | Description
 -- | -- | --
-Messages | Number | The number of messages OpenBot has processed in this guild
-Users | Number | The number of users in this guild
+Messages | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The number of messages OpenBot has processed in this guild
+Users | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The number of users in this guild
 
 ## Locale
 
@@ -651,9 +651,9 @@ The Locale Class represents a Language that OpenBot supports.
 
 Member | Type | Description
 -- | -- | --
-code | String | The Locale Code
-icon | String | The Locale Icon
-name | String | The Language name
+code | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Locale Code
+icon | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Locale Icon
+name | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Language name
 
 
 ## PullRequest
@@ -662,11 +662,11 @@ The PullRequest class represents a pull request to someone's command.
 
 Member | Type | Description
 -- | -- | --
-Command | Command | The edited command
-Editor | Number | The id of the person who edited it
-Notes | String | The notes left by the editor
-Owner | Number | The owner of the command
-id | Number | The id of the pull request
+Command | <a href="#command">Command</a> | The edited command
+Editor | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the person who edited it
+Notes | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The notes left by the editor
+Owner | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The owner of the command
+id | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the pull request
 
 ## Relay
 
@@ -674,8 +674,8 @@ The Relay class represents a relay to another process
 
 Member | Type | Description
 -- | -- | --
-type | String | The type of relay
-data | Object | The data in the relay
+type | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The type of relay
+data | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | The data in the relay
 
 ### Relay.type
 
@@ -684,7 +684,7 @@ There are several types of relays available:
 Name | Data | Description
 -- | -- | --
 async | Javascript | Evaluates javascript and returns callback
-dbUpdate | Object | Clears old data from cache
+dbUpdate | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | Clears old data from cache
 eval | Javascript | Evaluates javascript syncronously
 restart | Null | Restarts process
 stat | Null | Fetches performance information
@@ -698,11 +698,11 @@ The User Class contains data relating to a user of OpenBot.
 
 Member | Type | Description
 -- | -- | --
-Avatar | String | The link to the user's avatar
-Settings | Object | The user's settings
-Stats | Object | Some stats about the user
-Username | String | The user's username
-id | Number | The user's id
+Avatar | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The link to the user's avatar
+Settings | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | The user's settings
+Stats | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | Some stats about the user
+Username | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The user's username
+id | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The user's id
 
 ### User.Settings
 
@@ -710,9 +710,9 @@ The Settings member of the User Class contains settings relating to a user.
 
 Member | Type | Description
 -- | -- | --
-DeveloperMode | Bool | Whether the user has Developer Mode enabled on the website
-Language | String | The language the user uses
-ShowGuilds | Bool | Whether the user shows their guilds on their profile
+DeveloperMode | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Bool</a> | Whether the user has Developer Mode enabled on the website
+Language | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The language the user uses
+ShowGuilds | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Bool</a> | Whether the user shows their guilds on their profile
 
 ### User.Stats
 
@@ -720,8 +720,8 @@ The Stats member of the User Class contains some stats relating to a user
 
 Member | Type | Description
 -- | -- | --
-CommandsUsed | Number | The number of commands the user has used
-Messages | Number | The number of messages the user has sent
+CommandsUsed | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The number of commands the user has used
+Messages | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The number of messages the user has sent
 
 ## UserData
 
@@ -729,9 +729,9 @@ The UserData Class contains data stored by commands, or about commands, relating
 
 Member | Type | Description
 -- | -- | --
-Commands | Array(Object) | Data stored by commands
-Private | Object | Private storage of the user
-id | Number | The id of the user
+Commands | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>) | Data stored by commands
+Private | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | Private storage of the user
+id | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the user
 
 ### UserData.Commands
 
@@ -739,8 +739,8 @@ The Commands member of the UserData Class contains an array of all the data stor
 
 Member | Type | Description
 -- | -- | --
-Author | Number | The author of the command storing the data
-Data | Object | The data being stored
+Author | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The author of the command storing the data
+Data | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | The data being stored
 
 ### UserData.Private
 
@@ -755,12 +755,12 @@ The VerifyRequest Class contains command edits which are waiting for verificatio
 
 Member | Type | Description
 -- | -- | --
-Command | Command | The edited command
-Editor | Number | The id of the person who edited it
-Message | Number | The id of the verification message
-Notes | String | The notes left by the editor
-Owner | Number | The id of the owner of the command
-id | Number | The id of the verify request
+Command | <a href="#command">Command</a> | The edited command
+Editor | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the person who edited it
+Message | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the verification message
+Notes | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The notes left by the editor
+Owner | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the owner of the command
+id | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the verify request
 
 # Functions
 
@@ -770,9 +770,9 @@ The LibOpenBot.Command function creates a new Command in the database
 
 Argument | Type | Description
 -- | -- | --
-Author | Number | The ID of the author of the command
+Author | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the author of the command
 
-**Return Type:** Command
+**Return Type:** <a href="#command">Command</a>
 
 ## LibOpenBot.DeleteCommand
 
@@ -780,7 +780,7 @@ The LibOpenBot.DeleteCommand function deletes a Command from the database
 
 Argument | Type | Description
 -- | -- | --
-ID | Number | The ID of the command to delete
+ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the command to delete
 
 ## LibOpenBot.DeletePullRequest
 
@@ -788,7 +788,7 @@ The LibOpenBot.DeletePullRequest function deletes a pull request from the databa
 
 Argument | Type | Description
 -- | -- | --
-ID | Number | The ID of the pull request to delete
+ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the pull request to delete
 
 ## LibOpenBot.DeleteVerifyRequest
 
@@ -796,7 +796,7 @@ The LibOpenBot.DeleteVerifyRequest function deletes a verify request from the da
 
 Argument | Type | Description
 -- | -- | --
-ID | Number | The ID of the verify request to delete
+ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the verify request to delete
 
 ## LibOpenBot.EmojiToURL
 
@@ -804,7 +804,7 @@ The LibOpenBot.EmojiToURL function returns a url to an image of the discord emoj
 
 Argument | Type | Description
 -- | -- | --
-Tag | String | The Tag of the emoji
+Tag | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Tag of the emoji
 
 ## LibOpenBot.ExecUser
 
@@ -812,14 +812,12 @@ The LibOpenBot.ExecUser allows you to interact with a user who may not be in the
 
 Argument | Type | Description
 -- | -- | --
-User | Number | The ID of the user you want
-Exec | String | The Code to execute
+User | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the user you want
+Exec | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Code to execute
 
 ### Exec
 
 The Exec parameter is evaluated as javascript, with the global variable User as the user you requestsed. If the user is not found, the code will not be executed.
-
-**Return Type:** null
 
 ## LibOpenBot.GetCommand
 
@@ -827,9 +825,9 @@ The LibOpenBot.GetCommand function returns a Command from its ID
 
 Argument | Type | Description
 -- | -- | --
-ID | Number | The ID of the command to get
+ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the command to get
 
-**Return Type:** Promise(Command)
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="#command">Command</a>)
 
 ## LibOpenBot.GetCommandData
 
@@ -837,10 +835,10 @@ The LibOpenBot.GetCommandData function returns the data a command has stored abo
 
 Argument | Type | Description
 -- | -- | --
-Command | Command | The Command whose data you want to get
-User | Number | The ID of the user whose data you want to get
+Command | <a href="#command">Command</a> | The Command whose data you want to get
+User | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the user whose data you want to get
 
-**Return Type:** Promise(Object)
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)
 
 <aside class="warning">You must pass "this" as the Command argument. If you attempt to view/edit data owned by other commands, your command will be denied</aside>
 
@@ -850,27 +848,27 @@ The LibOpenBot.GetCommands function returns an array of Commands from an array o
 
 Argument | Type | Description
 -- | -- | --
-IDs | Array(Number) | The IDs of the commands to get
+IDs | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>) | The IDs of the commands to get
 
-**Return Type:** Promise(Array(Command))
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#command">Command</a>))
 
 ## LibOpenBot.GetDevs
 
 The LibOpenBot.GetDevs function returns the IDs of all of the Users with Developer Permissions
 
-**Return Type:** Promise(Array(Number))
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>))
 
 ## LibOpenBot.GetEmojis
 
 The LibOpenBot.GetEmojis function returns all of the Emojis indexed by OpenBot
 
-**Return Type:** Promise(Array(Emoji))
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#emoji">Emoji</a>))
 
 ## LibOpenBot.GetLocales
 
 The LibOpenBot.GetLocales function returns all of the Locales supported by OpenBot
 
-**Return Type:** Promise(Array(Locale))
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#locale">Locale</a>))
 
 ## LibOpenBot.GetPrivateStorage
 
@@ -878,14 +876,14 @@ The LibOpenBot.GetPrivateStorage function returns all or some of your private st
 
 Argument | Type | Description
 -- | -- | --
-ID | Number | The ID of the User whose private storage you want to get.
-Key | String | The Key of the private storage you want to get
+ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the User whose private storage you want to get.
+Key | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Key of the private storage you want to get
 
 ### Key
 
 If Key is null, then it will return all of the private storage. If key is a string, it will return the private storage entry that has that Key as its Name.
 
-**Return Type:** Promise(Object/String)
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>/<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>)
 
 <aside class="warning">If you attempt to get the private storage of another user other than yourself, your command will be denied.</aside>
 
@@ -895,9 +893,9 @@ The LibOpenBot.GetPullRequest function returns a Pull Request from its ID
 
 Argument | Tyoe | Description
 -- | -- | --
-ID | Number | The ID of the Pull Request to get
+ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the Pull Request to get
 
-**Return Type:** Promise(PullRequest)
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="#pullrequest">PullRequest</a>)
 
 ## LibOpenBot.GetPullRequests
 
@@ -905,9 +903,9 @@ The LibOpenBot.GetPullRequests function gets all of the Pull Requests to a certa
 
 Argument | Type | Description
 -- | -- | --
-User | Number | The ID of the User whose Pull Requests you want
+User | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the User whose Pull Requests you want
 
-**Return Type:** Promise(Array(PullRequest))
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#pullrequest">PullRequest</a>))
 
 ## LibOpenBot.GetUser
 
@@ -915,9 +913,9 @@ The LibOpenBot.GetUser function returns a User from an ID
 
 Argument | Type | Description
 -- | -- | --
-ID | Number | The ID of the User to get
+ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the User to get
 
-**Return Type:** Promise(User)
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="#user">User</a>)
 
 ## LibOpenBot.GetUserCommands
 
@@ -925,7 +923,7 @@ The LibOpenBot.GetUserCommands function returns all of the Commands that a User 
 
 Argument | Type | Description
 -- | -- | --
-UserID | Number | The ID of the User whose Commands you want to get
+UserID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the User whose Commands you want to get
 
 **Return Type:** Promise(Array(Command))
 
@@ -935,9 +933,9 @@ The LibOpenBot.GetUserData function returns the User Data of a user (Including P
 
 Argument | Type | Description
 -- | -- | --
-ID | Number | The ID of the User whose data you want to get
+ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the User whose data you want to get
 
-**Return Type:** Promise(Array(Command))
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#command">Command</a>))
 
 <aside class="note">You do not need to directly interact with this function, instead you can use LibOpenBot.GetPrivateStorage or LibOpenBot.GetCommandData to get the individual parts of a User's data</aside>
 
@@ -945,19 +943,19 @@ ID | Number | The ID of the User whose data you want to get
 
 The LibOpenBot.GetVerifiers function returns the IDs of all of the Users who have Verifier Permissions
 
-**Return Type:** Promise(Array(Number))
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#number">Number</a>))
 
 ## LibOpenBot.GetVerifyRequests
 
 The LibOpenBot.GetVerifyRequests function returns all of the Verification requests in the queue.
 
-**Return Type:** Promise(Array(VerifyRequest))
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#verifyrequest">VerifyRequest</a>))
 
 ## LibOpenBot.GetWebLocales
 
 The LibOpenBot.GetWebLocales function returns all of the locale codes supported on OpenBot's Website
 
-**Return Type:** Promise(Array(String))
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>))
 
 ## LibOpenBot.Guild
 
@@ -965,9 +963,9 @@ The LibOpenBot.Guild function creates a new guild in the database
 
 Argument | Type | Description
 -- | -- | --
-DiscordGuild | guild | A discord.js guild
+DiscordGuild | <a href="https://discord.js.org/#/docs/main/stable/class/Guild">guild</a> | A discord.js guild
 
-**Return Type:** Guild
+**Return Type:** <a href="#guild">Guild</a>
 
 ## LibOpenBot.HasPermissions
 
@@ -975,10 +973,10 @@ The LibOpenBot.HasPermissions function compares two permissions bitfields to see
 
 Argument | Type | Description
 -- | -- | --
-Has | Number | The Permissions that the user/entity has
-Needs | Number | The Permissions that the user/entity needs
+Has | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The Permissions that the user/entity has
+Needs | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The Permissions that the user/entity needs
 
-**Return Type:** Bool
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Bool</a>
 
 ## LibOpenBot.LanguageIndex
 
@@ -986,10 +984,10 @@ The LibOpenBot.LanguageIndex function returns the index in which a language is f
 
 Argument | Type | Description
 -- | -- | --
-Command | Command | The command to search
-Language | String | The language to find
+Command | <a href="#command">Command</a> | The command to search
+Language | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The language to find
 
-**Return type:** Number
+**Return type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>
 
 ## LibOpenBot.PullRequest
 
@@ -997,11 +995,11 @@ The LibOpenBot.PullRequest function creates a new pull request to a command
 
 Argument | Type | Description
 -- | -- | --
-Command | Command | The Edited Command
-Editor | Number | The id of the editor of the command
-Notes | String | The notes about the edit
+Command | <a href="#command">Command</a> | The Edited Command
+Editor | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the editor of the command
+Notes | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The notes about the edit
 
-**Return Type:** PullRequest
+**Return Type:** <a href="#pullrequest">PullRequest</a>
 
 ## LibOpenBot.RegSearch
 
@@ -1009,9 +1007,9 @@ The LibOpenBot.RegSearch function turns a search query into a valid reqular expr
 
 Argument | Type | Description
 -- | -- | --
-Query | String | The Query to search for
+Query | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Query to search for
 
-**Return Type:** String
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
 
 ## LibOpenBot.SearchCommands
 
@@ -1019,13 +1017,13 @@ The LibOpenBot.SearchCommands function searches in the database for commands tha
 
 Argument | Type | Description
 -- | -- | --
-Search | Object or Function | The Search Criteria.
+Search | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> | The Search Criteria.
 
 ### Search
 
 OpenBot supports using an Object `{Icon:":DopeIcon:"}` or an Anonymous Function `(Command)=>Command('Icon').eq(':DopeIcon:')`. You can learn how these parameters work <a href="https://rethinkdb.com/api/javascript/filter">here.</a>
 
-**Return Type:** Promise(Array(Command))
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#command">Command</a>))
 
 <aside class="note">The Anonymous Function looks like javascript, but it is actually written in ReQL. If you try to use Javascript comparitors it will not work.</aside>
 
@@ -1035,13 +1033,13 @@ The LibOpenBot.SearchGuilds function searches in the database for guilds that ma
 
 Argument | Type | Description
 -- | -- | --
-Search | Object or Function | The Search Criteria
+Search | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> | The Search Criteria
 
 ### Search
 
 OpenBot supports using an Object `{Icon:":DopeIcon:"}` or an Anonymous Function `(Command)=>Command('Icon').eq(':DopeIcon:')`. You can learn how these parameters work <a href="https://rethinkdb.com/api/javascript/filter">here.</a>
 
-**Return Type:** Promise(Array(Guild))
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#guild">Guild</a>))
 
 <aside class="note">The Anonymous Function looks like javascript, but it is actually written in ReQL. If you try to use Javascript comparitors it will not work.</aside>
 
@@ -1051,13 +1049,13 @@ The LibOpenBot.SearchUsers function searches in the dtabase for users that match
 
 Argument | Type | Description
 -- | -- | --
-Search | Object or Function | The Search Criteria
+Search | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> or <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> | The Search Criteria
 
 ### Search
 
 OpenBot supports using an Object `{Icon:":DopeIcon:"}` or an Anonymous Function `(Command)=>Command('Icon').eq(':DopeIcon:')`. You can learn how these parameters work <a href="https://rethinkdb.com/api/javascript/filter">here.</a>
 
-**Return Type:** Promise(Array(User))
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"></a>Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#user">User</a>))
 
 <aside class="note">The Anonymous Function looks like javascript, but it is actually written in ReQL. If you try to use Javascript comparitors it will not work.</aside>
 
@@ -1067,9 +1065,9 @@ The LibOpenBot.User function creates a new user in the database.
 
 Argument | Type | Description
 -- | -- | --
-DiscordUser | user | A discord.js user
+DiscordUser | <a href="https://discord.js.org/#/docs/main/stable/class/User">user</a> | A discord.js user
 
-**Return Type:** User
+**Return Type:** <a href="#user">User</a>
 
 ## LibOpenBot.UserData
 
@@ -1077,9 +1075,9 @@ The LibOpenBot.UserData function creates a new UserData entry in the database
 
 Argument | Type | Description
 -- | -- | --
-User | Number | The id of the user whose data this is
+User | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the user whose data this is
 
-**Return Type:** UserData
+**Return Type:** <a href="#userdata">UserData</a>
 
 ## LibOpenBot.VerifyRequest
 
@@ -1087,12 +1085,12 @@ The LibOpenBot.VerifyRequest function creates a new verification request to a co
 
 Argument | Type | Description
 -- | -- | --
-Command | Command | The Edited Command
-Editor | Number | The id of the editor of the command
-Notes | String | The notes about the edit
-Message | Number | The id of the verification message
+Command | <a href="#command">Command</a> | The Edited Command
+Editor | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the editor of the command
+Notes | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The notes about the edit
+Message | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the verification message
 
-**Return Type:** VerifyRequest
+**Return Type:** <a href="#verifyrequest">VerifyRequest</a>
 
 ## LibOpenBot.WriteCommand
 
@@ -1100,9 +1098,7 @@ The LibOpenBot.WriteCommand function writes a command to the database, saving an
 
 Argument | Type | Descrpition
 -- | -- | --
-Command | Command | The Command to save
-
-**Return type:** null
+Command | <a href="#command">Command</a> | The Command to save
 
 ## LibOpenBot.WriteCommandData
 
@@ -1110,9 +1106,9 @@ The LibOpenBot.WriteCommandData function writes a CommandData object to the data
 
 Argument | Type | Description
 -- | -- | --
-Command | Command | The Command that the data belongs to
-User | Number | The ID of the user that the data is about
-Data | Object | The Data to write
+Command | <a href="#command">Command</a> | The Command that the data belongs to
+User | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the user that the data is about
+Data | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | The Data to write
 
 <aside class="note">This will overwrite the previous value, not just modify it. Also, CommandData is stored by Author, not Command, so all of your commands share the same entry.</aside>
 
@@ -1122,7 +1118,7 @@ The LibOpenBot.WriteGuild function writes a guild to the database, saving any ch
 
 Argument | Type | Description
 -- | -- | --
-Guild | Guild | The Guild to save
+Guild | <a href="#guild">Guild</a> | The Guild to save
 
 ## LibOpenBot.WritePrivateStorage
 
@@ -1130,8 +1126,8 @@ The LibOpenBot.WritePrivateStorage function writes a PrivateStorage object to th
 
 Argument | Type | Description
 -- | -- | --
-ID | Number | The User ID that the storage belongs to
-Value | Object | The value of the private storage
+ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The User ID that the storage belongs to
+Value | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | The value of the private storage
 
 <aside class="note">This will overwrite the entire private storage, not just update one key.</aside>
 
@@ -1141,7 +1137,7 @@ The LibOpenBot.WritePullRequest function writes a pull request to the database, 
 
 Argument | Type | Description
 -- | -- | --
-PullRequest | Pull Request | The Pull Request to save
+PullRequest | <a href="#pullrequest">PullRequest</a> | The Pull Request to save
 
 ## LibOpenBot.WriteUser
 
@@ -1149,7 +1145,7 @@ The LibOpenBot.WriteUser function writes a user to the database, saving any chan
 
 Argument | Type | Description
 -- | -- | --
-User | User | The User to save
+User | <a href="#user">User</a> | The User to save
 
 ## LibOpenBot.WriteUserData
 
@@ -1157,7 +1153,7 @@ The LibOpenBot.WriteUserData function writes a UserData object to the database, 
 
 Argument | Type | Description
 -- | -- | --
-UserData | UserData | The UserData to save
+UserData | <a href="#userdata">UserData</a> | The UserData to save
 
 <aside class="note">You most likely will not need to use this function directly, instead you can use LibOpenBot.WritePrivateStorage or LibOpenBot.WriteCommandData to write the individual parts of a UserData Object</aside>
 
@@ -1167,7 +1163,7 @@ The LibOpenBot.WriteVerifyRequest function writes a verify request to the databa
 
 Argument | Type | Description
 -- | -- | --
-VerifyRequest | Verify Request | The Verify Request to save
+VerifyRequest | <a href="#verifyrequest">VerifyRequest</a> | The Verify Request to save
 
 ## LibOpenBot.sendRelay
 
@@ -1175,10 +1171,10 @@ The LibOpenBot.sendRelay function sends a message to another process, and retrie
 
 Argument | Type | Description
 -- | -- | --
-Proc | String | The Name of the process to send a relay to
-Data | Relay | The Relay to send
+Proc | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Name of the process to send a relay to
+Data | <a href="#relay">Relay</a> | The Relay to send
 
-**Return Type:** Promise(Object)
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)
 
 ## LibOpenBot.sendRelayShards
 
@@ -1186,9 +1182,9 @@ The LibOpenBot.sendRelayShards function sends a message to all of the shards and
 
 Argument | Type | Description
 -- | -- | --
-Data | Relay | The Relay to send
+Data | <a href="#relay">Relay</a> | The Relay to send
 
-**Return Type:** Promise(Array(Object))
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>))
 
 ## LibOpenBot.sendRelayAll
 
@@ -1196,10 +1192,10 @@ The LibOpenBot.sendRelayAll function sends a message to all of the processes and
 
 Argument | Type | Description
 -- | -- | --
-Data | Relay | The Relay to send
-Master | Bool | Whether to send it to the master process
+Data | <a href="#relay">Relay</a> | The Relay to send
+Master | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Bool</a> | Whether to send it to the master process
 
-**Return Type:** Promise(Array(Object))
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>))
 
 ## RunEvent
 
@@ -1207,10 +1203,10 @@ The RunEvent function runs an event of a command.
 
 Argument | Type | Description
 -- | -- | --
-Command | Command | The Command to run
-Event | String | The Event to run
-Context | Object | The Context object to pass the event
-BotContext | Object | The BotContext object to pass the event
+Command | <a href="#command">Command</a> | The Command to run
+Event | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Event to run
+Context | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | The Context object to pass the event
+BotContext | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | The BotContext object to pass the event
 Arg1 | Anything | The First argument to pass to the event
 Arg2 | Anything | The Second argument to pass to the event
 
@@ -1224,7 +1220,7 @@ There are some global variables that commands can access in order to do things.
 
 ObjDiscordClient is the discord.js client.
 
-**Type:** LibDiscord.Client
+**Type:** <a href="https://discord.js.org/#/docs/main/stable/class/Client">Client</a>
 
 # Libraries
 
