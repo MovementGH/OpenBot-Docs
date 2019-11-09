@@ -655,6 +655,18 @@ code | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referenc
 icon | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Locale Icon
 name | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Language name
 
+## PatreonData
+
+The PatreonData class represents a patreon of OpenBot
+
+Member | Type | Description
+-- | -- | --
+access | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The access token of the patreon
+expires | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The timestamp at which the token expires
+id | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The discord id of the user
+refresh | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The refresh token of the patreon
+
+<aside class="warning">You are not allowed to send or store the access or refresh token of a patreon in any way! You can only use them for fetching information from Patreon's API</aside>
 
 ## PullRequest
 
@@ -870,6 +882,22 @@ The LibOpenBot.GetLocales function returns all of the Locales supported by OpenB
 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#locale">Locale</a>))
 
+## LibOpenBot.GetPatreon
+
+The LibOpenBot.GetPatreon function returns the patreon data for a user in OpenBot
+
+Argument | Type | Description
+-- | -- | --
+ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the User whose patreon data you want to get
+
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="#patreondata">PatreonData</a>)
+
+## LibOpenBot.GetPatreons
+
+The LibOpenBot.GetPatreons function returns all of the patreons of OpenBot
+
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#patreondata">PatreonData</a>))
+
 ## LibOpenBot.GetPrivateStorage
 
 The LibOpenBot.GetPrivateStorage function returns all or some of your private storage.
@@ -1058,6 +1086,15 @@ OpenBot supports using an Object `{Icon:":DopeIcon:"}` or an Anonymous Function 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"></a>Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#user">User</a>))
 
 <aside class="note">The Anonymous Function looks like javascript, but it is actually written in ReQL. If you try to use Javascript comparitors it will not work.</aside>
+
+
+## LibOpenBot.UpdatePatreonTier
+
+The LibOpenBot.UpdatePatreonTier fetches a patreon's tier from the Patreon API to ensure it is correct. You should run this before doing mission critical things with a patreon's data.
+
+Argument | Type | Description
+-- | -- | --
+PatreonData | <a href="#patreondata">PatreonData</a> | The PatreonData that you want to update the tier of
 
 ## LibOpenBot.User
 
