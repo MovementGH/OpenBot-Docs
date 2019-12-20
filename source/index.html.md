@@ -703,6 +703,17 @@ stat | Null | Fetches performance information
 
 <aside class="note">For the async relay, instead of sending "1+1" and getting 2, you send "Callback(1+1)" and get 2. Then you can use asyncrounous functions with .then</aside>
 
+## Timeout
+
+The Timeout class stores timeouts for commands and other services, so that they can be called even if the bot restarts.
+
+Member | Type | Description
+-- | -- | --
+Argument | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | Argument to pass to the timeout upon running it (JSON Object)
+Code | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | Code to run (In the form of a function body)
+Proc | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The name of the process which requested the timeout
+Time | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The time to run the timeout at
+id | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the timeout
 
 ## User
 
@@ -802,6 +813,14 @@ Argument | Type | Description
 -- | -- | --
 ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the pull request to delete
 
+## LibOpenBot.DeleteTimeout
+
+The LibOpenBot.DeleteTimeout function deletes a timeout from the database
+
+Argument | Type | Description
+-- | -- | --
+ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the timeout to delete
+
 ## LibOpenBot.DeleteVerifyRequest
 
 The LibOpenBot.DeleteVerifyRequest function deletes a verify request from the database
@@ -820,7 +839,7 @@ Tag | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
 
 ## LibOpenBot.ExecUser
 
-The LibOpenBot.ExecUser allows you to interact with a user who may not be in the same shard as your code is running in.
+The LibOpenBot.ExecUser function allows you to interact with a user who may not be in the same shard as your code is running in.
 
 Argument | Type | Description
 -- | -- | --
@@ -830,6 +849,23 @@ Exec | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referenc
 ### Exec
 
 The Exec parameter is evaluated as javascript, with the global variable User as the user you requestsed. If the user is not found, the code will not be executed.
+
+**Return Type:** Whatever your javascript returns
+
+## LibOpenBot.ExecGuild
+
+The LibOpenBot.ExecGuild function allows you to interact with a guild who may not be in the same shard as your code is running in.
+
+Argument | Type | Description
+-- | -- | --
+Guild | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the guild you want
+Exec | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Code to execute
+
+### Exec
+
+The Exec parameter is evaluated as javascript, with the global variable Guild as the user you requestsed. If the guild is not found, the code will not be executed.
+
+**Return Type:** Whatever your javascript returns
 
 ## LibOpenBot.GetCommand
 
@@ -854,6 +890,19 @@ User | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referenc
 
 <aside class="warning">You must pass "this" as the Command argument. If you attempt to view/edit data owned by other commands, your command will be denied</aside>
 
+## LibOpenBot.GetCommandSettings
+
+The LibOpenBot.GetCommandSettings function returns the settings for a command.
+
+Argument | Type | Description
+-- | -- | --
+Command | <a href="#command">Command</a> | The Command whose setting you want to get
+Guild | <a href="#guild">Guild | The Guild whose setting you want to get
+
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+
+<aside class="warning">You must pass "this" as the Command argument. If you attempt to view/edit data owned by other commands, your command will be denied</aside>
+
 ## LibOpenBot.GetCommands
 
 The LibOpenBot.GetCommands function returns an array of Commands from an array of IDs.
@@ -875,6 +924,16 @@ The LibOpenBot.GetDevs function returns the IDs of all of the Users with Develop
 The LibOpenBot.GetEmojis function returns all of the Emojis indexed by OpenBot
 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#emoji">Emoji</a>))
+
+## LibOpenBot.GetFlakeStamp
+
+The LibOpenBot.GetFlakeStamp function returns the timestamp of a snowflake
+
+Argument | Type | Description
+-- | -- | --
+Flake | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The snowflake to get the timestamp of
+
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
 
 ## LibOpenBot.GetLocales
 
@@ -934,6 +993,12 @@ Argument | Type | Description
 User | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the User whose Pull Requests you want
 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#pullrequest">PullRequest</a>))
+
+## LibOpenBot.GetTimeouts
+
+The LibOpenBot.GetTimeouts function returns all Timeouts for the current process.
+
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#Timeout">Timeout</a>)
 
 ## LibOpenBot.GetUser
 
@@ -1087,14 +1152,29 @@ OpenBot supports using an Object `{Icon:":DopeIcon:"}` or an Anonymous Function 
 
 <aside class="note">The Anonymous Function looks like javascript, but it is actually written in ReQL. If you try to use Javascript comparitors it will not work.</aside>
 
+## LibOpenBot.Timeout
+
+The LibOpenBot.Timeout function creates a new timeout. (Must be called with "new" keyword, ie `new LibOpenBot.Timeout(x,y,z)`)
+The function provided, if it contains arguments, will always rename the arguments to Argument, so make sure your code accesses Argument under the variable name Argument. For example, the function `(Number)=>{return Number+1}` will be executed as `(Argument)=>{return Number+1}`, so make sure you name your argument "Argument"
+The argument provided must not contain circular references. (So no discord.js objects, etc.). It must be possible to convert the argument to JSON.
+
+Argument | Type | Description
+-- | -- | --
+Argument | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | An argument to pass to the function
+Func | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> | The function to run
+Time | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The time (in milliseconds) until the code should be run
+
+**Return Type:** <a href="#Timeout">Timeout</a>
 
 ## LibOpenBot.UpdatePatreonTier
 
-The LibOpenBot.UpdatePatreonTier fetches a patreon's tier from the Patreon API to ensure it is correct. You should run this before doing mission critical things with a patreon's data.
+The LibOpenBot.UpdatePatreonTier fetches a patreon's tier from the Patreon API to ensure it is correct, returns it, and updates the db. You should run this before doing mission critical things with a patreon's data.
 
 Argument | Type | Description
 -- | -- | --
 PatreonData | <a href="#patreondata">PatreonData</a> | The PatreonData that you want to update the tier of
+
+**Return Type:** String
 
 ## LibOpenBot.User
 
@@ -1105,6 +1185,16 @@ Argument | Type | Description
 DiscordUser | <a href="https://discord.js.org/#/docs/main/stable/class/User">user</a> | A discord.js user
 
 **Return Type:** <a href="#user">User</a>
+
+## LibOpenBot.UserClass
+
+The LibOpenBot.UserClass function returns a user's class (Founder, Admin, Mod, Dev, Translator, Patreon, or Voter)
+
+Argument | Type | Description
+-- | -- | --
+User | <a href="#user">User</a> | The user whose class you want
+
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>
 
 ## LibOpenBot.UserData
 
@@ -1175,6 +1265,14 @@ The LibOpenBot.WritePullRequest function writes a pull request to the database, 
 Argument | Type | Description
 -- | -- | --
 PullRequest | <a href="#pullrequest">PullRequest</a> | The Pull Request to save
+
+## LibOpenBot.WriteTimeout
+
+The LibOpenBot.WriteTimeout function writes a timeout to the database, saving any changes that may have been made.
+
+Argument | Type | Description
+-- | -- | --
+Timeout | <a href="#timeout">Timeout</a> | The Timeout to save
 
 ## LibOpenBot.WriteUser
 
