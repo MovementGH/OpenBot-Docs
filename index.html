@@ -706,9 +706,11 @@
 
 <p>The set type holds any javascript data type. On the guild dashboard, it is chosen using a dropdown list. It has a special option called Set. The Set option allows you to specify the fields in the dropdown menu. The Set option must be javascripit. It is evaluated on the Bot, with a global variable &quot;Guild&quot; representing the guild that the setting is in. Here are some example Sets.</p>
 
-<p><code>[0,1,2]</code> - Choose 0, 1, or 2,
-<code>[{name:&#39;Zero&#39;,value:0},{name:&#39;One&#39;,value:1},{name:&#39;Two&#39;,value:2}]</code> - Choose 0, 1, or 2. They are displayed on the dropdown as &quot;Zero&quot; &quot;One&quot; and &quot;Two&quot;.
-<code>Guild.channels.array().filter(c=&gt;c.type==&#39;text&#39;).map(c=&gt;{return {name:c.name,value:c.id}})</code> - Choose from the channels in the current guild.</p>
+<p><code>[0,1,2]</code> - Choose 0, 1, or 2,</p>
+
+<p><code>[{name:&#39;Zero&#39;,value:0},{name:&#39;One&#39;,value:1},{name:&#39;Two&#39;,value:2}]</code> - Choose 0, 1, or 2. They are displayed on the dropdown as &quot;Zero&quot; &quot;One&quot; and &quot;Two&quot;.</p>
+
+<p><code>Guild.channels.array().filter(c=&gt;c.type==&#39;text&#39;).map(c=&gt;{return {name:c.name,value:c.id}})</code> - Choose from the channels in the current guild.</p>
 <h1 id='events'>Events</h1>
 <blockquote>
 <p>Example: Log to the console</p>
