@@ -244,6 +244,9 @@
                   <li>
                     <a href="#event-box" class="toc-h2 toc-link" data-title="Event Box">Event Box</a>
                   </li>
+                  <li>
+                    <a href="#settings-box" class="toc-h2 toc-link" data-title="Settings Box">Settings Box</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -667,7 +670,45 @@
 <h2 id='event-box'>Event Box</h2>
 <p>Your command can have multiple events, or just one. These are where you put your code. You can find a description of what the different events do below.</p>
 
+<p>To add an event, click the green &quot;Add&quot; button. You can add all the default events once, and as many custom events as you need.</p>
+
+<p>To edit the parameters of a custom event, click the + to add, - to remove, and use the textfields to edit parameters. You cannot have duplicate or empty parameters.</p>
+
+<p>To delete an event, click the &quot;x&quot; next to its name</p>
+
 <aside type="note">If you are having difficulties scrolling sideways through the tabs, you can hold shift and scoll up/down and it will scroll sideways</aside>
+<h2 id='settings-box'>Settings Box</h2>
+<p>Your command can have custom settings which guild admins will edit on the dashboard. When your command accesses its settings, they will be represented by an object.</p>
+<h3 id='categories'>Categories</h3>
+<p>Categories are groups of fields. When your command accesses them, they are objects. For example, to access the field &quot;World&quot; in the category &quot;Hello&quot;, you would do <code>Settings.World.Hello</code>.</p>
+
+<p><strong>Name:</strong> The Name to access the field by, and the name displayed in the guild dashboard.</p>
+<h3 id='fields'>Fields</h3>
+<p>Fields are the meat of settings. There are several different types of fields, which can store different types of data and can be selected in different ways. All settings have a Name and Default value.</p>
+
+<p><strong>Name:</strong>  The name to access the field by, and the name displayed in the guild dashboard</p>
+
+<p><strong>Type:</strong> The type of data stored in the field. Can be Bool, Text, or Set</p>
+
+<p><strong>Default:</strong> The value that is set when the bot joins a server, or when this setting is added</p>
+<h3 id='field-types'>Field Types</h3>
+<p>There are several different field types that can be used, each can hold a different type of data.</p>
+
+<p><strong>Bool:</strong></p>
+
+<p>The bool type holds a boolean value (true or false). On the guild dashboard, it is chosen using a toggle switch.</p>
+
+<p><strong>Text:</strong></p>
+
+<p>The text type holds a string. On the guild dashboard, it is chosen using a text field. It has a special option called RegEx. The RegEx option allows you to set a regular expression which the user&#39;s input must match up with.</p>
+
+<p><strong>Set:</strong></p>
+
+<p>The set type holds any javascript data type. On the guild dashboard, it is chosen using a dropdown list. It has a special option called Set. The Set option allows you to specify the fields in the dropdown menu. The Set option must be javascripit. It is evaluated on the Bot, with a global variable &quot;Guild&quot; representing the guild that the setting is in. Here are some example Sets.</p>
+
+<p><code>[0,1,2]</code> - Choose 0, 1, or 2,
+<code>[{name:&#39;Zero&#39;,value:0},{name:&#39;One&#39;,value:1},{name:&#39;Two&#39;,value:2}]</code> - Choose 0, 1, or 2. They are displayed on the dropdown as &quot;Zero&quot; &quot;One&quot; and &quot;Two&quot;.
+<code>Guild.channels.array().filter(c=&gt;c.type==&#39;text&#39;).map(c=&gt;{return {name:c.name,value:c.id}})</code> - Choose from the channels in the current guild.</p>
 <h1 id='events'>Events</h1>
 <blockquote>
 <p>Example: Log to the console</p>
