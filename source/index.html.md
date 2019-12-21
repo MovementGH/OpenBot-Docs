@@ -136,7 +136,53 @@ Translation strings allow the text inside your command to be translated. You can
 
 Your command can have multiple events, or just one. These are where you put your code. You can find a description of what the different events do below.
 
+To add an event, click the green "Add" button. You can add all the default events once, and as many custom events as you need.
+
+To edit the parameters of a custom event, click the + to add, - to remove, and use the textfields to edit parameters. You cannot have duplicate or empty parameters.
+
+To delete an event, click the "x" next to its name
+
 <aside type="note">If you are having difficulties scrolling sideways through the tabs, you can hold shift and scoll up/down and it will scroll sideways</aside>
+
+## Settings Box
+
+Your command can have custom settings which guild admins will edit on the dashboard. When your command accesses its settings, they will be represented by an object.
+
+### Categories
+
+Categories are groups of fields. When your command accesses them, they are objects. For example, to access the field "World" in the category "Hello", you would do `Settings.World.Hello`.
+
+**Name:** The Name to access the field by, and the name displayed in the guild dashboard.
+
+### Fields
+
+Fields are the meat of settings. There are several different types of fields, which can store different types of data and can be selected in different ways. All settings have a Name and Default value.
+
+**Name:**  The name to access the field by, and the name displayed in the guild dashboard
+
+**Type:** The type of data stored in the field. Can be Bool, Text, or Set
+
+**Default:** The value that is set when the bot joins a server, or when this setting is added
+
+### Field Types
+
+There are several different field types that can be used, each can hold a different type of data.
+
+**Bool:**
+
+The bool type holds a boolean value (true or false). On the guild dashboard, it is chosen using a toggle switch.
+
+**Text:**
+
+The text type holds a string. On the guild dashboard, it is chosen using a text field. It has a special option called RegEx. The RegEx option allows you to set a regular expression which the user's input must match up with.
+
+**Set:**
+
+The set type holds any javascript data type. On the guild dashboard, it is chosen using a dropdown list. It has a special option called Set. The Set option allows you to specify the fields in the dropdown menu. The Set option must be javascripit. It is evaluated on the Bot, with a global variable "Guild" representing the guild that the setting is in. Here are some example Sets.
+
+`[0,1,2]` - Choose 0, 1, or 2,
+`[{name:'Zero',value:0},{name:'One',value:1},{name:'Two',value:2}]` - Choose 0, 1, or 2. They are displayed on the dropdown as "Zero" "One" and "Two".
+`Guild.channels.array().filter(c=>c.type=='text').map(c=>{return {name:c.name,value:c.id}})` - Choose from the channels in the current guild.
 
 # Events
 
