@@ -181,7 +181,9 @@ The text type holds a string. On the guild dashboard, it is chosen using a text 
 The set type holds any javascript data type. On the guild dashboard, it is chosen using a dropdown list. It has a special option called Set. The Set option allows you to specify the fields in the dropdown menu. The Set option must be javascripit. It is evaluated on the Bot, with a global variable "Guild" representing the guild that the setting is in. Here are some example Sets.
 
 `[0,1,2]` - Choose 0, 1, or 2,
+
 `[{name:'Zero',value:0},{name:'One',value:1},{name:'Two',value:2}]` - Choose 0, 1, or 2. They are displayed on the dropdown as "Zero" "One" and "Two".
+
 `Guild.channels.array().filter(c=>c.type=='text').map(c=>{return {name:c.name,value:c.id}})` - Choose from the channels in the current guild.
 
 # Events
