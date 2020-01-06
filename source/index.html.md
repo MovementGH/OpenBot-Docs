@@ -62,7 +62,7 @@ In the top left of the command editor, there is a box which contains the metadat
 
 ### Icon
 
-Your command's icon is displayed next to it in help menus, searches and more. It should relate to your command so that people can tell what it does at a glance. The icon can be any discord emoji. If it is a default emoji, it must be entered into the editor like `:smile:`. If it is a custom emoji, it must be entered in like `<:AddCommand:634475978000695316>` To find the ID of a custom emoji, richt click it in discord and click copy link. The number in the link is the ID of your emoji.
+Your command's icon is displayed next to it in help menus, searches and more. It should relate to your command so that people can tell what it does at a glance. The icon can be any discord emoji. If it is a default emoji, it must be entered into the editor like `:smile:`. If it is a custom emoji, it must be entered in like `<:AddCommand:634475978000695316>` To find the ID of a custom emoji, right click it in discord and click *copy link*. The number in the link is the ID of your emoji. (If you are using discord in your browser, you will click *copy image address* instead of *copy link*)
 
 ### Support Link
 
