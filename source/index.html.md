@@ -983,6 +983,12 @@ Flake | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
 
+## LibOpenBot.GetHoistedUsers
+
+The LibOpenBot.GetHoistedUsers function returns a list of all users with a role or status which hoists them in the user search.
+
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>))
+
 ## LibOpenBot.GetLocales
 
 The LibOpenBot.GetLocales function returns all of the Locales supported by OpenBot
@@ -1057,6 +1063,16 @@ Argument | Type | Description
 ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the User to get
 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="#user">User</a>)
+
+## LibOpenBot.GetUserClass
+
+The LibOpenBot.UserClass function returns a user's class (Founder, Admin, Mod, Dev, Translator, Patreon, or Voter)
+
+Argument | Type | Description
+-- | -- | --
+User | <a href="#user">User</a> | The user whose class you want
+
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)
 
 ## LibOpenBot.GetUserCommands
 
@@ -1233,16 +1249,6 @@ Argument | Type | Description
 DiscordUser | <a href="https://discord.js.org/#/docs/main/stable/class/User">user</a> | A discord.js user
 
 **Return Type:** <a href="#user">User</a>
-
-## LibOpenBot.UserClass
-
-The LibOpenBot.UserClass function returns a user's class (Founder, Admin, Mod, Dev, Translator, Patreon, or Voter)
-
-Argument | Type | Description
--- | -- | --
-User | <a href="#user">User</a> | The user whose class you want
-
-**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>
 
 ## LibOpenBot.UserData
 
