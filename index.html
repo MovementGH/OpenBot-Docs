@@ -431,6 +431,9 @@
                     <a href="#libopenbot-getflakestamp" class="toc-h2 toc-link" data-title="LibOpenBot.GetFlakeStamp">LibOpenBot.GetFlakeStamp</a>
                   </li>
                   <li>
+                    <a href="#libopenbot-gethoistedusers" class="toc-h2 toc-link" data-title="LibOpenBot.GetHoistedUsers">LibOpenBot.GetHoistedUsers</a>
+                  </li>
+                  <li>
                     <a href="#libopenbot-getlocales" class="toc-h2 toc-link" data-title="LibOpenBot.GetLocales">LibOpenBot.GetLocales</a>
                   </li>
                   <li>
@@ -453,6 +456,9 @@
                   </li>
                   <li>
                     <a href="#libopenbot-getuser" class="toc-h2 toc-link" data-title="LibOpenBot.GetUser">LibOpenBot.GetUser</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-getuserclass" class="toc-h2 toc-link" data-title="LibOpenBot.GetUserClass">LibOpenBot.GetUserClass</a>
                   </li>
                   <li>
                     <a href="#libopenbot-getusercommands" class="toc-h2 toc-link" data-title="LibOpenBot.GetUserCommands">LibOpenBot.GetUserCommands</a>
@@ -501,9 +507,6 @@
                   </li>
                   <li>
                     <a href="#libopenbot-user" class="toc-h2 toc-link" data-title="LibOpenBot.User">LibOpenBot.User</a>
-                  </li>
-                  <li>
-                    <a href="#libopenbot-userclass" class="toc-h2 toc-link" data-title="LibOpenBot.UserClass">LibOpenBot.UserClass</a>
                   </li>
                   <li>
                     <a href="#libopenbot-userdata" class="toc-h2 toc-link" data-title="LibOpenBot.UserData">LibOpenBot.UserData</a>
@@ -620,7 +623,7 @@
 
 <aside class="note">All fields are required. You WILL get an error if you try to submit a command with an empty field</aside>
 <h3 id='icon'>Icon</h3>
-<p>Your command&#39;s icon is displayed next to it in help menus, searches and more. It should relate to your command so that people can tell what it does at a glance. The icon can be any discord emoji. If it is a default emoji, it must be entered into the editor like <code>:smile:</code>. If it is a custom emoji, it must be entered in like <code>&lt;:AddCommand:634475978000695316&gt;</code> To find the ID of a custom emoji, richt click it in discord and click copy link. The number in the link is the ID of your emoji.</p>
+<p>Your command&#39;s icon is displayed next to it in help menus, searches and more. It should relate to your command so that people can tell what it does at a glance. The icon can be any discord emoji. If it is a default emoji, it must be entered into the editor like <code>:smile:</code>. If it is a custom emoji, it must be entered in like <code>&lt;:AddCommand:634475978000695316&gt;</code> To find the ID of a custom emoji, right click it in discord and click <em>copy link</em>. The number in the link is the ID of your emoji. (If you are using discord in your browser, you will click <em>copy image address</em> instead of <em>copy link</em>)</p>
 <h3 id='support-link'>Support Link</h3>
 <p>The support link is displayed under your command in information menus. You can set it to a link to the discord server you want people to go to when your command breaks.</p>
 
@@ -1908,6 +1911,10 @@
 </tbody></table>
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></p>
+<h2 id='libopenbot-gethoistedusers'>LibOpenBot.GetHoistedUsers</h2>
+<p>The LibOpenBot.GetHoistedUsers function returns a list of all users with a role or status which hoists them in the user search.</p>
+
+<p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>))</p>
 <h2 id='libopenbot-getlocales'>LibOpenBot.GetLocales</h2>
 <p>The LibOpenBot.GetLocales function returns all of the Locales supported by OpenBot</p>
 
@@ -2019,6 +2026,24 @@
 </tbody></table>
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="#user">User</a>)</p>
+<h2 id='libopenbot-getuserclass'>LibOpenBot.GetUserClass</h2>
+<p>The LibOpenBot.UserClass function returns a user&#39;s class (Founder, Admin, Mod, Dev, Translator, Patreon, or Voter)</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>User</td>
+<td><a href="#user">User</a></td>
+<td>The user whose class you want</td>
+</tr>
+</tbody></table>
+
+<p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</p>
 <h2 id='libopenbot-getusercommands'>LibOpenBot.GetUserCommands</h2>
 <p>The LibOpenBot.GetUserCommands function returns all of the Commands that a User has made</p>
 
@@ -2311,24 +2336,6 @@ The argument provided must not contain circular references. (So no discord.js ob
 </tbody></table>
 
 <p><strong>Return Type:</strong> <a href="#user">User</a></p>
-<h2 id='libopenbot-userclass'>LibOpenBot.UserClass</h2>
-<p>The LibOpenBot.UserClass function returns a user&#39;s class (Founder, Admin, Mod, Dev, Translator, Patreon, or Voter)</p>
-
-<table><thead>
-<tr>
-<th>Argument</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>User</td>
-<td><a href="#user">User</a></td>
-<td>The user whose class you want</td>
-</tr>
-</tbody></table>
-
-<p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></p>
 <h2 id='libopenbot-userdata'>LibOpenBot.UserData</h2>
 <p>The LibOpenBot.UserData function creates a new UserData entry in the database</p>
 
