@@ -1224,9 +1224,9 @@ The argument provided must not contain circular references. (So no discord.js ob
 
 Argument | Type | Description
 -- | -- | --
-Argument | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | An argument to pass to the function
-Func | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> | The function to run
 Time | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The time (in milliseconds) until the code should be run
+Func | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a> | The function to run
+Argument | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | An argument to pass to the function
 
 **Return Type:** <a href="#Timeout">Timeout</a>
 
