@@ -239,6 +239,8 @@ It receives these variables:
 
 **Description:** The message that was sent to activate the command.
 
+### Arguments
+
 **Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
 
 **Description:** The content of the message, excluding the prefix and callname. For example, if message.content is "-Open Add SomeCommand", Arguments will be "SomeCommand"
