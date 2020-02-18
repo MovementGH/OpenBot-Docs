@@ -86,6 +86,10 @@ If your command is marked as open source, other users will be able to view its c
 
 If your command is marked as allowing pull requests, other users will be able to edit its code on the website. You will be notified of all edits, with the option to accept or deny them.
 
+### Private
+
+If your command is marked as private, nobody will be able to add it to a server or see it in search results except for you.
+
 ## Language Support Box
 
 In the top right of the command editor, there is a box which contains the language data of your command, including its Names, Callnames, Descriptions, and more. These let you translate your command into multiple languages!
@@ -623,6 +627,7 @@ Bot | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
 CoreCommand | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Bool</a> | Whether the command is a core command
 DevsOnly | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Bool</a> | Whether the command is locked to developers
 Editable | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Bool</a> | Whether the command can be edited by others
+Private | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Bool</a> | Whether the command is private
 User | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Bool</a> | The permissions a user needs to run the command
 Viewable | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Bool</a> | Whether the command can be viewed by others
 
@@ -693,6 +698,7 @@ The Stats member of the guild object contains some stats about the guild.
 Member | Type | Description
 -- | -- | --
 Messages | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The number of messages OpenBot has processed in this guild
+Owner | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The Discord UserID of the owner of this guild (Equivilant to guild.owner in discord.js)
 Users | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The number of users in this guild
 
 ## Locale
@@ -745,6 +751,7 @@ There are several types of relays available:
 
 Name | Data | Description
 -- | -- | --
+api | Javascript Evaluates javascript asyncrounously with scope for OpenBot API
 async | Javascript | Evaluates javascript and returns callback
 dbUpdate | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | Clears old data from cache
 eval | Javascript | Evaluates javascript syncronously
@@ -752,6 +759,7 @@ restart | Null | Restarts process
 stat | Null | Fetches performance information
 
 <aside class="note">For the async relay, instead of sending "1+1" and getting 2, you send "Callback(1+1)" and get 2. Then you can use asyncrounous functions with .then</aside>
+<aside class="note">For the api relay, instead of seinding "1+1" and getting 2, you send "return 1+1" and get 2. Then you can use async/await to perform asyncrounous requests</aside>
 
 ## Timeout
 
