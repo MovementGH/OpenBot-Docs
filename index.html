@@ -313,6 +313,9 @@
                     <a href="#guildupdate" class="toc-h2 toc-link" data-title="GuildUpdate">GuildUpdate</a>
                   </li>
                   <li>
+                    <a href="#message-2" class="toc-h2 toc-link" data-title="Message">Message</a>
+                  </li>
+                  <li>
                     <a href="#messagedelete" class="toc-h2 toc-link" data-title="MessageDelete">MessageDelete</a>
                   </li>
                   <li>
@@ -655,21 +658,24 @@
 
 <p>Formatting:</p>
 
-<p><strong>[Param]</strong> - Required parameter
-<strong>{Param}</strong> - Optional parameter
-<strong>Param</strong> - Literall text (write Param)
-<strong>(Note)</strong> - Note (ie you can use <code>(No Arguments)</code> to indicate that your command doesnt expect and parameters</p>
+<p><strong>[Param]</strong> - Required parameter</p>
+
+<p><strong>{Param}</strong> - Optional parameter</p>
+
+<p><strong>Param</strong> - Literall text (write Param)</p>
+
+<p><strong>(Note)</strong> - Note (ie you can use <code>(No Arguments)</code> to indicate that your command doesnt expect any parameters</p>
 <h3 id='translation-strings'>Translation Strings</h3>
 <blockquote>
 <p>Example: How to use translation strings</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="c1">//Access String 0</span>
-<span class="k">this</span><span class="p">.</span><span class="nx">Languages</span><span class="p">[</span><span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">LanguageIndex</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">Settings</span><span class="p">.</span><span class="nx">Language</span><span class="p">].</span><span class="nx">Strings</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Send String 0</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Languages</span><span class="p">[</span><span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">LanguageIndex</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">Settings</span><span class="p">.</span><span class="nx">Language</span><span class="p">].</span><span class="nx">Strings</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
 
 <span class="c1">//Make a reference to the strings for cleaner code</span>
 <span class="kd">var</span> <span class="nx">Strings</span><span class="o">=</span><span class="k">this</span><span class="p">.</span><span class="nx">Languages</span><span class="p">[</span><span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">LanguageIndex</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">Settings</span><span class="p">.</span><span class="nx">Language</span><span class="p">].</span><span class="nx">Strings</span><span class="p">;</span>
 <span class="c1">//Later...</span>
-<span class="nx">Strings</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Strings</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
 </code></pre>
 <p>Translation strings allow the text inside your command to be translated. You can have as many as you want, and you can access them from your code.</p>
 <h2 id='event-box'>Event Box</h2>
@@ -684,6 +690,16 @@
 <aside type="note">If you are having difficulties scrolling sideways through the tabs, you can hold shift and scoll up/down and it will scroll sideways</aside>
 <h2 id='settings-box'>Settings Box</h2>
 <p>Your command can have custom settings which guild admins will edit on the dashboard. When your command accesses its settings, they will be represented by an object.</p>
+
+<blockquote>
+<p>Example: Access the settings for your command
+<code>javascript
+//Create a variable with the command&#39;s settings
+var Settings=await LibOpenBot.GetCommandSettings(this,BotContext.Guild);
+//Print the setting
+Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
+</code></p>
+</blockquote>
 <h3 id='categories'>Categories</h3>
 <p>Categories are groups of fields. When your command accesses them, they are objects. For example, to access the field &quot;World&quot; in the category &quot;Hello&quot;, you would do <code>Settings.World.Hello</code>.</p>
 
@@ -725,7 +741,14 @@
 <p>Events are among the most important things in OpenBot. They define the actions that the bot takes. Every event is actually a function which gets passed several variables and has scope to an OpenBot shard. You don&#39;t need to write the function, you can treat the code block as if it is directly executed. Ie this code would log to the console every time it was executed.</p>
 <h2 id='universal'>Universal</h2>
 <p>All events receive certain variables, regardless of their type. Here they are:</p>
-<h3 id='context'>Context</h3>
+
+<blockquote>
+<p>Example: Print some information about where the command was called</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Current Guild: '</span><span class="o">+</span><span class="nx">Context</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">Context</span><span class="p">.</span><span class="nx">channel</span><span class="p">)</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Current Channel: '</span><span class="o">+</span><span class="nx">Context</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">)</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Requested by: '</span><span class="o">+</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">username</span><span class="p">);</span>
+</code></pre><h3 id='context'>Context</h3>
 <p><strong>Type:</strong> Object</p>
 
 <p><strong>Description:</strong> The context contains discord.js objects relevent to the event.</p>
@@ -733,7 +756,13 @@
 <p><strong>Children:</strong>  <a href="https://discord.js.org/#/docs/main/stable/class/Guild">guild</a>, <a href="https://discord.js.org/#/docs/main/stable/class/Channel">channel</a>*, <a href="https://discord.js.org/#/docs/main/stable/class/User">user</a>*</p>
 
 <p>*May be null</p>
-<h3 id='botcontext'>BotContext</h3>
+
+<blockquote>
+<p>Example: Print some statistics about where the command was called</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code> <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Messages sent in guild: '</span><span class="o">+</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">Guild</span><span class="p">.</span><span class="nx">Stats</span><span class="p">.</span><span class="nx">Messages</span><span class="p">);</span>
+ <span class="k">if</span><span class="p">(</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">User</span><span class="p">)</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Messages sent by user: '</span><span class="o">+</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">Stats</span><span class="p">.</span><span class="nx">Messages</span><span class="p">);</span>
+</code></pre><h3 id='botcontext'>BotContext</h3>
 <p><strong>Type:</strong> Object</p>
 
 <p><strong>Description:</strong> The BotContext contains OpenBot objects relevent to the event</p>
@@ -741,12 +770,22 @@
 <p><strong>Children:</strong> <a href="#guild">Guild</a>, <a href="#user">User</a>*</p>
 
 <p>*May be null</p>
-<h3 id='this'>this</h3>
+
+<blockquote>
+<p>Example: Print whether the current command is open source</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Permissions</span><span class="p">.</span><span class="nx">Viewable</span><span class="p">);</span>
+</code></pre><h3 id='this'>this</h3>
 <p><strong>Type:</strong> <a href="#command">Command</a></p>
 
 <p><strong>Description:</strong> When in an event, <code>this</code> refers to the command whose event is being executed</p>
 <h2 id='call'>Call</h2>
-<p>The Call event is executed whenever a message matches Prefix+Callname. For example, when someone sends &quot;-Open Help&quot; on a server where the prefix is &quot;-Open&quot;, the command with the callname &quot;Help&quot; runs its Call event.</p>
+<blockquote>
+<p>Example: A simple Say Command which says whatever the user requests.</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Arguments</span><span class="p">);</span>
+</code></pre>
+<p>The Call event is executed whenever a message matches Prefix+Callname. For example, when someone sends &quot;-Open Help&quot; on a server where the prefix is &quot;-Open &quot;, the command with the callname &quot;Help&quot; runs its Call event.</p>
 
 <p>It receives these variables:</p>
 <h3 id='message'>Message</h3>
@@ -758,18 +797,39 @@
 
 <p><strong>Description:</strong> The content of the message, excluding the prefix and callname. For example, if message.content is &quot;-Open Add SomeCommand&quot;, Arguments will be &quot;SomeCommand&quot;</p>
 <h2 id='channelcreate'>ChannelCreate</h2>
+<blockquote>
+<p>Example: Be the first message in a channel!</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Context</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'First!'</span><span class="p">);</span>
+</code></pre>
 <p>The ChannelCreate event is executed when a channel is created.</p>
 
 <p>It receives no special variables.</p>
 <h2 id='channeldelete'>ChannelDelete</h2>
+<blockquote>
+<p>Example:  Be a bad bot and recreate a channel when it&#39;s deleted</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Context</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">channels</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">Context</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+</code></pre>
 <p>The ChannelDelete event is executed when a channel is deleted.</p>
 
 <p>It receives no special variables.</p>
 <h2 id='channelpinsupdate'>ChannelPinsUpdate</h2>
+<blockquote>
+<p>Example: Send a message when someone pins or unpins a message.</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Context</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Someone is messing with the pins here...'</span><span class="p">);</span>
+</code></pre>
 <p>The ChannelPinsUpdate event is executed when the pins of a channel are changed.</p>
 
 <p>It receives no special variables.</p>
 <h2 id='channelupdate'>ChannelUpdate</h2>
+<blockquote>
+<p>Example: Send a message when a channel&#39;s name is changed</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="k">if</span><span class="p">(</span><span class="nx">OldChannel</span><span class="p">.</span><span class="nx">name</span><span class="o">!=</span><span class="nx">NewChannel</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+    <span class="nx">NewChannel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'This channel'</span><span class="nx">s</span> <span class="nx">name</span> <span class="nx">has</span> <span class="nx">been</span> <span class="nx">changed</span> <span class="nx">from</span> <span class="s1">'+OldChannel.name+'</span> <span class="nx">to</span> <span class="err">'</span><span class="o">+</span><span class="nx">NewChannel</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+</code></pre>
 <p>The ChannelUpdate event is executed when a channel is updated (eg. Name changed, Permissions changed, etc.)</p>
 
 <p>It receives these variables:</p>
@@ -782,16 +842,39 @@
 
 <p><strong>Description:</strong> The channel after the update</p>
 <h2 id='commandadded'>CommandAdded</h2>
+<blockquote>
+<p>Example: Send a dm to the person who added the command thanking them. (And probably making them remove the command)</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Thank you for adding '</span><span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">Languages</span><span class="p">[</span><span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">LanguageIndex</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">Settings</span><span class="p">.</span><span class="nx">Language</span><span class="p">)].</span><span class="nx">Name</span><span class="p">)</span><span class="o">+</span><span class="s1">' to your server'</span><span class="p">);</span>
+</code></pre>
 <p>The CommandAdded event is executed when your command is added to a server.</p>
 
 <p>It recieves no special variables.</p>
 <h2 id='commandremoved'>CommandRemoved</h2>
+<blockquote>
+<p>Example: Send a dm to the person who removed your command. (Like any good windows freeware when you uninstall it)</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'We are sorry to see you stop using '</span><span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">Languages</span><span class="p">[</span><span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">LanguageIndex</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">Settings</span><span class="p">.</span><span class="nx">Language</span><span class="p">)].</span><span class="nx">Name</span><span class="p">);</span>
+</code></pre>
 <p>The CommandRemoved event is executed when your command is removed from a server.</p>
 
 <p>It receives no special variables.</p>
 <h2 id='commandupdated'>CommandUpdated</h2>
-<p>The CommandUpdated event is executed when your edit request is approved, and your command is integrated into OpenBot. You can use it to update command data if you change formats, or anything else that needs updated.</p>
+<blockquote>
+<p>Example: dm yourself when your command is approved (Because the default notification isnt enough?)</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Note: this will dm once per guild your command is in, which is spam and API abuse. Don't do this, your command will not be accepted.</span>
+<span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">ExecUser</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Author</span><span class="p">,</span><span class="s1">'User.send("Your command been approved! Good job!")'</span><span class="p">);</span>
+</code></pre>
+<p>The CommandUpdated event is executed when your edit request is approved, and your command is integrated into OpenBot. You can use it to update command data if you change formats, or anything else that needs updated. It is run once per guild that your command is in.</p>
 <h2 id='emojicreate'>EmojiCreate</h2>
+<blockquote>
+<p>Example: Send the new emoji in a random channel in the guild</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Note: sending a message unprovoked in a random channel isnt a good idea. Don't do this. In fact, don't do any of these examples, they are just to show how the events work.</span>
+<span class="kd">var</span> <span class="nx">Channels</span><span class="o">=</span><span class="nx">Context</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">channels</span><span class="p">.</span><span class="nx">cache</span><span class="p">.</span><span class="nx">array</span><span class="p">().</span><span class="nx">filter</span><span class="p">(</span><span class="nx">c</span><span class="o">=&gt;</span><span class="nx">c</span><span class="p">.</span><span class="nx">type</span><span class="o">==</span><span class="s1">'text'</span><span class="p">);</span>
+<span class="nx">Channels</span><span class="p">[</span><span class="nb">parseInt</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">*</span><span class="nx">Channels</span><span class="p">.</span><span class="nx">length</span><span class="p">)].</span><span class="nx">send</span><span class="p">(</span><span class="s1">'I like this new emoji &lt;:'</span><span class="o">+</span><span class="nx">Emoji</span><span class="p">.</span><span class="nx">name</span><span class="o">+</span><span class="s1">':'</span><span class="o">+</span><span class="nx">Emoji</span><span class="p">.</span><span class="nx">id</span><span class="o">+&gt;</span><span class="err">'</span><span class="p">);</span>
+</code></pre>
 <p>The EmojiCreate event is executed when an emoji is added to the guild.</p>
 
 <p>It receives these variables:</p>
@@ -800,6 +883,13 @@
 
 <p><strong>Description:</strong> The emoji that was added.</p>
 <h2 id='emojidelete'>EmojiDelete</h2>
+<blockquote>
+<p>Example: Be salty about an emoji being removed from a guild</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Note: also don't do this...</span>
+<span class="kd">var</span> <span class="nx">Channels</span><span class="o">=</span><span class="nx">Context</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">channels</span><span class="p">.</span><span class="nx">cache</span><span class="p">.</span><span class="nx">array</span><span class="p">().</span><span class="nx">filter</span><span class="p">(</span><span class="nx">c</span><span class="o">=&gt;</span><span class="nx">c</span><span class="p">.</span><span class="nx">type</span><span class="o">==</span><span class="s1">'text'</span><span class="p">);</span>
+<span class="nx">Channels</span><span class="p">[</span><span class="nb">parseInt</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">*</span><span class="nx">Channels</span><span class="p">.</span><span class="nx">length</span><span class="p">)].</span><span class="nx">send</span><span class="p">(</span><span class="s1">'YALL REMOVED '</span><span class="o">+</span><span class="nx">Emoji</span><span class="p">.</span><span class="nx">name</span><span class="o">+</span><span class="s1">'! I DEMAND JUSTICE FOR EMOJIS!'</span><span class="p">);</span>
+</code></pre>
 <p>The EmojiDelete event is executed when an emoji is deleted from the guild.</p>
 
 <p>It receives these variables:</p>
@@ -808,6 +898,12 @@
 
 <p><strong>Description:</strong> The emoji that was deleted</p>
 <h2 id='emojiupdate'>EmojiUpdate</h2>
+<blockquote>
+<p>Example: Change your command&#39;s icon to a frankenstein combination of the edited emoji (Don&#39;t do this please)</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//I'm running out of ideas for these examples, ok?</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">Icon</span><span class="o">=</span><span class="s1">'&lt;:'</span><span class="o">+</span><span class="nx">OldEmoji</span><span class="p">.</span><span class="nx">name</span><span class="o">+</span><span class="s1">':'</span><span class="o">+</span><span class="nx">NewEmoji</span><span class="p">.</span><span class="nx">id</span><span class="o">+</span><span class="s1">'&gt;'</span><span class="p">;</span>
+</code></pre>
 <p>The EmojiUpdate event is executed when an emoji in the guild is updated (eg. Name changed, Icon changed, etc.)</p>
 
 <p>It receives these variables:</p>
@@ -820,18 +916,38 @@
 
 <p><strong>Description:</strong> The emoji after the update</p>
 <h2 id='guildbanadd'>GuildBanAdd</h2>
+<blockquote>
+<p>Example: Attempt to dm the banned user letting them know that they were banned (Don&#39;t do this)</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'You have been banned from '</span><span class="o">+</span><span class="nx">Context</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+</code></pre>
 <p>The GuildBanAdd event is executed when a user is banned from the guild.</p>
 
 <p>It receives no special variables.</p>
 <h2 id='guildbanremove'>GuildBanRemove</h2>
+<blockquote>
+<p>Example: Attempt to dm the unbanned user letting them know that they were unbanned (Don&#39;t do this)</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'You have been unbanned from '</span><span class="o">+</span><span class="nx">Context</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+</code></pre>
 <p>The GuildBanRemove event is executed when a user is unbanned from the guild.</p>
 
 <p>It receives no special variables.</p>
 <h2 id='guildintegrationsupdate'>GuildIntegrationsUpdate</h2>
+<blockquote>
+<p>Example: I don&#39;t even know... This only exists here because OpenBot supports every discord.js event.</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Somebody did a thing'</span><span class="p">);</span>
+</code></pre>
 <p>The GuildIntegrationsUpdate event is executed when a guild&#39;s integrations are updated.</p>
 
 <p>It receives no special variables.</p>
 <h2 id='guildmemberadd'>GuildMemberAdd</h2>
+<blockquote>
+<p>Example: Greet a user when they join</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Member</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Welcome to '</span><span class="o">+</span><span class="nx">Context</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+</code></pre>
 <p>The GuildMemberAdd event is executed when a user joins a guild.</p>
 
 <p>It receives these variables:</p>
@@ -840,6 +956,11 @@
 
 <p><strong>Description:</strong> The member that joined</p>
 <h2 id='guildmemberremove'>GuildMemberRemove</h2>
+<blockquote>
+<p>Example: Attempt to dm a user when they leave (Don&#39;t do this, its not ok)</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Member</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Sorry that you left '</span><span class="o">+</span><span class="nx">Context</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">name</span><span class="o">+</span><span class="s1">'. We hope you enjoyed your time here.'</span><span class="p">);</span>
+</code></pre>
 <p>The GuildMemberRemove event is executed when a user leaves or is kicked from a guild.</p>
 
 <p>It receives these variables:</p>
@@ -848,6 +969,11 @@
 
 <p><strong>Description:</strong> The member that left</p>
 <h2 id='guildmemberspeaking'>GuildMemberSpeaking</h2>
+<blockquote>
+<p>Example: Attempt to join the voice channel that they user is in when they start speaking</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="k">if</span><span class="p">(</span><span class="nx">Speaking</span><span class="p">)</span> <span class="nx">Member</span><span class="p">.</span><span class="nx">voice</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">join</span><span class="p">();</span>
+</code></pre>
 <p>The GuildMemberSpeaking event is executed when a user starts/stops speaking.</p>
 
 <p>It receives these variables:</p>
@@ -860,6 +986,12 @@
 
 <p><strong>Description:</strong> Whether they are speaking.</p>
 <h2 id='guildmemberupdate'>GuildMemberUpdate</h2>
+<blockquote>
+<p>Example: Pretend to forget who a user is and dm them asking. (Please don&#39;t do this, these examples are worng on many levels)</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="k">if</span><span class="p">(</span><span class="nx">OldMember</span><span class="p">.</span><span class="nx">displayName</span><span class="o">!=</span><span class="nx">NewMember</span><span class="p">.</span><span class="nx">displayName</span><span class="p">)</span>
+    <span class="nx">NewMember</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'I can'</span><span class="nx">t</span> <span class="nx">recognize</span> <span class="nx">u</span> <span class="kd">with</span> <span class="nx">ur</span> <span class="k">new</span> <span class="nx">nickname</span><span class="p">...</span> <span class="nx">U</span> <span class="nx">used</span> <span class="nx">to</span> <span class="nx">be</span> <span class="s1">'+OldMember.displayName+'</span> <span class="nx">but</span> <span class="nx">now</span> <span class="nx">ur</span> <span class="err">'</span><span class="o">+</span><span class="nx">NewMember</span><span class="p">.</span><span class="nx">displayName</span><span class="p">);</span>
+</code></pre>
 <p>The GuildMemberUpdate event is executed when a member is updated (eg. Nickname changed, Roles changed, etc.)</p>
 
 <p>It receives these variables:</p>
@@ -872,6 +1004,13 @@
 
 <p><strong>Description:</strong> The member after the update</p>
 <h2 id='guildupdate'>GuildUpdate</h2>
+<blockquote>
+<p>Example: If there is a channel named #logs, log to it when the guild name is changed</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Channel</span><span class="o">=</span><span class="nx">Context</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">channels</span><span class="p">.</span><span class="nx">cache</span><span class="p">.</span><span class="nx">array</span><span class="p">().</span><span class="nx">filter</span><span class="p">(</span><span class="nx">c</span><span class="o">=&gt;</span><span class="nx">c</span><span class="p">.</span><span class="nx">name</span><span class="o">==</span><span class="s1">'logs'</span><span class="o">&amp;&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">type</span><span class="o">==</span><span class="s1">'text'</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">Channel</span><span class="o">&amp;&amp;</span><span class="nx">OldGuild</span><span class="p">.</span><span class="nx">name</span><span class="o">!=</span><span class="nx">NewGuild</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+    <span class="nx">Channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'This guild has been renamed from '</span><span class="o">+</span><span class="nx">OldGuild</span><span class="p">.</span><span class="nx">name</span><span class="o">+</span><span class="s1">' to '</span><span class="o">+</span><span class="nx">NewGuild</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+</code></pre>
 <p>The GuildUpdate event is executed when a guild is updated (eg. Name changed, region changed, etc.)</p>
 
 <p>It receives these variables:</p>
@@ -883,15 +1022,41 @@
 <p><strong>Type:</strong> <a href="https://dicsord.js.org/#/docs/main/stable/class/Guild">Guild</a></p>
 
 <p><strong>Description:</strong> The guild after the update</p>
+<h2 id='message-2'>Message</h2>
+<blockquote>
+<p>Example: Be a classic first bot and say &quot;pong&quot; when anyone says &quot;ping&quot;</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="k">if</span><span class="p">(</span><span class="nx">Message</span><span class="p">.</span><span class="nx">content</span><span class="o">==</span><span class="s1">'ping'</span><span class="p">)</span>
+    <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'pong!'</span><span class="p">);</span>
+</code></pre>
+<p>The Message event is executed whenever a message is sent, regardless of whether a command has been called.</p>
+
+<p>It receives these variables:</p>
+<h3 id='message-3'>Message</h3>
+<p><strong>Type:</strong> <a href="https://discord.js.org/#/docs/main/stable/class/Message">Message</a></p>
+
+<p><strong>Description:</strong> The message that was sent</p>
 <h2 id='messagedelete'>MessageDelete</h2>
+<blockquote>
+<p>Example: Snipe that deleted message like an annoying bot</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Someone deleted '</span><span class="o">+</span><span class="nx">Message</span><span class="p">.</span><span class="nx">author</span><span class="p">.</span><span class="nx">username</span><span class="o">+</span><span class="s1">'\'s message which said "'</span><span class="o">+</span><span class="nx">Message</span><span class="p">.</span><span class="nx">content</span><span class="o">+</span><span class="s1">'"'</span><span class="p">);</span>
+</code></pre>
 <p>The MessageDelete event is executed when a message is deleted.</p>
 
 <p>It receives these variables:</p>
-<h3 id='message-2'>Message</h3>
+<h3 id='message-4'>Message</h3>
 <p><strong>Type:</strong> <a href="https://dicsord.js.org/#/docs/main/stable/class/Message">Message</a></p>
 
 <p><strong>Description:</strong> The message that was deleted</p>
 <h2 id='messagereactionadd'>MessageReactionAdd</h2>
+<blockquote>
+<p>Example: Ask if you are being summoned any time someone reacts with your command&#39;s icon</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Note: please don't do this</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">Reaction</span><span class="p">.</span><span class="nx">emoji</span><span class="p">.</span><span class="nx">name</span><span class="o">==</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">EmojiToReaction</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Icon</span><span class="p">))</span>
+    <span class="nx">Reaction</span><span class="p">.</span><span class="nx">message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Whoms\'t has summoned the ancient one?!?!?!?'</span><span class="p">);</span>
+</code></pre>
 <p>The MessageReactionAdd event is executed when a reaction is added to a message.</p>
 
 <p>It receives these variables:</p>
@@ -900,6 +1065,13 @@
 
 <p><strong>Description:</strong> The reaction that was added</p>
 <h2 id='messagereactionremove'>MessageReactionRemove</h2>
+<blockquote>
+<p>Example: Return to your slumber when someone removes a reaction which was your command&#39;s icon.</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Note: please don't do this</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">Reaction</span><span class="p">.</span><span class="nx">emoji</span><span class="p">.</span><span class="nx">name</span><span class="o">==</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">EmojiToReaction</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Icon</span><span class="p">))</span>
+    <span class="nx">Reaction</span><span class="p">.</span><span class="nx">message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'And so i return to my slumber...'</span><span class="p">);</span>
+</code></pre>
 <p>The MessageReactionRemove event is executed when a reaction is removed from a message</p>
 
 <p>It receives these variables:</p>
@@ -908,14 +1080,26 @@
 
 <p><strong>Description:</strong> The reaction that was removed</p>
 <h2 id='messagereactionremoveall'>MessageReactionRemoveAll</h2>
+<blockquote>
+<p>Example: Delete a message if someone removes every reaction from it at once</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//What am i even doing with these examples anymore...</span>
+<span class="nx">Message</span><span class="p">.</span><span class="k">delete</span><span class="p">();</span>
+</code></pre>
 <p>The MessageReactionRemoveAll event is executed when all the reactions are removed from a message</p>
 
 <p>It receives these variables:</p>
-<h3 id='reaction-3'>Reaction</h3>
+<h3 id='message-5'>Message</h3>
 <p><strong>Type:</strong> <a href="https://dicsord.js.org/#/docs/main/stable/class/Message">Message</a></p>
 
 <p><strong>Description:</strong> The message from which the reactions were removed</p>
 <h2 id='messageupdate'>MessageUpdate</h2>
+<blockquote>
+<p>Example: Thanks people for editing their message instead of making 5 messages with spelling corrections</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Once again, don't do this</span>
+<span class="nx">NewMessage</span><span class="p">.</span><span class="nx">author</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Thank you for editing your message instead of being *that guy* who makes 5 new messages to correct their spelling'</span><span class="p">);</span>
+</code></pre>
 <p>The MessageUpdate event is executed when a message is edited</p>
 
 <p>It receives these variables:</p>
@@ -928,6 +1112,12 @@
 
 <p><strong>Description:</strong> The message after the edit</p>
 <h2 id='rolecreate'>RoleCreate</h2>
+<blockquote>
+<p>Example: Be a boss and give the bot a new role when it is created</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Why do i do this...</span>
+<span class="p">(</span><span class="nx">await</span> <span class="nx">Context</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">members</span><span class="p">.</span><span class="nx">fetch</span><span class="p">(</span><span class="nx">ObjDiscordClient</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">)).</span><span class="nx">roles</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">Role</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+</code></pre>
 <p>The RoleCreate event is executed when a role is created</p>
 
 <p>It receives these variables:</p>
@@ -936,6 +1126,13 @@
 
 <p><strong>Description:</strong> The role that was created</p>
 <h2 id='roledelete'>RoleDelete</h2>
+<blockquote>
+<p>Example: Be <strong>that bot</strong> that logs everything in DBL</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Channel</span><span class="o">=</span><span class="nx">Context</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">channels</span><span class="p">.</span><span class="nx">cache</span><span class="p">.</span><span class="nx">array</span><span class="p">().</span><span class="nx">filter</span><span class="p">(</span><span class="nx">c</span><span class="o">=&gt;</span><span class="nx">c</span><span class="p">.</span><span class="nx">type</span><span class="o">==</span><span class="s1">'text'</span><span class="o">&amp;&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">name</span><span class="o">==</span><span class="s1">'testing-1'</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">Channel</span><span class="p">)</span>
+    <span class="nx">Channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'The role '</span><span class="o">+</span><span class="nx">Role</span><span class="p">.</span><span class="nx">name</span><span class="o">+</span><span class="s1">' has been deleted'</span><span class="p">);</span>
+</code></pre>
 <p>The RoleDelete event is executed when a role is deleted</p>
 
 <p>It receives these variables:</p>
@@ -944,6 +1141,13 @@
 
 <p><strong>Description:</strong> The role that was deleted</p>
 <h2 id='roleupdate'>RoleUpdate</h2>
+<blockquote>
+<p>Example: Do absolutely nothing when a role&#39;s name is changed</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="k">if</span><span class="p">(</span><span class="nx">OldRole</span><span class="p">.</span><span class="nx">name</span><span class="o">!=</span><span class="nx">NewRole</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//Hah you thought there would be an action in every example!</span>
+<span class="p">}</span>
+</code></pre>
 <p>The RoleUpdate event is executed when a role is updated (eg. Change name, Change permissions, etc.)</p>
 
 <p>It receives these variables:</p>
@@ -956,6 +1160,13 @@
 
 <p><strong>Description:</strong> The role after the update</p>
 <h2 id='voicestateupdate'>VoiceStateUpdate</h2>
+<blockquote>
+<p>Example: Stalk bob in the vc.</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="k">if</span><span class="p">(</span><span class="nx">NewMember</span><span class="p">.</span><span class="nx">displayName</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">()</span><span class="o">==</span><span class="s1">'BOB'</span><span class="p">)</span> 
+    <span class="k">if</span><span class="p">(</span><span class="nx">NewMember</span><span class="p">.</span><span class="nx">voice</span><span class="p">.</span><span class="nx">channel</span><span class="p">)</span>
+        <span class="nx">NewMember</span><span class="p">.</span><span class="nx">voice</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">join</span><span class="p">();</span>
+</code></pre>
 <p>The VoiceStateUpdate event is executed when a user joins or leaves a voice channel, and when they move between voice channel.</p>
 
 <p>It receives these variables:</p>
