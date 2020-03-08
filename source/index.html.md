@@ -113,22 +113,25 @@ The syntax of your command is displayed after its name in help menus, searches, 
 Formatting:
 
 **[Param]** - Required parameter
+
 **{Param}** - Optional parameter
+
 **Param** - Literall text (write Param)
-**(Note)** - Note (ie you can use `(No Arguments)` to indicate that your command doesnt expect and parameters
+
+**(Note)** - Note (ie you can use `(No Arguments)` to indicate that your command doesnt expect any parameters
 
 ### Translation Strings
 
 > Example: How to use translation strings
 
 ```javascript
-//Access String 0
-this.Languages[LibOpenBot.LanguageIndex(this,BotContext.User.Settings.Language].Strings[0];
+//Send String 0
+Message.channel.send(this.Languages[LibOpenBot.LanguageIndex(this,BotContext.User.Settings.Language].Strings[0]);
 
 //Make a reference to the strings for cleaner code
 var Strings=this.Languages[LibOpenBot.LanguageIndex(this,BotContext.User.Settings.Language].Strings;
 //Later...
-Strings[0];
+Message.channel.send(Strings[0]);
 ```
 Translation strings allow the text inside your command to be translated. You can have as many as you want, and you can access them from your code.
 
@@ -147,6 +150,14 @@ To delete an event, click the "x" next to its name
 ## Settings Box
 
 Your command can have custom settings which guild admins will edit on the dashboard. When your command accesses its settings, they will be represented by an object.
+
+> Example: Access the settings for your command
+```javascript
+//Create a variable with the command's settings
+var Settings=await LibOpenBot.GetCommandSettings(this,BotContext.Guild);
+//Print the setting
+Message.chanenl.send('My setting is set to '+Settings.ExampleText);
+```
 
 ### Categories
 
@@ -201,6 +212,14 @@ Events are among the most important things in OpenBot. They define the actions t
 
 All events receive certain variables, regardless of their type. Here they are:
 
+> Example: Print some information about where the command was called
+
+```javascript
+Message.channel.send('Current Guild: '+Context.guild.name);
+if(Context.channel) Message.channel.send('Current Channel: '+Context.channel.name);
+if(Context.user) Message.channel.send('Requested by: '+Context.user.username);
+```
+
 ### Context
 
 **Type:** Object
@@ -210,6 +229,13 @@ All events receive certain variables, regardless of their type. Here they are:
 **Children:**  <a href="https://discord.js.org/#/docs/main/stable/class/Guild">guild</a>, <a href="https://discord.js.org/#/docs/main/stable/class/Channel">channel</a>\*, <a href="https://discord.js.org/#/docs/main/stable/class/User">user</a>\*
  
  \*May be null
+ 
+ > Example: Print some statistics about where the command was called
+ 
+ ```javascript
+ Message.channel.send('Messages sent in guild: '+BotContext.Guild.Stats.Messages);
+ if(BotContext.User) Message.channel.send('Messages sent by user: '+BotContext.User.Stats.Messages);
+ ```
  
 ### BotContext
  
@@ -221,6 +247,12 @@ All events receive certain variables, regardless of their type. Here they are:
  
 \*May be null
 
+> Example: Print whether the current command is open source
+
+```javascript
+Message.channel.send(this.Permissions.Viewable);
+```
+
 ### this
 
 **Type:** <a href="#command">Command</a>
@@ -229,7 +261,13 @@ All events receive certain variables, regardless of their type. Here they are:
 
 ## Call 
 
-The Call event is executed whenever a message matches Prefix+Callname. For example, when someone sends "-Open Help" on a server where the prefix is "-Open", the command with the callname "Help" runs its Call event.
+> Example: A simple Say Command which says whatever the user requests.
+
+```javascript
+Message.channel.send(Arguments);
+```
+
+The Call event is executed whenever a message matches Prefix+Callname. For example, when someone sends "-Open Help" on a server where the prefix is "-Open ", the command with the callname "Help" runs its Call event.
 
 It receives these variables:
 
@@ -247,11 +285,23 @@ It receives these variables:
 
 ## ChannelCreate
 
+> Example: Be the first message in a channel!
+
+```javascript
+Context.channel.send('First!');
+```
+
 The ChannelCreate event is executed when a channel is created.
 
 It receives no special variables.
 
 ## ChannelDelete
+
+> Example:  Be a bad bot and recreate a channel when it's deleted
+
+```javascript
+Context.guild.channels.create(Context.channel.name);
+```
 
 The ChannelDelete event is executed when a channel is deleted.
 
@@ -259,11 +309,24 @@ It receives no special variables.
 
 ## ChannelPinsUpdate
 
+> Example: Send a message when someone pins or unpins a message.
+
+```javascript
+Context.channel.send('Someone is messing with the pins here...');
+```
+
 The ChannelPinsUpdate event is executed when the pins of a channel are changed.
 
 It receives no special variables.
 
 ## ChannelUpdate
+
+> Example: Send a message when a channel's name is changed
+
+```javascript
+if(OldChannel.name!=NewChannel.name)
+    NewChannel.send('This channel's name has been changed from '+OldChannel.name+' to '+NewChannel.name);
+```
 
 The ChannelUpdate event is executed when a channel is updated (eg. Name changed, Permissions changed, etc.)
 
@@ -283,11 +346,23 @@ It receives these variables:
 
 ## CommandAdded
 
+> Example: Send a dm to the person who added the command thanking them. (And probably making them remove the command)
+
+```javascript
+Context.user.send('Thank you for adding '+this.Languages[LibOpenBot.LanguageIndex(this,BotContext.User.Settings.Language)].Name)+' to your server');
+```
+
 The CommandAdded event is executed when your command is added to a server.
 
 It recieves no special variables.
 
 ## CommandRemoved
+
+> Example: Send a dm to the person who removed your command. (Like any good windows freeware when you uninstall it)
+
+```javascript
+Context.user.send('We are sorry to see you stop using '+this.Languages[LibOpenBot.LanguageIndex(this,BotContext.User.Settings.Language)].Name);
+```
 
 The CommandRemoved event is executed when your command is removed from a server.
 
@@ -295,9 +370,24 @@ It receives no special variables.
 
 ## CommandUpdated
 
-The CommandUpdated event is executed when your edit request is approved, and your command is integrated into OpenBot. You can use it to update command data if you change formats, or anything else that needs updated.
+> Example: dm yourself when your command is approved (Because the default notification isnt enough?)
+
+```javascript
+//Note: this will dm once per guild your command is in, which is spam and API abuse. Don't do this, your command will not be accepted.
+LibOpenBot.ExecUser(this.Author,'User.send("Your command been approved! Good job!")');
+```
+
+The CommandUpdated event is executed when your edit request is approved, and your command is integrated into OpenBot. You can use it to update command data if you change formats, or anything else that needs updated. It is run once per guild that your command is in.
 
 ## EmojiCreate
+
+> Example: Send the new emoji in a random channel in the guild
+
+```javascript
+//Note: sending a message unprovoked in a random channel isnt a good idea. Don't do this. In fact, don't do any of these examples, they are just to show how the events work.
+var Channels=Context.guild.channels.cache.array().filter(c=>c.type=='text');
+Channels[parseInt(Math.random()*Channels.length)].send('I like this new emoji <:'+Emoji.name+':'+Emoji.id+>');
+```
 
 The EmojiCreate event is executed when an emoji is added to the guild.
 
@@ -311,6 +401,14 @@ It receives these variables:
 
 ## EmojiDelete
 
+> Example: Be salty about an emoji being removed from a guild
+
+```javascript
+//Note: also don't do this...
+var Channels=Context.guild.channels.cache.array().filter(c=>c.type=='text');
+Channels[parseInt(Math.random()*Channels.length)].send('YALL REMOVED '+Emoji.name+'! I DEMAND JUSTICE FOR EMOJIS!');
+```
+
 The EmojiDelete event is executed when an emoji is deleted from the guild.
 
 It receives these variables:
@@ -322,6 +420,13 @@ It receives these variables:
 **Description:** The emoji that was deleted
 
 ## EmojiUpdate
+
+> Example: Change your command's icon to a frankenstein combination of the edited emoji (Don't do this please)
+
+```javascript
+//I'm running out of ideas for these examples, ok?
+this.Icon='<:'+OldEmoji.name+':'+NewEmoji.id+'>';
+```
 
 The EmojiUpdate event is executed when an emoji in the guild is updated (eg. Name changed, Icon changed, etc.)
 
@@ -341,11 +446,23 @@ It receives these variables:
 
 ## GuildBanAdd
 
+> Example: Attempt to dm the banned user letting them know that they were banned (Don't do this)
+
+```javascript
+Context.user.send('You have been banned from '+Context.guild.name);
+```
+
 The GuildBanAdd event is executed when a user is banned from the guild.
 
 It receives no special variables.
 
 ## GuildBanRemove
+
+> Example: Attempt to dm the unbanned user letting them know that they were unbanned (Don't do this)
+
+```javascript
+Context.user.send('You have been unbanned from '+Context.guild.name);
+```
 
 The GuildBanRemove event is executed when a user is unbanned from the guild.
 
@@ -353,11 +470,23 @@ It receives no special variables.
 
 ## GuildIntegrationsUpdate
 
+> Example: I don't even know... This only exists here because OpenBot supports every discord.js event.
+
+```javascript
+console.log('Somebody did a thing');
+```
+
 The GuildIntegrationsUpdate event is executed when a guild's integrations are updated.
 
 It receives no special variables.
 
 ## GuildMemberAdd
+
+> Example: Greet a user when they join
+
+```javascript
+Member.user.send('Welcome to '+Context.guild.name);
+```
 
 The GuildMemberAdd event is executed when a user joins a guild.
 
@@ -371,6 +500,12 @@ It receives these variables:
 
 ## GuildMemberRemove
 
+> Example: Attempt to dm a user when they leave (Don't do this, its not ok)
+
+```javascript
+Member.user.send('Sorry that you left '+Context.guild.name+'. We hope you enjoyed your time here.');
+```
+
 The GuildMemberRemove event is executed when a user leaves or is kicked from a guild.
 
 It receives these variables:
@@ -382,6 +517,12 @@ It receives these variables:
 **Description:** The member that left
 
 ## GuildMemberSpeaking
+
+> Example: Attempt to join the voice channel that they user is in when they start speaking
+
+```javascript
+if(Speaking) Member.voice.channel.join();
+```
 
 The GuildMemberSpeaking event is executed when a user starts/stops speaking.
 
@@ -401,6 +542,13 @@ It receives these variables:
 
 ## GuildMemberUpdate
 
+> Example: Pretend to forget who a user is and dm them asking. (Please don't do this, these examples are worng on many levels)
+
+```javascript
+if(OldMember.displayName!=NewMember.displayName)
+    NewMember.user.send('I can't recognize u with ur new nickname... U used to be '+OldMember.displayName+' but now ur '+NewMember.displayName);
+```
+
 The GuildMemberUpdate event is executed when a member is updated (eg. Nickname changed, Roles changed, etc.)
 
 It receives these variables:
@@ -419,6 +567,14 @@ It receives these variables:
 
 ## GuildUpdate
 
+> Example: If there is a channel named #logs, log to it when the guild name is changed
+
+```javascript
+var Channel=Context.guild.channels.cache.array().filter(c=>c.name=='logs'&&c.type=='text')[0];
+if(Channel&&OldGuild.name!=NewGuild.name)
+    Channel.send('This guild has been renamed from '+OldGuild.name+' to '+NewGuild.name);
+```
+
 The GuildUpdate event is executed when a guild is updated (eg. Name changed, region changed, etc.)
 
 It receives these variables:
@@ -435,7 +591,32 @@ It receives these variables:
 
 **Description:** The guild after the update
 
+## Message
+
+> Example: Be a classic first bot and say "pong" when anyone says "ping"
+
+```javascript
+if(Message.content=='ping')
+    Message.channel.send('pong!');
+```
+
+The Message event is executed whenever a message is sent, regardless of whether a command has been called.
+
+It receives these variables:
+
+### Message
+
+**Type:** <a href="https://discord.js.org/#/docs/main/stable/class/Message">Message</a>
+
+**Description:** The message that was sent
+
 ## MessageDelete
+
+> Example: Snipe that deleted message like an annoying bot
+
+```javascript
+Message.channel.send('Someone deleted '+Message.author.username+'\'s message which said "'+Message.content+'"');
+```
 
 The MessageDelete event is executed when a message is deleted.
 
@@ -449,6 +630,14 @@ It receives these variables:
 
 ## MessageReactionAdd
 
+> Example: Ask if you are being summoned any time someone reacts with your command's icon
+
+```javascript
+//Note: please don't do this
+if(Reaction.emoji.name==await LibOpenBot.EmojiToReaction(this.Icon))
+    Reaction.message.channel.send('Whoms\'t has summoned the ancient one?!?!?!?');
+```
+
 The MessageReactionAdd event is executed when a reaction is added to a message.
 
 It receives these variables:
@@ -460,6 +649,14 @@ It receives these variables:
 **Description:** The reaction that was added
 
 ## MessageReactionRemove
+
+> Example: Return to your slumber when someone removes a reaction which was your command's icon.
+
+```javascript
+//Note: please don't do this
+if(Reaction.emoji.name==await LibOpenBot.EmojiToReaction(this.Icon))
+    Reaction.message.channel.send('And so i return to my slumber...');
+```
 
 The MessageReactionRemove event is executed when a reaction is removed from a message
 
@@ -473,17 +670,32 @@ It receives these variables:
 
 ## MessageReactionRemoveAll
 
+> Example: Delete a message if someone removes every reaction from it at once
+
+```javascript
+//What am i even doing with these examples anymore...
+Message.delete();
+```
+
+
 The MessageReactionRemoveAll event is executed when all the reactions are removed from a message
 
 It receives these variables:
 
-### Reaction
+### Message
 
 **Type:** <a href="https://dicsord.js.org/#/docs/main/stable/class/Message">Message</a>
 
 **Description:** The message from which the reactions were removed
 
 ## MessageUpdate
+
+> Example: Thanks people for editing their message instead of making 5 messages with spelling corrections
+
+```javascript
+//Once again, don't do this
+NewMessage.author.send('Thank you for editing your message instead of being *that guy* who makes 5 new messages to correct their spelling');
+```
 
 The MessageUpdate event is executed when a message is edited
 
@@ -503,6 +715,13 @@ It receives these variables:
 
 ## RoleCreate
 
+> Example: Be a boss and give the bot a new role when it is created
+
+```javascript
+//Why do i do this...
+(await Context.guild.members.fetch(ObjDiscordClient.user.id)).roles.add(Role.id);
+```
+
 The RoleCreate event is executed when a role is created
 
 It receives these variables:
@@ -515,6 +734,14 @@ It receives these variables:
 
 ## RoleDelete
 
+> Example: Be **that bot** that logs everything in DBL
+
+```javascript
+var Channel=Context.guild.channels.cache.array().filter(c=>c.type=='text'&&c.name=='testing-1')[0];
+if(Channel)
+    Channel.send('The role '+Role.name+' has been deleted');
+```
+
 The RoleDelete event is executed when a role is deleted
 
 It receives these variables:
@@ -526,6 +753,14 @@ It receives these variables:
 **Description:** The role that was deleted
 
 ## RoleUpdate
+
+> Example: Do absolutely nothing when a role's name is changed
+
+```javascript
+if(OldRole.name!=NewRole.name) {
+    //Hah you thought there would be an action in every example!
+}
+```
 
 The RoleUpdate event is executed when a role is updated (eg. Change name, Change permissions, etc.)
 
@@ -544,6 +779,14 @@ It receives these variables:
 **Description:** The role after the update
 
 ## VoiceStateUpdate
+
+> Example: Stalk bob in the vc.
+
+```javascript
+if(NewMember.displayName.toUpperCase()=='BOB') 
+    if(NewMember.voice.channel)
+        NewMember.voice.channel.join();
+```
 
 The VoiceStateUpdate event is executed when a user joins or leaves a voice channel, and when they move between voice channel.
 
