@@ -1054,7 +1054,8 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 <p>Example: Ask if you are being summoned any time someone reacts with your command&#39;s icon</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="c1">//Note: please don't do this</span>
-<span class="k">if</span><span class="p">(</span><span class="nx">Reaction</span><span class="p">.</span><span class="nx">emoji</span><span class="p">.</span><span class="nx">name</span><span class="o">==</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">EmojiToReaction</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Icon</span><span class="p">))</span>
+<span class="kd">var</span> <span class="nx">IconReaction</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">EmojiToReaction</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Icon</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">Reaction</span><span class="p">.</span><span class="nx">emoji</span><span class="p">.</span><span class="nx">name</span><span class="o">==</span><span class="nx">IconReaction</span><span class="o">||</span><span class="nx">Reaction</span><span class="p">.</span><span class="nx">emoji</span><span class="p">.</span><span class="nx">id</span><span class="o">==</span><span class="nx">IconReaction</span><span class="p">)</span>
     <span class="nx">Reaction</span><span class="p">.</span><span class="nx">message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Whoms\'t has summoned the ancient one?!?!?!?'</span><span class="p">);</span>
 </code></pre>
 <p>The MessageReactionAdd event is executed when a reaction is added to a message.</p>
@@ -1179,6 +1180,11 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 
 <p><strong>Description:</strong> The member after the update</p>
 <h1 id='classes'>Classes</h1><h2 id='channelsetting'>ChannelSetting</h2>
+<blockquote>
+<p>Example: Print the global setting for the current channel</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'The current channel is '</span><span class="o">+</span><span class="p">(</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">Guild</span><span class="p">.</span><span class="nx">Settings</span><span class="p">.</span><span class="nx">Channels</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">c</span><span class="o">=&gt;</span><span class="nx">c</span><span class="p">.</span><span class="nx">id</span><span class="o">==</span><span class="nx">Context</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">id</span><span class="o">&amp;&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">enabled</span><span class="o">==</span><span class="kc">false</span><span class="p">).</span><span class="nx">length</span><span class="p">?</span><span class="s1">'disabled'</span><span class="p">:</span><span class="s1">'enabled'</span><span class="p">)</span><span class="o">+</span><span class="s1">' by default.'</span><span class="p">);</span>
+</code></pre>
 <p>The ChannelSetting Class stores information about the settings in a channel. It can either be related to a guild (Guild.Settings.Channels) or a command (Guild.Settings.Commands[x].Channels). It controls whether commands can be used in that Channel.</p>
 
 <aside class='note'>A ChannelSetting stored in a command takes precedence over a ChannelSetting stored in a guild</aside>
@@ -1344,6 +1350,13 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 </tr>
 </tbody></table>
 <h2 id='emoji-3'>Emoji</h2>
+<blockquote>
+<p>Example: Print the discord emoji version of a utf character</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Emoji</span><span class="o">=</span><span class="p">(</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetEmojis</span><span class="p">()).</span><span class="nx">filter</span><span class="p">(</span><span class="nx">e</span><span class="o">=&gt;</span><span class="nx">e</span><span class="p">.</span><span class="nx">utf</span><span class="o">==</span><span class="nx">Arguments</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">Emoji</span><span class="p">)</span>
+    <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">':'</span><span class="o">+</span><span class="nx">Emoji</span><span class="p">.</span><span class="nx">tag</span><span class="o">+</span><span class="s1">':'</span><span class="p">);</span>
+</code></pre>
 <p>The Emoji class contains information about an emoji, usefull for displaying it on a website as well as in discord.</p>
 
 <table><thead>
@@ -1381,6 +1394,11 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 <h3 id='utf'>utf</h3>
 <p>To use the utf member in discord or on a page, just print it as a string.</p>
 <h2 id='guild'>Guild</h2>
+<blockquote>
+<p>Example: Print the number of messages OpenBot has seen in this guild</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">Guild</span><span class="p">.</span><span class="nx">Stats</span><span class="p">.</span><span class="nx">Messages</span><span class="p">);</span>
+</code></pre>
 <p>The Guild Class contains data relating to a guild that OpenBot is in.</p>
 
 <table><thead>
@@ -1671,6 +1689,12 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 
 <aside class="note">For the api relay, instead of seinding "1+1" and getting 2, you send "return 1+1" and get 2. Then you can use async/await to perform asyncrounous requests</aside>
 <h2 id='timeout'>Timeout</h2>
+<blockquote>
+<p>Example: Create a timeout and print its id</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Timeout</span><span class="o">=</span><span class="k">new</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">Timeout</span><span class="p">(</span><span class="mi">1000</span><span class="p">,()</span><span class="o">=&gt;</span><span class="p">{(</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">users</span><span class="p">.</span><span class="nx">fetch</span><span class="p">(</span><span class="nx">Argument</span><span class="p">.</span><span class="nx">user</span><span class="p">)).</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Hello sir'</span><span class="p">)},{</span><span class="na">user</span><span class="p">:</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">});</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Your greeting has been created and has the id '</span><span class="o">+</span><span class="nx">Timeout</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+</code></pre>
 <p>The Timeout class stores timeouts for commands and other services, so that they can be called even if the bot restarts.</p>
 
 <table><thead>
@@ -1707,6 +1731,11 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 </tr>
 </tbody></table>
 <h2 id='user'>User</h2>
+<blockquote>
+<p>Example: Print the user&#39;s preferred language</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Your language code is '</span><span class="o">+</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">Settings</span><span class="p">.</span><span class="nx">Language</span><span class="p">);</span>
+</code></pre>
 <p>The User Class contains data relating to a user of OpenBot.</p>
 
 <table><thead>
@@ -1790,6 +1819,13 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 </tr>
 </tbody></table>
 <h2 id='userdata'>UserData</h2>
+<blockquote>
+<p>Example: Dm a user their private storage (Why though?)
+<code>javascript
+Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id)).Private);
+</code></p>
+</blockquote>
+
 <p>The UserData Class contains data stored by commands, or about commands, relating to a user. It is kept seperate from the User class so that when a User is requested for a profile or something similar, their data is not exposed.</p>
 
 <table><thead>
@@ -1841,6 +1877,11 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 
 <aside class='note'>You will not need to directly access this object. You can use the LibOpenBot.GetPrivateStorage function to get the members of this object.</aside>
 <h2 id='verifyrequest'>VerifyRequest</h2>
+<blockquote>
+<p>Example: Tell a user how many commands they have in the verification queue</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">((</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetVerifyRequests</span><span class="p">()).</span><span class="nx">filter</span><span class="p">(</span><span class="nx">v</span><span class="o">=&gt;</span><span class="nx">v</span><span class="p">.</span><span class="nx">Owner</span><span class="o">==</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">length</span><span class="p">)</span>
+</code></pre>
 <p>The VerifyRequest Class contains command edits which are waiting for verification by core developers</p>
 
 <table><thead>
