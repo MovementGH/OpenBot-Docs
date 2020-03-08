@@ -638,7 +638,8 @@ It receives these variables:
 
 ```javascript
 //Note: please don't do this
-if(Reaction.emoji.name==await LibOpenBot.EmojiToReaction(this.Icon))
+var IconReaction=await LibOpenBot.EmojiToReaction(this.Icon);
+if(Reaction.emoji.name==IconReaction||Reaction.emoji.id==IconReaction)
     Reaction.message.channel.send('Whoms\'t has summoned the ancient one?!?!?!?');
 ```
 
@@ -812,6 +813,12 @@ It receives these variables:
 
 ## ChannelSetting
 
+> Example: Print the global setting for the current channel
+
+```javascript
+Message.channel.send('The current channel is '+(BotContext.Guild.Settings.Channels.filter(c=>c.id==Context.channel.id&&c.enabled==false).length?'disabled':'enabled')+' by default.');
+```
+
 The ChannelSetting Class stores information about the settings in a channel. It can either be related to a guild (Guild.Settings.Channels) or a command (Guild.Settings.Commands[x].Channels). It controls whether commands can be used in that Channel.
 
 <aside class='note'>A ChannelSetting stored in a command takes precedence over a ChannelSetting stored in a guild</aside>
@@ -876,6 +883,14 @@ Viewable | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 ## Emoji
 
+> Example: Print the discord emoji version of a utf character
+
+```javascript
+var Emoji=(await LibOpenBot.GetEmojis()).filter(e=>e.utf==Arguments)[0];
+if(Emoji)
+    Message.channel.send(':'+Emoji.tag+':');
+```
+
 The Emoji class contains information about an emoji, usefull for displaying it on a website as well as in discord.
 
 Member | Type | Description
@@ -900,6 +915,12 @@ To use the utf member in discord or on a page, just print it as a string.
 
 
 ## Guild
+
+> Example: Print the number of messages OpenBot has seen in this guild
+
+```javascript
+Message.channel.send(BotContext.Guild.Stats.Messages);
+```
 
 The Guild Class contains data relating to a guild that OpenBot is in.
 
@@ -1006,6 +1027,13 @@ stat | Null | Fetches performance information
 
 ## Timeout
 
+> Example: Create a timeout and print its id
+
+```javascript
+var Timeout=new LibOpenBot.Timeout(1000,()=>{(await LibOpenBot.users.fetch(Argument.user)).send('Hello sir')},{user:Context.user.id});
+Message.channel.send('Your greeting has been created and has the id '+Timeout.id);
+```
+
 The Timeout class stores timeouts for commands and other services, so that they can be called even if the bot restarts.
 
 Member | Type | Description
@@ -1017,6 +1045,12 @@ Time | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referenc
 id | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the timeout
 
 ## User
+
+> Example: Print the user's preferred language
+
+```javascript
+Message.channel.send('Your language code is '+BotContext.User.Settings.Language);
+```
 
 The User Class contains data relating to a user of OpenBot.
 
@@ -1049,6 +1083,12 @@ Messages | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 ## UserData
 
+> Example: Dm a user their private storage (Why though?)
+```javascript
+Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id)).Private);
+```
+
+
 The UserData Class contains data stored by commands, or about commands, relating to a user. It is kept seperate from the User class so that when a User is requested for a profile or something similar, their data is not exposed.
 
 Member | Type | Description
@@ -1074,6 +1114,12 @@ The Private member of the UserData Class contains all of the Key/Value pairs tha
 
 
 ## VerifyRequest
+
+> Example: Tell a user how many commands they have in the verification queue
+
+```javascript
+Message.channel.send((await LibOpenBot.GetVerifyRequests()).filter(v=>v.Owner==Context.user.id).length)
+```
 
 The VerifyRequest Class contains command edits which are waiting for verification by core developers
 
