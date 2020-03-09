@@ -1528,6 +1528,13 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 </tr>
 </tbody></table>
 <h2 id='locale'>Locale</h2>
+<blockquote>
+<p>Example: Print the icon for a language code</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Locale</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetLocales</span><span class="p">()).</span><span class="nx">filter</span><span class="p">(</span><span class="nx">l</span><span class="o">=&gt;</span><span class="nx">l</span><span class="p">.</span><span class="nx">code</span><span class="o">==</span><span class="nx">Arguments</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">Locale</span><span class="p">)</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Locale</span><span class="p">.</span><span class="nx">icon</span><span class="p">);</span>
+<span class="k">else</span> <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'There is no language with that code'</span><span class="p">);</span>
+</code></pre>
 <p>The Locale Class represents a Language that OpenBot supports.</p>
 
 <table><thead>
@@ -1554,6 +1561,11 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 </tr>
 </tbody></table>
 <h2 id='patreondata'>PatreonData</h2>
+<blockquote>
+<p>Example: Do nothing since you don&#39;t need to use this class</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Insert cool code here</span>
+</code></pre>
 <p>The PatreonData class represents a patreon of OpenBot</p>
 
 <table><thead>
@@ -1587,6 +1599,11 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 
 <aside class="warning">You are not allowed to send or store the access or refresh token of a patreon in any way! You can only use them for fetching information from Patreon's API</aside>
 <h2 id='pullrequest'>PullRequest</h2>
+<blockquote>
+<p>Example: Print how many incoming pull requests you have</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">((</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetPullRequests</span><span class="p">(</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">)).</span><span class="nx">length</span><span class="p">);</span>
+</code></pre>
 <p>The PullRequest class represents a pull request to someone&#39;s command.</p>
 
 <table><thead>
@@ -1623,6 +1640,11 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 </tr>
 </tbody></table>
 <h2 id='relay'>Relay</h2>
+<blockquote>
+<p>Example: Perform some math on the express server using a relay</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'1+1 is '</span><span class="o">+</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">sendRelay</span><span class="p">(</span><span class="s1">'Express Server'</span><span class="p">,{</span><span class="na">type</span><span class="p">:</span><span class="s1">'eval'</span><span class="p">,</span><span class="na">data</span><span class="p">:</span><span class="s1">'1+1'</span><span class="p">}));</span>
+</code></pre>
 <p>The Relay class represents a relay to another process</p>
 
 <table><thead>
@@ -1923,6 +1945,12 @@ Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id))
 </tr>
 </tbody></table>
 <h1 id='functions'>Functions</h1><h2 id='libopenbot-command'>LibOpenBot.Command</h2>
+<blockquote>
+<p>Example: Create a new command for a user</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Don't do this, use the website instead</span>
+<span class="kd">var</span> <span class="nx">NewCommand</span><span class="o">=</span><span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.Command function creates a new Command in the database</p>
 
 <table><thead>
@@ -1941,6 +1969,12 @@ Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id))
 
 <p><strong>Return Type:</strong> <a href="#command">Command</a></p>
 <h2 id='libopenbot-deletecommand'>LibOpenBot.DeleteCommand</h2>
+<blockquote>
+<p>Example: Delete the command being called</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Uh.... i guess if you really want to?</span>
+<span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">DeleteCommand</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.DeleteCommand function deletes a Command from the database</p>
 
 <table><thead>
@@ -1957,6 +1991,13 @@ Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id))
 </tr>
 </tbody></table>
 <h2 id='libopenbot-deletepullrequest'>LibOpenBot.DeletePullRequest</h2>
+<blockquote>
+<p>Example: Delete all of the pull requests on your commands</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Again, don't do this</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">Request</span> <span class="nx">of</span> <span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetPullRequests</span><span class="p">(</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">))</span>
+    <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">DeletePullRequest</span><span class="p">(</span><span class="nx">Request</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.DeletePullRequest function deletes a pull request from the database</p>
 
 <table><thead>
@@ -1973,6 +2014,13 @@ Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id))
 </tr>
 </tbody></table>
 <h2 id='libopenbot-deletetimeout'>LibOpenBot.DeleteTimeout</h2>
+<blockquote>
+<p>Example: Start a timeout and then cancel it</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Timeout</span><span class="o">=</span><span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">Timeout</span><span class="p">(</span><span class="mi">1000</span><span class="p">,()</span><span class="o">=&gt;</span><span class="p">{</span><span class="cm">/*Do something*/</span><span class="p">},</span><span class="kc">null</span><span class="p">);</span>
+<span class="c1">//Several bad life choices later</span>
+<span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">DeleteTimeout</span><span class="p">(</span><span class="nx">Timeout</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.DeleteTimeout function deletes a timeout from the database</p>
 
 <table><thead>
@@ -1989,6 +2037,13 @@ Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id))
 </tr>
 </tbody></table>
 <h2 id='libopenbot-deleteverifyrequest'>LibOpenBot.DeleteVerifyRequest</h2>
+<blockquote>
+<p>Example: Delete every verify request in existance</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//100% don't do this</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">Request</span> <span class="nx">of</span> <span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetVerifyRequests</span><span class="p">())</span>
+    <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">DeleteVerifyRequest</span><span class="p">(</span><span class="nx">Request</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.DeleteVerifyRequest function deletes a verify request from the database</p>
 
 <table><thead>
@@ -2005,6 +2060,11 @@ Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id))
 </tr>
 </tbody></table>
 <h2 id='libopenbot-emojitourl'>LibOpenBot.EmojiToURL</h2>
+<blockquote>
+<p>Example: Print your command&#39;s icon as an image</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">EmojiToURL</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Icon</span><span class="p">));</span>
+</code></pre>
 <p>The LibOpenBot.EmojiToURL function returns a url to an image of the discord emoji you pass to it (For example, you would pass &quot;:smile:&quot; or &quot;&lt;:CoolEmoji:12345&gt;&quot;)</p>
 
 <table><thead>
@@ -2021,6 +2081,15 @@ Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id))
 </tr>
 </tbody></table>
 <h2 id='libopenbot-execuser'>LibOpenBot.ExecUser</h2>
+<blockquote>
+<p>Example: DM yourself when an error happens</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="k">try</span> <span class="p">{</span>
+    <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">TyP0</span><span class="p">.</span><span class="nx">Lol</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nb">Error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">ExecUser</span><span class="p">(</span><span class="nx">Command</span><span class="p">.</span><span class="nx">Author</span><span class="p">,</span><span class="s1">'User.send(`'</span><span class="o">+</span><span class="nb">Error</span><span class="o">+</span><span class="s1">'`);'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
 <p>The LibOpenBot.ExecUser function allows you to interact with a user who may not be in the same shard as your code is running in.</p>
 
 <table><thead>
@@ -2046,7 +2115,12 @@ Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id))
 
 <p><strong>Return Type:</strong> Whatever your javascript returns</p>
 <h2 id='libopenbot-execguild'>LibOpenBot.ExecGuild</h2>
-<p>The LibOpenBot.ExecGuild function allows you to interact with a guild who may not be in the same shard as your code is running in.</p>
+<blockquote>
+<p>Example: Print the name of a guild by id</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Arguments</span><span class="p">,</span><span class="s1">'Guild.name'</span><span class="p">);</span>
+</code></pre>
+<p>The LibOpenBot.ExecGuild function allows you to interact with a guild which may not be in the same shard as your code is running in.</p>
 
 <table><thead>
 <tr>
