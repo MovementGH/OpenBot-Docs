@@ -967,6 +967,14 @@ Users | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 
 ## Locale
 
+> Example: Print the icon for a language code
+
+```javascript
+var Locale=await LibOpenBot.GetLocales()).filter(l=>l.code==Arguments)[0];
+if(Locale) Message.channel.send(Locale.icon);
+else Message.channel.send('There is no language with that code');
+```
+
 The Locale Class represents a Language that OpenBot supports.
 
 Member | Type | Description
@@ -976,6 +984,12 @@ icon | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referenc
 name | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Language name
 
 ## PatreonData
+
+> Example: Do nothing since you don't need to use this class
+
+```javascript
+//Insert cool code here
+```
 
 The PatreonData class represents a patreon of OpenBot
 
@@ -990,6 +1004,12 @@ refresh | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 ## PullRequest
 
+> Example: Print how many incoming pull requests you have
+
+```javascript
+Message.channel.send((await LibOpenBot.GetPullRequests(Context.user.id)).length);
+```
+
 The PullRequest class represents a pull request to someone's command.
 
 Member | Type | Description
@@ -1001,6 +1021,12 @@ Owner | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 id | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the pull request
 
 ## Relay
+
+> Example: Perform some math on the express server using a relay
+
+```javascript
+Message.channel.send('1+1 is '+await LibOpenBot.sendRelay('Express Server',{type:'eval',data:'1+1'}));
+```
 
 The Relay class represents a relay to another process
 
@@ -1136,6 +1162,13 @@ id | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/
 
 ## LibOpenBot.Command
 
+> Example: Create a new command for a user
+
+```javascript
+//Don't do this, use the website instead
+var NewCommand=LibOpenBot.Command(Context.user.id);
+```
+
 The LibOpenBot.Command function creates a new Command in the database
 
 Argument | Type | Description
@@ -1146,6 +1179,13 @@ Author | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refere
 
 ## LibOpenBot.DeleteCommand
 
+> Example: Delete the command being called
+
+```javascript
+//Uh.... i guess if you really want to?
+LibOpenBot.DeleteCommand(this.id);
+```
+
 The LibOpenBot.DeleteCommand function deletes a Command from the database
 
 Argument | Type | Description
@@ -1153,6 +1193,14 @@ Argument | Type | Description
 ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the command to delete
 
 ## LibOpenBot.DeletePullRequest
+
+> Example: Delete all of the pull requests on your commands
+
+```javascript
+//Again, don't do this
+for(var Request of await LibOpenBot.GetPullRequests(Context.user.id))
+    LibOpenBot.DeletePullRequest(Request.id);
+```
 
 The LibOpenBot.DeletePullRequest function deletes a pull request from the database
 
@@ -1162,6 +1210,14 @@ ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/
 
 ## LibOpenBot.DeleteTimeout
 
+> Example: Start a timeout and then cancel it
+
+```javascript
+var Timeout=LibOpenBot.Timeout(1000,()=>{/*Do something*/},null);
+//Several bad life choices later
+LibOpenBot.DeleteTimeout(Timeout.id);
+```
+
 The LibOpenBot.DeleteTimeout function deletes a timeout from the database
 
 Argument | Type | Description
@@ -1169,6 +1225,14 @@ Argument | Type | Description
 ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the timeout to delete
 
 ## LibOpenBot.DeleteVerifyRequest
+
+> Example: Delete every verify request in existance
+
+```javascript
+//100% don't do this
+for(var Request of await LibOpenBot.GetVerifyRequests())
+    LibOpenBot.DeleteVerifyRequest(Request.id);
+```
 
 The LibOpenBot.DeleteVerifyRequest function deletes a verify request from the database
 
@@ -1178,6 +1242,12 @@ ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/
 
 ## LibOpenBot.EmojiToURL
 
+> Example: Print your command's icon as an image
+
+```javascript
+Message.channel.send(await LibOpenBot.EmojiToURL(this.Icon));
+```
+
 The LibOpenBot.EmojiToURL function returns a url to an image of the discord emoji you pass to it (For example, you would pass ":smile:" or "<:CoolEmoji:12345>")
 
 Argument | Type | Description
@@ -1185,6 +1255,16 @@ Argument | Type | Description
 Tag | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Tag of the emoji
 
 ## LibOpenBot.ExecUser
+
+> Example: DM yourself when an error happens
+
+```javascript
+try {
+    Message.channel.send(TyP0.Lol);
+} catch(Error) {
+    LibOpenBot.ExecUser(Command.Author,'User.send(`'+Error+'`);');
+}
+```
 
 The LibOpenBot.ExecUser function allows you to interact with a user who may not be in the same shard as your code is running in.
 
@@ -1201,7 +1281,13 @@ The Exec parameter is evaluated as javascript, with the global variable User as 
 
 ## LibOpenBot.ExecGuild
 
-The LibOpenBot.ExecGuild function allows you to interact with a guild who may not be in the same shard as your code is running in.
+> Example: Print the name of a guild by id
+
+```javascript
+Message.channel.send(Arguments,'Guild.name');
+```
+
+The LibOpenBot.ExecGuild function allows you to interact with a guild which may not be in the same shard as your code is running in.
 
 Argument | Type | Description
 -- | -- | --
