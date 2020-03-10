@@ -1595,6 +1595,11 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 <td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></td>
 <td>The refresh token of the patreon</td>
 </tr>
+<tr>
+<td>tier</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></td>
+<td>The tier of a patreon</td>
+</tr>
 </tbody></table>
 
 <aside class="warning">You are not allowed to send or store the access or refresh token of a patreon in any way! You can only use them for fetching information from Patreon's API</aside>
@@ -2145,6 +2150,14 @@ Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id))
 
 <p><strong>Return Type:</strong> Whatever your javascript returns</p>
 <h2 id='libopenbot-getcommand'>LibOpenBot.GetCommand</h2>
+<blockquote>
+<p>Example: List the events that a command has</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Command</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetCommand</span><span class="p">(</span><span class="nx">Arguments</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">Command</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">Command</span><span class="p">.</span><span class="nx">Events</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">', '</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre>
 <p>The LibOpenBot.GetCommand function returns a Command from its ID</p>
 
 <table><thead>
@@ -2163,6 +2176,13 @@ Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id))
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="#command">Command</a>)</p>
 <h2 id='libopenbot-getcommanddata'>LibOpenBot.GetCommandData</h2>
+<blockquote>
+<p>Example: Store the arguments that a user used to call the command</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Data</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetCommandData</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="nx">Data</span><span class="p">.</span><span class="nx">Arguments</span><span class="o">=</span><span class="nx">Arguments</span><span class="p">;</span>
+<span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">WriteCommandData</span><span class="p">(</span><span class="nx">Data</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.GetCommandData function returns the data a command has stored about a User. (You can get Guild data directly from the BotContext.Guild Object)</p>
 
 <table><thead>
@@ -2188,6 +2208,12 @@ Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id))
 
 <aside class="warning">You must pass "this" as the Command argument. If you attempt to view/edit data owned by other commands, your command will be denied</aside>
 <h2 id='libopenbot-getcommandsettings'>LibOpenBot.GetCommandSettings</h2>
+<blockquote>
+<p>Example: Send a configurable greeting</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Settings</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetCommandSettings</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">Guild</span><span class="p">);</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Settings</span><span class="p">.</span><span class="nx">Greeting</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.GetCommandSettings function returns the settings for a command.</p>
 
 <table><thead>
@@ -2213,6 +2239,12 @@ Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id))
 
 <aside class="warning">You must pass "this" as the Command argument. If you attempt to view/edit data owned by other commands, your command will be denied</aside>
 <h2 id='libopenbot-getcommands'>LibOpenBot.GetCommands</h2>
+<blockquote>
+<p>Example: Fetch all of the commands in the current guild</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">CommandIDs</span><span class="o">=</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">Guild</span><span class="p">.</span><span class="nx">Settings</span><span class="p">.</span><span class="nx">Commands</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">c</span><span class="o">=&gt;</span><span class="nx">c</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">Commands</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetCommands</span><span class="p">(</span><span class="nx">CommandIDs</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.GetCommands function returns an array of Commands from an array of IDs.</p>
 
 <table><thead>
@@ -2231,14 +2263,34 @@ Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id))
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#command">Command</a>))</p>
 <h2 id='libopenbot-getdevs'>LibOpenBot.GetDevs</h2>
+<blockquote>
+<p>Example: Test if the user is a dev</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="k">if</span><span class="p">((</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetDevs</span><span class="p">()).</span><span class="nx">filter</span><span class="p">(</span><span class="nx">d</span><span class="o">=&gt;</span><span class="nx">d</span><span class="o">==</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'You\'re a dev!'</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'You\'re a normal person!'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
 <p>The LibOpenBot.GetDevs function returns the IDs of all of the Users with Developer Permissions</p>
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>))</p>
 <h2 id='libopenbot-getemojis'>LibOpenBot.GetEmojis</h2>
+<blockquote>
+<p>Example: Brag on how many emojis OpenBot supports</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Emojis</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetEmojis</span><span class="p">();</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Emojis</span><span class="p">.</span><span class="nx">lenth</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.GetEmojis function returns all of the Emojis indexed by OpenBot</p>
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#emoji">Emoji</a>))</p>
 <h2 id='libopenbot-getflakestamp'>LibOpenBot.GetFlakeStamp</h2>
+<blockquote>
+<p>Example: Sort two commands by their creation date</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Commands</span><span class="p">.</span><span class="nx">sort</span><span class="p">((</span><span class="nx">c1</span><span class="p">,</span><span class="nx">c2</span><span class="p">)</span><span class="o">=&gt;</span><span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetFlakeStamp</span><span class="p">(</span><span class="nx">c1</span><span class="p">)</span><span class="o">-</span><span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetFlakeStamp</span><span class="p">(</span><span class="nx">c2</span><span class="p">));</span>
+</code></pre>
 <p>The LibOpenBot.GetFlakeStamp function returns the timestamp of a snowflake</p>
 
 <table><thead>
@@ -2257,14 +2309,40 @@ Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id))
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></p>
 <h2 id='libopenbot-gethoistedusers'>LibOpenBot.GetHoistedUsers</h2>
+<blockquote>
+<p>Example: Output whether the current user is hoisted on the web search</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Hoisted</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetHoistedUsers</span><span class="p">();</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">Hoisted</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">u</span><span class="o">=&gt;</span><span class="nx">u</span><span class="o">==</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'You are hoisted!'</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'You are a normal boi.'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
 <p>The LibOpenBot.GetHoistedUsers function returns a list of all users with a role or status which hoists them in the user search.</p>
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>))</p>
 <h2 id='libopenbot-getlocales'>LibOpenBot.GetLocales</h2>
+<blockquote>
+<p>Example: Print the user&#39;s language in their own language</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Locales</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetLocales</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">Locale</span><span class="o">=</span><span class="nx">Locales</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">l</span><span class="o">=&gt;</span><span class="nx">l</span><span class="p">.</span><span class="nx">code</span><span class="o">==</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">Settings</span><span class="p">.</span><span class="nx">Language</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">Locale</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Locale</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
 <p>The LibOpenBot.GetLocales function returns all of the Locales supported by OpenBot</p>
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#locale">Locale</a>))</p>
 <h2 id='libopenbot-getpatreon'>LibOpenBot.GetPatreon</h2>
+<blockquote>
+<p>Example: Print a user&#39;s patreon tier</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Note: this might provide out of date data. To ensure up to date data, you need to use LibOpenBot.UpdatePatreonTier</span>
+<span class="kd">var</span> <span class="nx">Patreon</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetPatreon</span><span class="p">(</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Patreon</span><span class="p">.</span><span class="nx">tier</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.GetPatreon function returns the patreon data for a user in OpenBot</p>
 
 <table><thead>
@@ -2283,11 +2361,22 @@ Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id))
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="#patreondata">PatreonData</a>)</p>
 <h2 id='libopenbot-getpatreons'>LibOpenBot.GetPatreons</h2>
+<blockquote>
+<p>Example: Brag on how many patreon&#39;s OpenBot has</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Patreons</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetPatreons</span><span class="p">();</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Patreons</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.GetPatreons function returns all of the patreons of OpenBot</p>
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#patreondata">PatreonData</a>))</p>
 <h2 id='libopenbot-getprivatestorage'>LibOpenBot.GetPrivateStorage</h2>
-<p>The LibOpenBot.GetPrivateStorage function returns all or some of your private storage.</p>
+<blockquote>
+<p>Example: Retrieve an api key from your private storage</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">APIKey</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetPrivateStorage</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Author</span><span class="p">,</span><span class="s1">'YoutubeAPI'</span><span class="p">);</span>
+</code></pre>
+<p>The LibOpenBot.GetPrivateStorage function returns all or some of your private storage. Your private storage can be configured in your user settings on the OpenBot website.</p>
 
 <table><thead>
 <tr>
@@ -2314,6 +2403,12 @@ Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id))
 
 <aside class="warning">If you attempt to get the private storage of another user other than yourself, your command will be denied.</aside>
 <h2 id='libopenbot-getpullrequest'>LibOpenBot.GetPullRequest</h2>
+<blockquote>
+<p>Example: Print the person who created a pull request</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Request</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetPullRequest</span><span class="p">(</span><span class="nx">Arguments</span><span class="p">);</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Editor</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.GetPullRequest function returns a Pull Request from its ID</p>
 
 <table><thead>
@@ -2332,6 +2427,12 @@ Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id))
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="#pullrequest">PullRequest</a>)</p>
 <h2 id='libopenbot-getpullrequests'>LibOpenBot.GetPullRequests</h2>
+<blockquote>
+<p>Example: Print the number of incoming pull requests you have</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Requests</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetPullRequests</span><span class="p">(</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Requests</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.GetPullRequests function gets all of the Pull Requests to a certain User&#39;s Commands.</p>
 
 <table><thead>
@@ -2350,10 +2451,24 @@ Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id))
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#pullrequest">PullRequest</a>))</p>
 <h2 id='libopenbot-gettimeouts'>LibOpenBot.GetTimeouts</h2>
+<blockquote>
+<p>Example: Print the number of timeouts in the active shard</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Timeouts</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetTimeouts</span><span class="p">();</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Timeouts</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.GetTimeouts function returns all Timeouts for the current process.</p>
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#Timeout">Timeout</a>)</p>
 <h2 id='libopenbot-getuser'>LibOpenBot.GetUser</h2>
+<blockquote>
+<p>Example: Print the number of messages that a user has sent</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">User</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetUser</span><span class="p">(</span><span class="nx">Arguments</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">User</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">User</span><span class="p">.</span><span class="nx">Stats</span><span class="p">.</span><span class="nx">Messages</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
 <p>The LibOpenBot.GetUser function returns a User from an ID</p>
 
 <table><thead>
@@ -2372,7 +2487,16 @@ Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id))
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="#user">User</a>)</p>
 <h2 id='libopenbot-getuserclass'>LibOpenBot.GetUserClass</h2>
-<p>The LibOpenBot.UserClass function returns a user&#39;s class (Founder, Admin, Mod, Dev, Translator, Patreon, or Voter)</p>
+<blockquote>
+<p>Example: Print whether the current user is a founder</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="k">if</span><span class="p">(</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetUserClass</span><span class="p">(</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">User</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'You are a founder'</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'You are not a founder'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+<p>The LibOpenBot.UserClass function returns a user&#39;s class.</p>
 
 <table><thead>
 <tr>
@@ -2388,8 +2512,56 @@ Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id))
 </tr>
 </tbody></table>
 
+<p>The function returns the highest class the user has. For example, if a user is an Admin and a Dev, it will return Admin.</p>
+
+<table><thead>
+<tr>
+<th>Return Value</th>
+<th>Class</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>Founder</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Admin</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Mod</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Dev</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Translator</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Patreon</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Voter</td>
+</tr>
+<tr>
+<td>7</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</p>
 <h2 id='libopenbot-getusercommands'>LibOpenBot.GetUserCommands</h2>
+<blockquote>
+<p>Example: Print how many commands a user has created</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Commands</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetUserCommands</span><span class="p">(</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Commands</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.GetUserCommands function returns all of the Commands that a User has made</p>
 
 <table><thead>
