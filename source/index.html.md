@@ -1111,6 +1111,7 @@ Messages | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 ## UserData
 
 > Example: Dm a user their private storage (Why though?)
+
 ```javascript
 Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id)).Private);
 ```
@@ -1285,7 +1286,7 @@ The Exec parameter is evaluated as javascript, with the global variable User as 
 > Example: Print the name of a guild by id
 
 ```javascript
-Message.channel.send(Arguments,'Guild.name');
+Message.channel.send(await LibOpenBot.ExecGuild(Arguments,'Guild.name'));
 ```
 
 The LibOpenBot.ExecGuild function allows you to interact with a guild which may not be in the same shard as your code is running in.
