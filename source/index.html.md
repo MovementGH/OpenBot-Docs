@@ -1630,6 +1630,10 @@ UserID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refere
 
 ## LibOpenBot.GetUserData
 
+> Example: Dm a user their private storage (Why though?)
+```javascript
+Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id)).Private);
+```
 The LibOpenBot.GetUserData function returns the User Data of a user (Including Private Storage and Command Data).
 
 Argument | Type | Description
