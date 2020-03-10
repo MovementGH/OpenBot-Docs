@@ -999,6 +999,7 @@ access | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refere
 expires | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The timestamp at which the token expires
 id | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The discord id of the user
 refresh | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The refresh token of the patreon
+tier | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The tier of a patreon
 
 <aside class="warning">You are not allowed to send or store the access or refresh token of a patreon in any way! You can only use them for fetching information from Patreon's API</aside>
 
@@ -1302,6 +1303,15 @@ The Exec parameter is evaluated as javascript, with the global variable Guild as
 
 ## LibOpenBot.GetCommand
 
+> Example: List the events that a command has
+
+```javascript
+var Command=await LibOpenBot.GetCommand(Arguments);
+if(Command) {
+    Message.channel.send(Object.keys(Command.Events).join(', '));
+}
+```
+
 The LibOpenBot.GetCommand function returns a Command from its ID
 
 Argument | Type | Description
@@ -1311,6 +1321,14 @@ ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="#command">Command</a>)
 
 ## LibOpenBot.GetCommandData
+
+> Example: Store the arguments that a user used to call the command
+
+```javascript
+var Data=await LibOpenBot.GetCommandData(this,Context.user.id);
+Data.Arguments=Arguments;
+LibOpenBot.WriteCommandData(Data);
+```
 
 The LibOpenBot.GetCommandData function returns the data a command has stored about a User. (You can get Guild data directly from the BotContext.Guild Object)
 
@@ -1325,6 +1343,13 @@ User | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referenc
 
 ## LibOpenBot.GetCommandSettings
 
+> Example: Send a configurable greeting
+
+```javascript
+var Settings=await LibOpenBot.GetCommandSettings(this,BotContext.Guild);
+Message.channel.send(Settings.Greeting);
+```
+
 The LibOpenBot.GetCommandSettings function returns the settings for a command.
 
 Argument | Type | Description
@@ -1338,6 +1363,13 @@ Guild | <a href="#guild">Guild | The Guild whose setting you want to get
 
 ## LibOpenBot.GetCommands
 
+> Example: Fetch all of the commands in the current guild
+
+```javascript
+var CommandIDs=BotContext.Guild.Settings.Commands.map(c=>c.id);
+var Commands=await LibOpenBot.GetCommands(CommandIDs);
+```
+
 The LibOpenBot.GetCommands function returns an array of Commands from an array of IDs.
 
 Argument | Type | Description
@@ -1348,17 +1380,41 @@ IDs | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
 
 ## LibOpenBot.GetDevs
 
+> Example: Test if the user is a dev
+
+```javascript
+if((await LibOpenBot.GetDevs()).filter(d=>d==Context.user.id).length) {
+    Message.channel.send('You\'re a dev!');
+} else {
+    Message.channel.send('You\'re a normal person!');
+}
+```
+
 The LibOpenBot.GetDevs function returns the IDs of all of the Users with Developer Permissions
 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>))
 
 ## LibOpenBot.GetEmojis
 
+
+> Example: Brag on how many emojis OpenBot supports
+
+```javascript
+var Emojis=await LibOpenBot.GetEmojis();
+Message.channel.send(Emojis.lenth);
+```
+
 The LibOpenBot.GetEmojis function returns all of the Emojis indexed by OpenBot
 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#emoji">Emoji</a>))
 
 ## LibOpenBot.GetFlakeStamp
+
+> Example: Sort two commands by their creation date
+
+```javascript
+Commands.sort((c1,c2)=>LibOpenBot.GetFlakeStamp(c1)-LibOpenBot.GetFlakeStamp(c2));
+```
 
 The LibOpenBot.GetFlakeStamp function returns the timestamp of a snowflake
 
@@ -1370,17 +1426,46 @@ Flake | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 
 ## LibOpenBot.GetHoistedUsers
 
+> Example: Output whether the current user is hoisted on the web search
+
+```javascript
+var Hoisted=await LibOpenBot.GetHoistedUsers();
+if(Hoisted.filter(u=>u==Context.user.id).length) {
+    Message.channel.send('You are hoisted!');
+} else {
+    Message.channel.send('You are a normal boi.');
+}
+```
+
 The LibOpenBot.GetHoistedUsers function returns a list of all users with a role or status which hoists them in the user search.
 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>))
 
 ## LibOpenBot.GetLocales
 
+> Example: Print the user's language in their own language
+
+```javascript
+var Locales=await LibOpenBot.GetLocales();
+var Locale=Locales.filter(l=>l.code==BotContext.User.Settings.Language)[0];
+if(Locale) {
+    Message.channel.send(Locale.name);
+}
+```
+
 The LibOpenBot.GetLocales function returns all of the Locales supported by OpenBot
 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#locale">Locale</a>))
 
 ## LibOpenBot.GetPatreon
+
+> Example: Print a user's patreon tier
+
+```javascript
+//Note: this might provide out of date data. To ensure up to date data, you need to use LibOpenBot.UpdatePatreonTier
+var Patreon=await LibOpenBot.GetPatreon(Context.user.id);
+Message.channel.send(Patreon.tier);
+```
 
 The LibOpenBot.GetPatreon function returns the patreon data for a user in OpenBot
 
@@ -1392,13 +1477,26 @@ ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/
 
 ## LibOpenBot.GetPatreons
 
+> Example: Brag on how many patreon's OpenBot has
+
+```javascript
+var Patreons=await LibOpenBot.GetPatreons();
+Message.channel.send(Patreons.length);
+```
+
 The LibOpenBot.GetPatreons function returns all of the patreons of OpenBot
 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#patreondata">PatreonData</a>))
 
 ## LibOpenBot.GetPrivateStorage
 
-The LibOpenBot.GetPrivateStorage function returns all or some of your private storage.
+> Example: Retrieve an api key from your private storage
+
+```javascript
+var APIKey=await LibOpenBot.GetPrivateStorage(this.Author,'YoutubeAPI');
+```
+
+The LibOpenBot.GetPrivateStorage function returns all or some of your private storage. Your private storage can be configured in your user settings on the OpenBot website.
 
 Argument | Type | Description
 -- | -- | --
@@ -1415,6 +1513,13 @@ If Key is null, then it will return all of the private storage. If key is a stri
 
 ## LibOpenBot.GetPullRequest
 
+> Example: Print the person who created a pull request
+
+```javascript
+var Request=await LibOpenBot.GetPullRequest(Arguments);
+Message.channel.send(Request.Editor);
+```
+
 The LibOpenBot.GetPullRequest function returns a Pull Request from its ID
 
 Argument | Tyoe | Description
@@ -1424,6 +1529,13 @@ ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="#pullrequest">PullRequest</a>)
 
 ## LibOpenBot.GetPullRequests
+
+> Example: Print the number of incoming pull requests you have
+
+```javascript
+var Requests=await LibOpenBot.GetPullRequests(Context.user.id);
+Message.channel.send(Requests.length);
+```
 
 The LibOpenBot.GetPullRequests function gets all of the Pull Requests to a certain User's Commands.
 
@@ -1435,11 +1547,27 @@ User | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referenc
 
 ## LibOpenBot.GetTimeouts
 
+> Example: Print the number of timeouts in the active shard
+
+```javascript
+var Timeouts=await LibOpenBot.GetTimeouts();
+Message.channel.send(Timeouts.length);
+```
+
 The LibOpenBot.GetTimeouts function returns all Timeouts for the current process.
 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#Timeout">Timeout</a>)
 
 ## LibOpenBot.GetUser
+
+> Example: Print the number of messages that a user has sent
+
+```javascript
+var User=await LibOpenBot.GetUser(Arguments);
+if(User) {
+    Message.channel.send(User.Stats.Messages);
+}
+```
 
 The LibOpenBot.GetUser function returns a User from an ID
 
@@ -1451,15 +1579,45 @@ ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/
 
 ## LibOpenBot.GetUserClass
 
-The LibOpenBot.UserClass function returns a user's class (Founder, Admin, Mod, Dev, Translator, Patreon, or Voter)
+> Example: Print whether the current user is a founder
+
+```javascript
+if(await LibOpenBot.GetUserClass(BotContext.User)==0) {
+    Message.channel.send('You are a founder');
+} else {
+    Message.channel.send('You are not a founder');
+}
+```
+
+The LibOpenBot.UserClass function returns a user's class.
 
 Argument | Type | Description
 -- | -- | --
 User | <a href="#user">User</a> | The user whose class you want
 
+The function returns the highest class the user has. For example, if a user is an Admin and a Dev, it will return Admin.
+
+Return Value | Class
+-- | --
+0 | Founder
+1 | Admin
+2 | Mod
+3 | Dev
+4 | Translator
+5 | Patreon
+6 | Voter
+7 | None
+
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)
 
 ## LibOpenBot.GetUserCommands
+
+> Example: Print how many commands a user has created
+
+```javascript
+var Commands=await LibOpenBot.GetUserCommands(Context.user.id);
+Message.channel.send(Commands.length);
+```
 
 The LibOpenBot.GetUserCommands function returns all of the Commands that a User has made
 
