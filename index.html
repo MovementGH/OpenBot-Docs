@@ -1847,12 +1847,10 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 </tbody></table>
 <h2 id='userdata'>UserData</h2>
 <blockquote>
-<p>Example: Dm a user their private storage (Why though?)
-<code>javascript
-Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id)).Private);
-</code></p>
+<p>Example: Dm a user their private storage (Why though?)</p>
 </blockquote>
-
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">((</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetUserData</span><span class="p">(</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">)).</span><span class="nx">Private</span><span class="p">);</span>
+</code></pre>
 <p>The UserData Class contains data stored by commands, or about commands, relating to a user. It is kept seperate from the User class so that when a User is requested for a profile or something similar, their data is not exposed.</p>
 
 <table><thead>
@@ -2123,7 +2121,7 @@ Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id))
 <blockquote>
 <p>Example: Print the name of a guild by id</p>
 </blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Arguments</span><span class="p">,</span><span class="s1">'Guild.name'</span><span class="p">);</span>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">ExecGuild</span><span class="p">(</span><span class="nx">Arguments</span><span class="p">,</span><span class="s1">'Guild.name'</span><span class="p">));</span>
 </code></pre>
 <p>The LibOpenBot.ExecGuild function allows you to interact with a guild which may not be in the same shard as your code is running in.</p>
 
@@ -2580,7 +2578,13 @@ Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id))
 
 <p><strong>Return Type:</strong> Promise(Array(Command))</p>
 <h2 id='libopenbot-getuserdata'>LibOpenBot.GetUserData</h2>
-<p>The LibOpenBot.GetUserData function returns the User Data of a user (Including Private Storage and Command Data).</p>
+<blockquote>
+<p>Example: Dm a user their private storage (Why though?)
+<code>javascript
+Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id)).Private);
+</code>
+The LibOpenBot.GetUserData function returns the User Data of a user (Including Private Storage and Command Data).</p>
+</blockquote>
 
 <table><thead>
 <tr>
