@@ -2579,12 +2579,11 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 <p><strong>Return Type:</strong> Promise(Array(Command))</p>
 <h2 id='libopenbot-getuserdata'>LibOpenBot.GetUserData</h2>
 <blockquote>
-<p>Example: Dm a user their private storage (Why though?)
-<code>javascript
-Context.user.send(JSON.stringify((await LibOpenBot.GetUserData(Context.user.id)).Private);
-</code>
-The LibOpenBot.GetUserData function returns the User Data of a user (Including Private Storage and Command Data).</p>
+<p>Example: Dm a user their private storage (Why though?)</p>
 </blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">((</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetUserData</span><span class="p">(</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">)).</span><span class="nx">Private</span><span class="p">);</span>
+</code></pre>
+<p>The LibOpenBot.GetUserData function returns the User Data of a user (Including Private Storage and Command Data).</p>
 
 <table><thead>
 <tr>
