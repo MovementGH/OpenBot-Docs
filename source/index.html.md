@@ -1647,11 +1647,28 @@ ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/
 
 ## LibOpenBot.GetVerifiers
 
+> Example: List the OpenBot verifiers
+
+```javascript
+var VerifierIDs=await LibOpenBot.GetVerifiers();
+var Verifiers=[];
+for(var ID of VerifierIDs)
+    Verifiers.push(await LibOpenBot.GetUser(ID));
+Message.channel.send(Verifiers.map(v=>v.Username).join(', '));
+```
+
 The LibOpenBot.GetVerifiers function returns the IDs of all of the Users who have Verifier Permissions
 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#number">Number</a>))
 
 ## LibOpenBot.GetVerifyRequests
+
+> Example: Print how many commands are waiting to be verified
+
+```javascript
+var Requests=await LibOpenBot.GetVerifyRequests();
+Message.channel.send(Requests.length);
+```
 
 The LibOpenBot.GetVerifyRequests function returns all of the Verification requests in the queue.
 
@@ -1659,11 +1676,29 @@ The LibOpenBot.GetVerifyRequests function returns all of the Verification reques
 
 ## LibOpenBot.GetWebLocales
 
+> Example: Tell a user if their language is supported on the website
+
+```javascript
+var Locales=await LibOpenBot.GetWebLocales();
+if(Locales.filter(l=>l==BotContext.User.Settings.Language).length)
+    Message.channel.send('Your language is supported');
+else
+    Message.channel.send('Your language is not supported');
+```
+
 The LibOpenBot.GetWebLocales function returns all of the locale codes supported on OpenBot's Website
 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>))
 
 ## LibOpenBot.Guild
+
+> Example: Create a new guild in the database if the current one is invalid
+
+```javascript
+//Honestly this would never happen, this is just an example
+if((!BotContext.Guild)&&Context.guild)
+    var Guild=new LibOpenBot.Guild(Context.guild);
+```
 
 The LibOpenBot.Guild function creates a new guild in the database
 
@@ -1674,6 +1709,18 @@ DiscordGuild | <a href="https://discord.js.org/#/docs/main/stable/class/Guild">g
 **Return Type:** <a href="#guild">Guild</a>
 
 ## LibOpenBot.HasPermissions
+
+> Example: Check if the bot has admin permissions in the current server
+
+```javascript
+var Member=await Context.guild.members.fetch(ObjDiscordClient.user.id);
+if(Member) {
+    if(LibOpenBot.HasPermissions(Member.permissions.bitfield,8))
+        Message.channel.send('I am an admin');
+    else
+        Message.channel.send('I am not an admin');
+}
+```
 
 The LibOpenBot.HasPermissions function compares two permissions bitfields to see whether they include eachother. It returns true if the user/entity has the permissions that it needs.
 
@@ -1686,6 +1733,13 @@ Needs | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 
 ## LibOpenBot.LanguageIndex
 
+> Example: Get the strings of your command in the user's language
+
+```javascript
+var Strings=this.Languages[LibOpenBot.LanguageIndex(this,BotContext.User.Settings.Language)].Strings;
+Message.channel.send(Strings[0]);
+```
+
 The LibOpenBot.LanguageIndex function returns the index in which a language is found in a command.
 
 Argument | Type | Description
@@ -1696,6 +1750,13 @@ Language | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 **Return type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>
 
 ## LibOpenBot.PullRequest
+
+> Example: Create a pull request for your command, from yourself, just to mess with us devs...
+
+```javascript
+//Don't do this
+var Request=new LibOpenBot.PullRequest(this,this.Author,'I literally changed nothing');
+```
 
 The LibOpenBot.PullRequest function creates a new pull request to a command
 
@@ -1709,7 +1770,14 @@ Notes | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 
 ## LibOpenBot.RegSearch
 
-The LibOpenBot.RegSearch function turns a search query into a valid reqular expression. This would be used when using String.match in the ReQL language (Used in LibOpenBot.Search functions), to search for part of a string instead of a whole string (.eq) or regular expression (.match without using LibOpenBot.RegSearch).
+> Example: Search for commands from user input
+
+```javascript
+var Commands=await LibOpenBot.SearchCommands(Command=>Command.match(LibOpenBot.RegSearch(Arguments)));
+Message.channel.send(Commands.length+' commands found');
+```
+
+The LibOpenBot.RegSearch function turns a search query into a valid reqular expression. This would be used when using String.match in the ReQL language to search for part of a string instead of a whole string (.eq) or regular expression (.match without using LibOpenBot.RegSearch).
 
 Argument | Type | Description
 -- | -- | --
@@ -1718,6 +1786,13 @@ Query | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
 
 ## LibOpenBot.SearchCommands
+
+> Example: Search for commands from user input
+
+```javascript
+var Commands=await LibOpenBot.SearchCommands(Command=>Command.match(LibOpenBot.RegSearch(Arguments)));
+Message.channel.send(Commands.length+' commands found');
+```
 
 The LibOpenBot.SearchCommands function searches in the database for commands that match the search.
 
@@ -1735,6 +1810,13 @@ OpenBot supports using an Object `{Icon:":DopeIcon:"}` or an Anonymous Function 
 
 ## LibOpenBot.SearchGuilds
 
+> Example: Search for guilds from user input
+
+```javascript
+var Guilds=await LibOpenBot.SearchGuilds(Guild=>Guild.match(LibOpenBot.RegSearch(Arguments)));
+Message.channel.send(Guilds.length+' guilds found');
+```
+
 The LibOpenBot.SearchGuilds function searches in the database for guilds that match the search.
 
 Argument | Type | Description
@@ -1751,6 +1833,13 @@ OpenBot supports using an Object `{Icon:":DopeIcon:"}` or an Anonymous Function 
 
 ## LibOpenBot.SearchUsers
 
+> Example: Search for users from user input
+
+```javascript
+var Users=await LibOpenBot.SearchUsers(User=>User.match(LibOpenBot.RegSearch(Arguments)));
+Message.channel.send(Users.length+' users found');
+```
+
 The LibOpenBot.SearchUsers function searches in the dtabase for users that match the search.
 
 Argument | Type | Description
@@ -1766,6 +1855,14 @@ OpenBot supports using an Object `{Icon:":DopeIcon:"}` or an Anonymous Function 
 <aside class="note">The Anonymous Function looks like javascript, but it is actually written in ReQL. If you try to use Javascript comparitors it will not work.</aside>
 
 ## LibOpenBot.Timeout
+
+> Example: Respond after 10 seconds
+
+```javascript
+var Timeout=new LibOpenBot.Timeout(10000,()=>{
+    ObjDiscordClient.channels.cache.array().filter(c=>c.id==Argument.channel)[0].send('Super lag')
+},{channel:Message.channel.id});
+```
 
 The LibOpenBot.Timeout function creates a new timeout. (Must be called with "new" keyword, ie `new LibOpenBot.Timeout(x,y,z)`)
 The function provided, if it contains arguments, will always rename the arguments to Argument, so make sure your code accesses Argument under the variable name Argument. For example, the function `(Number)=>{return Number+1}` will be executed as `(Argument)=>{return Number+1}`, so make sure you name your argument "Argument"
