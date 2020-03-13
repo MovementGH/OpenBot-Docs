@@ -1878,6 +1878,17 @@ Argument | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 ## LibOpenBot.UpdatePatreonTier
 
+> Example: Update a patreon's tier before using it
+
+```javascript
+var Patreon=await LibOpenBot.GetPatreon(Context.user.id);
+//Method 1: Update in place and then print
+await LibOpenBot.UpdatePatreonTier(Patreon);
+Message.channel.send(Patreon.tier);
+//Method 2: Print immediately
+Message.channel.send(await LibOpenBot.UpdatePatreonTier(Patreon));
+```
+
 The LibOpenBot.UpdatePatreonTier fetches a patreon's tier from the Patreon API to ensure it is correct, returns it, and updates the db. You should run this before doing mission critical things with a patreon's data.
 
 Argument | Type | Description
@@ -1887,6 +1898,14 @@ PatreonData | <a href="#patreondata">PatreonData</a> | The PatreonData that you 
 **Return Type:** String
 
 ## LibOpenBot.User
+
+> Example: Create a user if they are missing
+
+```javascript
+//This would never happen
+if(Context.user&&!BotContext.User)
+    BotContext.User=new LibOpenBot.User(Context.user);
+```
 
 The LibOpenBot.User function creates a new user in the database.
 
@@ -1898,6 +1917,16 @@ DiscordUser | <a href="https://discord.js.org/#/docs/main/stable/class/User">use
 
 ## LibOpenBot.UserData
 
+> Example: Do i really need to make examples for stuff you don't need to use?
+
+```javascript
+var Data=await LibOpenBot.GetUserData(Context.user.id);
+if(!Data) {
+    //Note: this would never get run, since LibOpenBot.GetUserData creates data if it doesnt exist
+    Data=new LibOpenBot.UserData(Context.user.id);
+}
+```
+
 The LibOpenBot.UserData function creates a new UserData entry in the database
 
 Argument | Type | Description
@@ -1907,6 +1936,13 @@ User | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referenc
 **Return Type:** <a href="#userdata">UserData</a>
 
 ## LibOpenBot.VerifyRequest
+
+> Example: Create a verify request for your command, from yourself, just to mess with us devs...
+
+```javascript
+//Don't do this.
+var Request=new LibOpenBot.VerifyRequest(this,this.Author,'I literally changed nothing',Message.id);
+```
 
 The LibOpenBot.VerifyRequest function creates a new verification request to a command
 
@@ -1921,6 +1957,14 @@ Message | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 ## LibOpenBot.WriteCommand
 
+> Example: Bypass verification to edit your command's icon
+
+```javascript
+//Note: don't do this, your command will get denied
+this.Icon=':smile:';
+LibOpenBot.WriteCommand(this);
+```
+
 The LibOpenBot.WriteCommand function writes a command to the database, saving any changes that may have been made.
 
 Argument | Type | Descrpition
@@ -1928,6 +1972,14 @@ Argument | Type | Descrpition
 Command | <a href="#command">Command</a> | The Command to save
 
 ## LibOpenBot.WriteCommandData
+
+> Example: Save a note on a user for later
+
+```javascript
+var Data=await LibOpenBot.GetCommandData(this,Context.user.id);
+Data.note=Arguments;
+LibOpenBot.WriteCommandData(this,Context.user.id,Data);
+```
 
 The LibOpenBot.WriteCommandData function writes a CommandData object to the database
 
@@ -1941,6 +1993,14 @@ Data | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referenc
 
 ## LibOpenBot.WriteGuild
 
+> Example: Add yourself as an admin to a guild
+
+```javascript
+//Note: obviously, don't do this
+BotContext.Guild.Settings.Admins.push(this.Author);
+LibOpenBot.WriteGuild(BotContext.Guild);
+```
+
 The LibOpenBot.WriteGuild function writes a guild to the database, saving any changes that may have been made.
 
 Argument | Type | Description
@@ -1948,6 +2008,15 @@ Argument | Type | Description
 Guild | <a href="#guild">Guild</a> | The Guild to save
 
 ## LibOpenBot.WritePrivateStorage
+
+> Example: Add a key to your private storage
+
+```javascript
+var Storage=await LibOpenBot.GetPrivateStorage(this.Author);
+Storage['Top Secret']='Grandma\'s cookie recipe';
+LibOpenBot.WritePrivateStorage(this.Author,Storage);
+```
+
 
 The LibOpenBot.WritePrivateStorage function writes a PrivateStorage object to the database, saving any changes that may have been made.
 
@@ -1960,6 +2029,12 @@ Value | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 
 ## LibOpenBot.WritePullRequest
 
+> Example: Just don't
+
+```javascript
+//Just don't use this function, idek why i put the non-useful functions in here.
+```
+
 The LibOpenBot.WritePullRequest function writes a pull request to the database, saving any changes that may have been made.
 
 Argument | Type | Description
@@ -1967,6 +2042,14 @@ Argument | Type | Description
 PullRequest | <a href="#pullrequest">PullRequest</a> | The Pull Request to save
 
 ## LibOpenBot.WriteTimeout
+
+> Example: Change the argument of a timeout after you create it
+
+```javascript
+var Timeout=new LibOpenBot.Timeout(1000,()=>console.log(Argument.log));
+Timeout.Argument={log:'Hello world!'};
+LibOpenBot.WriteTimeout(Timeout);
+```
 
 The LibOpenBot.WriteTimeout function writes a timeout to the database, saving any changes that may have been made.
 
@@ -1976,6 +2059,14 @@ Timeout | <a href="#timeout">Timeout</a> | The Timeout to save
 
 ## LibOpenBot.WriteUser
 
+> Example: Reset your message count to 0
+
+```javascript
+//But why?
+BotContext.User.Stats.Messages=0;
+LibOpenBot.WriteUser(BotContext.User);
+```
+
 The LibOpenBot.WriteUser function writes a user to the database, saving any changes that may have been made.
 
 Argument | Type | Description
@@ -1983,6 +2074,14 @@ Argument | Type | Description
 User | <a href="#user">User</a> | The User to save
 
 ## LibOpenBot.WriteUserData
+
+> Example: Clear a user's command data, and break all of the commands
+
+```javascript
+var Data=await LibOpenBot.GetUserData(Context.user.id);
+Data.Commands=[];
+LibOpenBot.WriteUserData(Data);
+```
 
 The LibOpenBot.WriteUserData function writes a UserData object to the database, saving any changes that may have been made
 
@@ -1994,6 +2093,12 @@ UserData | <a href="#userdata">UserData</a> | The UserData to save
 
 ## LibOpenBot.WriteVerifyRequest
 
+> Example: Just don't
+
+```javascript
+//Just don't use this function, idek why i put the non-useful functions in here.
+```
+
 The LibOpenBot.WriteVerifyRequest function writes a verify request to the database, saving any changes that may have been made.
 
 Argument | Type | Description
@@ -2001,6 +2106,13 @@ Argument | Type | Description
 VerifyRequest | <a href="#verifyrequest">VerifyRequest</a> | The Verify Request to save
 
 ## LibOpenBot.sendRelay
+
+> Example: Do math on the master process instead of on the shard cuz why not
+
+```javascript
+var OnePlusOne=await LibOpenBot.sendRelay('Master',{type:'script',data:'return 1+1'});
+Message.channel.send(OnePlusOne);
+```
 
 The LibOpenBot.sendRelay function sends a message to another process, and retrieves the result.
 
@@ -2013,6 +2125,21 @@ Data | <a href="#relay">Relay</a> | The Relay to send
 
 ## LibOpenBot.sendRelayShards
 
+> Example: Make sure that math works right on all the shards
+
+```javascript
+var Results=await LibOpenBot.sendRelayShards({type:'script',data:'return 1+1'});
+var Correct=1+1;
+var Broken=false;
+for(var Result of Results)
+    if(Result!=Correct)
+        Broken=true;
+if(Broken)
+    Message.channel.send('Math is broken somewhere!');
+else
+    Message.channel.send('Math is working fine everywhere');
+```
+
 The LibOpenBot.sendRelayShards function sends a message to all of the shards and retrieves the result.
 
 Argument | Type | Description
@@ -2022,6 +2149,21 @@ Data | <a href="#relay">Relay</a> | The Relay to send
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>))
 
 ## LibOpenBot.sendRelayAll
+
+> Example: Make sure that math works right on all the processes
+
+```javascript
+var Results=await LibOpenBot.sendRelayAll({type:'script',data:'return 1+1'},true);
+var Correct=1+1;
+var Broken=false;
+for(var Result of Results)
+    if(Result!=Correct)
+        Broken=true;
+if(Broken)
+    Message.channel.send('Math is broken somewhere!');
+else
+    Message.channel.send('Math is working fine everywhere');
+```
 
 The LibOpenBot.sendRelayAll function sends a message to all of the processes and retrieves the result
 
@@ -2033,6 +2175,12 @@ Master | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refere
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>))
 
 ## RunEvent
+
+> Example: Execute a custom event
+
+```javascript
+var Result=await RunEvent(this,'MyEvent',Context,BotContext,'Super good argument');
+```
 
 The RunEvent function runs an event of a command.
 
@@ -2067,6 +2215,24 @@ You do not need to use the require function in order to include libraries. All l
 
 LibDiscord references a fork of the `discord.js` npm package. (The changes in the fork are not relavant to commands, they are for sharding purposes)
 
+NPM Page: <a href="https://www.npmjs.com/package/discord.js">discord.js</a>
+
+Docs: <a href="https://discord.js.org/">discord.js.org</a>
+
+Version: 11.0
+
 ## LibOpenBot
 
-LibOpenBot references the OpenBot API. Its documentation is found right here.
+LibOpenBot references the OpenBot API. It is used for interacting with OpenBot's database.
+
+Docs: <a href="https://docs.openbot.ga/">docs.openbot.ga</a>
+
+Version: 1.4.0
+
+## LibJuration
+
+LibJuration references the `juration` npm package. It is used for converting seconds to a human readable time format.
+
+NPM Page: <a href="https://www.npmjs.com/package/juration">juration</a>
+
+Version: 0.1.1
