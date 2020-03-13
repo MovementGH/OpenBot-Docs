@@ -575,6 +575,9 @@
                   <li>
                     <a href="#libopenbot" class="toc-h2 toc-link" data-title="LibOpenBot">LibOpenBot</a>
                   </li>
+                  <li>
+                    <a href="#libjuration" class="toc-h2 toc-link" data-title="LibJuration">LibJuration</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -2603,18 +2606,49 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 
 <aside class="note">You do not need to directly interact with this function, instead you can use LibOpenBot.GetPrivateStorage or LibOpenBot.GetCommandData to get the individual parts of a User's data</aside>
 <h2 id='libopenbot-getverifiers'>LibOpenBot.GetVerifiers</h2>
+<blockquote>
+<p>Example: List the OpenBot verifiers</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">VerifierIDs</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetVerifiers</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">Verifiers</span><span class="o">=</span><span class="p">[];</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">ID</span> <span class="nx">of</span> <span class="nx">VerifierIDs</span><span class="p">)</span>
+    <span class="nx">Verifiers</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetUser</span><span class="p">(</span><span class="nx">ID</span><span class="p">));</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Verifiers</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">v</span><span class="o">=&gt;</span><span class="nx">v</span><span class="p">.</span><span class="nx">Username</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="s1">', '</span><span class="p">));</span>
+</code></pre>
 <p>The LibOpenBot.GetVerifiers function returns the IDs of all of the Users who have Verifier Permissions</p>
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#number">Number</a>))</p>
 <h2 id='libopenbot-getverifyrequests'>LibOpenBot.GetVerifyRequests</h2>
+<blockquote>
+<p>Example: Print how many commands are waiting to be verified</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Requests</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetVerifyRequests</span><span class="p">();</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Requests</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.GetVerifyRequests function returns all of the Verification requests in the queue.</p>
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#verifyrequest">VerifyRequest</a>))</p>
 <h2 id='libopenbot-getweblocales'>LibOpenBot.GetWebLocales</h2>
+<blockquote>
+<p>Example: Tell a user if their language is supported on the website</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Locales</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetWebLocales</span><span class="p">();</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">Locales</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">l</span><span class="o">=&gt;</span><span class="nx">l</span><span class="o">==</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">Settings</span><span class="p">.</span><span class="nx">Language</span><span class="p">).</span><span class="nx">length</span><span class="p">)</span>
+    <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Your language is supported'</span><span class="p">);</span>
+<span class="k">else</span>
+    <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Your language is not supported'</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.GetWebLocales function returns all of the locale codes supported on OpenBot&#39;s Website</p>
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>))</p>
 <h2 id='libopenbot-guild'>LibOpenBot.Guild</h2>
+<blockquote>
+<p>Example: Create a new guild in the database if the current one is invalid</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Honestly this would never happen, this is just an example</span>
+<span class="k">if</span><span class="p">((</span><span class="o">!</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">Guild</span><span class="p">)</span><span class="o">&amp;&amp;</span><span class="nx">Context</span><span class="p">.</span><span class="nx">guild</span><span class="p">)</span>
+    <span class="kd">var</span> <span class="nx">Guild</span><span class="o">=</span><span class="k">new</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">Guild</span><span class="p">(</span><span class="nx">Context</span><span class="p">.</span><span class="nx">guild</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.Guild function creates a new guild in the database</p>
 
 <table><thead>
@@ -2633,6 +2667,17 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 
 <p><strong>Return Type:</strong> <a href="#guild">Guild</a></p>
 <h2 id='libopenbot-haspermissions'>LibOpenBot.HasPermissions</h2>
+<blockquote>
+<p>Example: Check if the bot has admin permissions in the current server</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Member</span><span class="o">=</span><span class="nx">await</span> <span class="nx">Context</span><span class="p">.</span><span class="nx">guild</span><span class="p">.</span><span class="nx">members</span><span class="p">.</span><span class="nx">fetch</span><span class="p">(</span><span class="nx">ObjDiscordClient</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">Member</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">HasPermissions</span><span class="p">(</span><span class="nx">Member</span><span class="p">.</span><span class="nx">permissions</span><span class="p">.</span><span class="nx">bitfield</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+        <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'I am an admin'</span><span class="p">);</span>
+    <span class="k">else</span>
+        <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'I am not an admin'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
 <p>The LibOpenBot.HasPermissions function compares two permissions bitfields to see whether they include eachother. It returns true if the user/entity has the permissions that it needs.</p>
 
 <table><thead>
@@ -2656,6 +2701,12 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Bool</a></p>
 <h2 id='libopenbot-languageindex'>LibOpenBot.LanguageIndex</h2>
+<blockquote>
+<p>Example: Get the strings of your command in the user&#39;s language</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Strings</span><span class="o">=</span><span class="k">this</span><span class="p">.</span><span class="nx">Languages</span><span class="p">[</span><span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">LanguageIndex</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">Settings</span><span class="p">.</span><span class="nx">Language</span><span class="p">)].</span><span class="nx">Strings</span><span class="p">;</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Strings</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</code></pre>
 <p>The LibOpenBot.LanguageIndex function returns the index in which a language is found in a command.</p>
 
 <table><thead>
@@ -2679,6 +2730,12 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 
 <p><strong>Return type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></p>
 <h2 id='libopenbot-pullrequest'>LibOpenBot.PullRequest</h2>
+<blockquote>
+<p>Example: Create a pull request for your command, from yourself, just to mess with us devs...</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Don't do this</span>
+<span class="kd">var</span> <span class="nx">Request</span><span class="o">=</span><span class="k">new</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">PullRequest</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">Author</span><span class="p">,</span><span class="s1">'I literally changed nothing'</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.PullRequest function creates a new pull request to a command</p>
 
 <table><thead>
@@ -2707,7 +2764,13 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 
 <p><strong>Return Type:</strong> <a href="#pullrequest">PullRequest</a></p>
 <h2 id='libopenbot-regsearch'>LibOpenBot.RegSearch</h2>
-<p>The LibOpenBot.RegSearch function turns a search query into a valid reqular expression. This would be used when using String.match in the ReQL language (Used in LibOpenBot.Search functions), to search for part of a string instead of a whole string (.eq) or regular expression (.match without using LibOpenBot.RegSearch).</p>
+<blockquote>
+<p>Example: Search for commands from user input</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Commands</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">SearchCommands</span><span class="p">(</span><span class="nx">Command</span><span class="o">=&gt;</span><span class="nx">Command</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">RegSearch</span><span class="p">(</span><span class="nx">Arguments</span><span class="p">)));</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Commands</span><span class="p">.</span><span class="nx">length</span><span class="o">+</span><span class="s1">' commands found'</span><span class="p">);</span>
+</code></pre>
+<p>The LibOpenBot.RegSearch function turns a search query into a valid reqular expression. This would be used when using String.match in the ReQL language to search for part of a string instead of a whole string (.eq) or regular expression (.match without using LibOpenBot.RegSearch).</p>
 
 <table><thead>
 <tr>
@@ -2725,6 +2788,12 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></p>
 <h2 id='libopenbot-searchcommands'>LibOpenBot.SearchCommands</h2>
+<blockquote>
+<p>Example: Search for commands from user input</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Commands</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">SearchCommands</span><span class="p">(</span><span class="nx">Command</span><span class="o">=&gt;</span><span class="nx">Command</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">RegSearch</span><span class="p">(</span><span class="nx">Arguments</span><span class="p">)));</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Commands</span><span class="p">.</span><span class="nx">length</span><span class="o">+</span><span class="s1">' commands found'</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.SearchCommands function searches in the database for commands that match the search.</p>
 
 <table><thead>
@@ -2747,6 +2816,12 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 
 <aside class="note">The Anonymous Function looks like javascript, but it is actually written in ReQL. If you try to use Javascript comparitors it will not work.</aside>
 <h2 id='libopenbot-searchguilds'>LibOpenBot.SearchGuilds</h2>
+<blockquote>
+<p>Example: Search for guilds from user input</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Guilds</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">SearchGuilds</span><span class="p">(</span><span class="nx">Guild</span><span class="o">=&gt;</span><span class="nx">Guild</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">RegSearch</span><span class="p">(</span><span class="nx">Arguments</span><span class="p">)));</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Guilds</span><span class="p">.</span><span class="nx">length</span><span class="o">+</span><span class="s1">' guilds found'</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.SearchGuilds function searches in the database for guilds that match the search.</p>
 
 <table><thead>
@@ -2769,6 +2844,12 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 
 <aside class="note">The Anonymous Function looks like javascript, but it is actually written in ReQL. If you try to use Javascript comparitors it will not work.</aside>
 <h2 id='libopenbot-searchusers'>LibOpenBot.SearchUsers</h2>
+<blockquote>
+<p>Example: Search for users from user input</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Users</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">SearchUsers</span><span class="p">(</span><span class="nx">User</span><span class="o">=&gt;</span><span class="nx">User</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">RegSearch</span><span class="p">(</span><span class="nx">Arguments</span><span class="p">)));</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Users</span><span class="p">.</span><span class="nx">length</span><span class="o">+</span><span class="s1">' users found'</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.SearchUsers function searches in the dtabase for users that match the search.</p>
 
 <table><thead>
@@ -2791,6 +2872,13 @@ Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
 
 <aside class="note">The Anonymous Function looks like javascript, but it is actually written in ReQL. If you try to use Javascript comparitors it will not work.</aside>
 <h2 id='libopenbot-timeout'>LibOpenBot.Timeout</h2>
+<blockquote>
+<p>Example: Respond after 10 seconds</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Timeout</span><span class="o">=</span><span class="k">new</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">Timeout</span><span class="p">(</span><span class="mi">10000</span><span class="p">,()</span><span class="o">=&gt;</span><span class="p">{</span>
+    <span class="nx">ObjDiscordClient</span><span class="p">.</span><span class="nx">channels</span><span class="p">.</span><span class="nx">cache</span><span class="p">.</span><span class="nx">array</span><span class="p">().</span><span class="nx">filter</span><span class="p">(</span><span class="nx">c</span><span class="o">=&gt;</span><span class="nx">c</span><span class="p">.</span><span class="nx">id</span><span class="o">==</span><span class="nx">Argument</span><span class="p">.</span><span class="nx">channel</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Super lag'</span><span class="p">)</span>
+<span class="p">},{</span><span class="na">channel</span><span class="p">:</span><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">id</span><span class="p">});</span>
+</code></pre>
 <p>The LibOpenBot.Timeout function creates a new timeout. (Must be called with &quot;new&quot; keyword, ie <code>new LibOpenBot.Timeout(x,y,z)</code>)
 The function provided, if it contains arguments, will always rename the arguments to Argument, so make sure your code accesses Argument under the variable name Argument. For example, the function <code>(Number)=&gt;{return Number+1}</code> will be executed as <code>(Argument)=&gt;{return Number+1}</code>, so make sure you name your argument &quot;Argument&quot;
 The argument provided must not contain circular references. (So no discord.js objects, etc.). It must be possible to convert the argument to JSON.</p>
@@ -2821,6 +2909,16 @@ The argument provided must not contain circular references. (So no discord.js ob
 
 <p><strong>Return Type:</strong> <a href="#Timeout">Timeout</a></p>
 <h2 id='libopenbot-updatepatreontier'>LibOpenBot.UpdatePatreonTier</h2>
+<blockquote>
+<p>Example: Update a patreon&#39;s tier before using it</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Patreon</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetPatreon</span><span class="p">(</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="c1">//Method 1: Update in place and then print</span>
+<span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">UpdatePatreonTier</span><span class="p">(</span><span class="nx">Patreon</span><span class="p">);</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Patreon</span><span class="p">.</span><span class="nx">tier</span><span class="p">);</span>
+<span class="c1">//Method 2: Print immediately</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">UpdatePatreonTier</span><span class="p">(</span><span class="nx">Patreon</span><span class="p">));</span>
+</code></pre>
 <p>The LibOpenBot.UpdatePatreonTier fetches a patreon&#39;s tier from the Patreon API to ensure it is correct, returns it, and updates the db. You should run this before doing mission critical things with a patreon&#39;s data.</p>
 
 <table><thead>
@@ -2839,6 +2937,13 @@ The argument provided must not contain circular references. (So no discord.js ob
 
 <p><strong>Return Type:</strong> String</p>
 <h2 id='libopenbot-user'>LibOpenBot.User</h2>
+<blockquote>
+<p>Example: Create a user if they are missing</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//This would never happen</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="o">&amp;&amp;!</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">User</span><span class="p">)</span>
+    <span class="nx">BotContext</span><span class="p">.</span><span class="nx">User</span><span class="o">=</span><span class="k">new</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">User</span><span class="p">(</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.User function creates a new user in the database.</p>
 
 <table><thead>
@@ -2857,6 +2962,15 @@ The argument provided must not contain circular references. (So no discord.js ob
 
 <p><strong>Return Type:</strong> <a href="#user">User</a></p>
 <h2 id='libopenbot-userdata'>LibOpenBot.UserData</h2>
+<blockquote>
+<p>Example: Do i really need to make examples for stuff you don&#39;t need to use?</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Data</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetUserData</span><span class="p">(</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">Data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//Note: this would never get run, since LibOpenBot.GetUserData creates data if it doesnt exist</span>
+    <span class="nx">Data</span><span class="o">=</span><span class="k">new</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">UserData</span><span class="p">(</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
 <p>The LibOpenBot.UserData function creates a new UserData entry in the database</p>
 
 <table><thead>
@@ -2875,6 +2989,12 @@ The argument provided must not contain circular references. (So no discord.js ob
 
 <p><strong>Return Type:</strong> <a href="#userdata">UserData</a></p>
 <h2 id='libopenbot-verifyrequest'>LibOpenBot.VerifyRequest</h2>
+<blockquote>
+<p>Example: Create a verify request for your command, from yourself, just to mess with us devs...</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Don't do this.</span>
+<span class="kd">var</span> <span class="nx">Request</span><span class="o">=</span><span class="k">new</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">VerifyRequest</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="k">this</span><span class="p">.</span><span class="nx">Author</span><span class="p">,</span><span class="s1">'I literally changed nothing'</span><span class="p">,</span><span class="nx">Message</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.VerifyRequest function creates a new verification request to a command</p>
 
 <table><thead>
@@ -2908,6 +3028,13 @@ The argument provided must not contain circular references. (So no discord.js ob
 
 <p><strong>Return Type:</strong> <a href="#verifyrequest">VerifyRequest</a></p>
 <h2 id='libopenbot-writecommand'>LibOpenBot.WriteCommand</h2>
+<blockquote>
+<p>Example: Bypass verification to edit your command&#39;s icon</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Note: don't do this, your command will get denied</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">Icon</span><span class="o">=</span><span class="s1">':smile:'</span><span class="p">;</span>
+<span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">WriteCommand</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.WriteCommand function writes a command to the database, saving any changes that may have been made.</p>
 
 <table><thead>
@@ -2924,6 +3051,13 @@ The argument provided must not contain circular references. (So no discord.js ob
 </tr>
 </tbody></table>
 <h2 id='libopenbot-writecommanddata'>LibOpenBot.WriteCommandData</h2>
+<blockquote>
+<p>Example: Save a note on a user for later</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Data</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetCommandData</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="nx">Data</span><span class="p">.</span><span class="nx">note</span><span class="o">=</span><span class="nx">Arguments</span><span class="p">;</span>
+<span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">WriteCommandData</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span><span class="nx">Data</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.WriteCommandData function writes a CommandData object to the database</p>
 
 <table><thead>
@@ -2952,6 +3086,13 @@ The argument provided must not contain circular references. (So no discord.js ob
 
 <aside class="note">This will overwrite the previous value, not just modify it. Also, CommandData is stored by Author, not Command, so all of your commands share the same entry.</aside>
 <h2 id='libopenbot-writeguild'>LibOpenBot.WriteGuild</h2>
+<blockquote>
+<p>Example: Add yourself as an admin to a guild</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Note: obviously, don't do this</span>
+<span class="nx">BotContext</span><span class="p">.</span><span class="nx">Guild</span><span class="p">.</span><span class="nx">Settings</span><span class="p">.</span><span class="nx">Admins</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Author</span><span class="p">);</span>
+<span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">WriteGuild</span><span class="p">(</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">Guild</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.WriteGuild function writes a guild to the database, saving any changes that may have been made.</p>
 
 <table><thead>
@@ -2968,6 +3109,13 @@ The argument provided must not contain circular references. (So no discord.js ob
 </tr>
 </tbody></table>
 <h2 id='libopenbot-writeprivatestorage'>LibOpenBot.WritePrivateStorage</h2>
+<blockquote>
+<p>Example: Add a key to your private storage</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Storage</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetPrivateStorage</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Author</span><span class="p">);</span>
+<span class="nx">Storage</span><span class="p">[</span><span class="s1">'Top Secret'</span><span class="p">]</span><span class="o">=</span><span class="s1">'Grandma\'s cookie recipe'</span><span class="p">;</span>
+<span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">WritePrivateStorage</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Author</span><span class="p">,</span><span class="nx">Storage</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.WritePrivateStorage function writes a PrivateStorage object to the database, saving any changes that may have been made.</p>
 
 <table><thead>
@@ -2991,6 +3139,11 @@ The argument provided must not contain circular references. (So no discord.js ob
 
 <aside class="note">This will overwrite the entire private storage, not just update one key.</aside>
 <h2 id='libopenbot-writepullrequest'>LibOpenBot.WritePullRequest</h2>
+<blockquote>
+<p>Example: Just don&#39;t</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Just don't use this function, idek why i put the non-useful functions in here.</span>
+</code></pre>
 <p>The LibOpenBot.WritePullRequest function writes a pull request to the database, saving any changes that may have been made.</p>
 
 <table><thead>
@@ -3007,6 +3160,13 @@ The argument provided must not contain circular references. (So no discord.js ob
 </tr>
 </tbody></table>
 <h2 id='libopenbot-writetimeout'>LibOpenBot.WriteTimeout</h2>
+<blockquote>
+<p>Example: Change the argument of a timeout after you create it</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Timeout</span><span class="o">=</span><span class="k">new</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">Timeout</span><span class="p">(</span><span class="mi">1000</span><span class="p">,()</span><span class="o">=&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Argument</span><span class="p">.</span><span class="nx">log</span><span class="p">));</span>
+<span class="nx">Timeout</span><span class="p">.</span><span class="nx">Argument</span><span class="o">=</span><span class="p">{</span><span class="na">log</span><span class="p">:</span><span class="s1">'Hello world!'</span><span class="p">};</span>
+<span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">WriteTimeout</span><span class="p">(</span><span class="nx">Timeout</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.WriteTimeout function writes a timeout to the database, saving any changes that may have been made.</p>
 
 <table><thead>
@@ -3023,6 +3183,13 @@ The argument provided must not contain circular references. (So no discord.js ob
 </tr>
 </tbody></table>
 <h2 id='libopenbot-writeuser'>LibOpenBot.WriteUser</h2>
+<blockquote>
+<p>Example: Reset your message count to 0</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//But why?</span>
+<span class="nx">BotContext</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">Stats</span><span class="p">.</span><span class="nx">Messages</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">WriteUser</span><span class="p">(</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">User</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.WriteUser function writes a user to the database, saving any changes that may have been made.</p>
 
 <table><thead>
@@ -3039,6 +3206,13 @@ The argument provided must not contain circular references. (So no discord.js ob
 </tr>
 </tbody></table>
 <h2 id='libopenbot-writeuserdata'>LibOpenBot.WriteUserData</h2>
+<blockquote>
+<p>Example: Clear a user&#39;s command data, and break all of the commands</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Data</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetUserData</span><span class="p">(</span><span class="nx">Context</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="nx">Data</span><span class="p">.</span><span class="nx">Commands</span><span class="o">=</span><span class="p">[];</span>
+<span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">WriteUserData</span><span class="p">(</span><span class="nx">Data</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.WriteUserData function writes a UserData object to the database, saving any changes that may have been made</p>
 
 <table><thead>
@@ -3057,6 +3231,11 @@ The argument provided must not contain circular references. (So no discord.js ob
 
 <aside class="note">You most likely will not need to use this function directly, instead you can use LibOpenBot.WritePrivateStorage or LibOpenBot.WriteCommandData to write the individual parts of a UserData Object</aside>
 <h2 id='libopenbot-writeverifyrequest'>LibOpenBot.WriteVerifyRequest</h2>
+<blockquote>
+<p>Example: Just don&#39;t</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Just don't use this function, idek why i put the non-useful functions in here.</span>
+</code></pre>
 <p>The LibOpenBot.WriteVerifyRequest function writes a verify request to the database, saving any changes that may have been made.</p>
 
 <table><thead>
@@ -3073,6 +3252,12 @@ The argument provided must not contain circular references. (So no discord.js ob
 </tr>
 </tbody></table>
 <h2 id='libopenbot-sendrelay'>LibOpenBot.sendRelay</h2>
+<blockquote>
+<p>Example: Do math on the master process instead of on the shard cuz why not</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">OnePlusOne</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">sendRelay</span><span class="p">(</span><span class="s1">'Master'</span><span class="p">,{</span><span class="na">type</span><span class="p">:</span><span class="s1">'script'</span><span class="p">,</span><span class="na">data</span><span class="p">:</span><span class="s1">'return 1+1'</span><span class="p">});</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">OnePlusOne</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.sendRelay function sends a message to another process, and retrieves the result.</p>
 
 <table><thead>
@@ -3096,6 +3281,20 @@ The argument provided must not contain circular references. (So no discord.js ob
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</p>
 <h2 id='libopenbot-sendrelayshards'>LibOpenBot.sendRelayShards</h2>
+<blockquote>
+<p>Example: Make sure that math works right on all the shards</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Results</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">sendRelayShards</span><span class="p">({</span><span class="na">type</span><span class="p">:</span><span class="s1">'script'</span><span class="p">,</span><span class="na">data</span><span class="p">:</span><span class="s1">'return 1+1'</span><span class="p">});</span>
+<span class="kd">var</span> <span class="nx">Correct</span><span class="o">=</span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">Broken</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">Result</span> <span class="nx">of</span> <span class="nx">Results</span><span class="p">)</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">Result</span><span class="o">!=</span><span class="nx">Correct</span><span class="p">)</span>
+        <span class="nx">Broken</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">Broken</span><span class="p">)</span>
+    <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Math is broken somewhere!'</span><span class="p">);</span>
+<span class="k">else</span>
+    <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Math is working fine everywhere'</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.sendRelayShards function sends a message to all of the shards and retrieves the result.</p>
 
 <table><thead>
@@ -3114,6 +3313,20 @@ The argument provided must not contain circular references. (So no discord.js ob
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>))</p>
 <h2 id='libopenbot-sendrelayall'>LibOpenBot.sendRelayAll</h2>
+<blockquote>
+<p>Example: Make sure that math works right on all the processes</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Results</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">sendRelayAll</span><span class="p">({</span><span class="na">type</span><span class="p">:</span><span class="s1">'script'</span><span class="p">,</span><span class="na">data</span><span class="p">:</span><span class="s1">'return 1+1'</span><span class="p">},</span><span class="kc">true</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">Correct</span><span class="o">=</span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">Broken</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">Result</span> <span class="nx">of</span> <span class="nx">Results</span><span class="p">)</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">Result</span><span class="o">!=</span><span class="nx">Correct</span><span class="p">)</span>
+        <span class="nx">Broken</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">Broken</span><span class="p">)</span>
+    <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Math is broken somewhere!'</span><span class="p">);</span>
+<span class="k">else</span>
+    <span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Math is working fine everywhere'</span><span class="p">);</span>
+</code></pre>
 <p>The LibOpenBot.sendRelayAll function sends a message to all of the processes and retrieves the result</p>
 
 <table><thead>
@@ -3137,6 +3350,11 @@ The argument provided must not contain circular references. (So no discord.js ob
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>))</p>
 <h2 id='runevent'>RunEvent</h2>
+<blockquote>
+<p>Example: Execute a custom event</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Result</span><span class="o">=</span><span class="nx">await</span> <span class="nx">RunEvent</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="s1">'MyEvent'</span><span class="p">,</span><span class="nx">Context</span><span class="p">,</span><span class="nx">BotContext</span><span class="p">,</span><span class="s1">'Super good argument'</span><span class="p">);</span>
+</code></pre>
 <p>The RunEvent function runs an event of a command.</p>
 
 <table><thead>
@@ -3191,8 +3409,24 @@ The argument provided must not contain circular references. (So no discord.js ob
 <p>You do not need to use the require function in order to include libraries. All libraries are included when OpenBot loads, and are available through the constants below.</p>
 <h2 id='libdiscord'>LibDiscord</h2>
 <p>LibDiscord references a fork of the <code>discord.js</code> npm package. (The changes in the fork are not relavant to commands, they are for sharding purposes)</p>
+
+<p>NPM Page: <a href="https://www.npmjs.com/package/discord.js">discord.js</a></p>
+
+<p>Docs: <a href="https://discord.js.org/">discord.js.org</a></p>
+
+<p>Version: 11.0</p>
 <h2 id='libopenbot'>LibOpenBot</h2>
-<p>LibOpenBot references the OpenBot API. Its documentation is found right here.</p>
+<p>LibOpenBot references the OpenBot API. It is used for interacting with OpenBot&#39;s database.</p>
+
+<p>Docs: <a href="https://docs.openbot.ga/">docs.openbot.ga</a></p>
+
+<p>Version: 1.4.0</p>
+<h2 id='libjuration'>LibJuration</h2>
+<p>LibJuration references the <code>juration</code> npm package. It is used for converting seconds to a human readable time format.</p>
+
+<p>NPM Page: <a href="https://www.npmjs.com/package/juration">juration</a></p>
+
+<p>Version: 0.1.1</p>
 
       </div>
       <div class="dark-box">
