@@ -187,6 +187,10 @@ The bool type holds a boolean value (true or false). On the guild dashboard, it 
 
 The category type is a container for other fields. It allows you to organize your data for easy access.
 
+**List:**
+
+A list is like an array. You define a template for the objects that go inside the list, and users can add as many as they want (up to the limit you set). It is accessed like an array (ie: Settings.MyList[0].SomeProperty accesses the first element in MyList)
+
 **Text:**
 
 The text type holds a string. On the guild dashboard, it is chosen using a text field. It has a special option called RegEx. The RegEx option allows you to set a regular expression which the user's input must match up with.
@@ -1242,6 +1246,22 @@ Argument | Type | Description
 -- | -- | --
 ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the verify request to delete
 
+## LibOpenBot.EmojiToReaction
+
+> Example: React with a certain emoji without dealing with unicode
+
+```javascript
+Message.react(await LibOpenBot.EmojiToReaction(':white_check_mark:'));
+```
+
+The LibOpenBot.EmojiToReaction function returns the unicode of built in emojis, and the id of custom emojis. This is useful for reacting to messages, and determining what emoji a reaction is using.
+
+Argument | Type | Description
+-- | -- | --
+Tag | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Tag of the emoji
+
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+
 ## LibOpenBot.EmojiToURL
 
 > Example: Print your command's icon as an image
@@ -1255,6 +1275,8 @@ The LibOpenBot.EmojiToURL function returns a url to an image of the discord emoj
 Argument | Type | Description
 -- | -- | --
 Tag | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Tag of the emoji
+
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
 
 ## LibOpenBot.ExecUser
 
@@ -2219,7 +2241,7 @@ NPM Page: <a href="https://www.npmjs.com/package/discord.js">discord.js</a>
 
 Docs: <a href="https://discord.js.org/">discord.js.org</a>
 
-Version: 11.0
+Version: 12.0
 
 ## LibOpenBot
 
