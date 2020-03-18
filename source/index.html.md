@@ -163,12 +163,6 @@ var Settings=await LibOpenBot.GetCommandSettings(this,BotContext.Guild);
 Message.chanenl.send('My setting is set to '+Settings.ExampleText);
 ```
 
-### Categories
-
-Categories are groups of fields. When your command accesses them, they are objects. For example, to access the field "World" in the category "Hello", you would do `Settings.World.Hello`.
-
-**Name:** The Name to access the field by, and the name displayed in the guild dashboard.
-
 ### Fields
 
 Fields are the meat of settings. There are several different types of fields, which can store different types of data and can be selected in different ways. All settings have a Name and Default value.
@@ -179,6 +173,8 @@ Fields are the meat of settings. There are several different types of fields, wh
 
 **Default:** The value that is set when the bot joins a server, or when this setting is added
 
+<aside class="note">A fields name cannot be "type", or "limit". These names are reserved for internal OpenBot usage. Also, settings are case sensitive, so you can use "Type" and "Limit" if you want</note>
+
 ### Field Types
 
 There are several different field types that can be used, each can hold a different type of data.
@@ -186,6 +182,10 @@ There are several different field types that can be used, each can hold a differ
 **Bool:**
 
 The bool type holds a boolean value (true or false). On the guild dashboard, it is chosen using a toggle switch.
+
+**Category:**
+
+The category type is a container for other fields. It allows you to organize your data for easy access.
 
 **Text:**
 
