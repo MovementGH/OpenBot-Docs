@@ -698,15 +698,13 @@
 <p>Your command can have custom settings which guild admins will edit on the dashboard. When your command accesses its settings, they will be represented by an object.</p>
 
 <blockquote>
-<p>Example: Access the settings for your command
-<code>javascript
-//Create a variable with the command&#39;s settings
-var Settings=await LibOpenBot.GetCommandSettings(this,BotContext.Guild);
-//Print the setting
-Message.chanenl.send(&#39;My setting is set to &#39;+Settings.ExampleText);
-</code></p>
+<p>Example: Access the settings for your command</p>
 </blockquote>
-<h3 id='fields'>Fields</h3>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Create a variable with the command's settings</span>
+<span class="kd">var</span> <span class="nx">Settings</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetCommandSettings</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">Guild</span><span class="p">);</span>
+<span class="c1">//Print the setting</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">chanenl</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'My setting is set to '</span><span class="o">+</span><span class="nx">Settings</span><span class="p">.</span><span class="nx">ExampleText</span><span class="p">);</span>
+</code></pre><h3 id='fields'>Fields</h3>
 <p>Fields are the meat of settings. There are several different types of fields, which can store different types of data and can be selected in different ways. All settings have a Name and Default value.</p>
 
 <p><strong>Name:</strong>  The name to access the field by, and the name displayed in the guild dashboard</p>
