@@ -174,7 +174,7 @@ Fields are the meat of settings. There are several different types of fields, wh
 
 **Default:** The value that is set when the bot joins a server, or when this setting is added
 
-<aside class="note">A fields name cannot be "type", or "limit". These names are reserved for internal OpenBot usage. Also, settings are case sensitive, so you can use "Type" and "Limit" if you want</note>
+<aside class="note">A fields name cannot be "type", or "limit". These names are reserved for internal OpenBot usage. Also, settings are case sensitive, so you can use "Type" and "Limit" if you want</aside>
 
 ### Field Types
 
@@ -204,7 +204,7 @@ The set type holds any javascript data type. On the guild dashboard, it is chose
 
 `[{name:'Zero',value:0},{name:'One',value:1},{name:'Two',value:2}]` - Choose 0, 1, or 2. They are displayed on the dropdown as "Zero" "One" and "Two".
 
-`Guild.channels.array().filter(c=>c.type=='text').map(c=>{return {name:c.name,value:c.id}})` - Choose from the channels in the current guild.
+`Guild.channels.cache.array().filter(c=>c.type=='text').map(c=>{return {name:c.name,value:c.id}})` - Choose from the channels in the current guild.
 
 # Events
 
