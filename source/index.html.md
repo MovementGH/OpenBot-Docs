@@ -173,7 +173,7 @@ Fields are the meat of settings. There are several different types of fields, wh
 
 **Default:** The value that is set when the bot joins a server, or when this setting is added
 
-<aside class="note">A fields name cannot be "type", or "limit". These names are reserved for internal OpenBot usage. Also, settings are case sensitive, so you can use "Type" and "Limit" if you want</note>
+<aside class="note">A fields name cannot be "type", or "limit". These names are reserved for internal OpenBot usage. Also, settings are case sensitive, so you can use "Type" and "Limit" if you want</aside>
 
 ### Field Types
 
