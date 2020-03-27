@@ -156,6 +156,7 @@ To delete an event, click the "x" next to its name
 Your command can have custom settings which guild admins will edit on the dashboard. When your command accesses its settings, they will be represented by an object.
 
 > Example: Access the settings for your command
+
 ```javascript
 //Create a variable with the command's settings
 var Settings=await LibOpenBot.GetCommandSettings(this,BotContext.Guild);
