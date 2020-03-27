@@ -203,7 +203,7 @@ The set type holds any javascript data type. On the guild dashboard, it is chose
 
 `[{name:'Zero',value:0},{name:'One',value:1},{name:'Two',value:2}]` - Choose 0, 1, or 2. They are displayed on the dropdown as "Zero" "One" and "Two".
 
-`Guild.channels.array().filter(c=>c.type=='text').map(c=>{return {name:c.name,value:c.id}})` - Choose from the channels in the current guild.
+`Guild.channels.cache.array().filter(c=>c.type=='text').map(c=>{return {name:c.name,value:c.id}})` - Choose from the channels in the current guild.
 
 # Events
 
