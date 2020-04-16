@@ -886,6 +886,33 @@ Private | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 User | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Bool</a> | The permissions a user needs to run the command
 Viewable | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Bool</a> | Whether the command can be viewed by others
 
+## CommandEdit
+
+> Example: Print how many verification requests there are in the queue
+
+```javascript
+var Requests=await LibOpenBot.GetUnverifiedEdits();
+Message.channel.send(Requests.length);
+```
+
+Member | Type | Description
+-- | -- | --
+Author | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The author of the edit
+Command | <a href="#command">Command</a> | The edited command
+Note | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The note the author left with the edits
+Type | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The type of edit
+id | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the edits
+
+### CommandEdit.Type
+
+The Type member of the CommandEdit Class can be one of the following:
+
+Value | Description
+-- | --
+save | Edits saved in editor for editing again later, not submitted
+pr | A pull request submitted to the author of a command from someone else
+review | A pull request submitted to the verification team from the author of a command
+
 ## Emoji
 
 > Example: Print the discord emoji version of a utf character
@@ -1008,24 +1035,6 @@ tier | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referenc
 
 <aside class="warning">You are not allowed to send or store the access or refresh token of a patreon in any way! You can only use them for fetching information from Patreon's API</aside>
 
-## PullRequest
-
-> Example: Print how many incoming pull requests you have
-
-```javascript
-Message.channel.send((await LibOpenBot.GetPullRequests(Context.user.id)).length);
-```
-
-The PullRequest class represents a pull request to someone's command.
-
-Member | Type | Description
--- | -- | --
-Command | <a href="#command">Command</a> | The edited command
-Editor | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the person who edited it
-Notes | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The notes left by the editor
-Owner | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The owner of the command
-id | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the pull request
-
 ## Relay
 
 > Example: Perform some math on the express server using a relay
@@ -1056,6 +1065,25 @@ stat | Null | Fetches performance information
 
 <aside class="note">For the async relay, instead of sending "1+1" and getting 2, you send "Callback(1+1)" and get 2. Then you can use asyncrounous functions with .then</aside>
 <aside class="note">For the api relay, instead of seinding "1+1" and getting 2, you send "return 1+1" and get 2. Then you can use async/await to perform asyncrounous requests</aside>
+
+## Review
+
+> Example: Get the rating of a command manually
+```javascript
+var Reviews=await LibOpenBot.GetCommandReviews(this.id);
+var Rating=Reviews.reduce((Total,Current)=>Total+Current.Rating,0)/Reviews.length;
+Message.channel.send(Rating);
+```
+
+The Review class stores reviews for commands.
+
+Member | Type | Description
+-- | -- | --
+Author | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the user who wrote the review
+Command | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the command that the review is for
+Rating | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The number of stars that the user rated the command
+Text | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The text of the review
+id | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the review
 
 ## Timeout
 
@@ -1145,26 +1173,6 @@ The Private member of the UserData Class contains all of the Key/Value pairs tha
 
 <aside class='note'>You will not need to directly access this object. You can use the LibOpenBot.GetPrivateStorage function to get the members of this object.</aside>
 
-
-## VerifyRequest
-
-> Example: Tell a user how many commands they have in the verification queue
-
-```javascript
-Message.channel.send((await LibOpenBot.GetVerifyRequests()).filter(v=>v.Owner==Context.user.id).length)
-```
-
-The VerifyRequest Class contains command edits which are waiting for verification by core developers
-
-Member | Type | Description
--- | -- | --
-Command | <a href="#command">Command</a> | The edited command
-Editor | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the person who edited it
-Message | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the verification message
-Notes | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The notes left by the editor
-Owner | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the owner of the command
-id | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the verify request
-
 # Functions
 
 ## LibOpenBot.Command
@@ -1199,21 +1207,39 @@ Argument | Type | Description
 -- | -- | --
 ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the command to delete
 
-## LibOpenBot.DeletePullRequest
+## LibOpenBot.DeleteCommandEdit
 
-> Example: Delete all of the pull requests on your commands
+> Example: Delete all of a users saved edits
 
 ```javascript
-//Again, don't do this
-for(var Request of await LibOpenBot.GetPullRequests(Context.user.id))
-    LibOpenBot.DeletePullRequest(Request.id);
+//Please dont
+var Edits=await LibOpenBot.GetSavedEdits(Context.user.id);
+for(var Edit of Edits) LibOpenBot.DeleteCommandEdit(Edit.id);
 ```
 
-The LibOpenBot.DeletePullRequest function deletes a pull request from the database
+The LibOpenBot.DeleteCommandEdit function deletes a CommandEdit from the database
 
 Argument | Type | Description
 -- | -- | --
-ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the pull request to delete
+ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the commandedit to delete
+
+
+## LibOpenBot.DeleteReview
+
+> Example: If you left a review on your command, delete it
+
+```javascript
+//Now TECHNICALLY u shouldnt have a review on your own command
+var Reviews=await LibOpenBot.GetCommandReviews(this.id);
+var MyReview=Reviews.filter(r=>r.Author==Context.user.id)[0];
+if(MyReview) LibOpenBot.DeleteReview(MyReview.id);
+```
+
+The LibOpenBot.DeleteReview function deletes a Review from the database
+
+Argument | Type | Description 
+-- | -- | --
+ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the review to delete
 
 ## LibOpenBot.DeleteTimeout
 
@@ -1230,22 +1256,6 @@ The LibOpenBot.DeleteTimeout function deletes a timeout from the database
 Argument | Type | Description
 -- | -- | --
 ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the timeout to delete
-
-## LibOpenBot.DeleteVerifyRequest
-
-> Example: Delete every verify request in existance
-
-```javascript
-//100% don't do this
-for(var Request of await LibOpenBot.GetVerifyRequests())
-    LibOpenBot.DeleteVerifyRequest(Request.id);
-```
-
-The LibOpenBot.DeleteVerifyRequest function deletes a verify request from the database
-
-Argument | Type | Description
--- | -- | --
-ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the verify request to delete
 
 ## LibOpenBot.EmojiToReaction
 
@@ -1365,6 +1375,54 @@ User | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referenc
 
 <aside class="warning">You must pass "this" as the Command argument. If you attempt to view/edit data owned by other commands, your command will be denied</aside>
 
+## LibOpenBot.GetCommandGuilds
+
+> Example: Print how many guilds your command is in
+
+```javascript
+Message.channel.send((await LibOpenBot.GetCommandGuilds(this.id)).length);
+```
+
+The LibOpenBot.GetCommandGuilds function returns a list of guilds ids which a command is in.
+
+Argument | Type | Description
+-- | -- | --
+ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the command whose guilds you want to get
+
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>))
+
+## LibOpenBot.GetCommandRating
+
+> Example: Print your command's rating
+
+```javascript
+Message.channel.send(await LibOpenBot.GetCommandRating(this.id));
+```
+
+The LibOpenBot.GetCommandRating function returns the rating of a command.
+
+Argument | Type | Description
+-- | -- | --
+ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the command whose rating you want to get
+
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)
+
+## LibOpenBot.GetCommandReviews
+
+> Example: Print how many reviews your command has
+
+```javascript
+Message.channel.send((await LibOpenBot.GetCommandReview(this.id)).length);
+```
+
+The LibOpenBot.GetCommandReviews function returns all the reviews for a command.
+
+Argument | Type | Description
+-- | -- | --
+ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the command whose reviews you want to get
+
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="#review">Review</a>)
+
 ## LibOpenBot.GetCommandSettings
 
 > Example: Send a configurable greeting
@@ -1418,6 +1476,21 @@ The LibOpenBot.GetDevs function returns the IDs of all of the Users with Develop
 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>))
 
+## LibOpenBot.GetEdit
+
+> Example: Print the note for a edit id provided by user
+```javascript
+Message.channel.send((await LibOpenBot.GetEdit(Arguments)).Note);
+```
+
+The LibOpenBot.GetEdit function returns a CommandEdit from its id
+
+Argument | Type | Description
+-- | -- | --
+ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the CommandEdit to get
+
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="#commandedit">CommandEdit</a>)
+
 ## LibOpenBot.GetEmojis
 
 
@@ -1465,6 +1538,23 @@ The LibOpenBot.GetHoistedUsers function returns a list of all users with a role 
 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>))
 
+## LibOpenBot.GetIncomingEdits
+
+> Example: Print the number of incoming edits a user has
+
+```javascript
+var Edits=await LibOpenBot.GetIncomingEdits(Context.user.id);
+Message.channel.send(Edits.length);
+```
+
+The LibOpenBot.GetIncomingEdits function reutrns a list of all the incoming pull requests a user has
+
+Argument | Type | Description
+-- | -- | --
+ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the User whose incoming edits you want to get.
+
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#commandedit">CommandEdit</a>))
+
 ## LibOpenBot.GetLocales
 
 > Example: Print the user's language in their own language
@@ -1480,6 +1570,23 @@ if(Locale) {
 The LibOpenBot.GetLocales function returns all of the Locales supported by OpenBot
 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#locale">Locale</a>))
+
+## LibOpenBot.GetOutgoingEdits
+
+> Example: Print the number of outgoing edits a user has
+
+```javascript
+var Edits=await LibOpenBot.GetOutgoingEdits(Context.user.id);
+Message.channel.send(Edits.length);
+```
+
+The LibOpenBot.GetOutgoingEdits function returns a list of all the outgoing pull request and verification requests a user has
+
+Argument | Type | Description
+-- | -- | --
+ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the User whose outgoing edits you want to get.
+
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#commandedit">CommandEdit</a>))
 
 ## LibOpenBot.GetPatreon
 
@@ -1535,39 +1642,22 @@ If Key is null, then it will return all of the private storage. If key is a stri
 
 <aside class="warning">If you attempt to get the private storage of another user other than yourself, your command will be denied.</aside>
 
-## LibOpenBot.GetPullRequest
+## LibOpenBot.GetSavedEdits
 
-> Example: Print the person who created a pull request
-
-```javascript
-var Request=await LibOpenBot.GetPullRequest(Arguments);
-Message.channel.send(Request.Editor);
-```
-
-The LibOpenBot.GetPullRequest function returns a Pull Request from its ID
-
-Argument | Tyoe | Description
--- | -- | --
-ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the Pull Request to get
-
-**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="#pullrequest">PullRequest</a>)
-
-## LibOpenBot.GetPullRequests
-
-> Example: Print the number of incoming pull requests you have
+> Example: Print the number of saved edits a user has
 
 ```javascript
-var Requests=await LibOpenBot.GetPullRequests(Context.user.id);
-Message.channel.send(Requests.length);
+var Edits=await LibOpenBot.GetSavedEdits(Context.user.id);
+Message.channel.send(Edits.length);
 ```
 
-The LibOpenBot.GetPullRequests function gets all of the Pull Requests to a certain User's Commands.
+The LibOpenBot.GetSavedEdits function returns all of the CommandEdits that a user has stashed
 
 Argument | Type | Description
 -- | -- | --
-User | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the User whose Pull Requests you want
+ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the User whose saved edits you want to get.
 
-**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#pullrequest">PullRequest</a>))
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#commandedit">CommandEdit</a>))
 
 ## LibOpenBot.GetTimeouts
 
@@ -1581,6 +1671,19 @@ Message.channel.send(Timeouts.length);
 The LibOpenBot.GetTimeouts function returns all Timeouts for the current process.
 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#Timeout">Timeout</a>)
+
+## LibOpenBot.GetUnverifiedEdits
+
+> Example: Print the number of verification requests
+
+```javascript
+var Edits=await LibOpenBot.GetUnverifiedEdits();
+Message.channel.send(Edits.length);
+```
+
+The LibOpenBot.GetUnverifiedEdits function returns all of the incoming verification requests
+
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#commandedit">CommandEdit</a>))
 
 ## LibOpenBot.GetUser
 
@@ -1684,19 +1787,6 @@ The LibOpenBot.GetVerifiers function returns the IDs of all of the Users who hav
 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#number">Number</a>))
 
-## LibOpenBot.GetVerifyRequests
-
-> Example: Print how many commands are waiting to be verified
-
-```javascript
-var Requests=await LibOpenBot.GetVerifyRequests();
-Message.channel.send(Requests.length);
-```
-
-The LibOpenBot.GetVerifyRequests function returns all of the Verification requests in the queue.
-
-**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#verifyrequest">VerifyRequest</a>))
-
 ## LibOpenBot.GetWebLocales
 
 > Example: Tell a user if their language is supported on the website
@@ -1772,25 +1862,6 @@ Language | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 **Return type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>
 
-## LibOpenBot.PullRequest
-
-> Example: Create a pull request for your command, from yourself, just to mess with us devs...
-
-```javascript
-//Don't do this
-var Request=new LibOpenBot.PullRequest(this,this.Author,'I literally changed nothing');
-```
-
-The LibOpenBot.PullRequest function creates a new pull request to a command
-
-Argument | Type | Description
--- | -- | --
-Command | <a href="#command">Command</a> | The Edited Command
-Editor | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the editor of the command
-Notes | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The notes about the edit
-
-**Return Type:** <a href="#pullrequest">PullRequest</a>
-
 ## LibOpenBot.RegSearch
 
 > Example: Search for commands from user input
@@ -1807,6 +1878,26 @@ Argument | Type | Description
 Query | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Query to search for
 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+
+## LibOpenBot.Review
+
+> Example: Leave a review on your own command
+
+```javascript
+//Don't do this, you will get denied
+var Review=new LibOpenBot.Review(this.id,Context.user.id,5,'Best command ever');
+```
+
+The LibOpenBot.Review function creates a new review for a command.
+
+Argument | Type | Description
+-- | -- | --
+Command | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the command to create a review for
+Author | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the user who wrote the review
+Rating | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The number of stars to rate the command
+Text | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The text to leave as a review
+
+**Return Type:** <a href="#review">Review</a>
 
 ## LibOpenBot.SearchCommands
 
@@ -1958,26 +2049,6 @@ User | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referenc
 
 **Return Type:** <a href="#userdata">UserData</a>
 
-## LibOpenBot.VerifyRequest
-
-> Example: Create a verify request for your command, from yourself, just to mess with us devs...
-
-```javascript
-//Don't do this.
-var Request=new LibOpenBot.VerifyRequest(this,this.Author,'I literally changed nothing',Message.id);
-```
-
-The LibOpenBot.VerifyRequest function creates a new verification request to a command
-
-Argument | Type | Description
--- | -- | --
-Command | <a href="#command">Command</a> | The Edited Command
-Editor | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the editor of the command
-Notes | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The notes about the edit
-Message | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the verification message
-
-**Return Type:** <a href="#verifyrequest">VerifyRequest</a>
-
 ## LibOpenBot.WriteCommand
 
 > Example: Bypass verification to edit your command's icon
@@ -2013,6 +2084,23 @@ User | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referenc
 Data | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | The Data to write
 
 <aside class="note">This will overwrite the previous value, not just modify it. Also, CommandData is stored by Author, not Command, so all of your commands share the same entry.</aside>
+
+## LibOpenBot.WriteCommandEdit
+
+> Example: Reset the note for a CommandEdit
+
+```javascript
+//Why though?
+var Edit=await LibOpenBot.GetCommandEdit(Arguments);
+Edit.Note='';
+LibOpenBot.WriteCommandEdit(Edit);
+```
+
+The LibOpenBot.WriteCommandEdit function writes a commandedit to the database, saving any changes that may have been made.
+
+Argument | Type | Descrpition
+-- | -- | --
+CommandEdit | <a href="#commandedit">CommandEdit</a> | The CommandEdit to save
 
 ## LibOpenBot.WriteGuild
 
@@ -2050,19 +2138,22 @@ Value | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referen
 
 <aside class="note">This will overwrite the entire private storage, not just update one key.</aside>
 
-## LibOpenBot.WritePullRequest
+## LibOpenBot.WriteReview
 
-> Example: Just don't
+> Example: Make a review, then change its rating
 
 ```javascript
-//Just don't use this function, idek why i put the non-useful functions in here.
+var Review=new LibOpenBot.Review(this.id,Context.user.id,1,'Bad command');
+Review.Rating=5;
+Review.Text='Good command';
+LibOpenBot.WriteReview(Review);
 ```
 
-The LibOpenBot.WritePullRequest function writes a pull request to the database, saving any changes that may have been made.
+The LibOpenBot.WriteReview function writes a Review object to the database
 
 Argument | Type | Description
 -- | -- | --
-PullRequest | <a href="#pullrequest">PullRequest</a> | The Pull Request to save
+Review | <a href="#review">Review</a> | The review to write
 
 ## LibOpenBot.WriteTimeout
 
@@ -2113,20 +2204,6 @@ Argument | Type | Description
 UserData | <a href="#userdata">UserData</a> | The UserData to save
 
 <aside class="note">You most likely will not need to use this function directly, instead you can use LibOpenBot.WritePrivateStorage or LibOpenBot.WriteCommandData to write the individual parts of a UserData Object</aside>
-
-## LibOpenBot.WriteVerifyRequest
-
-> Example: Just don't
-
-```javascript
-//Just don't use this function, idek why i put the non-useful functions in here.
-```
-
-The LibOpenBot.WriteVerifyRequest function writes a verify request to the database, saving any changes that may have been made.
-
-Argument | Type | Description
--- | -- | --
-VerifyRequest | <a href="#verifyrequest">VerifyRequest</a> | The Verify Request to save
 
 ## LibOpenBot.sendRelay
 
