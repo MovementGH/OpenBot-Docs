@@ -1375,6 +1375,24 @@ User | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referenc
 
 <aside class="warning">You must pass "this" as the Command argument. If you attempt to view/edit data owned by other commands, your command will be denied</aside>
 
+## LibOpenBot.GetCommandTempData
+
+> Example: Store a voice connection in temporary data
+
+```javascript
+LibOpenBot.GetCommandTempData(this).VoiceConnection=await VoiceChannel.join();
+```
+
+The LibOpenBot.GetCommandTempData function returns an object that is cleared every time the bot restarts, but can store things that cant be converted to JSON. Since it is volitile, you do not need to use a write function, just modify the object given by the Get function.
+
+Argument | Type | Description
+-- | -- | --
+Command | <a href="#command">Command</a> | The Command whose temp data you want to get
+
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+
+<aside class="warning">You must pass "this" as the Command argument. If you attempt to view/edit data owned by other commands, your command will be denied</aside>
+
 ## LibOpenBot.GetCommandGuilds
 
 > Example: Print how many guilds your command is in
@@ -2334,5 +2352,23 @@ Version: 1.4.0
 LibJuration references the `juration` npm package. It is used for converting seconds to a human readable time format.
 
 NPM Page: <a href="https://www.npmjs.com/package/juration">juration</a>
+
+## LibYTDL
+
+LibYTDL references the `ytdl-core` npm package. It is used for streaming youtube songs into a voice channel.
+
+NPM Page: <a href="https://www.npmjs.com/package/ytdl-core">ytdl-core</a>
+
+## LibYTPlaylist
+
+LibYTPlaylist references the `youtube-playlist` npm package. It is used for getting the songs in a youtube playlist.
+
+NPM Page: <a href="https://www.npmjs.com/package/youtube-playlist">youtube-playlist</a>
+
+## LibYTSearch
+
+LibYTSearch references the `yt-search` npm package. It is used for searching for videos on youtube.
+
+NPM Page: <a href="https://www.npmjs.com/package/yt-search">yt-search</a>
 
 Version: 0.1.1
