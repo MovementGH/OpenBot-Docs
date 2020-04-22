@@ -422,6 +422,9 @@
                     <a href="#libopenbot-getcommanddata" class="toc-h2 toc-link" data-title="LibOpenBot.GetCommandData">LibOpenBot.GetCommandData</a>
                   </li>
                   <li>
+                    <a href="#libopenbot-getcommandtempdata" class="toc-h2 toc-link" data-title="LibOpenBot.GetCommandTempData">LibOpenBot.GetCommandTempData</a>
+                  </li>
+                  <li>
                     <a href="#libopenbot-getcommandguilds" class="toc-h2 toc-link" data-title="LibOpenBot.GetCommandGuilds">LibOpenBot.GetCommandGuilds</a>
                   </li>
                   <li>
@@ -592,6 +595,15 @@
                   </li>
                   <li>
                     <a href="#libjuration" class="toc-h2 toc-link" data-title="LibJuration">LibJuration</a>
+                  </li>
+                  <li>
+                    <a href="#libytdl" class="toc-h2 toc-link" data-title="LibYTDL">LibYTDL</a>
+                  </li>
+                  <li>
+                    <a href="#libytplaylist" class="toc-h2 toc-link" data-title="LibYTPlaylist">LibYTPlaylist</a>
+                  </li>
+                  <li>
+                    <a href="#libytsearch" class="toc-h2 toc-link" data-title="LibYTSearch">LibYTSearch</a>
                   </li>
               </ul>
           </li>
@@ -2273,6 +2285,31 @@ Message.channel.send(Rating);
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</p>
 
 <aside class="warning">You must pass "this" as the Command argument. If you attempt to view/edit data owned by other commands, your command will be denied</aside>
+<h2 id='libopenbot-getcommandtempdata'>LibOpenBot.GetCommandTempData</h2>
+<blockquote>
+<p>Example: Store a voice connection in temporary data</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetCommandTempData</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">VoiceConnection</span><span class="o">=</span><span class="nx">await</span> <span class="nx">VoiceChannel</span><span class="p">.</span><span class="nx">join</span><span class="p">();</span>
+</code></pre>
+<p>The LibOpenBot.GetCommandTempData function returns an object that is cleared every time the bot restarts, but can store things that cant be converted to JSON. Since it is volitile, you do not need to use a write function, just modify the object given by the Get function.</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Command</td>
+<td><a href="#command">Command</a></td>
+<td>The Command whose temp data you want to get</td>
+</tr>
+</tbody></table>
+
+<p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></p>
+
+<aside class="warning">You must pass "this" as the Command argument. If you attempt to view/edit data owned by other commands, your command will be denied</aside>
 <h2 id='libopenbot-getcommandguilds'>LibOpenBot.GetCommandGuilds</h2>
 <blockquote>
 <p>Example: Print how many guilds your command is in</p>
@@ -3580,6 +3617,18 @@ The argument provided must not contain circular references. (So no discord.js ob
 <p>LibJuration references the <code>juration</code> npm package. It is used for converting seconds to a human readable time format.</p>
 
 <p>NPM Page: <a href="https://www.npmjs.com/package/juration">juration</a></p>
+<h2 id='libytdl'>LibYTDL</h2>
+<p>LibYTDL references the <code>ytdl-core</code> npm package. It is used for streaming youtube songs into a voice channel.</p>
+
+<p>NPM Page: <a href="https://www.npmjs.com/package/ytdl-core">ytdl-core</a></p>
+<h2 id='libytplaylist'>LibYTPlaylist</h2>
+<p>LibYTPlaylist references the <code>youtube-playlist</code> npm package. It is used for getting the songs in a youtube playlist.</p>
+
+<p>NPM Page: <a href="https://www.npmjs.com/package/youtube-playlist">youtube-playlist</a></p>
+<h2 id='libytsearch'>LibYTSearch</h2>
+<p>LibYTSearch references the <code>yt-search</code> npm package. It is used for searching for videos on youtube.</p>
+
+<p>NPM Page: <a href="https://www.npmjs.com/package/yt-search">yt-search</a></p>
 
 <p>Version: 0.1.1</p>
 
