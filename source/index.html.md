@@ -788,6 +788,30 @@ It receives these variables:
 
 **Description:** The role after the update
 
+## SettingsUpdated
+
+> Example: DN yourself the old and new settings
+
+```javascript
+LibOpenBot.ExecUser(this.Author,'Message.channel.send(`Settings have been updated from '+JSON.stringify(OldSettings)+' to '+JSON.stringify(NewSettings)+'`);');
+```
+
+The SettingsUpdated event is executed when your command's guild settings are edited.
+
+It received these variables:
+
+### OldSettings
+
+**Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+
+**Description:** The settings object before the edit occurred
+
+### NewSettings
+
+**Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+
+**Description:** The settings object after the edit occurred
+
 ## VoiceStateUpdate
 
 > Example: Stalk bob in the vc.
