@@ -340,6 +340,9 @@
                     <a href="#roleupdate" class="toc-h2 toc-link" data-title="RoleUpdate">RoleUpdate</a>
                   </li>
                   <li>
+                    <a href="#settingsupdated" class="toc-h2 toc-link" data-title="SettingsUpdated">SettingsUpdated</a>
+                  </li>
+                  <li>
                     <a href="#voicestateupdate" class="toc-h2 toc-link" data-title="VoiceStateUpdate">VoiceStateUpdate</a>
                   </li>
               </ul>
@@ -1194,6 +1197,23 @@
 <p><strong>Type:</strong> <a href="https://dicsord.js.org/#/docs/main/stable/class/Role">Role</a></p>
 
 <p><strong>Description:</strong> The role after the update</p>
+<h2 id='settingsupdated'>SettingsUpdated</h2>
+<blockquote>
+<p>Example: DN yourself the old and new settings</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">ExecUser</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Author</span><span class="p">,</span><span class="s1">'Message.channel.send(`Settings have been updated from '</span><span class="o">+</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">OldSettings</span><span class="p">)</span><span class="o">+</span><span class="s1">' to '</span><span class="o">+</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">NewSettings</span><span class="p">)</span><span class="o">+</span><span class="s1">'`);'</span><span class="p">);</span>
+</code></pre>
+<p>The SettingsUpdated event is executed when your command&#39;s guild settings are edited.</p>
+
+<p>It received these variables:</p>
+<h3 id='oldsettings'>OldSettings</h3>
+<p><strong>Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></p>
+
+<p><strong>Description:</strong> The settings object before the edit occurred</p>
+<h3 id='newsettings'>NewSettings</h3>
+<p><strong>Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></p>
+
+<p><strong>Description:</strong> The settings object after the edit occurred</p>
 <h2 id='voicestateupdate'>VoiceStateUpdate</h2>
 <blockquote>
 <p>Example: Stalk bob in the vc.</p>
