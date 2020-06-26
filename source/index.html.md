@@ -2481,6 +2481,14 @@ Docs: <a href="https://discord.js.org/">discord.js.org</a>
 
 Version: 12.0
 
+## LibHTTPS
+
+LibHTTPS references the `https` npm package. It is used for making http requests.
+
+NPM Page: <a href="https://www.npmjs.com/package/https">https</a>
+
+Version: 1.0.0
+
 ## LibOpenBot
 
 LibOpenBot references the OpenBot API. It is used for interacting with OpenBot's database.
@@ -2494,6 +2502,14 @@ Version: 1.4.0
 LibJuration references the `juration` npm package. It is used for converting seconds to a human readable time format.
 
 NPM Page: <a href="https://www.npmjs.com/package/juration">juration</a>
+
+## LibSnekfetch
+
+LibSnekfetch references the `snekfetch` npm package. It is used for making http requests.
+
+NPM Page: <a href="https://www.npmjs.com/package/snekfetch">snekfetch</a>
+
+Version: 4.0.4
 
 ## LibYTDL
 
