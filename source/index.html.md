@@ -1247,6 +1247,25 @@ Argument | Type | Description
 -- | -- | --
 ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the commandedit to delete
 
+## LibOpenBot.DeletePager
+
+> Example: Delete the pager when a certain error happens loading a page
+
+```javascript
+//Really you shuold just display the error and let them try again, not just delete it
+try {
+    Load.something.forThePager();
+} catch(e) {
+    LibOpenBot.DeletePager(Pager);
+    Message.edit('Sorry, an error occured loading this page');
+}
+```
+
+The LibOpenBot.DeletePager function deletes a Pager from the database
+
+Argument | Type | Description
+-- | -- | --
+Pager | <a href="#pager">Pager</a> | The pager to delete
 
 ## LibOpenBot.DeleteReview
 
@@ -1630,6 +1649,27 @@ ID | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/
 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#commandedit">CommandEdit</a>))
 
+## LibOpenBot.GetPager
+
+> Example: Check if a user has a pager on the message they reacted to
+
+```js
+//You won't need to do this manually, it is handled automatically by the Page event
+var Pager=await LibOpenBot.GetPager(BotContext.User.id,Reaction.message.id);
+if(Pager) {
+    Reaction.message.channel.send('You have reacted to a pager with '+Pager.Pages+' pages!');
+}
+```
+
+The LibOpenBot.GetPager function returns a pager (if it exists) that a user owns on a message.
+
+Argument | Type | Description
+-- | -- | --
+User | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the user
+Message | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The id of the message
+
+**Return Type:**  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(?<a href="#pager">Pager</a>)
+
 ## LibOpenBot.GetPatreon
 
 > Example: Print a user's patreon tier
@@ -1904,6 +1944,47 @@ Language | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 **Return type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>
 
+## LibOpenBot.Pager
+
+> Example: Create a pager with 3 pages and all possible buttons
+```javascript
+var Buttons={firstPage:':track_previous:',
+             prevPage:':arrow_backward:',
+             nextPage:':arrow_forward:',
+             lastPage:':track_next:',
+             deleteMessage:':wastebasket:'};
+var Pager=new LibOpenBot.Pager(this,Context.user,Context.channel,5,0,Buttons);
+```
+
+The LibOpenBot.Pager function creates a new pager. When a pager is created, the Page event will be called on whichever page you specify in the constructor. The Page event will also be called whenever a user reacts with one of the Buttons you provided with the corresponding page.
+
+Argument | Type | Description
+-- | -- | --
+Command | <a href="#command">Command</a> | The Command which created the pager
+User | <a href="https://discord.js.org/#/docs/main/stable/class/User">user</a> | The user who triggered the pager
+Channel | <a href="https://discord.js.org/#/docs/main/stable/class/TextChannel">channel</a> | The channel the pager is in
+Pages | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The number of pages in the pager
+DisplayPage | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The page to display initially (zero-indexed)
+Options | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | The buttons to show on the pager
+
+**Return Type:** <a href="#pager">Pager</a>
+
+### Options
+
+The Options argument defines which emojis are used for the pager buttons. Passing null/undefined for a button disables that button. Emoji format is `:emoji:` or `<:emoji:id>`. Emojis will show from left to right in the order defined. 
+
+Here is a simple example:
+`{nextPage:':abc:',prevPage:':def:'}` will show the nextPage button to the left of the prevPage bbutton, while `{prevPage:':def:',nextPage:':abc:'}` will show the nextPage button to the right of the prevPage button.
+
+Member | Type | Description
+-- | -- | --
+firstPage | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The emoji to use to go to the first page
+prevPage | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The emoji to use to go to the previous page
+nextPage | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The emoji to use to go to the next page
+lastPage | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The emoji to use to go to the last page
+deleteMessage | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The emoji to use to delete the pager message
+
+
 ## LibOpenBot.RegSearch
 
 > Example: Search for commands from user input
@@ -2160,6 +2241,22 @@ Argument | Type | Description
 -- | -- | --
 Guild | <a href="#guild">Guild</a> | The Guild to save
 
+## LibOpenBot.WritePager
+
+> Example: Add an extra page to a pager from the page event
+
+```javascript
+//Note: Pager is the pager passed in pager event, hence why i am not using GetPager
+Pager.Pages++;
+LibOpenBot.WritePager(Pager);
+```
+
+The LibOpenBot.WritePager function writes a pager to the database, saving any changes that may have been made.
+
+Argument | Type | Description
+-- | -- | --
+Pager | <a href="#pager">Pager</a> | The Pager to save
+
 ## LibOpenBot.WritePrivateStorage
 
 > Example: Add a key to your private storage
@@ -2315,6 +2412,27 @@ Data | <a href="#relay">Relay</a> | The Relay to send
 Master | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Bool</a> | Whether to send it to the master process
 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>))
+
+## ReportCommandCrash
+
+> Example: Use the built in crash reporting when catching a promise
+
+```javascript
+Message.channel.send('Test').catch(reason=>{
+    //You could put whatever you want for the event, if you want a more specific indicator of where things went wrong
+    //Also you could put whatever you want for Arguments to get a more specific indicator of how things went wrong
+    ReportCommandCrash(this,'Call',reason,Context,BotContext,Message,Arguments);
+});
+```
+
+The ReportCommandCrash function reports a command crash to the command's author. You can pass as many or as few arguments as you like. They will be included in a .json file attached to the crash report.
+
+Argument | Type | Description
+-- | -- | --
+Command | <a href="#command">Command</a> | The command which crashed
+Event | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The event which crashed
+Error | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The error which occurred
+Arguments | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>... | The arguments passed to the event which crashed.
 
 ## RunEvent
 
