@@ -369,6 +369,9 @@
                     <a href="#locale" class="toc-h2 toc-link" data-title="Locale">Locale</a>
                   </li>
                   <li>
+                    <a href="#pager" class="toc-h2 toc-link" data-title="Pager">Pager</a>
+                  </li>
+                  <li>
                     <a href="#patreondata" class="toc-h2 toc-link" data-title="PatreonData">PatreonData</a>
                   </li>
                   <li>
@@ -428,6 +431,9 @@
                     <a href="#libopenbot-getcommanddata" class="toc-h2 toc-link" data-title="LibOpenBot.GetCommandData">LibOpenBot.GetCommandData</a>
                   </li>
                   <li>
+                    <a href="#libopenbot-getcommandprefix" class="toc-h2 toc-link" data-title="LibOpenBot.GetCommandPrefix">LibOpenBot.GetCommandPrefix</a>
+                  </li>
+                  <li>
                     <a href="#libopenbot-getcommandtempdata" class="toc-h2 toc-link" data-title="LibOpenBot.GetCommandTempData">LibOpenBot.GetCommandTempData</a>
                   </li>
                   <li>
@@ -456,6 +462,9 @@
                   </li>
                   <li>
                     <a href="#libopenbot-getflakestamp" class="toc-h2 toc-link" data-title="LibOpenBot.GetFlakeStamp">LibOpenBot.GetFlakeStamp</a>
+                  </li>
+                  <li>
+                    <a href="#libopenbot-getguilddata" class="toc-h2 toc-link" data-title="LibOpenBot.GetGuildData">LibOpenBot.GetGuildData</a>
                   </li>
                   <li>
                     <a href="#libopenbot-gethoistedusers" class="toc-h2 toc-link" data-title="LibOpenBot.GetHoistedUsers">LibOpenBot.GetHoistedUsers</a>
@@ -1691,6 +1700,100 @@
 <td>The Language name</td>
 </tr>
 </tbody></table>
+<h2 id='pager'>Pager</h2>
+<blockquote>
+<p>Example: Get the number of pages in a pager
+<code>javascript
+Message.channel.send(Pager.Pages);
+</code></p>
+</blockquote>
+
+<p>The Pager Class represents a message pager, which allows developers to easily make a paged message using reaction.</p>
+
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Channel</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></td>
+<td>The ID of the channel the pager is in</td>
+</tr>
+<tr>
+<td>Command</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></td>
+<td>The ID of the Command which spawned the pager</td>
+</tr>
+<tr>
+<td>CurrentPage</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></td>
+<td>The Page that the pager is currently on (Zero indexed)</td>
+</tr>
+<tr>
+<td>Options</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">Object</a></td>
+<td>The reactions used for the pager</td>
+</tr>
+<tr>
+<td>Pages</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></td>
+<td>The Number of pages in the pager</td>
+</tr>
+<tr>
+<td>Timeout</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></td>
+<td>The ID of the timeout which will delete the pager</td>
+</tr>
+<tr>
+<td>User</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></td>
+<td>The ID of the User which spawned the pager</td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></td>
+<td>The ID of the pager</td>
+</tr>
+</tbody></table>
+<h3 id='pager-options'>Pager.Options</h3>
+<p>The reaction used for the pager</p>
+
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>deleteMessage</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></td>
+<td>The emoji tag to delete the pager message</td>
+</tr>
+<tr>
+<td>firstPage</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></td>
+<td>The emoji tag to go to the first page</td>
+</tr>
+<tr>
+<td>lastPage</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></td>
+<td>The emoji tag to go to the last page</td>
+</tr>
+<tr>
+<td>nextPage</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></td>
+<td>The emoji tag to go to the next page</td>
+</tr>
+<tr>
+<td>prevPage</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></td>
+<td>The emoji tag to go to the previous page</td>
+</tr>
+</tbody></table>
 <h2 id='patreondata'>PatreonData</h2>
 <blockquote>
 <p>Example: Do nothing since you don&#39;t need to use this class</p>
@@ -2347,6 +2450,35 @@ Message.channel.send(Rating);
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>)</p>
 
 <aside class="warning">You must pass "this" as the Command argument. If you attempt to view/edit data owned by other commands, your command will be denied</aside>
+<h2 id='libopenbot-getcommandprefix'>LibOpenBot.GetCommandPrefix</h2>
+<blockquote>
+<p>Example: Print the message content needed to activate your command</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">Prefix</span><span class="o">=</span><span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetCommandPrefix</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">Guild</span><span class="p">)</span>
+<span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">Prefix</span><span class="o">+</span><span class="k">this</span><span class="p">.</span><span class="nx">Languages</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">Callname</span><span class="p">);</span>
+</code></pre>
+<p>The LibOpenBot.GetCommandPrefix function returns the prefi used for a command. If there is no custom prefix, it returns the guild default prefix.</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Command</td>
+<td><a href="#command">Command</a></td>
+<td>The Command whose prefix you want to get</td>
+</tr>
+<tr>
+<td>Guild</td>
+<td><a href="#guild">Guild</a></td>
+<td>The Guild whose prefix you want to get</td>
+</tr>
+</tbody></table>
+
+<p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></p>
 <h2 id='libopenbot-getcommandtempdata'>LibOpenBot.GetCommandTempData</h2>
 <blockquote>
 <p>Example: Store a voice connection in temporary data</p>
@@ -2567,6 +2699,39 @@ Message.channel.send((await LibOpenBot.GetEdit(Arguments)).Note);
 </tbody></table>
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></p>
+<h2 id='libopenbot-getguilddata'>LibOpenBot.GetGuildData</h2>
+<blockquote>
+<p>Example: Store the name of a guild in its data</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Because you definately can't just access the name directly later...</span>
+<span class="kd">var</span> <span class="nx">Data</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetGuildData</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">Guild</span><span class="p">)</span>
+<span class="nx">Data</span><span class="p">.</span><span class="nx">Name</span><span class="o">=</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">Guild</span><span class="p">.</span><span class="nx">Name</span>
+<span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">WriteGuild</span><span class="p">(</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">Guild</span><span class="p">)</span>
+</code></pre>
+<p>The LibOpenBot.GetGuildData function returns your command&#39;s stored data on a guild. If there is none, it returns a blank object which you can edit. To write the guild data simply write the guild which you passed to the function (the function returns a reference).</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Command</td>
+<td><a href="#command">Command</a></td>
+<td>The Command whos data you want to access.</td>
+</tr>
+<tr>
+<td>Guild</td>
+<td><a href="#guild">Guild</a></td>
+<td>The Guild whos data you want to access.</td>
+</tr>
+</tbody></table>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></p>
+
+<aside class="warning">If you attempt to get the data of another command other than your own, your command will be denied.</aside>
 <h2 id='libopenbot-gethoistedusers'>LibOpenBot.GetHoistedUsers</h2>
 <blockquote>
 <p>Example: Output whether the current user is hoisted on the web search</p>
