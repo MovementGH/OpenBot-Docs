@@ -1039,6 +1039,38 @@ code | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referenc
 icon | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Locale Icon
 name | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Language name
 
+## Pager
+
+> Example: Get the number of pages in a pager
+```javascript
+Message.channel.send(Pager.Pages);
+```
+
+The Pager Class represents a message pager, which allows developers to easily make a paged message using reaction.
+
+Member | Type | Description
+-- | -- | --
+Channel | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the channel the pager is in
+Command | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the Command which spawned the pager
+CurrentPage | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The Page that the pager is currently on (Zero indexed)
+Options | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">Object</a> | The reactions used for the pager
+Pages | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The Number of pages in the pager
+Timeout | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the timeout which will delete the pager
+User | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the User which spawned the pager
+id | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the pager
+
+### Pager.Options
+
+The reaction used for the pager
+
+Member | Type | Description
+-- | -- | --
+deleteMessage | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The emoji tag to delete the pager message
+firstPage | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The emoji tag to go to the first page
+lastPage | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The emoji tag to go to the last page
+nextPage | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The emoji tag to go to the next page
+prevPage | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The emoji tag to go to the previous page
+
 ## PatreonData
 
 > Example: Do nothing since you don't need to use this class
@@ -1418,6 +1450,24 @@ User | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Referenc
 
 <aside class="warning">You must pass "this" as the Command argument. If you attempt to view/edit data owned by other commands, your command will be denied</aside>
 
+## LibOpenBot.GetCommandPrefix
+
+> Example: Print the message content needed to activate your command
+
+```javascript
+var Prefix=LibOpenBot.GetCommandPrefix(this,BotContext.Guild)
+Message.channel.send(Prefix+this.Languages[0].Callname);
+```
+
+The LibOpenBot.GetCommandPrefix function returns the prefi used for a command. If there is no custom prefix, it returns the guild default prefix.
+
+Argument | Type | Description
+-- | -- | --
+Command | <a href="#command">Command</a> | The Command whose prefix you want to get
+Guild | <a href="#guild">Guild</a> | The Guild whose prefix you want to get
+
+**Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+
 ## LibOpenBot.GetCommandTempData
 
 > Example: Store a voice connection in temporary data
@@ -1581,6 +1631,28 @@ Argument | Type | Description
 Flake | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The snowflake to get the timestamp of
 
 **Return Type:** <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a>
+
+## LibOpenBot.GetGuildData
+
+> Example: Store the name of a guild in its data
+
+```javascript
+//Because you definately can't just access the name directly later...
+var Data=await LibOpenBot.GetGuildData(this,BotContext.Guild)
+Data.Name=BotContext.Guild.Name
+LibOpenBot.WriteGuild(BotContext.Guild)
+```
+
+The LibOpenBot.GetGuildData function returns your command's stored data on a guild. If there is none, it returns a blank object which you can edit. To write the guild data simply write the guild which you passed to the function (the function returns a reference).
+
+Argument | Type | Description
+-- | -- | --
+Command | <a href="#command">Command</a> | The Command whos data you want to access.
+Guild | <a href="#guild">Guild</a> | The Guild whos data you want to access.
+
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+
+<aside class="warning">If you attempt to get the data of another command other than your own, your command will be denied.</aside>
 
 ## LibOpenBot.GetHoistedUsers
 
