@@ -401,6 +401,9 @@
                     <a href="#libopenbot-deletecommandedit" class="toc-h2 toc-link" data-title="LibOpenBot.DeleteCommandEdit">LibOpenBot.DeleteCommandEdit</a>
                   </li>
                   <li>
+                    <a href="#libopenbot-deletepager" class="toc-h2 toc-link" data-title="LibOpenBot.DeletePager">LibOpenBot.DeletePager</a>
+                  </li>
+                  <li>
                     <a href="#libopenbot-deletereview" class="toc-h2 toc-link" data-title="LibOpenBot.DeleteReview">LibOpenBot.DeleteReview</a>
                   </li>
                   <li>
@@ -467,6 +470,9 @@
                     <a href="#libopenbot-getoutgoingedits" class="toc-h2 toc-link" data-title="LibOpenBot.GetOutgoingEdits">LibOpenBot.GetOutgoingEdits</a>
                   </li>
                   <li>
+                    <a href="#libopenbot-getpager" class="toc-h2 toc-link" data-title="LibOpenBot.GetPager">LibOpenBot.GetPager</a>
+                  </li>
+                  <li>
                     <a href="#libopenbot-getpatreon" class="toc-h2 toc-link" data-title="LibOpenBot.GetPatreon">LibOpenBot.GetPatreon</a>
                   </li>
                   <li>
@@ -512,6 +518,9 @@
                     <a href="#libopenbot-languageindex" class="toc-h2 toc-link" data-title="LibOpenBot.LanguageIndex">LibOpenBot.LanguageIndex</a>
                   </li>
                   <li>
+                    <a href="#libopenbot-pager" class="toc-h2 toc-link" data-title="LibOpenBot.Pager">LibOpenBot.Pager</a>
+                  </li>
+                  <li>
                     <a href="#libopenbot-regsearch" class="toc-h2 toc-link" data-title="LibOpenBot.RegSearch">LibOpenBot.RegSearch</a>
                   </li>
                   <li>
@@ -551,6 +560,9 @@
                     <a href="#libopenbot-writeguild" class="toc-h2 toc-link" data-title="LibOpenBot.WriteGuild">LibOpenBot.WriteGuild</a>
                   </li>
                   <li>
+                    <a href="#libopenbot-writepager" class="toc-h2 toc-link" data-title="LibOpenBot.WritePager">LibOpenBot.WritePager</a>
+                  </li>
+                  <li>
                     <a href="#libopenbot-writeprivatestorage" class="toc-h2 toc-link" data-title="LibOpenBot.WritePrivateStorage">LibOpenBot.WritePrivateStorage</a>
                   </li>
                   <li>
@@ -573,6 +585,9 @@
                   </li>
                   <li>
                     <a href="#libopenbot-sendrelayall" class="toc-h2 toc-link" data-title="LibOpenBot.sendRelayAll">LibOpenBot.sendRelayAll</a>
+                  </li>
+                  <li>
+                    <a href="#reportcommandcrash" class="toc-h2 toc-link" data-title="ReportCommandCrash">ReportCommandCrash</a>
                   </li>
                   <li>
                     <a href="#runevent" class="toc-h2 toc-link" data-title="RunEvent">RunEvent</a>
@@ -2090,6 +2105,33 @@ Message.channel.send(Rating);
 <td>The ID of the commandedit to delete</td>
 </tr>
 </tbody></table>
+<h2 id='libopenbot-deletepager'>LibOpenBot.DeletePager</h2>
+<blockquote>
+<p>Example: Delete the pager when a certain error happens loading a page</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Really you shuold just display the error and let them try again, not just delete it</span>
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nx">Load</span><span class="p">.</span><span class="nx">something</span><span class="p">.</span><span class="nx">forThePager</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">DeletePager</span><span class="p">(</span><span class="nx">Pager</span><span class="p">);</span>
+    <span class="nx">Message</span><span class="p">.</span><span class="nx">edit</span><span class="p">(</span><span class="s1">'Sorry, an error occured loading this page'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+<p>The LibOpenBot.DeletePager function deletes a Pager from the database</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Pager</td>
+<td><a href="#pager">Pager</a></td>
+<td>The pager to delete</td>
+</tr>
+</tbody></table>
 <h2 id='libopenbot-deletereview'>LibOpenBot.DeleteReview</h2>
 <blockquote>
 <p>Example: If you left a review on your command, delete it</p>
@@ -2600,6 +2642,38 @@ Message.channel.send((await LibOpenBot.GetEdit(Arguments)).Note);
 </tbody></table>
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="#commandedit">CommandEdit</a>))</p>
+<h2 id='libopenbot-getpager'>LibOpenBot.GetPager</h2>
+<blockquote>
+<p>Example: Check if a user has a pager on the message they reacted to</p>
+</blockquote>
+<pre class="highlight javascript"><code><span class="c1">//You won't need to do this manually, it is handled automatically by the Page event</span>
+<span class="kd">var</span> <span class="nx">Pager</span><span class="o">=</span><span class="nx">await</span> <span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">GetPager</span><span class="p">(</span><span class="nx">BotContext</span><span class="p">.</span><span class="nx">User</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span><span class="nx">Reaction</span><span class="p">.</span><span class="nx">message</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">Pager</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">Reaction</span><span class="p">.</span><span class="nx">message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'You have reacted to a pager with '</span><span class="o">+</span><span class="nx">Pager</span><span class="p">.</span><span class="nx">Pages</span><span class="o">+</span><span class="s1">' pages!'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+<p>The LibOpenBot.GetPager function returns a pager (if it exists) that a user owns on a message.</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>User</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></td>
+<td>The id of the user</td>
+</tr>
+<tr>
+<td>Message</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></td>
+<td>The id of the message</td>
+</tr>
+</tbody></table>
+
+<p><strong>Return Type:</strong>  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(?<a href="#pager">Pager</a>)</p>
 <h2 id='libopenbot-getpatreon'>LibOpenBot.GetPatreon</h2>
 <blockquote>
 <p>Example: Print a user&#39;s patreon tier</p>
@@ -2969,6 +3043,100 @@ Message.channel.send((await LibOpenBot.GetEdit(Arguments)).Note);
 </tbody></table>
 
 <p><strong>Return type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></p>
+<h2 id='libopenbot-pager'>LibOpenBot.Pager</h2>
+<blockquote>
+<p>Example: Create a pager with 3 pages and all possible buttons
+<code>javascript
+var Buttons={firstPage:&#39;:track_previous:&#39;,
+             prevPage:&#39;:arrow_backward:&#39;,
+             nextPage:&#39;:arrow_forward:&#39;,
+             lastPage:&#39;:track_next:&#39;,
+             deleteMessage:&#39;:wastebasket:&#39;};
+var Pager=new LibOpenBot.Pager(this,Context.user,Context.channel,5,0,Buttons);
+</code></p>
+</blockquote>
+
+<p>The LibOpenBot.Pager function creates a new pager. When a pager is created, the Page event will be called on whichever page you specify in the constructor. The Page event will also be called whenever a user reacts with one of the Buttons you provided with the corresponding page.</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Command</td>
+<td><a href="#command">Command</a></td>
+<td>The Command which created the pager</td>
+</tr>
+<tr>
+<td>User</td>
+<td><a href="https://discord.js.org/#/docs/main/stable/class/User">user</a></td>
+<td>The user who triggered the pager</td>
+</tr>
+<tr>
+<td>Channel</td>
+<td><a href="https://discord.js.org/#/docs/main/stable/class/TextChannel">channel</a></td>
+<td>The channel the pager is in</td>
+</tr>
+<tr>
+<td>Pages</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></td>
+<td>The number of pages in the pager</td>
+</tr>
+<tr>
+<td>DisplayPage</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></td>
+<td>The page to display initially (zero-indexed)</td>
+</tr>
+<tr>
+<td>Options</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></td>
+<td>The buttons to show on the pager</td>
+</tr>
+</tbody></table>
+
+<p><strong>Return Type:</strong> <a href="#pager">Pager</a></p>
+<h3 id='options'>Options</h3>
+<p>The Options argument defines which emojis are used for the pager buttons. Passing null/undefined for a button disables that button. Emoji format is <code>:emoji:</code> or <code>&lt;:emoji:id&gt;</code>. Emojis will show from left to right in the order defined. </p>
+
+<p>Here is a simple example:
+<code>{nextPage:&#39;:abc:&#39;,prevPage:&#39;:def:&#39;}</code> will show the nextPage button to the left of the prevPage bbutton, while <code>{prevPage:&#39;:def:&#39;,nextPage:&#39;:abc:&#39;}</code> will show the nextPage button to the right of the prevPage button.</p>
+
+<table><thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>firstPage</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></td>
+<td>The emoji to use to go to the first page</td>
+</tr>
+<tr>
+<td>prevPage</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></td>
+<td>The emoji to use to go to the previous page</td>
+</tr>
+<tr>
+<td>nextPage</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></td>
+<td>The emoji to use to go to the next page</td>
+</tr>
+<tr>
+<td>lastPage</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></td>
+<td>The emoji to use to go to the last page</td>
+</tr>
+<tr>
+<td>deleteMessage</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></td>
+<td>The emoji to use to delete the pager message</td>
+</tr>
+</tbody></table>
 <h2 id='libopenbot-regsearch'>LibOpenBot.RegSearch</h2>
 <blockquote>
 <p>Example: Search for commands from user input</p>
@@ -3338,6 +3506,29 @@ The argument provided must not contain circular references. (So no discord.js ob
 <td>The Guild to save</td>
 </tr>
 </tbody></table>
+<h2 id='libopenbot-writepager'>LibOpenBot.WritePager</h2>
+<blockquote>
+<p>Example: Add an extra page to a pager from the page event</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="c1">//Note: Pager is the pager passed in pager event, hence why i am not using GetPager</span>
+<span class="nx">Pager</span><span class="p">.</span><span class="nx">Pages</span><span class="o">++</span><span class="p">;</span>
+<span class="nx">LibOpenBot</span><span class="p">.</span><span class="nx">WritePager</span><span class="p">(</span><span class="nx">Pager</span><span class="p">);</span>
+</code></pre>
+<p>The LibOpenBot.WritePager function writes a pager to the database, saving any changes that may have been made.</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Pager</td>
+<td><a href="#pager">Pager</a></td>
+<td>The Pager to save</td>
+</tr>
+</tbody></table>
 <h2 id='libopenbot-writeprivatestorage'>LibOpenBot.WritePrivateStorage</h2>
 <blockquote>
 <p>Example: Add a key to your private storage</p>
@@ -3561,6 +3752,46 @@ The argument provided must not contain circular references. (So no discord.js ob
 </tbody></table>
 
 <p><strong>Return Type:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>))</p>
+<h2 id='reportcommandcrash'>ReportCommandCrash</h2>
+<blockquote>
+<p>Example: Use the built in crash reporting when catching a promise</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">Message</span><span class="p">.</span><span class="nx">channel</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'Test'</span><span class="p">).</span><span class="k">catch</span><span class="p">(</span><span class="nx">reason</span><span class="o">=&gt;</span><span class="p">{</span>
+    <span class="c1">//You could put whatever you want for the event, if you want a more specific indicator of where things went wrong</span>
+    <span class="c1">//Also you could put whatever you want for Arguments to get a more specific indicator of how things went wrong</span>
+    <span class="nx">ReportCommandCrash</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="s1">'Call'</span><span class="p">,</span><span class="nx">reason</span><span class="p">,</span><span class="nx">Context</span><span class="p">,</span><span class="nx">BotContext</span><span class="p">,</span><span class="nx">Message</span><span class="p">,</span><span class="nx">Arguments</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<p>The ReportCommandCrash function reports a command crash to the command&#39;s author. You can pass as many or as few arguments as you like. They will be included in a .json file attached to the crash report.</p>
+
+<table><thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Command</td>
+<td><a href="#command">Command</a></td>
+<td>The command which crashed</td>
+</tr>
+<tr>
+<td>Event</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></td>
+<td>The event which crashed</td>
+</tr>
+<tr>
+<td>Error</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></td>
+<td>The error which occurred</td>
+</tr>
+<tr>
+<td>Arguments</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>...</td>
+<td>The arguments passed to the event which crashed.</td>
+</tr>
+</tbody></table>
 <h2 id='runevent'>RunEvent</h2>
 <blockquote>
 <p>Example: Execute a custom event</p>
