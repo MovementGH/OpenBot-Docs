@@ -2614,3 +2614,68 @@ LibYTSearch references the `yt-search` npm package. It is used for searching for
 NPM Page: <a href="https://www.npmjs.com/package/yt-search">yt-search</a>
 
 Version: 2.5.1
+
+# Legal
+
+Here is the legal information on what OpenBot collects and what you are allowed to do with your commands.
+
+## Privacy Policy
+
+### What we store:
+
+**Usernames and Avatars:**
+
+Collection: Discord API
+
+Stored for: All users
+
+Deletion: Deleted after 90 days of inactivity
+
+Purpose: Displaying information on your profile and when people view your commands.
+
+**Guild Names, Icons, and Member Counts:**
+
+Collection: Discord API
+
+Stored for: All guilds
+
+Deletion: Deleted upon bot leaving a guild
+
+Purpose: Displaying information for guild settings, guild information, and search.
+
+**Message Counts:**
+
+Collection: OpenBot Core
+
+Stored for: Guilds and Users
+
+Deletion: Deleted upon parent resource (Guild or User) being deleted
+
+Purpose: Sorting by activity in search, and displaying on guild/user profiles
+
+**Other Data:**
+
+Some commands may store additional data. The data that they store will follow the guidelines below in the terms of service. If a command stores data on a guild, it is deleted upon the bot leaving the guild or the command being removed from the guild.
+
+### Why we store:
+
+All the data stored by OpenBot is used solely for improving the website and bot experience. No data is sold or given away to third parties. The only people who have access to the data above are the core developers of OpenBot, and Command Developers. Command Developers are bound by the terms of service below when using the data, and their usage is reviewed by the core developers when they create their commands.
+
+### Contacting us
+
+You can contact us with any questions or concerns at our <a href="https://discord.gg/CdpzgFX">support server</a>
+
+## Terms of Service
+
+By creating a command, you agree to follow all of the terms below. These terms are subject to change as needed by the OpenBot Core Developers.
+
+### Discord API Terms of Service
+
+You must follow all terms of service set by discord <a href="https://discord.com/developers/docs/legal">here</a> in relation to using discord's api (through discord.js or other libraries) and using data acquired from discord.
+
+### Using OpenBot's API and Data
+
+All data collection must be directly related to the purpose of your command. For example, a music command can monitor voice channels for activity to improve its service, but it should not monitor users joining and leaving the server.
+
+No data collected from OpenBot's API may be sent to a third party without first notifying and receiving express consent from the user who it belongs to.
+>>>>>>> d14a6649860f98c9fdb9564bb393da8a694776fc
