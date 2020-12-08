@@ -174,6 +174,10 @@ Fields are the meat of settings. There are several different types of fields, wh
 
 **Default:** The value that is set when the bot joins a server, or when this setting is added
 
+**Description:** The description of the field, displayed in the guild dashboard
+
+**Condition:** The visibility condition of the field. This is evaluated when people view the setting in the dashboard. It is given the variables "Settings" and "SettingsRoot". Setting is the category that the setting is in, and SettingsRoot is the top level category. For example, if you have a bool field named "Enable Feature", you could have the condition for "Feature Setting X" be `Settings["Enable Feature"]`, and "Feature Setting X" will only be shown when "Enable Feature" is turned on.
+
 <aside class="note">A fields name cannot be "type", or "limit". These names are reserved for internal OpenBot usage. Also, settings are case sensitive, so you can use "Type" and "Limit" if you want</aside>
 
 ### Field Types
@@ -870,7 +874,9 @@ The Command Class stores information about a command, so that it can be executed
 Member | Type | Description
 -- | -- | --
 Author | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The ID of the author of the command
+Certification | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The certification level of the command
 Events | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | The Events of the command
+Frozen | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a> | The freeze level of the command
 Icon | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a> | The Icon of the command
 Languages | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>(<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>) | The Languages of the command
 Permissions | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a> | The Permissions of the command
@@ -2567,13 +2573,15 @@ LibOpenBot references the OpenBot API. It is used for interacting with OpenBot's
 
 Docs: <a href="https://docs.openbot.ga/">docs.openbot.ga</a>
 
-Version: 1.4.0
+Version: 2.7.1
 
 ## LibJuration
 
 LibJuration references the `juration` npm package. It is used for converting seconds to a human readable time format.
 
 NPM Page: <a href="https://www.npmjs.com/package/juration">juration</a>
+
+Version: 0.1.1
 
 ## LibSnekfetch
 
@@ -2589,11 +2597,15 @@ LibYTDL references the `ytdl-core` npm package. It is used for streaming youtube
 
 NPM Page: <a href="https://www.npmjs.com/package/ytdl-core">ytdl-core</a>
 
+Version: 4.1.4
+
 ## LibYTPlaylist
 
 LibYTPlaylist references the `youtube-playlist` npm package. It is used for getting the songs in a youtube playlist.
 
 NPM Page: <a href="https://www.npmjs.com/package/youtube-playlist">youtube-playlist</a>
+
+Version: 1.0.4
 
 ## LibYTSearch
 
@@ -2601,4 +2613,4 @@ LibYTSearch references the `yt-search` npm package. It is used for searching for
 
 NPM Page: <a href="https://www.npmjs.com/package/yt-search">yt-search</a>
 
-Version: 0.1.1
+Version: 2.5.1
