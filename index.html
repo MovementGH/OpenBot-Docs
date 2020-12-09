@@ -781,6 +781,10 @@
 
 <p><strong>Default:</strong> The value that is set when the bot joins a server, or when this setting is added</p>
 
+<p><strong>Description:</strong> The description of the field, displayed in the guild dashboard</p>
+
+<p><strong>Condition:</strong> The visibility condition of the field. This is evaluated when people view the setting in the dashboard. It is given the variables &quot;Settings&quot; and &quot;SettingsRoot&quot;. Setting is the category that the setting is in, and SettingsRoot is the top level category. For example, if you have a bool field named &quot;Enable Feature&quot;, you could have the condition for &quot;Feature Setting X&quot; be <code>Settings[&quot;Enable Feature&quot;]</code>, and &quot;Feature Setting X&quot; will only be shown when &quot;Enable Feature&quot; is turned on.</p>
+
 <aside class="note">A fields name cannot be "type", or "limit". These names are reserved for internal OpenBot usage. Also, settings are case sensitive, so you can use "Type" and "Limit" if you want</aside>
 <h3 id='field-types'>Field Types</h3>
 <p>There are several different field types that can be used, each can hold a different type of data.</p>
@@ -1323,9 +1327,19 @@
 <td>The ID of the author of the command</td>
 </tr>
 <tr>
+<td>Certification</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></td>
+<td>The certification level of the command</td>
+</tr>
+<tr>
 <td>Events</td>
 <td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></td>
 <td>The Events of the command</td>
+</tr>
+<tr>
+<td>Frozen</td>
+<td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></td>
+<td>The freeze level of the command</td>
 </tr>
 <tr>
 <td>Icon</td>
@@ -4051,11 +4065,13 @@ The argument provided must not contain circular references. (So no discord.js ob
 
 <p>Docs: <a href="https://docs.openbot.ga/">docs.openbot.ga</a></p>
 
-<p>Version: 1.4.0</p>
+<p>Version: 2.7.1</p>
 <h2 id='libjuration'>LibJuration</h2>
 <p>LibJuration references the <code>juration</code> npm package. It is used for converting seconds to a human readable time format.</p>
 
 <p>NPM Page: <a href="https://www.npmjs.com/package/juration">juration</a></p>
+
+<p>Version: 0.1.1</p>
 <h2 id='libsnekfetch'>LibSnekfetch</h2>
 <p>LibSnekfetch references the <code>snekfetch</code> npm package. It is used for making http requests.</p>
 
@@ -4066,16 +4082,20 @@ The argument provided must not contain circular references. (So no discord.js ob
 <p>LibYTDL references the <code>ytdl-core</code> npm package. It is used for streaming youtube songs into a voice channel.</p>
 
 <p>NPM Page: <a href="https://www.npmjs.com/package/ytdl-core">ytdl-core</a></p>
+
+<p>Version: 4.1.4</p>
 <h2 id='libytplaylist'>LibYTPlaylist</h2>
 <p>LibYTPlaylist references the <code>youtube-playlist</code> npm package. It is used for getting the songs in a youtube playlist.</p>
 
 <p>NPM Page: <a href="https://www.npmjs.com/package/youtube-playlist">youtube-playlist</a></p>
+
+<p>Version: 1.0.4</p>
 <h2 id='libytsearch'>LibYTSearch</h2>
 <p>LibYTSearch references the <code>yt-search</code> npm package. It is used for searching for videos on youtube.</p>
 
 <p>NPM Page: <a href="https://www.npmjs.com/package/yt-search">yt-search</a></p>
 
-<p>Version: 0.1.1</p>
+<p>Version: 2.5.1</p>
 <h1 id='legal'>Legal</h1>
 <p>Here is the legal information on what OpenBot collects and what you are allowed to do with your commands.</p>
 <h2 id='privacy-policy'>Privacy Policy</h2><h3 id='what-we-store'>What we store:</h3>
@@ -4124,6 +4144,22 @@ The argument provided must not contain circular references. (So no discord.js ob
 <p>All data collection must be directly related to the purpose of your command. For example, a music command can monitor voice channels for activity to improve its service, but it should not monitor users joining and leaving the server.</p>
 
 <p>No data collected from OpenBot&#39;s API may be sent to a third party without first notifying and receiving express consent from the user who it belongs to.</p>
+
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>d14a6649860f98c9fdb9564bb393da8a694776fc</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 
       </div>
       <div class="dark-box">
